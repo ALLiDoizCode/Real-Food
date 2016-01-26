@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		019D49135F4C0738F2BB7771 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */; };
+		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
 		4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */; };
 		4DF9CB4D1C57FA2400922A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4C1C57FA2400922A63 /* ViewController.swift */; };
 		4DF9CB501C57FA2400922A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4E1C57FA2400922A63 /* Main.storyboard */; };
@@ -36,6 +37,7 @@
 
 /* Begin PBXFileReference section */
 		1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		4DF9CB471C57FA2400922A63 /* Real Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Real Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF9CB4C1C57FA2400922A63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +90,22 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		4DD94FE91C57FFE10029C3DC /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		4DD94FED1C5800270029C3DC /* Viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				4DF9CB4C1C57FA2400922A63 /* ViewController.swift */,
+			);
+			path = Viewcontrollers;
+			sourceTree = "<group>";
+		};
 		4DF9CB3E1C57FA2400922A63 = {
 			isa = PBXGroup;
 			children = (
@@ -113,8 +131,9 @@
 		4DF9CB491C57FA2400922A63 /* Real Food */ = {
 			isa = PBXGroup;
 			children = (
+				4DD94FE91C57FFE10029C3DC /* Cells */,
 				4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */,
-				4DF9CB4C1C57FA2400922A63 /* ViewController.swift */,
+				4DD94FED1C5800270029C3DC /* Viewcontrollers */,
 				4DF9CB4E1C57FA2400922A63 /* Main.storyboard */,
 				4DF9CB511C57FA2400922A63 /* Assets.xcassets */,
 				4DF9CB531C57FA2400922A63 /* LaunchScreen.storyboard */,
@@ -333,6 +352,7 @@
 			files = (
 				4DF9CB4D1C57FA2400922A63 /* ViewController.swift in Sources */,
 				4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */,
+				4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

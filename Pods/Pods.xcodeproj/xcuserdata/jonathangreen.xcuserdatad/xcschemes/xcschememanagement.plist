@@ -4,12 +4,52 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
+		<key>BTNavigationDropdownMenu.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Bolts.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>ChameleonFramework.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>CocoaLumberjack.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTCoreText.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>DTFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FLAnimatedImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>FXImageView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>HanabiCollectionViewLayout.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>KIChameleonView.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -24,8 +64,109 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Reachability.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>SDWebImage.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKFoundation.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>VKVideoPlayer.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
-	<dict/>
+	<dict>
+		<key>190A2E93B40A21E6FC6B9CE7DA6FB32F</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>25C63D2A377B8ECC84705927A15463C6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>4D8E48D9CF317EFC6A2FCA06DA86DA18</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>50AFED0A1D2B69CE598925A20666F78B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5632AE51791C2475C51CEDA5A88F50BF</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78D9A0DF84AB4948FB2F73ACD4861838</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>85F913A645B4B13F833D0630DB81330B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>97CBD39F56F3833D43324AB55233E62C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9B57F4EE4746045CEAE2D933A3C8EC9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B0214E86E9E229E292863BC821997C4D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B1B8C2E6A1E63B824A43D8FEB26942C9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>BCA053B6430690326435042FEB61B458</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>CF08BEA3A9903AE7D28E0793BD7B33B7</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>D1B0A9AB7467E082930E97D94F8A6DC0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FD23F1DA220A44C7E84F356B64871271</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>FE113CEF81C16AA59EC049ACE130BCB2</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
 </dict>
 </plist>
