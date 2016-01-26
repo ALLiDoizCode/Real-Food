@@ -1,0 +1,4 @@
+use_frameworks!
+
+pod "HanabiCollectionViewLayout", :git => 'https://github.com/kshin/Hanabi'
+pod 'Parse', '~> 1.12.0'
