@@ -12,10 +12,9 @@ import HanabiCollectionViewLayout
 class MenuCell: UICollectionViewCell {
     
     @IBOutlet weak var Name: UILabel!
+    @IBOutlet weak var subName: UILabel!
     
     @IBOutlet weak var bgImage: UIImageView!
-    
-    @IBOutlet weak var coverView: UIView!
     
     var minAlpha: CGFloat = 0
     let maxAlpha: CGFloat = 0.75
@@ -29,16 +28,32 @@ class MenuCell: UICollectionViewCell {
         super.applyLayoutAttributes(layoutAttributes)
     
             let layout = HanabiCollectionViewLayout()
-            
             let standardHeight = layout.standartHeight
             let featuredHeight = layout.focusedHeight
             
             let delta = 1 - ((featuredHeight - CGRectGetHeight(self.frame)) / (featuredHeight - standardHeight))
             
-            self.coverView.alpha = maxAlpha - (delta * (maxAlpha - minAlpha))
+            //self.coverView.alpha = maxAlpha - (delta * (maxAlpha - minAlpha))
         
             let scale = max(delta, 0.5)
+        
+        print(delta)
+        
+            if scale <= 0.5 {
+                
+                subName.hidden = false
+                
+            }else{
+                
+                subName.hidden = true
+            }
+        
+            subName.alpha = 1 - delta
+        
+            //print(scale)
+        
             Name.transform = CGAffineTransformMakeScale(scale, scale)
+            bgImage.transform = CGAffineTransformMakeScale(scale, scale)
         
     }
     

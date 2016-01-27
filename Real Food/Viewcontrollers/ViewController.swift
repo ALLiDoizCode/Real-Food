@@ -8,6 +8,7 @@
 
 import UIKit
 import BTNavigationDropdownMenu
+import ChameleonFramework
 
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
@@ -16,15 +17,32 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     @IBOutlet weak var collectionVIew: UICollectionView!
     
     var menuView: BTNavigationDropdownMenu!
+    var sourceColor:UIColor!
     
-    let menuArray:[String] = ["vegetables","fruit","milk","chickens","cow","goat","lamb"]
-    let menuName:[String] = ["Veggies","Sweets","Dariy","Poultry","Bovine","Goat","Lamb"]
-
+    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1"]
+    let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb"]
+    var colors:[UIColor] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //let imageColor = UIColor(averageColorFromImage: UIImage(named: "100"))
+        
+        //self.view.backgroundColor = UIColor(complementaryFlatColorOf:imageColor)
         
         setupMenu()
+        
+        sourceColor = UIColor(complementaryFlatColorOf:menuView.cellBackgroundColor)
+        
+        for var i = 0; i < 8; i++ {
+            
+            sourceColor = UIColor(complementaryFlatColorOf:sourceColor)
+            
+            colors.append(sourceColor)
+        }
+        
+        
+       
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -70,19 +88,52 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let image = UIImage(named: menuArray[indexPath.row])
         
         
-        
         dispatch_async(dispatch_get_main_queue(), {
+            
+            //let someColor = cell.backgroundColor
+            
+            cell.backgroundColor = self.colors[indexPath.row]
+
             
             cell.bgImage.image = image
             cell.Name.text = self.menuName[indexPath.row]
+            cell.subName.text = self.menuName[indexPath.row]
             
-            if indexPath.row == 2 || indexPath.row == 5 {
+            /*switch indexPath.row {
                 
-                cell.Name.textColor = UIColor.grayColor()
+            case 0:
                 
-            }else {
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
                 
-            }
+            case 1:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            case 2:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            case 3:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            case 4:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            case 5:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            case 6:
+                
+                cell.backgroundColor = UIColor(complementaryFlatColorOf:someColor)
+                
+            default:
+                
+             break
+                
+            }*/
             
         });
         

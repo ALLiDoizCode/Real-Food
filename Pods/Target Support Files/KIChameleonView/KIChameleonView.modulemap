@@ -1,6 +1,0 @@
-framework module KIChameleonView {
-  umbrella header "KIChameleonView-umbrella.h"
-
-  export *
-  module * { export * }
-}
