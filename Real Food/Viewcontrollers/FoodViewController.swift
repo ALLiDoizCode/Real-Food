@@ -50,18 +50,13 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
          cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
         dispatch_async(dispatch_get_main_queue(), {
-            
-            let size: CGSize = CGSizeMake(cell.frame.width - CGFloat(40), cell.frame.height)
           
-            cell.imageCard.image = image?.imageScaledToSize(size)
-            //cell.imageCard.contentsScale = 1.8
-            cell.titleLabel.text = self.titleArray[indexPath.row]
-            cell.detailLabel.text = self.descriptionArray[indexPath.row]
+            cell.cellImage.image = image
+            cell.mainLabel.text = self.titleArray[indexPath.row]
             
             let imageColor = UIColor(averageColorFromImage: UIImage(named: self.imageArray[indexPath.row]))
-            cell.imageCard.backgroundColor =  UIColor(complementaryFlatColorOf:imageColor)
-            cell.titleLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn:imageColor, isFlat:true)
-            cell.detailLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn:imageColor, isFlat:true)
+            cell.mainLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn:imageColor, isFlat:true)
+            
             
         });
         

@@ -95,7 +95,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             cell.Name.text = self.menuName[indexPath.row]
             cell.Name.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
             cell.subName.text = self.menuName[indexPath.row]
-            
+            cell.subName.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
         });
         
         return cell
