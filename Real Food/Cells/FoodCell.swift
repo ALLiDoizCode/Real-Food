@@ -22,7 +22,7 @@ class FoodCell: UITableViewCell {
             
             self.imageCard.clipsToBounds = true
             self.imageCard.masksToBounds = true
-            self.imageCard.contentsScale = 1.8
+            self.imageCard.contentsScale = 1.6
             
             // Image.
             //let size: CGSize = CGSizeMake(UIScreen.mainScreen().bounds.width - CGFloat(40), 150)
