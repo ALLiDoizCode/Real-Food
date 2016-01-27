@@ -37,20 +37,23 @@ class MenuCell: UICollectionViewCell {
         
             let scale = max(delta, 0.5)
         
-        print(delta)
+        //print(delta)
         
-            if scale <= 0.5 {
+            if delta > 0.1 {
                 
-                subName.hidden = false
+                subName.hidden = true
+                
                 
             }else{
                 
-                subName.hidden = true
+                subName.hidden = false
+                
             }
         
             subName.alpha = 1 - delta
+            bgImage.alpha = delta
         
-            //print(scale)
+            print(scale)
         
             Name.transform = CGAffineTransformMakeScale(scale, scale)
             bgImage.transform = CGAffineTransformMakeScale(scale, scale)

@@ -28,7 +28,7 @@
                                 <collectionViewLayout key="collectionViewLayout" id="Epc-yw-fZe" customClass="HanabiCollectionViewLayout" customModule="HanabiCollectionViewLayout"/>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Menu" id="iBP-Ty-sCH" customClass="MenuCell" customModule="Real_Food" customModuleProvider="target">
-                                        <rect key="frame" x="102" y="64" width="397" height="107"/>
+                                        <rect key="frame" x="102" y="64" width="397" height="226"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="397" height="226"/>
@@ -100,16 +100,16 @@
                                                 <exclude reference="PlN-hu-WpU"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <exclude reference="DES-4B-Dls"/>
-                                                <exclude reference="DtZ-qN-jlL"/>
-                                                <exclude reference="W5h-p3-Fdw"/>
-                                                <exclude reference="zS0-Ml-ipt"/>
                                                 <exclude reference="QHP-hC-6LC"/>
                                                 <exclude reference="n8t-j7-0jM"/>
                                                 <exclude reference="6gv-Mi-g8d"/>
                                                 <exclude reference="PF5-r8-oIb"/>
                                                 <exclude reference="RDz-Zv-6zy"/>
                                                 <exclude reference="yEu-v3-hui"/>
+                                                <exclude reference="DES-4B-Dls"/>
+                                                <exclude reference="DtZ-qN-jlL"/>
+                                                <exclude reference="W5h-p3-Fdw"/>
+                                                <exclude reference="zS0-Ml-ipt"/>
                                             </mask>
                                         </variation>
                                         <variation key="heightClass=regular-widthClass=compact">
@@ -118,16 +118,16 @@
                                                 <include reference="PlN-hu-WpU"/>
                                             </mask>
                                             <mask key="constraints">
-                                                <include reference="DES-4B-Dls"/>
-                                                <include reference="DtZ-qN-jlL"/>
-                                                <include reference="W5h-p3-Fdw"/>
-                                                <include reference="zS0-Ml-ipt"/>
                                                 <include reference="QHP-hC-6LC"/>
                                                 <include reference="n8t-j7-0jM"/>
                                                 <include reference="6gv-Mi-g8d"/>
                                                 <include reference="PF5-r8-oIb"/>
                                                 <include reference="RDz-Zv-6zy"/>
                                                 <include reference="yEu-v3-hui"/>
+                                                <include reference="DES-4B-Dls"/>
+                                                <include reference="DtZ-qN-jlL"/>
+                                                <include reference="W5h-p3-Fdw"/>
+                                                <include reference="zS0-Ml-ipt"/>
                                             </mask>
                                         </variation>
                                         <connections>
@@ -137,9 +137,6 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="0.0" y="64" width="400" height="736"/>
-                                </variation>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="7ik-d1-MHn"/>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="U3X-Bh-wkH"/>
