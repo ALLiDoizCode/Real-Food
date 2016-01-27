@@ -88,6 +88,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
+  install_framework "Pods/Material.framework"
   install_framework "Pods/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -95,5 +96,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
+  install_framework "Pods/Material.framework"
   install_framework "Pods/Parse.framework"
 fi

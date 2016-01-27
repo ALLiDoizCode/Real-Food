@@ -53,7 +53,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     func setupMenu(){
         
-        let items = ["Most Popular", "Latest", "Trending", "Nearest", "Top Picks"]
+        let items = ["Home", "Messages", "Following", "Profile", "Logout"]
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -62,7 +62,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
         menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        menuView.cellTextLabelColor = UIColor.whiteColor()
+        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
         menuView.arrowPadding = 15
@@ -93,6 +93,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             cell.backgroundColor = self.colors[indexPath.row]
             cell.bgImage.image = image
             cell.Name.text = self.menuName[indexPath.row]
+            cell.Name.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
             cell.subName.text = self.menuName[indexPath.row]
             
         });
