@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'BDDBC94756DB03E4AC587A6D'
-               BlueprintName = 'BTNavigationDropdownMenu'
+               BlueprintIdentifier = 'DFB594674D5D8E9AADFDC068'
+               BlueprintName = 'FXBlurView'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'BTNavigationDropdownMenu.framework'>
+               BuildableName = 'FXBlurView.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

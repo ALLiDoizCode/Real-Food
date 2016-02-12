@@ -8,12 +8,16 @@
 
 import UIKit
 import ChameleonFramework
+import BTNavigationDropdownMenu
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    let menu = getMenu()
     
     let cellIdentefier = "Food"
 
     @IBOutlet weak var TableView: UITableView!
+    var menuView: BTNavigationDropdownMenu!
     
     let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
     let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
@@ -22,9 +26,9 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Veggies"
+        setupMenu()
         
-        self.TableView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
+        self.title = "Veggies"
         
         self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn:self.navigationController?.navigationBar.barTintColor, isFlat:true)
 
@@ -34,6 +38,31 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func setupMenu(){
+        
+        let items = ["Home", "Messages", "Following", "Profile", "Logout"]
+        self.navigationController?.navigationBar.translucent = false
+        self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        
+        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: "Veggies", items: items)
+        menuView.cellHeight = 50
+        menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
+        menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
+        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
+        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
+        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
+        menuView.arrowPadding = 15
+        menuView.animationDuration = 0.5
+        menuView.maskBackgroundColor = UIColor.blackColor()
+        menuView.maskBackgroundOpacity = 0.3
+        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
+            print("Did select item at index: \(indexPath)")
+        }
+        
+        self.navigationItem.titleView = menuView
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,20 +76,22 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         let image = UIImage(named: self.imageArray[indexPath.row])
         
-         cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
+         //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
         dispatch_async(dispatch_get_main_queue(), {
           
             cell.cellImage.image = image
-            cell.mainLabel.text = self.titleArray[indexPath.row]
+            cell.mainLabel.text = "Sara"
+            cell.foodDescription.text = self.titleArray[indexPath.row]
             
-            let imageColor = UIColor(averageColorFromImage: UIImage(named: self.imageArray[indexPath.row]))
-            cell.mainLabel.textColor = UIColor(contrastingBlackOrWhiteColorOn:imageColor, isFlat:true)
-            
-            
+            cell.layoutSubviews()
         });
         
         return cell
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     /*
