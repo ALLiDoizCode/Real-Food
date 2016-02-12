@@ -67,6 +67,7 @@ class SellerViewController: UIViewController{
             self.mainImage.image = UIImage(named: "beans")
             let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
             self.mainImage.image = blurredImage
+            self.mainImage.layer.cornerRadius = 3
             self.imageDescription.text = "100 Mile Diet For Global Change."
             self.mainDescription.text  = "1oifjsdoifsdofjsdoifjsdoifjsdoifjsdofjsdoifjsdoifjdsoifjhsdouifghjsdougjhdsouigjhsdofjdsoifjsdoifjsdoifjs"
             
