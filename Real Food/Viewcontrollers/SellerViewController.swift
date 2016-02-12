@@ -18,6 +18,7 @@ class SellerViewController: UIViewController{
     let reuseIdentifier = "Seller"
 
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var locationView: UIView!
     
     @IBOutlet weak var distance: UILabel!
@@ -38,6 +39,8 @@ class SellerViewController: UIViewController{
         setupMenu()
         
         dispatch_async(dispatch_get_main_queue(), {
+            
+            self.scrollView.contentSize.height = self.mainView.frame.origin.y + 300
             
             self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
             self.userImage.layer.masksToBounds = true
