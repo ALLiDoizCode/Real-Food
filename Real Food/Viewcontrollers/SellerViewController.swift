@@ -11,15 +11,12 @@ import Material
 import FXBlurView
 import BTNavigationDropdownMenu
 
-class SellerViewController: UIViewController{
+class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     let menu = getMenu()
     
-    let reuseIdentifier = "Seller"
-
-
-    @IBOutlet weak var scrollView: UIScrollView!
-    
+    @IBOutlet weak var tableView: UITableView!
+    let reuseIdentifier = "Review"
     
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var message: UIButton!
@@ -38,6 +35,11 @@ class SellerViewController: UIViewController{
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        mainView.layoutSubviews()
+        
+        tableView.estimatedRowHeight = 44
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         self.setupMenu()
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
@@ -53,9 +55,7 @@ class SellerViewController: UIViewController{
             
             self.message.layer.cornerRadius = 3
             self.message.layer.masksToBounds = true
-            
-            self.scrollView.contentSize.height = self.mainView.frame.origin.y + 300
-            
+    
             self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
             self.userImage.layer.masksToBounds = true
             
@@ -67,8 +67,6 @@ class SellerViewController: UIViewController{
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 10
             
-            self.mainView.layer.cornerRadius = 3
-            self.mainView.layer.masksToBounds = true
             self.mainImage.image = UIImage(named: "beans")
             //let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
             //self.mainImage.image = blurredImage
@@ -128,6 +126,20 @@ class SellerViewController: UIViewController{
         return true
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return 6
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell:ReviewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ReviewCell
+        
+        cell.reviewLbl.text = "She had the best tasting sweet potatoes I've ever had and her graden is just beutiful"
+        
+        return cell
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -135,35 +147,6 @@ class SellerViewController: UIViewController{
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(collectionView: UICollectionView, shouldHighlightItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(collectionView: UICollectionView, shouldSelectItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(collectionView: UICollectionView, shouldShowMenuForItemAtIndexPath indexPath: NSIndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, canPerformAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) -> Bool {
-        return false
-    }
-
-    override func collectionView(collectionView: UICollectionView, performAction action: Selector, forItemAtIndexPath indexPath: NSIndexPath, withSender sender: AnyObject?) {
-    
     }
     */
 
