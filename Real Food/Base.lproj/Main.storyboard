@@ -870,9 +870,6 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wwx-73-Deg" firstAttribute="top" secondItem="0Id-Jf-2z8" secondAttribute="bottom" constant="377" id="9D5-PP-dvp">
-                                <variation key="heightClass=regular-widthClass=compact" constant="477"/>
-                            </constraint>
                             <constraint firstItem="rP4-NB-8XB" firstAttribute="trailing" secondItem="0Id-Jf-2z8" secondAttribute="trailing" id="Bdt-e9-sgs"/>
                             <constraint firstItem="0Id-Jf-2z8" firstAttribute="top" secondItem="qI3-Z6-KVq" secondAttribute="top" constant="272" id="ISI-pU-iCV">
                                 <variation key="heightClass=regular-widthClass=compact" constant="172"/>
@@ -905,7 +902,6 @@
                                 <exclude reference="eEH-qq-95Y"/>
                                 <exclude reference="rdR-2J-25W"/>
                                 <exclude reference="xaQ-AL-UmL"/>
-                                <exclude reference="9D5-PP-dvp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -925,7 +921,6 @@
                                 <include reference="eEH-qq-95Y"/>
                                 <include reference="rdR-2J-25W"/>
                                 <include reference="xaQ-AL-UmL"/>
-                                <include reference="9D5-PP-dvp"/>
                             </mask>
                         </variation>
                     </view>

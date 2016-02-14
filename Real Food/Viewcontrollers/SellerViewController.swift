@@ -35,8 +35,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        mainView.layoutSubviews()
-        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
@@ -49,6 +47,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             self.ratingLbl.layer.cornerRadius = self.ratingLbl.layer.frame.height/2
             self.ratingLbl.layer.masksToBounds = true
+            
+            self.mainView.layoutSubviews()
             
             self.rate.layer.cornerRadius = 3
             self.rate.layer.masksToBounds = true

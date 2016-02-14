@@ -54,13 +54,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         let items = ["Home", "Messages", "Following", "Profile", "Logout"]
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
+        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColor()]
         
         menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
         menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
+        //menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
+        menuView.cellTextLabelColor = UIColor.flatSandColor()
         menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
         menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
         menuView.arrowPadding = 15
@@ -91,9 +92,11 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             cell.backgroundColor = self.colors[indexPath.row]
             cell.bgImage.image = image
             cell.Name.text = self.menuName[indexPath.row]
-            cell.Name.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
+            //cell.Name.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
+            cell.Name.textColor = UIColor.flatSandColor()
             cell.subName.text = self.menuName[indexPath.row]
-            cell.subName.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
+            //cell.subName.textColor = UIColor(contrastingBlackOrWhiteColorOn:self.colors[indexPath.row], isFlat:true)
+            cell.subName.textColor = UIColor.flatSandColor()
         });
         
         return cell
