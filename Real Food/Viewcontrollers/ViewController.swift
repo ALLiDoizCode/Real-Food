@@ -70,6 +70,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         menuView.maskBackgroundOpacity = 0.3
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
+            
+            let profile = UIStoryboard(name: "Profile", bundle: nil)
+            let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
+            
+            if indexPath == 3 {
+                
+                self.navigationController?.pushViewController(sellerProfile, animated: true)
+            }
         }
         
         self.navigationItem.titleView = menuView
