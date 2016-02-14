@@ -8,10 +8,12 @@
 
 import UIKit
 import Material
+import FXBlurView
 
 class FoodCell: UITableViewCell {
     
-    @IBOutlet weak var fadeView: UIView!
+   
+    @IBOutlet weak var imageFadeView: UIView!
     @IBOutlet weak var userIcon: UIImageView!
     @IBOutlet weak var cellView: UIView!
     @IBOutlet weak var cellImage: UIImageView!
@@ -22,7 +24,18 @@ class FoodCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        
+        
         dispatch_async(dispatch_get_main_queue(), {
+            
+            
+            
+           
+            /*self.fadeView.layer.cornerRadius = 3
+            self.fadeView.layer.masksToBounds = true
+            
+            self.fadeView2.layer.cornerRadius = 3
+            self.fadeView2.layer.masksToBounds = true*/
             
             self.selectionStyle = .None
             
@@ -35,14 +48,20 @@ class FoodCell: UITableViewCell {
             //self.cellView.layer.shadowRadius = 5.0; //default is 3.0
            // self.cellView.layer.shadowOpacity = 0.5; //default is 0.0
             
-            self.cellView.layer.cornerRadius = 3
-            self.cellView.layer.masksToBounds = true
+            self.cellImage.layer.cornerRadius = 4
+            self.cellImage.layer.masksToBounds = true
+            
+            self.imageFadeView.layer.cornerRadius = 4
+            self.imageFadeView.layer.masksToBounds = true
+
             
             self.foodDescription.font = RobotoFont.mediumWithSize(24)
             self.mainLabel.font = RobotoFont.mediumWithSize(17)
             
         });
     }
+    
+   
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

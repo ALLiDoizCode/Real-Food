@@ -19,42 +19,47 @@ class SellerViewController: UIViewController{
 
 
     @IBOutlet weak var scrollView: UIScrollView!
-    @IBOutlet weak var locationView: UIView!
     
+    
+    @IBOutlet weak var ratingLbl: UILabel!
+    @IBOutlet weak var message: UIButton!
+    @IBOutlet weak var rate: UIButton!
     @IBOutlet weak var distance: UILabel!
-    @IBOutlet weak var address: UILabel!
+ 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
  
     @IBOutlet weak var userName: UILabel!
-    @IBOutlet weak var mainDescription: UILabel!
-    @IBOutlet weak var imageDescription: UILabel!
+
 
     var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMenu()
+        self.setupMenu()
+        
+        self.rate.backgroundColor = UIColor.flatForestGreenColor()
+        self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
         
         dispatch_async(dispatch_get_main_queue(), {
+            
+            self.ratingLbl.layer.cornerRadius = self.ratingLbl.layer.frame.height/2
+            self.ratingLbl.layer.masksToBounds = true
+            
+            self.rate.layer.cornerRadius = 3
+            self.rate.layer.masksToBounds = true
+            
+            self.message.layer.cornerRadius = 3
+            self.message.layer.masksToBounds = true
             
             self.scrollView.contentSize.height = self.mainView.frame.origin.y + 300
             
             self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
             self.userImage.layer.masksToBounds = true
             
-            self.locationView.layer.borderWidth = 0.5
-            self.locationView.layer.borderColor = UIColor.flatGrayColor().CGColor
-            self.locationView.layer.masksToBounds = true
-            
-            //self.navigationController?.navigationBarHidden = true
-            
-            //self.mainView.backgroundColor = UIColor.flatCoffeeColorDark()
-            
-            self.view.backgroundColor = UIColor.flatCoffeeColorDark()
-            
+            self.view.backgroundColor = UIColor.flatSandColorDark()
             
             let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
@@ -65,32 +70,24 @@ class SellerViewController: UIViewController{
             self.mainView.layer.cornerRadius = 3
             self.mainView.layer.masksToBounds = true
             self.mainImage.image = UIImage(named: "beans")
-            let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
-            self.mainImage.image = blurredImage
-            self.mainImage.layer.cornerRadius = 3
-            self.imageDescription.text = "100 Mile Diet For Global Change."
-            self.mainDescription.text  = "1oifjsdoifsdofjsdoifjsdoifjsdoifjsdofjsdoifjsdoifjdsoifjhsdouifghjsdougjhdsouigjhsdofjdsoifjsdoifjsdoifjs"
-            
+            //let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
+            //self.mainImage.image = blurredImage
+            //self.mainImage.layer.cornerRadius = 3
+        
             let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
-            
-            self.imageDescription.font = RobotoFont.mediumWithSize(24)
-            self.mainDescription.font = RobotoFont.lightWithSize(14)
-            self.address.font = RobotoFont.lightWithSize(17)
-            self.address.text = "1423 Moutain Hill Rd Springfield Washington 23348"
-            self.userName.font = RobotoFont.mediumWithSize(24)
-            self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
+          
+            self.userName.font = RobotoFont.mediumWithSize(20)
+            //self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
             self.userName.text = "Sara Dodsen"
-            self.distance.textColor = UIColor.flatGrayColor()
-            self.distance.font = RobotoFont.mediumWithSize(24)
-            self.distance.text = "16m"
+            //self.distance.textColor = UIColor.flatGrayColor()
+            self.distance.font = RobotoFont.mediumWithSize(14)
+            self.distance.text = "16m/MT Pleasent"
             
-           
+            self.ratingLbl.font = RobotoFont.mediumWithSize(16)
+            
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
             
-            self.imageDescription.textColor = UIColor(complementaryFlatColorOf: imageColor)
-            
-            self.locationView.layoutSubviews()
 
         });
         
@@ -124,6 +121,7 @@ class SellerViewController: UIViewController{
         }
         
         self.navigationItem.titleView = menuView
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {

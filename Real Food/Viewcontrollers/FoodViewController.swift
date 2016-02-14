@@ -79,6 +79,15 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
          //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
         dispatch_async(dispatch_get_main_queue(), {
+            
+            /*cell.fadeView.blurEnabled = true
+            cell.fadeView.blurRadius = 20
+            cell.fadeView.dynamic = false
+            cell.fadeView.clipsToBounds = true
+            cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
+                
+                
+            })*/
           
             cell.cellImage.image = image
             cell.mainLabel.text = "Sara"

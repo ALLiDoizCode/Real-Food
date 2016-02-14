@@ -25,12 +25,10 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        //let imageColor = UIColor(averageColorFromImage: UIImage(named: "100"))
-        
-        //self.view.backgroundColor = UIColor(complementaryFlatColorOf:imageColor)
-        
+    
         setupMenu()
+        
+        self.view.backgroundColor = menuView.cellBackgroundColor
         
         sourceColor = UIColor(complementaryFlatColorOf:menuView.cellBackgroundColor)
         
