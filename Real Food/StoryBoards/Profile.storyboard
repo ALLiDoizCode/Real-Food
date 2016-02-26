@@ -97,12 +97,12 @@
                                 <exclude reference="PJz-wf-Gpq"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="v2L-LK-8Dh"/>
-                                <exclude reference="zJX-jY-9rp"/>
-                                <exclude reference="rK7-CP-I5z"/>
-                                <exclude reference="yah-eO-YO1"/>
                                 <exclude reference="Mvt-x3-SQh"/>
                                 <exclude reference="nyK-tR-lhq"/>
+                                <exclude reference="rK7-CP-I5z"/>
+                                <exclude reference="yah-eO-YO1"/>
+                                <exclude reference="v2L-LK-8Dh"/>
+                                <exclude reference="zJX-jY-9rp"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
@@ -112,12 +112,12 @@
                                 <include reference="PJz-wf-Gpq"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="v2L-LK-8Dh"/>
-                                <include reference="zJX-jY-9rp"/>
-                                <include reference="rK7-CP-I5z"/>
-                                <include reference="yah-eO-YO1"/>
                                 <include reference="Mvt-x3-SQh"/>
                                 <include reference="nyK-tR-lhq"/>
+                                <include reference="rK7-CP-I5z"/>
+                                <include reference="yah-eO-YO1"/>
+                                <include reference="v2L-LK-8Dh"/>
+                                <include reference="zJX-jY-9rp"/>
                             </mask>
                         </variation>
                     </view>
