@@ -2,3 +2,7 @@ use_frameworks!
 
 pod "HanabiCollectionViewLayout", :git => 'https://github.com/kshin/Hanabi'
 pod 'Parse', '~> 1.12.0'
+pod 'BTNavigationDropdownMenu'
+pod 'ChameleonFramework', '~> 2.1.0'
+pod 'Material', '~> 1.28.1'
+pod 'FXBlurView', '~> 1.6.4'
