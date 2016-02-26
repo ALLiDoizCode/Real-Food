@@ -1,5 +1,5 @@
 PODS:
-  - Bolts/Tasks (1.6.0)
+  - Backendless-ios-SDK (3.0.9)
   - BTNavigationDropdownMenu (0.2.1)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
@@ -7,16 +7,14 @@ PODS:
   - FXBlurView (1.6.4)
   - HanabiCollectionViewLayout (1.0.1)
   - Material (1.28.1)
-  - Parse (1.12.0):
-    - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
+  - Backendless-ios-SDK
   - BTNavigationDropdownMenu
   - ChameleonFramework (~> 2.1.0)
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
   - Material (~> 1.28.1)
-  - Parse (~> 1.12.0)
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
@@ -28,12 +26,11 @@ CHECKOUT OPTIONS:
     :git: https://github.com/kshin/Hanabi
 
 SPEC CHECKSUMS:
-  Bolts: f52a250053bb517ca874523c3913776359ab3def
+  Backendless-ios-SDK: 0364a28d6447231a0708d2f60dec4fabd2feee56
   BTNavigationDropdownMenu: 9cf4060162c96510ee27c388412e28678320cdc0
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: ac4a961f5169bc60ae7d713dd3acde51420e49ff
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
-  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
 
 COCOAPODS: 0.39.0

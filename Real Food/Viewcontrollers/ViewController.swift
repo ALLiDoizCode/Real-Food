@@ -13,6 +13,7 @@ import ChameleonFramework
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     let cellIdentefier = "Menu"
+    let client = Client()
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     
@@ -25,6 +26,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        client.addVeggie()
     
         setupMenu()
         
