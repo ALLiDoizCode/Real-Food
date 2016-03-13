@@ -7,6 +7,9 @@ PODS:
   - FXBlurView (1.6.4)
   - HanabiCollectionViewLayout (1.0.1)
   - Material (1.28.1)
+  - PullToMakeSoup (1.1):
+    - PullToRefresher (~> 1.0)
+  - PullToRefresher (1.3.1)
 
 DEPENDENCIES:
   - Backendless-ios-SDK
@@ -15,6 +18,7 @@ DEPENDENCIES:
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
   - Material (~> 1.28.1)
+  - PullToMakeSoup (~> 1.0)
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
@@ -32,5 +36,7 @@ SPEC CHECKSUMS:
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: ac4a961f5169bc60ae7d713dd3acde51420e49ff
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
+  PullToMakeSoup: d84d2980214ca3d3e7d11b92e333741fbb6d0fab
+  PullToRefresher: e17cc032b48148824a77fbf4bce5beb81933071a
 
 COCOAPODS: 0.39.0

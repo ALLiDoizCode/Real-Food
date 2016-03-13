@@ -89,6 +89,8 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/PullToMakeSoup.framework"
+  install_framework "Pods/PullToRefresh.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
@@ -96,4 +98,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/PullToMakeSoup.framework"
+  install_framework "Pods/PullToRefresh.framework"
 fi

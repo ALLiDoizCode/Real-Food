@@ -13,6 +13,8 @@
 		4D135C9A1C801FB30064F803 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D135C991C801FB30064F803 /* Login.storyboard */; };
 		4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C9B1C8021AC0064F803 /* LandingViewController.swift */; };
 		4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */; };
+		4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF31C960D8500386CC2 /* SignUpViewController.swift */; };
+		4D671AF61C960DBA00386CC2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D671AF51C960DBA00386CC2 /* SignUp.storyboard */; };
 		4D7422831C586DE800453818 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422821C586DE800453818 /* FoodViewController.swift */; };
 		4D7422851C586E4C00453818 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422841C586E4C00453818 /* FoodCell.swift */; };
 		4D7422871C58A78E00453818 /* sellerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422861C58A78E00453818 /* sellerCell.swift */; };
@@ -54,6 +56,8 @@
 		4D135C991C801FB30064F803 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4D135C9B1C8021AC0064F803 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
+		4D671AF31C960D8500386CC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		4D671AF51C960DBA00386CC2 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		4D7422821C586DE800453818 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		4D7422841C586E4C00453818 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		4D7422861C58A78E00453818 /* sellerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sellerCell.swift; sourceTree = "<group>"; };
@@ -136,6 +140,7 @@
 				4DF9CB4E1C57FA2400922A63 /* Main.storyboard */,
 				4DCC55CC1C713B4400F60DDE /* Profile.storyboard */,
 				4D135C991C801FB30064F803 /* Login.storyboard */,
+				4D671AF51C960DBA00386CC2 /* SignUp.storyboard */,
 			);
 			path = StoryBoards;
 			sourceTree = "<group>";
@@ -159,6 +164,7 @@
 				4D7422881C58A7A300453818 /* SellerViewController.swift */,
 				4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */,
 				4D135C9B1C8021AC0064F803 /* LandingViewController.swift */,
+				4D671AF31C960D8500386CC2 /* SignUpViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -345,6 +351,7 @@
 			files = (
 				4DF9CB551C57FA2400922A63 /* LaunchScreen.storyboard in Resources */,
 				4DF9CB521C57FA2400922A63 /* Assets.xcassets in Resources */,
+				4D671AF61C960DBA00386CC2 /* SignUp.storyboard in Resources */,
 				4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */,
 				4D135C9A1C801FB30064F803 /* Login.storyboard in Resources */,
 				4DF9CB501C57FA2400922A63 /* Main.storyboard in Resources */,
@@ -428,6 +435,7 @@
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
 				4D135C981C7FF31B0064F803 /* Veggies.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,
+				4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */,
 				4D7422851C586E4C00453818 /* FoodCell.swift in Sources */,
 				4D7422831C586DE800453818 /* FoodViewController.swift in Sources */,
 				4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */,
