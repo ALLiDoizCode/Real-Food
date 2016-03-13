@@ -41,6 +41,8 @@ class SignUpViewController: UIViewController {
         titleLabel.text = "Are You A Buyer Or Seller"
         titleLabel.textColor = UIColor.flatSandColorDark()
         titleLabel.font = RobotoFont.mediumWithSize(20)
+        titleLabel.textAlignment = .Center
+        titleLabel.numberOfLines = 0
         cardView.titleLabel = titleLabel
         cardView.divider = false
         cardView.backgroundColor = UIColor.clearColor()
@@ -74,7 +76,7 @@ class SignUpViewController: UIViewController {
         self.view.addSubview(cardView)
         cardView.translatesAutoresizingMaskIntoConstraints = false
         MaterialLayout.alignFromTop(view, child: cardView, top: 150)
-        MaterialLayout.alignToParentHorizontally(view, child: cardView, left: 60, right: 20)
+        MaterialLayout.alignToParentHorizontally(view, child: cardView, left: 50, right: 20)
     }
     
 

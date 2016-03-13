@@ -41,6 +41,9 @@
                                 <state key="normal" title="Buyer">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="g3p-Sn-RfP" kind="show" id="4IY-D9-88P"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="0.79226005079999995" green="0.71810984609999995" blue="0.48854580520000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -60,6 +63,70 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUX-5p-eOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-615" y="412.5"/>
+        </scene>
+        <!--Make Buyer View Controller-->
+        <scene sceneID="CK7-zo-gaQ">
+            <objects>
+                <viewController id="g3p-Sn-RfP" customClass="MakeBuyerViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="F6n-Pi-d7x"/>
+                        <viewControllerLayoutGuide type="bottom" id="z6R-y1-lby"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="JSa-we-pFg">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X6C-bk-SrA" customClass="FabButton" customModule="Material">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="8yV-1X-oQi"/>
+                                    <constraint firstAttribute="height" constant="120" id="mZ0-qs-qrl"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="8yV-1X-oQi"/>
+                                        <exclude reference="mZ0-qs-qrl"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="8yV-1X-oQi"/>
+                                        <include reference="mZ0-qs-qrl"/>
+                                    </mask>
+                                </variation>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="X6C-bk-SrA" firstAttribute="top" secondItem="F6n-Pi-d7x" secondAttribute="bottom" constant="60" id="KB5-pQ-2p9"/>
+                            <constraint firstItem="X6C-bk-SrA" firstAttribute="centerX" secondItem="JSa-we-pFg" secondAttribute="centerX" id="vCM-MZ-ZvB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="X6C-bk-SrA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="KB5-pQ-2p9"/>
+                                <exclude reference="vCM-MZ-ZvB"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="X6C-bk-SrA"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="KB5-pQ-2p9"/>
+                                <include reference="vCM-MZ-ZvB"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="profileImage" destination="X6C-bk-SrA" id="k5y-sz-eg8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PkM-Op-VWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="130.5" y="412.5"/>
         </scene>
     </scenes>
 </document>
