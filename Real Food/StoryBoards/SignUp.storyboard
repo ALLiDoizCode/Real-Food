@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15A284" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gxx-jB-IjS">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Sign Up View Controller-->
+        <scene sceneID="dkF-9G-8yg">
+            <objects>
+                <viewController id="gxx-jB-IjS" customClass="SignUpViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5kn-iJ-Zyh"/>
+                        <viewControllerLayoutGuide type="bottom" id="aKU-A3-gGS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="xlh-ow-kQ8">
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CX3-DY-Aur" customClass="FabButton" customModule="Material">
+                                <rect key="frame" x="260" y="340" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.16821733117103577" green="0.30624192953109741" blue="0.18358390033245087" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="120" id="Zfd-z7-lFm"/>
+                                    <constraint firstAttribute="width" constant="120" id="jjP-da-VUq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Seller">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMg-gd-mZy" customClass="FabButton" customModule="Material">
+                                <rect key="frame" x="20" y="340" width="120" height="120"/>
+                                <color key="backgroundColor" red="0.16821733117103577" green="0.30624192953109741" blue="0.18358390033245087" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Thc-t8-r3B"/>
+                                    <constraint firstAttribute="height" constant="120" id="cnC-fO-FBH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="24"/>
+                                <state key="normal" title="Buyer">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.79226005079999995" green="0.71810984609999995" blue="0.48854580520000002" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="RMg-gd-mZy" firstAttribute="centerY" secondItem="xlh-ow-kQ8" secondAttribute="centerY" id="EAX-Bq-wrg"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="RMg-gd-mZy" secondAttribute="leading" id="h8p-xT-alw"/>
+                            <constraint firstItem="CX3-DY-Aur" firstAttribute="centerY" secondItem="xlh-ow-kQ8" secondAttribute="centerY" id="nEr-e5-RxX"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CX3-DY-Aur" secondAttribute="trailing" id="nMS-JZ-aBU"/>
+                        </constraints>
+                    </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="AbstractSizeClassScreen[heightClass=regular-widthClass=compact]"/>
+                    <connections>
+                        <outlet property="buyer" destination="RMg-gd-mZy" id="Ta3-c0-ScL"/>
+                        <outlet property="seller" destination="CX3-DY-Aur" id="ez8-0e-a8x"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lUX-5p-eOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="412.5"/>
+        </scene>
+    </scenes>
+</document>

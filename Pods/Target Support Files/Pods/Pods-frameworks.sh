@@ -85,19 +85,19 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
-  install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
   install_framework "Pods/Material.framework"
-  install_framework "Pods/Parse.framework"
+  install_framework "Pods/PullToMakeSoup.framework"
+  install_framework "Pods/PullToRefresh.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
-  install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
   install_framework "Pods/Material.framework"
-  install_framework "Pods/Parse.framework"
+  install_framework "Pods/PullToMakeSoup.framework"
+  install_framework "Pods/PullToRefresh.framework"
 fi

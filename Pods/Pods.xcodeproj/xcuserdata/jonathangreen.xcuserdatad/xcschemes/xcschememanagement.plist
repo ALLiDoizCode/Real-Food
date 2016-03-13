@@ -9,11 +9,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Bolts.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -34,12 +29,17 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Parse.xcscheme</key>
+		<key>Pods.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Pods.xcscheme</key>
+		<key>PullToMakeSoup.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>PullToRefresher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -47,7 +47,12 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>30EA26862CC51240E3B9847D8815187B</key>
+		<key>043FE1CDB2DD3639E1FB0F534A6DDD89</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>323D40244B07A741AB1EED3F99304DE7</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -67,12 +72,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0214E86E9E229E292863BC821997C4D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BCA053B6430690326435042FEB61B458</key>
+		<key>C13DFF413B84830F556EA0DDBC0FA44C</key>
 		<dict>
 			<key>primary</key>
 			<true/>
