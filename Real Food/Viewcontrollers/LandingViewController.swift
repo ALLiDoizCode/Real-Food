@@ -29,8 +29,8 @@ class LandingViewController: UIViewController {
         loginBtn.setTitleColor(UIColor.flatSandColor(), forState: UIControlState.Normal)
         loginBtn.layer.cornerRadius = 4
         
-        signUpBtn.backgroundColor = UIColor(complementaryFlatColorOf: self.view.backgroundColor)
-        signUpBtn.setTitleColor(UIColor.flatSandColor(), forState: UIControlState.Normal)
+        //signUpBtn.backgroundColor = UIColor(complementaryFlatColorOf: self.view.backgroundColor)
+        //signUpBtn.setTitleColor(UIColor.flatSandColor(), forState: UIControlState.Normal)
         loginBtn.layer.cornerRadius = 4
         
         loginBtn.layer.masksToBounds = true
