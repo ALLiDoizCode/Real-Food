@@ -13,12 +13,18 @@ import Material
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     let cellIdentefier = "Food"
+    
+    var edit:UIButton!
 
+    @IBOutlet weak var cover: UIView!
+    @IBOutlet weak var ratingTable: UITableView!
+    @IBOutlet weak var rating: FabButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var addButton: FabButton!
+    @IBOutlet weak var closeReview: RaisedButton!
     
     let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
     let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
@@ -59,6 +65,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         // Do any additional setup after loading the view.
     }
     
+    override func viewWillAppear(animated: Bool) {
+        
+        ratingTable.hidden = true
+        cover.hidden = true
+        closeReview.hidden = true
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return imageArray.count
@@ -66,31 +79,55 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
+        if ratingTable.hidden == false {
+            
+            let cell:ReviewCell = tableView.dequeueReusableCellWithIdentifier("Review") as! ReviewCell
+            
+            dispatch_async(dispatch_get_main_queue(), {
+            
+            cell.reviewLbl.text = "She had the best tasting sweet potatoes I've ever had and her graden is just beutiful"
+            });
+            
+            return cell
+            
+        }else {
+            
+            let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
+            
+            let image = UIImage(named: self.imageArray[indexPath.row])
+            
+            //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
+            
+            dispatch_async(dispatch_get_main_queue(), {
+                
+                /*cell.fadeView.blurEnabled = true
+                cell.fadeView.blurRadius = 20
+                cell.fadeView.dynamic = false
+                cell.fadeView.clipsToBounds = true
+                cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
+                
+                
+                })*/
+                
+                cell.cellImage.image = image
+                cell.mainLabel.text = "Sara"
+                cell.foodDescription.text = self.titleArray[indexPath.row]
+                
+                cell.layoutSubviews()
+            });
+            
+            return cell
+        }
         
-        let image = UIImage(named: self.imageArray[indexPath.row])
-        
-        //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
+    }
+    
+    
+    func reload(table:UITableView){
         
         dispatch_async(dispatch_get_main_queue(), {
             
-            /*cell.fadeView.blurEnabled = true
-            cell.fadeView.blurRadius = 20
-            cell.fadeView.dynamic = false
-            cell.fadeView.clipsToBounds = true
-            cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
-            
-            
-            })*/
-            
-            cell.cellImage.image = image
-            cell.mainLabel.text = "Sara"
-            cell.foodDescription.text = self.titleArray[indexPath.row]
-            
-            cell.layoutSubviews()
-        });
-        
-        return cell
+            table.reloadData()
+        })
     }
     
     func makeButton(){
@@ -102,10 +139,55 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         addButton.imageEdgeInsets.bottom = 13
         addButton.imageEdgeInsets.right = 13
         addButton.imageEdgeInsets.left = 13
+        
+        rating.backgroundColor = UIColor.clearColor()
+        rating.tintColor = UIColor.flatWhiteColor()
+        rating.setTitle("4.3", forState: UIControlState.Normal)
+        rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
+        
+        closeReview.setTitle("Close", forState: .Normal)
+        closeReview.titleLabel!.font = RobotoFont.mediumWithSize(32)
+        closeReview.backgroundColor = UIColor.flatPlumColorDark()
+        closeReview.setTitleColor(UIColor.flatSandColorDark(), forState: .Normal)
+        
+        edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
+        edit.setTitle("Edit", forState: UIControlState.Normal)
+        edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
+        
+        let rightButton = UIBarButtonItem.init(customView: edit)
+        
+        self.navigationItem.rightBarButtonItem = rightButton
+        
     }
     
     @IBAction func add(sender: AnyObject) {
         
+    }
+    
+    @IBAction func ratingBtn(sender: AnyObject) {
+        
+        ratingTable.hidden = false
+        ratingTable.dataSource = self
+        ratingTable.delegate = self
+        tableView.delegate = nil
+        tableView.dataSource = nil
+        cover.hidden = false
+        closeReview.hidden = false
+        
+        reload(ratingTable)
+    }
+    
+    @IBAction func closeReviewBtn(sender: AnyObject) {
+        
+        ratingTable.hidden = true
+        ratingTable.dataSource = nil
+        ratingTable.delegate = nil
+        tableView.delegate = self
+        tableView.dataSource = self
+        cover.hidden = true
+        closeReview.hidden = true
+        
+        reload(tableView)
     }
     override func prefersStatusBarHidden() -> Bool {
         return true

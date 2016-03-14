@@ -54,7 +54,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     func setupMenu(){
         
-        let items = ["Home", "Messages", "Following", "Profile", "Logout"]
+        let items = ["Home", "Messages", "Profile", "Logout"]
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColor()]
@@ -77,12 +77,12 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             let profile = UIStoryboard(name: "Profile", bundle: nil)
             let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
             
-            if indexPath == 3 {
+            if indexPath == 2 {
                 
                 self.navigationController?.pushViewController(sellerProfile, animated: true)
             }
             
-            if indexPath == 4 {
+            if indexPath == 3 {
                 
                 let storyBoard = UIStoryboard.init(name: "Login", bundle: nil)
                 

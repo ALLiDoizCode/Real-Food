@@ -42,7 +42,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func setupMenu(){
         
-        let items = ["Home", "Messages", "Following", "Profile", "Logout"]
+        let items = ["Home", "Messages", "Profile", "Logout"]
         self.navigationController?.navigationBar.translucent = false
         self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]

@@ -6,10 +6,12 @@ PODS:
   - ChameleonFramework/Default (2.1.0)
   - FXBlurView (1.6.4)
   - HanabiCollectionViewLayout (1.0.1)
+  - ImagePickerSheetController (0.9.1)
+  - JSQMessagesViewController (7.2.0):
+    - JSQSystemSoundPlayer (~> 2.0.1)
+  - JSQSystemSoundPlayer (2.0.1)
+  - Kingfisher (1.9.3)
   - Material (1.28.1)
-  - PullToMakeSoup (1.1):
-    - PullToRefresher (~> 1.0)
-  - PullToRefresher (1.3.1)
 
 DEPENDENCIES:
   - Backendless-ios-SDK
@@ -17,8 +19,10 @@ DEPENDENCIES:
   - ChameleonFramework (~> 2.1.0)
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
+  - ImagePickerSheetController (~> 0.9.1)
+  - JSQMessagesViewController
+  - Kingfisher (~> 1.8)
   - Material (~> 1.28.1)
-  - PullToMakeSoup (~> 1.0)
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
@@ -35,8 +39,10 @@ SPEC CHECKSUMS:
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: ac4a961f5169bc60ae7d713dd3acde51420e49ff
+  ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
+  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
+  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
-  PullToMakeSoup: d84d2980214ca3d3e7d11b92e333741fbb6d0fab
-  PullToRefresher: e17cc032b48148824a77fbf4bce5beb81933071a
 
 COCOAPODS: 0.39.0

@@ -6,3 +6,6 @@ pod 'BTNavigationDropdownMenu'
 pod 'ChameleonFramework', '~> 2.1.0'
 pod 'Material', '~> 1.28.1'
 pod 'FXBlurView', '~> 1.6.4'
+pod 'JSQMessagesViewController'
+pod "ImagePickerSheetController", "~> 0.9.1"
+pod 'Kingfisher', '~> 1.8'

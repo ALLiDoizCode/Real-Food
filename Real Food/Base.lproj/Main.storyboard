@@ -576,6 +576,9 @@
                                                 <include reference="GNg-OH-RZL"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <segue destination="ofa-mG-sS1" kind="show" id="wwR-0w-KRM"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -938,6 +941,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVg-DI-GdR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="705" y="474.75"/>
+        </scene>
+        <!--Chat-->
+        <scene sceneID="k2H-Xt-pR0">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Chat" id="ofa-mG-sS1" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="L1g-Dm-cRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3789" y="470.25"/>
         </scene>
     </scenes>
     <resources>
