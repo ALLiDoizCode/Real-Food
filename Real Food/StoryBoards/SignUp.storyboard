@@ -29,6 +29,9 @@
                                 <state key="normal" title="Seller">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <segue destination="g3p-Sn-RfP" kind="show" identifier="seller" id="0yq-0d-9Eu"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RMg-gd-mZy" customClass="FabButton" customModule="Material">
                                 <rect key="frame" x="20" y="340" width="120" height="120"/>
@@ -42,7 +45,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="g3p-Sn-RfP" kind="show" id="4IY-D9-88P"/>
+                                    <segue destination="g3p-Sn-RfP" kind="show" identifier="buyer" id="4IY-D9-88P"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -95,38 +98,147 @@
                                     </mask>
                                 </variation>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Image" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Nwx-to-RWw">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="125" id="hde-xE-ASM"/>
+                                    <constraint firstAttribute="height" constant="50" id="kJN-tk-kKI"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="hde-xE-ASM"/>
+                                        <exclude reference="kJN-tk-kKI"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="hde-xE-ASM"/>
+                                        <include reference="kJN-tk-kKI"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="X6C-bk-SrA" firstAttribute="top" secondItem="F6n-Pi-d7x" secondAttribute="bottom" constant="60" id="KB5-pQ-2p9"/>
+                            <constraint firstItem="Nwx-to-RWw" firstAttribute="top" secondItem="X6C-bk-SrA" secondAttribute="bottom" constant="8" id="NC0-Aq-SSp"/>
+                            <constraint firstItem="Nwx-to-RWw" firstAttribute="centerX" secondItem="X6C-bk-SrA" secondAttribute="centerX" id="ZXN-3m-aJf"/>
                             <constraint firstItem="X6C-bk-SrA" firstAttribute="centerX" secondItem="JSa-we-pFg" secondAttribute="centerX" id="vCM-MZ-ZvB"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="X6C-bk-SrA"/>
+                                <exclude reference="Nwx-to-RWw"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="KB5-pQ-2p9"/>
                                 <exclude reference="vCM-MZ-ZvB"/>
+                                <exclude reference="NC0-Aq-SSp"/>
+                                <exclude reference="ZXN-3m-aJf"/>
                             </mask>
                         </variation>
                         <variation key="heightClass=regular-widthClass=compact">
                             <mask key="subviews">
                                 <include reference="X6C-bk-SrA"/>
+                                <include reference="Nwx-to-RWw"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="KB5-pQ-2p9"/>
                                 <include reference="vCM-MZ-ZvB"/>
+                                <include reference="NC0-Aq-SSp"/>
+                                <include reference="ZXN-3m-aJf"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="imageLabel" destination="Nwx-to-RWw" id="ayT-xU-yAg"/>
                         <outlet property="profileImage" destination="X6C-bk-SrA" id="k5y-sz-eg8"/>
+                        <segue destination="jdq-cB-4uL" kind="show" identifier="card" id="Nlu-kh-PQ2"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkM-Op-VWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="130.5" y="412.5"/>
+            <point key="canvasLocation" x="201" y="412.5"/>
+        </scene>
+        <!--Make Seller View Controller-->
+        <scene sceneID="lCF-18-ZjQ">
+            <objects>
+                <viewController id="jdq-cB-4uL" customClass="MakeSellerViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eGl-TL-wBW"/>
+                        <viewControllerLayoutGuide type="bottom" id="01A-DT-M7u"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5C4-Q0-ixg">
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank-cards" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-Xz-4Pa">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="Oq5-M5-dw0"/>
+                                    <constraint firstAttribute="height" constant="120" id="xn0-52-r3p"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Oq5-M5-dw0"/>
+                                        <exclude reference="xn0-52-r3p"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="Oq5-M5-dw0"/>
+                                        <include reference="xn0-52-r3p"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="UAz-Xz-4Pa" firstAttribute="top" secondItem="eGl-TL-wBW" secondAttribute="bottom" constant="60" id="D0q-5U-TGl"/>
+                            <constraint firstItem="UAz-Xz-4Pa" firstAttribute="centerX" secondItem="5C4-Q0-ixg" secondAttribute="centerX" id="Gdh-tc-sOk"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="UAz-Xz-4Pa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="D0q-5U-TGl"/>
+                                <exclude reference="Gdh-tc-sOk"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="UAz-Xz-4Pa"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="D0q-5U-TGl"/>
+                                <include reference="Gdh-tc-sOk"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <segue destination="RTW-WD-cO6" kind="show" identifier="Main" id="fSN-Pj-Lyz"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dae-w3-1lW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-615" y="1120.5"/>
+        </scene>
+        <!--Main-->
+        <scene sceneID="4Zz-Aa-pUz">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Main" id="RTW-WD-cO6" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ugt-VK-DMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="335.25" y="1064.25"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="bank-cards" width="256" height="256"/>
+    </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="4IY-D9-88P"/>
+    </inferredMetricsTieBreakers>
 </document>

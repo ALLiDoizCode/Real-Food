@@ -14,22 +14,36 @@ class MakeBuyerViewController: UIViewController {
     var firstName:TextField!
     var email:TextField!
     var passWord:TextField!
+    var signUp:RaisedButton!
+    
+    var seller:Bool!
 
+    @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
-       
+        
+        imageLabel.font = RobotoFont.regularWithSize(20)
+        imageLabel.text = "Add Image"
+        imageLabel.textColor = UIColor.flatSandColorDark()
         
         makeTextFields()
         makeProfileImage()
         
+        if seller == true {
+            
+            makeButton("Continue")
+            signUp.addTarget(self, action: "continueBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+            
+        }else {
+            
+            makeButton("Sign Up")
+            signUp.addTarget(self, action: "signUpBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        }
         
-        
-        
-
         // Do any additional setup after loading the view.
     }
 
@@ -96,7 +110,28 @@ class MakeBuyerViewController: UIViewController {
        
     }
     
-
+    func makeButton(title:String){
+        
+        signUp = RaisedButton(frame: CGRectMake(107, 207, 200, 65))
+        signUp.setTitle(title, forState: .Normal)
+        signUp.titleLabel!.font = RobotoFont.mediumWithSize(32)
+        signUp.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
+        signUp.backgroundColor = UIColor.flatPlumColorDark()
+        signUp.center.x = self.view.center.x
+        signUp.center.y = self.view.center.y + 200
+        
+        self.view.addSubview(signUp)
+    }
+   
+    func signUpBtn(sender: AnyObject) {
+        
+    }
+    
+    func continueBtn(sender: AnyObject){
+        
+        self.performSegueWithIdentifier("card", sender: nil)
+    }
+    
     /*
     // MARK: - Navigation
 
