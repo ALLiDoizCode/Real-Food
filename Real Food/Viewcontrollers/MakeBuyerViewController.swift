@@ -131,6 +131,7 @@ class MakeBuyerViewController: UIViewController {
    
     func signUpBtn(sender: AnyObject) {
         
+        self.performSegueWithIdentifier("Main", sender: nil)
     }
     
     func continueBtn(sender: AnyObject){
