@@ -13,6 +13,8 @@ import Material
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     let cellIdentefier = "Food"
+    
+    var edit:UIButton!
 
     @IBOutlet weak var rating: FabButton!
     @IBOutlet weak var tableView: UITableView!
@@ -108,6 +110,15 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         rating.tintColor = UIColor.flatWhiteColor()
         rating.setTitle("4.3", forState: UIControlState.Normal)
         rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
+        
+        edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
+        edit.setTitle("Edit", forState: UIControlState.Normal)
+        edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
+        
+        let rightButton = UIBarButtonItem.init(customView: edit)
+        
+        self.navigationItem.rightBarButtonItem = rightButton
+        
     }
     
     @IBAction func add(sender: AnyObject) {
