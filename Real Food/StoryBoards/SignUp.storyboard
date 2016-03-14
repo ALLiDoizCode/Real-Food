@@ -141,7 +141,8 @@
                                         <exclude reference="mZ0-qs-qrl"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="240" y="80" width="120" height="120"/>
                                     <mask key="constraints">
                                         <include reference="8yV-1X-oQi"/>
                                         <include reference="mZ0-qs-qrl"/>
@@ -155,7 +156,7 @@
                                     <constraint firstAttribute="height" constant="50" id="kJN-tk-kKI"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -163,7 +164,8 @@
                                         <exclude reference="kJN-tk-kKI"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="238" y="208" width="125" height="50"/>
                                     <mask key="constraints">
                                         <include reference="hde-xE-ASM"/>
                                         <include reference="kJN-tk-kKI"/>
@@ -273,7 +275,8 @@
                                         <exclude reference="xn0-52-r3p"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="-60" y="80" width="120" height="120"/>
                                     <mask key="constraints">
                                         <include reference="Oq5-M5-dw0"/>
                                         <include reference="xn0-52-r3p"/>
@@ -296,7 +299,8 @@
                                         <exclude reference="lsh-cO-R7q"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
+                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
+                                    <rect key="frame" x="16" y="42" width="88" height="40"/>
                                     <mask key="constraints">
                                         <include reference="4nb-kU-efq"/>
                                         <include reference="lsh-cO-R7q"/>
