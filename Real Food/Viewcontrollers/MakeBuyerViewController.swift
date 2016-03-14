@@ -16,13 +16,19 @@ class MakeBuyerViewController: UIViewController {
     var passWord:TextField!
     var signUp:RaisedButton!
     
-    var seller:Bool!
+    var seller:Bool = false
 
+    @IBOutlet weak var back: FlatButton!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        back.setTitle("Back", forState: .Normal)
+        back.titleLabel!.font = RobotoFont.mediumWithSize(24)
+        back.pulseColor = UIColor.flatSandColorDark()
+        back.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
         
@@ -132,6 +138,7 @@ class MakeBuyerViewController: UIViewController {
         self.performSegueWithIdentifier("card", sender: nil)
     }
     
+    @IBOutlet weak var backBtn: FlatButton!
     /*
     // MARK: - Navigation
 

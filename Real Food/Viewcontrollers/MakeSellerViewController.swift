@@ -16,8 +16,15 @@ class MakeSellerViewController: UIViewController {
     var cvc:TextField!
     var signUp:RaisedButton!
 
+    @IBOutlet weak var back: FlatButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        back.setTitle("Back", forState: .Normal)
+        back.titleLabel!.font = RobotoFont.mediumWithSize(24)
+        back.pulseColor = UIColor.flatSandColorDark()
+        back.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
         makeTextFields()
@@ -95,6 +102,7 @@ class MakeSellerViewController: UIViewController {
         self.performSegueWithIdentifier("Main", sender: nil)
     }
 
+    @IBOutlet weak var backBtn: FlatButton!
     /*
     // MARK: - Navigation
 

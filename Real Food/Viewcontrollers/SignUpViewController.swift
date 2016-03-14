@@ -13,8 +13,16 @@ class SignUpViewController: UIViewController {
 
     @IBOutlet weak var buyer: FabButton!
     @IBOutlet weak var seller: FabButton!
+    @IBOutlet weak var back: FlatButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        back.setTitle("Back", forState: .Normal)
+        back.titleLabel!.font = RobotoFont.mediumWithSize(24)
+        back.pulseColor = UIColor.flatSandColorDark()
+        back.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
         
@@ -80,6 +88,9 @@ class SignUpViewController: UIViewController {
     }
     
 
+    @IBAction func backBtn(sender: AnyObject) {
+    }
+   
     
     // MARK: - Navigation
 
