@@ -45,6 +45,10 @@ class SellerProfileViewController: UIViewController {
 
         // Do any additional setup after loading the view.
     }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

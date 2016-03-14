@@ -10,7 +10,7 @@
         <!--Landing View Controller-->
         <scene sceneID="PUv-GB-kOZ">
             <objects>
-                <viewController id="FKh-qG-ztJ" customClass="LandingViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="landing" id="FKh-qG-ztJ" customClass="LandingViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fa2-5f-ubM"/>
                         <viewControllerLayoutGuide type="bottom" id="8nX-Xv-Y5Z"/>

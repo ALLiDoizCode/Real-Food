@@ -102,7 +102,11 @@ class MakeSellerViewController: UIViewController {
         self.performSegueWithIdentifier("Main", sender: nil)
     }
 
-    @IBOutlet weak var backBtn: FlatButton!
+   
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 

@@ -138,7 +138,10 @@ class MakeBuyerViewController: UIViewController {
         self.performSegueWithIdentifier("card", sender: nil)
     }
     
-    @IBOutlet weak var backBtn: FlatButton!
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
+    
     /*
     // MARK: - Navigation
 
