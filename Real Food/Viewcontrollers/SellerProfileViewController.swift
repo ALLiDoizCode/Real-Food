@@ -10,13 +10,26 @@ import UIKit
 import FXBlurView
 import Material
 
-class SellerProfileViewController: UIViewController {
+class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+    
+    let cellIdentefier = "Food"
 
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
+    @IBOutlet weak var addButton: FabButton!
+    
+    let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
+    let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
+    let descriptionArray:[String] = ["Come get some tasty beans","Come get some tasty carrots","Come get some tasty cucumbers","Come get some tasty greens","Come get some tasty peas","Come get some tasty peppers","Come get some tasty tomatoes",]
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        makeButton()
+        
+        self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
          self.bgImage.clipsToBounds = true
         
@@ -44,6 +57,58 @@ class SellerProfileViewController: UIViewController {
         
 
         // Do any additional setup after loading the view.
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return imageArray.count
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
+        
+        let image = UIImage(named: self.imageArray[indexPath.row])
+        
+        //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            /*cell.fadeView.blurEnabled = true
+            cell.fadeView.blurRadius = 20
+            cell.fadeView.dynamic = false
+            cell.fadeView.clipsToBounds = true
+            cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
+            
+            
+            })*/
+            
+            cell.cellImage.image = image
+            cell.mainLabel.text = "Sara"
+            cell.foodDescription.text = self.titleArray[indexPath.row]
+            
+            cell.layoutSubviews()
+        });
+        
+        return cell
+    }
+    
+    func makeButton(){
+        
+        addButton.backgroundColor = UIColor.flatPlumColorDark()
+        addButton.tintColor = UIColor.flatSandColorDark()
+        addButton.setImage(UIImage(named: "plus"), forState: UIControlState.Normal)
+        addButton.imageEdgeInsets.top = 13
+        addButton.imageEdgeInsets.bottom = 13
+        addButton.imageEdgeInsets.right = 13
+        addButton.imageEdgeInsets.left = 13
+    }
+    
+    @IBAction func add(sender: AnyObject) {
+        
+    }
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
     override func didReceiveMemoryWarning() {

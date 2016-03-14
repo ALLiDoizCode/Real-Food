@@ -81,6 +81,16 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
                 
                 self.navigationController?.pushViewController(sellerProfile, animated: true)
             }
+            
+            if indexPath == 4 {
+                
+                let storyBoard = UIStoryboard.init(name: "Login", bundle: nil)
+                
+                let controller = storyBoard.instantiateViewControllerWithIdentifier("landing") as! LandingViewController
+                
+                self.navigationController?.pushViewController(controller, animated: true)
+                
+            }
         }
         
         self.navigationItem.titleView = menuView
@@ -111,6 +121,10 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         });
         
         return cell
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
     }
 
 
