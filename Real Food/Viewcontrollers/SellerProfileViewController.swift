@@ -14,6 +14,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     let cellIdentefier = "Food"
 
+    @IBOutlet weak var rating: FabButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var bgImage: UIImageView!
@@ -102,11 +103,21 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         addButton.imageEdgeInsets.bottom = 13
         addButton.imageEdgeInsets.right = 13
         addButton.imageEdgeInsets.left = 13
+        
+        rating.backgroundColor = UIColor.clearColor()
+        rating.tintColor = UIColor.flatWhiteColor()
+        rating.setTitle("4.3", forState: UIControlState.Normal)
+        rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
     }
     
     @IBAction func add(sender: AnyObject) {
         
     }
+    
+    @IBAction func ratingBtn(sender: AnyObject) {
+        
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
