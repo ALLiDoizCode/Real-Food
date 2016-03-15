@@ -9,8 +9,10 @@
 import UIKit
 import FXBlurView
 import Material
+import ImagePickerSheetController
+import Photos
 
-class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
+class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
     let menu = getMenu()
@@ -28,6 +30,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var addButton: FabButton!
     @IBOutlet weak var closeReview: RaisedButton!
+    @IBOutlet weak var newItemView: UIView!
+    @IBOutlet weak var newItemImage: UIImageView!
+    
+    var itemTitle:TextField!
     
     let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
     let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
@@ -36,9 +42,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.newItemView.layer.cornerRadius = 3
+        self.newItemView.layer.masksToBounds = true
+        
         menu.setupMenu(self,title: "Profile")
         
         makeButton()
+        makeTextFields()
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
@@ -75,6 +85,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         ratingTable.hidden = true
         cover.hidden = true
         closeReview.hidden = true
+        newItemView.hidden = true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -135,6 +146,21 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         })
     }
     
+    func makeTextFields(){
+        
+        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 100, self.newItemView.frame.width + 100 , 24))
+        itemTitle.placeholder = "Description"
+        itemTitle.font = RobotoFont.regularWithSize(20)
+        itemTitle.textColor = UIColor.flatWhiteColor()
+        itemTitle.titleLabel = UILabel()
+        itemTitle.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        itemTitle.titleLabelColor = MaterialColor.grey.base
+        itemTitle.titleLabelActiveColor = UIColor.flatSandColorDark()
+        itemTitle.backgroundColor = UIColor.clearColor()
+        itemTitle.clearButtonMode = .Always
+        self.newItemView.addSubview(itemTitle)
+    }
+    
     func makeButton(){
         
         addButton.backgroundColor = UIColor.flatPlumColorDark()
@@ -167,6 +193,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func add(sender: AnyObject) {
         
+        newItemView.hidden = false
+        cover.hidden = false
+        
+        getImage()
     }
     
     @IBAction func ratingBtn(sender: AnyObject) {
@@ -194,6 +224,74 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         reload(tableView)
     }
+    
+    func getImage() {
+        
+        let manager = PHImageManager.defaultManager()
+        let initialRequestOptions = PHImageRequestOptions()
+        initialRequestOptions.resizeMode = .Fast
+        initialRequestOptions.deliveryMode = .HighQualityFormat
+        
+        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .PhotoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let controller = ImagePickerSheetController(mediaType: .Image)
+        controller.maximumSelection = 1
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Use This Image", comment: "Action Title"), handler: { _ in
+            presentImagePickerController(.Camera)
+            }, secondaryHandler: { action, numberOfPhotos in
+                print("Comment \(numberOfPhotos) photos")
+                
+                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
+                
+                manager.requestImageForAsset(controller.selectedImageAssets[0],
+                    targetSize: size,
+                    contentMode: .AspectFill,
+                    options:initialRequestOptions) { (finalResult, _) in
+                        
+                        self.newItemImage.image = finalResult
+                       
+                }
+                
+                
+        }))
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
+            print("Cancelled")
+        }))
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            controller.modalPresentationStyle = .Popover
+            controller.popoverPresentationController?.sourceView = view
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
