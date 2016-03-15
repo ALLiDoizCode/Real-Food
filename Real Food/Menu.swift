@@ -24,7 +24,7 @@ class getMenu {
         nav.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColorDark()]
         nav.navigationController!.navigationBar.tintColor = UIColor.flatSandColorDark()
         
-        menuView = BTNavigationDropdownMenu(navigationController: nav.navigationController, title: title, items: items)
+        menuView = BTNavigationDropdownMenu(navigationController: nav.navigationController, title: items.first!, items: items)
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
         menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()

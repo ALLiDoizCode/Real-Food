@@ -232,10 +232,14 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func cameraBtn(sender: AnyObject) {
         
+        getImage()
+        
     }
     
     @IBAction func cancelBtn(sender: AnyObject) {
         
+        newItemView.hidden = true
+        cover.hidden = true
     }
     
     @IBAction func ratingBtn(sender: AnyObject) {
