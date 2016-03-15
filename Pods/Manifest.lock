@@ -1,5 +1,5 @@
 PODS:
-  - Backendless-ios-SDK (3.0.9)
+  - Bolts/Tasks (1.6.0)
   - BTNavigationDropdownMenu (0.2.1)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
@@ -12,9 +12,10 @@ PODS:
   - JSQSystemSoundPlayer (2.0.1)
   - Kingfisher (1.9.3)
   - Material (1.28.1)
+  - Parse (1.12.0):
+    - Bolts/Tasks (~> 1.5)
 
 DEPENDENCIES:
-  - Backendless-ios-SDK
   - BTNavigationDropdownMenu
   - ChameleonFramework (~> 2.1.0)
   - FXBlurView (~> 1.6.4)
@@ -23,6 +24,7 @@ DEPENDENCIES:
   - JSQMessagesViewController
   - Kingfisher (~> 1.8)
   - Material (~> 1.28.1)
+  - Parse (~> 1.12.0)
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
@@ -34,7 +36,7 @@ CHECKOUT OPTIONS:
     :git: https://github.com/kshin/Hanabi
 
 SPEC CHECKSUMS:
-  Backendless-ios-SDK: 0364a28d6447231a0708d2f60dec4fabd2feee56
+  Bolts: f52a250053bb517ca874523c3913776359ab3def
   BTNavigationDropdownMenu: 9cf4060162c96510ee27c388412e28678320cdc0
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
@@ -44,5 +46,6 @@ SPEC CHECKSUMS:
   JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
   Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
+  Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
 
 COCOAPODS: 0.39.0

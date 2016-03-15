@@ -9,11 +9,11 @@
 import UIKit
 import BTNavigationDropdownMenu
 import ChameleonFramework
+import Parse
 
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     let cellIdentefier = "Menu"
-    let client = Client()
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     
@@ -27,7 +27,17 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        client.addVeggie()
+        let testObject = PFObject(className: "TestObject")
+        
+        testObject["description"] = "Hello World"
+        
+        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
+            
+            //if success {
+                
+                print("Test Object Saved")
+            //}
+        }
     
         setupMenu()
         

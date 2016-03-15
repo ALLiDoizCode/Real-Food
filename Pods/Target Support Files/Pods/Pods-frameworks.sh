@@ -85,6 +85,7 @@ strip_invalid_archs() {
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
+  install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
@@ -93,9 +94,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/Kingfisher.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/Parse.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
+  install_framework "Pods/Bolts.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
@@ -104,4 +107,5 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/JSQSystemSoundPlayer.framework"
   install_framework "Pods/Kingfisher.framework"
   install_framework "Pods/Material.framework"
+  install_framework "Pods/Parse.framework"
 fi

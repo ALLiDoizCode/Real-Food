@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		019D49135F4C0738F2BB7771 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */; };
-		4D135C951C7FEEC80064F803 /* Client.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C941C7FEEC80064F803 /* Client.swift */; };
 		4D135C981C7FF31B0064F803 /* Veggies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C971C7FF31B0064F803 /* Veggies.swift */; };
 		4D135C9A1C801FB30064F803 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D135C991C801FB30064F803 /* Login.storyboard */; };
 		4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C9B1C8021AC0064F803 /* LandingViewController.swift */; };
@@ -58,7 +57,6 @@
 
 /* Begin PBXFileReference section */
 		1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D135C941C7FEEC80064F803 /* Client.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Client.swift; sourceTree = "<group>"; };
 		4D135C971C7FF31B0064F803 /* Veggies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Veggies.swift; sourceTree = "<group>"; };
 		4D135C991C801FB30064F803 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4D135C9B1C8021AC0064F803 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
@@ -132,14 +130,6 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		4D135C931C7FEE8E0064F803 /* Backendless */ = {
-			isa = PBXGroup;
-			children = (
-				4D135C941C7FEEC80064F803 /* Client.swift */,
-			);
-			path = Backendless;
-			sourceTree = "<group>";
-		};
 		4D135C961C7FF2720064F803 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
@@ -154,6 +144,13 @@
 				4D3A27FE1C977EF200F2A919 /* Time.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		4D3A28001C97A8BC00F2A919 /* Client */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Client;
 			sourceTree = "<group>";
 		};
 		4DCC55CB1C713B1000F60DDE /* StoryBoards */ = {
@@ -230,9 +227,9 @@
 		4DF9CB491C57FA2400922A63 /* Real Food */ = {
 			isa = PBXGroup;
 			children = (
+				4D3A28001C97A8BC00F2A919 /* Client */,
 				4D3A27FD1C977EC300F2A919 /* Helpers */,
 				4D135C961C7FF2720064F803 /* Modals */,
-				4D135C931C7FEE8E0064F803 /* Backendless */,
 				4DCC55CB1C713B1000F60DDE /* StoryBoards */,
 				4DF09AD91C6D6C340007B1C5 /* Custome */,
 				4DD94FE91C57FFE10029C3DC /* Cells */,
@@ -461,7 +458,6 @@
 				4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */,
 				4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */,
 				4D7422871C58A78E00453818 /* sellerCell.swift in Sources */,
-				4D135C951C7FEEC80064F803 /* Client.swift in Sources */,
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
 				4D135C981C7FF31B0064F803 /* Veggies.swift in Sources */,
