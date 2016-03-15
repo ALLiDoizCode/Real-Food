@@ -7,15 +7,15 @@
 //
 
 import UIKit
+import Parse
+import Bolts
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let APP_ID = "476E8B10-F6DB-445A-FF89-1D489932CA00"
-    let SECRET_KEY = "F37F1759-752A-3BD4-FF56-96A3F5299100"
-    let VERSION_NUM = "v1"
-    
-    var backendless = Backendless.sharedInstance()
+    let APP_ID = "RealFood2064walton1061"
+    let MASTER_KEY = "100Mjp33chuckprimus"
+    let SERVER = "https://real-food.herokuapp.com//parse"
 
     var window: UIWindow?
 
@@ -23,7 +23,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        backendless.initApp(APP_ID, secret: SECRET_KEY, version: VERSION_NUM)
+        let parseConfiguration = ParseClientConfiguration { (ParseMutableClientConfiguration) -> Void in
+            
+            ParseMutableClientConfiguration.applicationId = self.APP_ID
+            ParseMutableClientConfiguration.clientKey = self.MASTER_KEY
+            ParseMutableClientConfiguration.server = self.SERVER
+        }
+        Parse.initializeWithConfiguration(parseConfiguration)
         
         return true
     }

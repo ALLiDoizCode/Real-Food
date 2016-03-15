@@ -9,25 +9,35 @@
 import UIKit
 import BTNavigationDropdownMenu
 import ChameleonFramework
+import Parse
 
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     let cellIdentefier = "Menu"
-    let client = Client()
+    
+    let veggies = "Veggies"
+    let sweets = "Sweets"
+    let poultry = "Poultry"
+    let lamb = "Lamb"
+    let goat = "Goat"
+    let eggs = "Eggs"
+    let dariy = "Dariy"
+    let bovine = "Bovine"
+    let beer = "Beer"
     
     @IBOutlet weak var collectionVIew: UICollectionView!
     
     var menuView: BTNavigationDropdownMenu!
     var sourceColor:UIColor!
     
-    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1"]
-    let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb"]
+    let presenter = PresentList()
+    
+    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
+    let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
     var colors:[UIColor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        client.addVeggie()
     
         setupMenu()
         
@@ -35,7 +45,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         
         sourceColor = UIColor(complementaryFlatColorOf:menuView.cellBackgroundColor)
         
-        for var i = 0; i < 8; i++ {
+        for var i = 0; i < menuArray.count; i++ {
             
             sourceColor = UIColor(complementaryFlatColorOf:sourceColor)
             

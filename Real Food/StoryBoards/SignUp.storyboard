@@ -7,6 +7,14 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Login-->
+        <scene sceneID="PK3-ae-3s2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="U4d-eE-euz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UtP-xm-M4H" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1070.25" y="284.25"/>
+        </scene>
         <!--Sign Up View Controller-->
         <scene sceneID="dkF-9G-8yg">
             <objects>
@@ -73,6 +81,7 @@
                                 </variation>
                                 <connections>
                                     <action selector="backBtn:" destination="gxx-jB-IjS" eventType="touchUpInside" id="n0H-EH-sXl"/>
+                                    <segue destination="U4d-eE-euz" kind="show" id="dgx-bQ-ypY"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -141,8 +150,7 @@
                                         <exclude reference="mZ0-qs-qrl"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="240" y="80" width="120" height="120"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="8yV-1X-oQi"/>
                                         <include reference="mZ0-qs-qrl"/>
@@ -164,8 +172,7 @@
                                         <exclude reference="kJN-tk-kKI"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="238" y="208" width="125" height="50"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="hde-xE-ASM"/>
                                         <include reference="kJN-tk-kKI"/>
@@ -246,6 +253,7 @@
                         <outlet property="imageLabel" destination="Nwx-to-RWw" id="ayT-xU-yAg"/>
                         <outlet property="profileImage" destination="X6C-bk-SrA" id="k5y-sz-eg8"/>
                         <segue destination="jdq-cB-4uL" kind="show" identifier="card" id="Nlu-kh-PQ2"/>
+                        <segue destination="RTW-WD-cO6" kind="show" identifier="Main" id="bci-lw-Ydz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkM-Op-VWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -275,8 +283,7 @@
                                         <exclude reference="xn0-52-r3p"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="-60" y="80" width="120" height="120"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="Oq5-M5-dw0"/>
                                         <include reference="xn0-52-r3p"/>
@@ -299,15 +306,14 @@
                                         <exclude reference="lsh-cO-R7q"/>
                                     </mask>
                                 </variation>
-                                <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                    <rect key="frame" x="16" y="42" width="88" height="40"/>
+                                <variation key="heightClass=regular-widthClass=compact">
                                     <mask key="constraints">
                                         <include reference="4nb-kU-efq"/>
                                         <include reference="lsh-cO-R7q"/>
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="g3p-Sn-RfP" kind="show" id="rqc-jj-PA3"/>
+                                    <segue destination="g3p-Sn-RfP" kind="show" identifier="back" id="rqc-jj-PA3"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -360,13 +366,14 @@
                 <viewControllerPlaceholder storyboardName="Main" id="RTW-WD-cO6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugt-VK-DMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="335.25" y="1064.25"/>
+            <point key="canvasLocation" x="301.5" y="953.25"/>
         </scene>
     </scenes>
     <resources>
         <image name="bank-cards" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="rqc-jj-PA3"/>
+        <segue reference="4IY-D9-88P"/>
+        <segue reference="bci-lw-Ydz"/>
     </inferredMetricsTieBreakers>
 </document>

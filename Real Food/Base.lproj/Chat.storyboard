@@ -29,6 +29,9 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.79226005077362061" green="0.7181098461151123" blue="0.48854580521583557" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <segue destination="EO6-Uy-wMU" kind="show" identifier="message" id="R0K-un-hZx"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -57,6 +60,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8O9-ih-5ae" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3013" y="410"/>
+        </scene>
+        <!--Chat Room View Controller-->
+        <scene sceneID="rVo-UI-YpK">
+            <objects>
+                <viewController id="EO6-Uy-wMU" customClass="ChatRoomViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mwn-la-vlf"/>
+                        <viewControllerLayoutGuide type="bottom" id="vdw-kE-rI6"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="j09-tY-KWp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="SpA-hk-HBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3792" y="409.5"/>
         </scene>
     </scenes>
 </document>
