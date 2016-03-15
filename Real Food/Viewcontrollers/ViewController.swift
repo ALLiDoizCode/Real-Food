@@ -15,29 +15,29 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     let cellIdentefier = "Menu"
     
+    let veggies = "Veggies"
+    let sweets = "Sweets"
+    let poultry = "Poultry"
+    let lamb = "Lamb"
+    let goat = "Goat"
+    let eggs = "Eggs"
+    let dariy = "Dariy"
+    let bovine = "Bovine"
+    let beer = "Beer"
+    
     @IBOutlet weak var collectionVIew: UICollectionView!
     
     var menuView: BTNavigationDropdownMenu!
     var sourceColor:UIColor!
     
-    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1"]
-    let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb"]
+    let presenter = PresentList()
+    
+    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
+    let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
     var colors:[UIColor] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        let testObject = PFObject(className: "TestObject")
-        
-        testObject["description"] = "Hello World"
-        
-        testObject.saveInBackgroundWithBlock { (success, error) -> Void in
-            
-            //if success {
-                
-                print("Test Object Saved")
-            //}
-        }
     
         setupMenu()
         
@@ -45,7 +45,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         
         sourceColor = UIColor(complementaryFlatColorOf:menuView.cellBackgroundColor)
         
-        for var i = 0; i < 8; i++ {
+        for var i = 0; i < menuArray.count; i++ {
             
             sourceColor = UIColor(complementaryFlatColorOf:sourceColor)
             

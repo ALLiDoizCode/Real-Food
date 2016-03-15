@@ -17,6 +17,9 @@ class LandingViewController: UIViewController {
     
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
+    
+    let presenter = PresentUser()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +58,22 @@ class LandingViewController: UIViewController {
         self.navigationController?.navigationBarHidden = true
     }
 
+    @IBAction func loginBtn(sender: AnyObject) {
+        
+        guard (userName.text != nil) else {
+            
+            return
+        }
+        
+        guard (passWord.text != nil) else {
+            
+            return
+        }
+        
+        presenter.login(userName.text!, PassWord: passWord.text!)
+        
+        self.performSegueWithIdentifier("Login", sender: nil)
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

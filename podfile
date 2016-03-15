@@ -9,3 +9,4 @@ pod 'FXBlurView', '~> 1.6.4'
 pod 'JSQMessagesViewController'
 pod "ImagePickerSheetController", "~> 0.9.1"
 pod 'Kingfisher', '~> 1.8'
+pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'

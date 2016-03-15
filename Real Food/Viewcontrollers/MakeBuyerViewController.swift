@@ -17,10 +17,13 @@ class MakeBuyerViewController: UIViewController {
     var signUp:RaisedButton!
     
     var seller:Bool = false
+    var image:UIImage!
 
     @IBOutlet weak var back: FlatButton!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
+    
+    let presenter = PresentUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -130,6 +133,29 @@ class MakeBuyerViewController: UIViewController {
     }
    
     func signUpBtn(sender: AnyObject) {
+        
+        guard (firstName != nil) else {
+            
+            return
+        }
+        
+        guard (email != nil) else {
+            
+            return
+        }
+        
+        guard (passWord != nil) else {
+            
+            return
+        }
+        
+        /*guard (image != nil) else {
+            
+            return
+        }*/
+        
+        
+        presenter.makeUser()
         
         self.performSegueWithIdentifier("Main", sender: nil)
     }

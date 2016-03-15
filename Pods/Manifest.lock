@@ -14,6 +14,7 @@ PODS:
   - Material (1.28.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
+  - SwiftEventBus (1.1.0)
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu
@@ -25,15 +26,21 @@ DEPENDENCIES:
   - Kingfisher (~> 1.8)
   - Material (~> 1.28.1)
   - Parse (~> 1.12.0)
+  - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
     :git: https://github.com/kshin/Hanabi
+  SwiftEventBus:
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
 
 CHECKOUT OPTIONS:
   HanabiCollectionViewLayout:
     :commit: efc5a7af95c376a5e2fff379147e8f75a404d40c
     :git: https://github.com/kshin/Hanabi
+  SwiftEventBus:
+    :commit: 4b8cbb5a8227b3c29af75e0416689d26178733d8
+    :git: https://github.com/cesarferreira/SwiftEventBus.git
 
 SPEC CHECKSUMS:
   Bolts: f52a250053bb517ca874523c3913776359ab3def
@@ -47,5 +54,6 @@ SPEC CHECKSUMS:
   Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
+  SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
 
 COCOAPODS: 0.39.0
