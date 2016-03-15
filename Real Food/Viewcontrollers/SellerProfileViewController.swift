@@ -21,6 +21,9 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     var edit:UIButton!
 
+    @IBOutlet weak var cancle: FabButton!
+    @IBOutlet weak var camera: FabButton!
+    @IBOutlet weak var addItem: FabButton!
     @IBOutlet weak var cover: UIView!
     @IBOutlet weak var ratingTable: UITableView!
     @IBOutlet weak var rating: FabButton!
@@ -148,7 +151,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func makeTextFields(){
         
-        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 100, self.newItemView.frame.width + 100 , 24))
+        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
         itemTitle.placeholder = "Description"
         itemTitle.font = RobotoFont.regularWithSize(20)
         itemTitle.textColor = UIColor.flatWhiteColor()
@@ -166,10 +169,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         addButton.backgroundColor = UIColor.flatPlumColorDark()
         addButton.tintColor = UIColor.flatSandColorDark()
         addButton.setImage(UIImage(named: "plus"), forState: UIControlState.Normal)
-        addButton.imageEdgeInsets.top = 13
-        addButton.imageEdgeInsets.bottom = 13
-        addButton.imageEdgeInsets.right = 13
-        addButton.imageEdgeInsets.left = 13
+        addButton.imageEdgeInsets.top = 10
+        addButton.imageEdgeInsets.bottom = 10
+        addButton.imageEdgeInsets.right = 10
+        addButton.imageEdgeInsets.left = 10
         
         rating.backgroundColor = UIColor.clearColor()
         rating.tintColor = UIColor.flatWhiteColor()
@@ -185,6 +188,31 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         edit.setTitle("Edit", forState: UIControlState.Normal)
         edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         
+        
+        camera.setImage(UIImage(named: "camera"), forState: UIControlState.Normal)
+        camera.tintColor = UIColor.flatSandColorDark()
+        camera.backgroundColor = UIColor.flatPlumColorDark()
+        camera.imageEdgeInsets.top = 10
+        camera.imageEdgeInsets.bottom = 10
+        camera.imageEdgeInsets.right = 10
+        camera.imageEdgeInsets.left = 10
+        
+        addItem.setImage(UIImage(named: "plus"), forState: UIControlState.Normal)
+        addItem.tintColor = UIColor.flatSandColorDark()
+        addItem.backgroundColor = UIColor.flatPlumColorDark()
+        addItem.imageEdgeInsets.top = 10
+        addItem.imageEdgeInsets.bottom = 10
+        addItem.imageEdgeInsets.right = 10
+        addItem.imageEdgeInsets.left = 10
+        
+        cancle.setImage(UIImage(named: "close-box"), forState: UIControlState.Normal)
+        cancle.tintColor = UIColor.flatSandColorDark()
+        cancle.backgroundColor = UIColor.flatPlumColorDark()
+        cancle.imageEdgeInsets.top = 10
+        cancle.imageEdgeInsets.bottom = 10
+        cancle.imageEdgeInsets.right = 10
+        cancle.imageEdgeInsets.left = 10
+        
         let rightButton = UIBarButtonItem.init(customView: edit)
         
         self.navigationItem.rightBarButtonItem = rightButton
@@ -197,6 +225,17 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         cover.hidden = false
         
         getImage()
+    }
+  
+    @IBAction func addItemBtn(sender: AnyObject) {
+    }
+    
+    @IBAction func cameraBtn(sender: AnyObject) {
+        
+    }
+    
+    @IBAction func cancelBtn(sender: AnyObject) {
+        
     }
     
     @IBAction func ratingBtn(sender: AnyObject) {
