@@ -70,9 +70,19 @@ class LandingViewController: UIViewController {
             return
         }
         
-        presenter.login(userName.text!, PassWord: passWord.text!)
+        presenter.login(userName.text!, PassWord: passWord.text!) { (success) -> Void in
+            
+            if success == true {
+                
+                self.performSegueWithIdentifier("Login", sender: nil)
+                
+            }else {
+                
+                print("login failed")
+            }
+        }
         
-        self.performSegueWithIdentifier("Login", sender: nil)
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

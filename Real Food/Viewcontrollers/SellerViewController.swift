@@ -35,10 +35,13 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.setupMenu()
+        menu.setupMenu(self,title:"Seller")
+        
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
@@ -94,32 +97,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setupMenu(){
-        
-        let items = ["Home", "Messages", "Profile", "Logout"]
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: "Profile", items: items)
-        menuView.cellHeight = 50
-        menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
-        menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
-        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
-        menuView.arrowPadding = 15
-        menuView.animationDuration = 0.5
-        menuView.maskBackgroundColor = UIColor.blackColor()
-        menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-        }
-        
-        self.navigationItem.titleView = menuView
-        
     }
     
     override func prefersStatusBarHidden() -> Bool {

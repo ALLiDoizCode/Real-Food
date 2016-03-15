@@ -8,8 +8,10 @@
 
 import UIKit
 import Material
+import ImagePickerSheetController
+import Photos
 
-class MakeBuyerViewController: UIViewController {
+class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     var firstName:TextField!
     var email:TextField!
@@ -64,6 +66,7 @@ class MakeBuyerViewController: UIViewController {
     func makeProfileImage(){
         
         profileImage.backgroundColor = UIColor.flatPlumColorDark()
+        profileImage.addTarget(self, action: "getImage", forControlEvents: UIControlEvents.TouchUpInside)
         profileImage.setImage(UIImage(named: "User-Add"), forState: UIControlState.Normal)
         profileImage.tintColor = UIColor.flatSandColorDark()
         profileImage.imageEdgeInsets.top = 15
@@ -131,33 +134,111 @@ class MakeBuyerViewController: UIViewController {
         
         self.view.addSubview(signUp)
     }
+    
+    func getImage() {
+        
+        let manager = PHImageManager.defaultManager()
+        let initialRequestOptions = PHImageRequestOptions()
+        initialRequestOptions.resizeMode = .Fast
+        initialRequestOptions.deliveryMode = .HighQualityFormat
+        
+        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
+            let controller = UIImagePickerController()
+            controller.delegate = self
+            var sourceType = source
+            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
+                sourceType = .PhotoLibrary
+                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
+            }
+            controller.sourceType = sourceType
+            
+            self.presentViewController(controller, animated: true, completion: nil)
+        }
+        
+        let controller = ImagePickerSheetController(mediaType: .Image)
+        controller.maximumSelection = 1
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Use This Image", comment: "Action Title"), handler: { _ in
+            presentImagePickerController(.Camera)
+            }, secondaryHandler: { action, numberOfPhotos in
+                print("Comment \(numberOfPhotos) photos")
+                
+                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
+                
+                manager.requestImageForAsset(controller.selectedImageAssets[0],
+                    targetSize: size,
+                    contentMode: .AspectFill,
+                    options:initialRequestOptions) { (finalResult, _) in
+                        
+                        self.image = finalResult
+                        self.profileImage.setBackgroundImage(self.image, forState: UIControlState.Normal)
+                        self.profileImage.tintColor = UIColor.clearColor()
+                        self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                        self.profileImage.layer.masksToBounds = true
+                    
+                }
+                
+                
+        }))
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
+            print("Cancelled")
+        }))
+        
+        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
+            controller.modalPresentationStyle = .Popover
+            controller.popoverPresentationController?.sourceView = view
+            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
+        }
+        
+        presentViewController(controller, animated: true, completion: nil)
+    }
+    
+    // MARK: UIImagePickerControllerDelegate
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
+        
+        
+        dismissViewControllerAnimated(true, completion: nil)
+        
+    }
    
     func signUpBtn(sender: AnyObject) {
         
-        guard (firstName != nil) else {
+        guard (firstName.text != nil) else {
             
             return
         }
         
-        guard (email != nil) else {
+        guard (email.text != nil) else {
             
             return
         }
         
-        guard (passWord != nil) else {
+        guard (passWord.text != nil) else {
             
             return
         }
         
-        /*guard (image != nil) else {
+        guard (image != nil) else {
             
             return
-        }*/
+        }
         
-        
-        presenter.makeUser()
-        
-        self.performSegueWithIdentifier("Main", sender: nil)
+        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image) { (success) -> Void in
+            
+            if success == true {
+                
+                self.performSegueWithIdentifier("Main", sender: nil)
+                
+            }else {
+                
+                print("Signup Failed")
+            }
+        }
     }
     
     func continueBtn(sender: AnyObject){

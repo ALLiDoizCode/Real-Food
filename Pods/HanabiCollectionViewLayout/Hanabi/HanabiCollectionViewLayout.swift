@@ -101,7 +101,7 @@ import UIKit
     
     // MARK: Private methods
     
-    private func currentFocusedItemIndex() -> Int {
+    func currentFocusedItemIndex() -> Int {
         guard let collectionView = collectionView else {
             return 0
         }

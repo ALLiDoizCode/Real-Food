@@ -13,16 +13,15 @@ import SwiftEventBus
 
 class User {
     
-    func signUp(){
+    func signUp(userName:String,passWord:String,email:String,image:UIImage){
         
-        let image = UIImage(named:"girl")
-        let imageData = NSData(data: UIImageJPEGRepresentation(image!, 0.4)!)
+        let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
         
         let user = PFUser()
-        user.username = "test"
-        user.password = "test"
-        user.email = "test@test.com"
+        user.username = userName
+        user.password = passWord
+        user.email = email
         user["ProfileImage"] = file
         
         user.signUpInBackgroundWithBlock {
@@ -33,9 +32,13 @@ class User {
                 
                 print(errorString)
                 
+                SwiftEventBus.post("signUp", sender: succeeded)
+                
             } else {
                 
                 // Hooray! Let them use the app now.
+                
+                SwiftEventBus.post("signUp", sender: succeeded)
                 
                 print("User Created")
             }
@@ -57,5 +60,10 @@ class User {
                 // The login failed. Check error to see why.
             }
         }
+    }
+    
+    func logout(){
+        
+        PFUser.logOut()
     }
 }

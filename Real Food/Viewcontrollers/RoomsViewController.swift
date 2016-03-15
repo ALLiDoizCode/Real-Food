@@ -12,8 +12,12 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     @IBOutlet weak var tableView: UITableView!
     
+    let menu = getMenu()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menu.setupMenu(self,title:"Message")
         
         self.tableView.backgroundColor = UIColor.flatSandColor()
 

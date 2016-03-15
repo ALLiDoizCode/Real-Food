@@ -132,7 +132,6 @@
                                             <outlet property="Name" destination="fjX-Yg-em0" id="WQL-kO-Cp1"/>
                                             <outlet property="bgImage" destination="Knh-gb-OTd" id="7sa-5H-4EJ"/>
                                             <outlet property="subName" destination="PlN-hu-WpU" id="qWF-8n-6kP"/>
-                                            <segue destination="5Fu-bk-i1D" kind="show" id="5VA-N6-ZB1"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -168,6 +167,8 @@
                     <navigationItem key="navigationItem" id="yia-7N-3Tx"/>
                     <connections>
                         <outlet property="collectionVIew" destination="o5U-So-wrO" id="EL3-eq-M1v"/>
+                        <outlet property="hanabiLayout" destination="Epc-yw-fZe" id="3iT-fn-B5V"/>
+                        <segue destination="5Fu-bk-i1D" kind="show" identifier="food" id="8z0-eC-sif"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

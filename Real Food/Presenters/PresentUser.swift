@@ -7,26 +7,43 @@
 //
 
 import Foundation
+import UIKit
 import SwiftEventBus
 
 class PresentUser {
     
     let client = User()
     
-    func makeUser(){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage,completion:(success:Bool) -> Void){
         
-        client.signUp()
+        SwiftEventBus.onMainThread(self, name: "signUp") { notification in
+            
+            print("signUp fired")
+            
+            let success = notification.object as! Bool
+            
+            completion(success:success)
+        }
+        
+        client.signUp(userName, passWord: passWord, email: email, image: image)
     }
     
     func login(userName:String,PassWord:String,completion:(success:Bool) -> Void) {
         
-        SwiftEventBus.onBackgroundThread(self, name: "login") { notification in
+        SwiftEventBus.onMainThread(self, name: "login") { notification in
             
             print("login fired")
             
-            completion()
+            let success = notification.object as! Bool
+            
+            completion(success:success)
         }
         
         client.login(userName,PassWord:PassWord)
+    }
+    
+    func logout(){
+        
+       client.logout()
     }
 }

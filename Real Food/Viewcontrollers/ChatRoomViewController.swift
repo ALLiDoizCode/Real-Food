@@ -17,6 +17,8 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     var sellerId:String!
     var selectedImage:UIImage!
     
+    let menu = getMenu()
+    
     var messages:[JSQMessage] = [JSQMessage]()
     
     var avatar:JSQMessagesAvatarImage!
@@ -25,6 +27,8 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menu.setupMenu(self,title:"Messages")
         
         // Do any additional setup after loading the view.
     }

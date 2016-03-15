@@ -12,6 +12,9 @@ import Material
 
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
+    
+    let menu = getMenu()
+    
     let cellIdentefier = "Food"
     
     var edit:UIButton!
@@ -32,6 +35,8 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        menu.setupMenu(self,title: "Profile")
         
         makeButton()
         
