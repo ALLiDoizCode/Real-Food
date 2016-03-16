@@ -16,13 +16,15 @@ class Rooms {
     var createdBy:String!
     var status:Bool!
     var time:NSDate!
+    var icon:String!
     
-    init(theObjectId:String,theRecipiant:String,theCreatedBy:String,theStatus:Bool,theTime:NSDate){
+    init(theObjectId:String,theRecipiant:String,theCreatedBy:String,theStatus:Bool,theTime:NSDate,theIcon:String){
         
         objectId = theObjectId
         recipiant = theRecipiant
         createdBy = theCreatedBy
         status = theStatus
         time = theTime
+        icon = theIcon
     }
 }

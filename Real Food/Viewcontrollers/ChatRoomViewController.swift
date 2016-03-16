@@ -15,6 +15,7 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     
     var userIcon:UIImage!
     var sellerId:String!
+    var roomId:String!
     var selectedImage:UIImage!
     
     let menu = getMenu.sharedInstance

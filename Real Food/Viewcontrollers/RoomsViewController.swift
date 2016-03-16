@@ -13,6 +13,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     
     let menu = getMenu.sharedInstance
+    var sellerId:String!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -61,14 +62,19 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "message" {
+            
+           let controller = segue.destinationViewController as! ChatRoomViewController
+        }
     }
-    */
+    
 
 }
