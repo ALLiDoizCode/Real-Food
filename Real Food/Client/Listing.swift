@@ -8,20 +8,88 @@
 
 import Foundation
 import Parse
+import SwiftEventBus
 
 class Listing {
     
-    let veggies = "Veggies"
-    let sweets = "Sweets"
-    let poultry = "Poultry"
-    let lamb = "Lamb"
-    let goat = "Goat"
-    let eggs = "Eggs"
-    let dariy = "Dariy"
-    let bovine = "Bovine"
-    let beer = "Beer"
-    
     let currentUser = PFUser.currentUser()
+    
+    var itemArray:[Item] = []
+    
+    func getItems(type:String){
+        
+        self.itemArray.removeAll()
+        
+        var user:PFUser!
+        
+        let lists = PFQuery(className: type)
+        
+        lists.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            
+            guard let objects = objects else {
+                
+                print("no objects")
+                
+                return
+            }
+            
+            for object in objects {
+                
+                guard let image:PFFile = object.objectForKey("Image") as? PFFile else {
+                    
+                    print("no image")
+                    
+                    return
+                }
+                
+                guard let description:String = object.objectForKey("Name") as? String else {
+                    
+                    print("no descrption")
+                    
+                    return
+                }
+                
+                guard let createdBy:PFUser = object.objectForKey("CreatedBY") as? PFUser else {
+                    
+                    print("no user")
+                    
+                    return
+                }
+                
+                do {
+                    
+                    try user = createdBy.fetch()
+                    
+                }catch _{
+                    
+                }
+                
+                guard let userName = user.username else {
+                    
+                    print("no userName")
+                    
+                    return
+                }
+                
+                guard let profileImage:PFFile = user.objectForKey("ProfileImage") as? PFFile else {
+                    
+                    print("no profileImage")
+                    
+                    return
+                }
+                
+                print(description)
+                print(userName)
+                
+                let theItem = Item(theObjectId:object.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,userName:userName)
+                
+                self.itemArray.append(theItem)
+            }
+            
+            SwiftEventBus.post("getItem", sender: self.itemArray)
+        }
+        
+    }
     
     func makeItem(type:String,name:String,image:UIImage){
         
@@ -34,12 +102,16 @@ class Listing {
         item["Image"] = file
         item["CreatedBY"] = currentUser
         
-        do {
-            
-            try item.save()
-            
-        }catch _{
-            
+        item.saveInBackgroundWithBlock { (success, error) -> Void in
+        
+            if success == true {
+                
+                SwiftEventBus.post("create", sender: success)
+                
+            }else {
+                
+                SwiftEventBus.post("create", sender: success)
+            }
         }
     }
     

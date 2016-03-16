@@ -9,10 +9,12 @@
 import UIKit
 import ChameleonFramework
 import BTNavigationDropdownMenu
+import Kingfisher
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
     let menu = getMenu()
+    let presenter = PresentList()
     
     var type:String!
     
@@ -21,14 +23,32 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     @IBOutlet weak var TableView: UITableView!
     var menuView: BTNavigationDropdownMenu!
     
-    let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
-    let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
-    let descriptionArray:[String] = ["Come get some tasty beans","Come get some tasty carrots","Come get some tasty cucumbers","Come get some tasty greens","Come get some tasty peas","Come get some tasty peppers","Come get some tasty tomatoes",]
+    var itemArray:[Item] = []
+    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.TableView.addSubview(self.refreshControl) // not required when using UITableViewController
+        
         menu.setupMenu(self,title:type)
+        
+        print(type)
+        
+        presenter.getItems(type) { (data) -> Void in
+            
+            print(self.type)
+            
+            self.itemArray.removeAll()
+            
+            self.itemArray = data
+            
+            self.reload()
+        }
 
         // Do any additional setup after loading the view.
     }
@@ -38,16 +58,36 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        presenter.getItems(type) { (data) -> Void in
+            
+            print(self.type)
+            
+            self.itemArray.removeAll()
+            
+            self.itemArray = data
+            
+            self.reload()
+        }
+    }
+    
+    func reload(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.TableView.reloadData()
+        });
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return imageArray.count
+        return itemArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
-        
-        let image = UIImage(named: self.imageArray[indexPath.row])
         
          //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
@@ -61,10 +101,14 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 
                 
             })*/
-          
-            cell.cellImage.image = image
-            cell.mainLabel.text = "Sara"
-            cell.foodDescription.text = self.titleArray[indexPath.row]
+            
+            
+            print(self.itemArray[indexPath.row].image)
+            
+            cell.cellImage.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].image)!, placeholderImage: UIImage(named:"placeholder"))
+            cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            cell.mainLabel.text = self.itemArray[indexPath.row].userName
+            cell.foodDescription.text = self.itemArray[indexPath.row].description
             
             cell.layoutSubviews()
         });

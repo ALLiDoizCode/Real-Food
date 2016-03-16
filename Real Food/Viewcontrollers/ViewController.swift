@@ -16,16 +16,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     let cellIdentefier = "Menu"
     
-    let veggies = "Veggies"
-    let sweets = "Sweets"
-    let poultry = "Poultry"
-    let lamb = "Lamb"
-    let goat = "Goat"
-    let eggs = "Eggs"
-    let dariy = "Dariy"
-    let bovine = "Bovine"
-    let beer = "Beer"
-    
     @IBOutlet weak var hanabiLayout: HanabiCollectionViewLayout!
     @IBOutlet weak var collectionVIew: UICollectionView!
     
@@ -33,7 +23,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var sourceColor:UIColor!
     
     let presenter = PresentList()
-    let presenter2 = PresentUser()
     let menu = getMenu()
     
     let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
@@ -108,6 +97,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             let index = sender as! NSIndexPath
             
             let controller = segue.destinationViewController as! FoodViewController
+            
+            print(menuName[index.item])
             
             controller.type = menuName[index.item]
         }

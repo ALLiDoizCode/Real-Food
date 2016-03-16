@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		019D49135F4C0738F2BB7771 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */; };
-		4D135C981C7FF31B0064F803 /* Veggies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C971C7FF31B0064F803 /* Veggies.swift */; };
 		4D135C9A1C801FB30064F803 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D135C991C801FB30064F803 /* Login.storyboard */; };
 		4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D135C9B1C8021AC0064F803 /* LandingViewController.swift */; };
 		4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */; };
@@ -31,6 +30,7 @@
 		4D7422851C586E4C00453818 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422841C586E4C00453818 /* FoodCell.swift */; };
 		4D7422871C58A78E00453818 /* sellerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422861C58A78E00453818 /* sellerCell.swift */; };
 		4D7422891C58A7A300453818 /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422881C58A7A300453818 /* SellerViewController.swift */; };
+		4D8695C01C98F47700B20968 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695BF1C98F47700B20968 /* Item.swift */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
@@ -63,7 +63,6 @@
 
 /* Begin PBXFileReference section */
 		1DC915FA9ED8DB7FC9CA4A04 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		4D135C971C7FF31B0064F803 /* Veggies.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Veggies.swift; sourceTree = "<group>"; };
 		4D135C991C801FB30064F803 /* Login.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
 		4D135C9B1C8021AC0064F803 /* LandingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandingViewController.swift; sourceTree = "<group>"; };
 		4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
@@ -86,6 +85,7 @@
 		4D7422841C586E4C00453818 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		4D7422861C58A78E00453818 /* sellerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sellerCell.swift; sourceTree = "<group>"; };
 		4D7422881C58A7A300453818 /* SellerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
+		4D8695BF1C98F47700B20968 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -145,7 +145,7 @@
 		4D135C961C7FF2720064F803 /* Modals */ = {
 			isa = PBXGroup;
 			children = (
-				4D135C971C7FF31B0064F803 /* Veggies.swift */,
+				4D8695BF1C98F47700B20968 /* Item.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -485,9 +485,9 @@
 				4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */,
 				4D7422871C58A78E00453818 /* sellerCell.swift in Sources */,
 				4D3A280B1C97BDE400F2A919 /* PresentUser.swift in Sources */,
+				4D8695C01C98F47700B20968 /* Item.swift in Sources */,
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
-				4D135C981C7FF31B0064F803 /* Veggies.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,
 				4D3A28021C97B62300F2A919 /* User.swift in Sources */,
 				4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */,

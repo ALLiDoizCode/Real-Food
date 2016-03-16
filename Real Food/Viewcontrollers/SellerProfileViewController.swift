@@ -16,10 +16,24 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     
     let menu = getMenu()
+    let presenter = PresentList()
     
     let cellIdentefier = "Food"
     
     var edit:UIButton!
+    
+    let VEGGIES = "Veggies"
+    let SWEETS = "Sweets"
+    let POULTRY = "Poultry"
+    let LAMB = "Lamb"
+    let GOAT = "Goat"
+    let EGGS = "Eggs"
+    let DARIY = "Dariy"
+    let BOVINE = "Bovine"
+    let BEER = "Beer"
+    
+    var type:String!
+    var image:UIImage!
 
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cancle: FabButton!
@@ -335,6 +349,31 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     }
   
     @IBAction func addItemBtn(sender: AnyObject) {
+        
+        guard (image != nil) else {
+            
+            return
+        }
+        
+        guard (itemTitle.text != nil) else {
+            
+            return
+        }
+        
+        presenter.makeItem(type, name: itemTitle.text!, image: image) { (success) -> Void in
+            
+            if success == true {
+                
+                print("Item Saved Successfully")
+                self.newItemView.hidden = true
+                self.cover.hidden = true
+                
+            }else {
+                
+                print("There was an issue saving your item")
+            }
+        }
+        
     }
     
     @IBAction func cameraBtn(sender: AnyObject) {
@@ -380,6 +419,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = VEGGIES
         
         getImage()
     }
@@ -389,6 +429,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = SWEETS
         
         getImage()
     }
@@ -398,6 +439,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = DARIY
         
         getImage()
     }
@@ -407,6 +449,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = EGGS
         
         getImage()
     }
@@ -416,6 +459,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = POULTRY
         
         getImage()
     }
@@ -425,6 +469,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = BOVINE
         
         getImage()
     }
@@ -434,6 +479,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = GOAT
         
         getImage()
     }
@@ -443,6 +489,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = LAMB
         
         getImage()
     }
@@ -452,6 +499,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        type = BEER
         
         getImage()
     }
@@ -493,7 +541,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                     options:initialRequestOptions) { (finalResult, _) in
                         
                         self.newItemImage.image = finalResult
-                       
+                        self.image = finalResult
                 }
                 
                 
