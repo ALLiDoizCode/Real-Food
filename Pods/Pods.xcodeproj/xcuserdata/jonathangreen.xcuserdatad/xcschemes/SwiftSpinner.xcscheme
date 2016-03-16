@@ -14,10 +14,10 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = 'ADC191DA73A485F4E738FCF4'
-               BlueprintName = 'BTNavigationDropdownMenu'
+               BlueprintIdentifier = '9528B9DAB44BBA60FC94A5C9'
+               BlueprintName = 'SwiftSpinner'
                ReferencedContainer = 'container:Pods.xcodeproj'
-               BuildableName = 'BTNavigationDropdownMenu.framework'>
+               BuildableName = 'SwiftSpinner.framework'>
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>

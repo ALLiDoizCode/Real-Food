@@ -10,6 +10,7 @@ import UIKit
 import Material
 import ImagePickerSheetController
 import Photos
+import SwiftSpinner
 
 class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -248,15 +249,26 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
+        SwiftSpinner.show("Creating Account")
+        
         presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!) { (success) -> Void in
             
             if success == true {
                 
-                self.performSegueWithIdentifier("Main", sender: nil)
+                SwiftSpinner.hide({
+                    
+                    self.performSegueWithIdentifier("Main", sender: nil)
+                })
+                
+                
                 
             }else {
                 
-                print("Signup Failed")
+                SwiftSpinner.hide({
+                    
+                     print("Signup Failed")
+                })
+               
             }
         }
     }

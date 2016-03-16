@@ -79,6 +79,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SwiftSpinner.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>Whisper.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -92,12 +97,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>6B799D57DDF23B74DBD05A1C3B5DF946</key>
+		<key>31A85E2CB4A58D87CBC098950CD3F083</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6B82A0F733ED6015B651907154DD0368</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>7A7E4583A47DB987C0E3A0E39969794C</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8F7C2A9208BA39E9938FA0F53A368C4B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +132,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0214E86E9E229E292863BC821997C4D</key>
+		<key>AAF3EFD46F3712DF198B7EBC0053D775</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B0C179327F49353FEC3EBBECBB310B9F</key>
+		<key>B0214E86E9E229E292863BC821997C4D</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -132,7 +147,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C3E4C9404659587CCCBA6341BB4208CF</key>
+		<key>C65B4C2CE7658FF3BC4B9A2E53A606E8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,17 +157,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CF6DBDA16C902A1A67667797671CEA30</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E97EF58D8D2165239B5A9D54BE958C0B</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F0E48D1AB12DCC85B5C9375A50AE6E98</key>
 		<dict>
 			<key>primary</key>
 			<true/>

@@ -97,6 +97,7 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SwiftEventBus.framework"
   install_framework "Pods/SwiftLocation.framework"
+  install_framework "Pods/SwiftSpinner.framework"
   install_framework "Pods/Whisper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
@@ -113,5 +114,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SwiftEventBus.framework"
   install_framework "Pods/SwiftLocation.framework"
+  install_framework "Pods/SwiftSpinner.framework"
   install_framework "Pods/Whisper.framework"
 fi

@@ -11,6 +11,7 @@ import FXBlurView
 import Material
 import ImagePickerSheetController
 import Photos
+import SwiftSpinner
 
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -365,17 +366,28 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             return
         }
         
+         SwiftSpinner.show("Adding Item")
+        
         presenter.makeItem(type, name: itemTitle.text!, image: image) { (success) -> Void in
             
             if success == true {
                 
-                print("Item Saved Successfully")
-                self.newItemView.hidden = true
-                self.cover.hidden = true
+                SwiftSpinner.hide({
+                    
+                    print("Item Saved Successfully")
+                    self.newItemView.hidden = true
+                    self.cover.hidden = true
+                })
+                
+                
                 
             }else {
                 
-                print("There was an issue saving your item")
+                SwiftSpinner.hide({
+                    
+                    print("There was an issue saving your item")
+                })
+                
             }
         }
         
