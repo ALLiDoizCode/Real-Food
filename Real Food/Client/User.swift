@@ -24,25 +24,36 @@ class User {
         user.email = email
         user["ProfileImage"] = file
         
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo["error"] as? NSString
-                // Show the errorString somewhere and let the user try again.
+        PFGeoPoint.geoPointForCurrentLocationInBackground {
+            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+            
+            if error == nil {
                 
-                print(errorString)
+                user["Location"] = geoPoint
                 
-                SwiftEventBus.post("signUp", sender: succeeded)
-                
-            } else {
-                
-                // Hooray! Let them use the app now.
-                
-                SwiftEventBus.post("signUp", sender: succeeded)
-                
-                print("User Created")
+                user.signUpInBackgroundWithBlock {
+                    (succeeded: Bool, error: NSError?) -> Void in
+                    if let error = error {
+                        let errorString = error.userInfo["error"] as? NSString
+                        // Show the errorString somewhere and let the user try again.
+                        
+                        print(errorString)
+                        
+                        SwiftEventBus.post("signUp", sender: succeeded)
+                        
+                    } else {
+                        
+                        // Hooray! Let them use the app now.
+                        
+                        SwiftEventBus.post("signUp", sender: succeeded)
+                        
+                        print("User Created")
+                    }
+                }
             }
         }
+        
+        
     }
     
     func login(userName:String,PassWord:String){

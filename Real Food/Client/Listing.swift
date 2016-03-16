@@ -64,26 +64,33 @@ class Listing {
                     
                 }
                 
-                guard let userName = user.username else {
+                if user != nil {
+                
+                    guard let userName = user.username else {
+                        
+                        print("no userName")
+                        
+                        return
+                    }
                     
-                    print("no userName")
+                    guard let profileImage:PFFile = user.objectForKey("ProfileImage") as? PFFile else {
+                        
+                        print("no profileImage")
+                        
+                        return
+                    }
                     
-                    return
+                    print(description)
+                    print(userName)
+                    
+                    let theItem = Item(theObjectId:object.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,userName:userName)
+                    
+                    self.itemArray.append(theItem)
+                    
+                    
                 }
                 
-                guard let profileImage:PFFile = user.objectForKey("ProfileImage") as? PFFile else {
-                    
-                    print("no profileImage")
-                    
-                    return
-                }
                 
-                print(description)
-                print(userName)
-                
-                let theItem = Item(theObjectId:object.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,userName:userName)
-                
-                self.itemArray.append(theItem)
             }
             
             SwiftEventBus.post("getItem", sender: self.itemArray)

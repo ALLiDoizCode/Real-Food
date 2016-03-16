@@ -31,6 +31,7 @@
 		4D7422871C58A78E00453818 /* sellerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422861C58A78E00453818 /* sellerCell.swift */; };
 		4D7422891C58A7A300453818 /* SellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422881C58A7A300453818 /* SellerViewController.swift */; };
 		4D8695C01C98F47700B20968 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695BF1C98F47700B20968 /* Item.swift */; };
+		4D8695C21C999DD100B20968 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C11C999DD100B20968 /* Location.swift */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
@@ -86,6 +87,7 @@
 		4D7422861C58A78E00453818 /* sellerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sellerCell.swift; sourceTree = "<group>"; };
 		4D7422881C58A7A300453818 /* SellerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerViewController.swift; sourceTree = "<group>"; };
 		4D8695BF1C98F47700B20968 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		4D8695C11C999DD100B20968 /* Location.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				4D3A27FE1C977EF200F2A919 /* Time.swift */,
+				4D8695C11C999DD100B20968 /* Location.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				4D7422871C58A78E00453818 /* sellerCell.swift in Sources */,
 				4D3A280B1C97BDE400F2A919 /* PresentUser.swift in Sources */,
 				4D8695C01C98F47700B20968 /* Item.swift in Sources */,
+				4D8695C21C999DD100B20968 /* Location.swift in Sources */,
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,

@@ -24,6 +24,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     let presenter = PresentList()
     let menu = getMenu()
+    let location = Location()
     
     let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
     let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
