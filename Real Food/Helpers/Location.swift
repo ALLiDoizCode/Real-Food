@@ -58,7 +58,7 @@ class Location {
             }else {
                 
                 print("This Is Not A Valid US Region")
-                //SwiftEventBus.post("signUp", sender: false)
+                SwiftEventBus.post("signUp", sender: false)
     
             }
             
