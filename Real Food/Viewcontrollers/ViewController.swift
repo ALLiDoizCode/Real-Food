@@ -33,7 +33,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menu.setupMenu(self,title: "Home")
         
         sourceColor = UIColor(complementaryFlatColorOf:UIColor.flatForestGreenColorDark())
         
@@ -48,7 +47,12 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title: "Home")
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

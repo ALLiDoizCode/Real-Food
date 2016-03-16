@@ -38,7 +38,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
         self.TableView.addSubview(self.refreshControl) // not required when using UITableViewController
         
-        menu.setupMenu(self,title:type)
+        
         
         print(type)
         
@@ -54,6 +54,11 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title:type)
     }
 
     override func didReceiveMemoryWarning() {

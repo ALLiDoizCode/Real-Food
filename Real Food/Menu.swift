@@ -24,7 +24,7 @@ class getMenu {
         nav.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColorDark()]
         nav.navigationController!.navigationBar.tintColor = UIColor.flatSandColorDark()
         
-        menuView = BTNavigationDropdownMenu(navigationController: nav.navigationController, title: items.first!, items: items)
+        menuView = BTNavigationDropdownMenu(navigationController: nav.navigationController, title: title, items: items)
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
         menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
@@ -38,11 +38,30 @@ class getMenu {
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             
-            let profile = UIStoryboard(name: "Profile", bundle: nil)
-            let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
+           
+            
+            if indexPath == 0 {
+                
+                let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
+                
+                let controller = storyBoard.instantiateViewControllerWithIdentifier("Home") as! ViewController
+                
+                nav.navigationController!.pushViewController(controller, animated: true)
+            }
+            
+            if indexPath == 1 {
+                
+                let storyBoard = UIStoryboard.init(name: "Chat", bundle: nil)
+                
+                let controller = storyBoard.instantiateViewControllerWithIdentifier("Chat") as! RoomsViewController
+                
+                nav.navigationController!.pushViewController(controller, animated: true)
+            }
             
             if indexPath == 2 {
                 
+                let profile = UIStoryboard(name: "Profile", bundle: nil)
+                let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
                 nav.navigationController!.pushViewController(sellerProfile, animated: true)
             }
             

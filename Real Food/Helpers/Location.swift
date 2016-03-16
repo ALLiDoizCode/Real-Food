@@ -14,7 +14,7 @@ import CoreLocation
 
 class Location {
     
-    /*func oneShot(){
+    func oneShot(completion:(coords:CLLocationCoordinate2D) -> Void ){
         
         do {
             
@@ -25,7 +25,10 @@ class Location {
                 
                 print(myCoords)
                 
+                completion(coords: myCoords!)
+                
                 }) { (error) -> Void in
+                    
                     // something went wrong
             }
             
@@ -33,15 +36,15 @@ class Location {
             
         }
         
-    }*/
+    }
     
     func reverseAddress(myAddress:String,completion:(lat:Double,long:Double) -> Void) {
         
+        var lat:Double!
+        var long:Double!
+        
         SwiftLocation.shared.reverseAddress(Service.Apple, address: myAddress, region: nil, onSuccess: { (place) -> Void in
             // our CLPlacemark is here
-            
-            var lat:Double!
-            var long:Double!
             
             if place?.country == "United States" {
                 
@@ -62,7 +65,16 @@ class Location {
             }) { (error) -> Void in
                 // something went wrong
                 
-                print("Couldn't Find Address")
+                 print("Couldn't Find Address")
+                 print("Getting Current Location")
+                self.oneShot({ (coords) -> Void in
+                    
+                    lat = coords.latitude
+                    long = coords.longitude
+                    completion(lat: lat!, long: long!)
+                    
+                    print("Got Current Location")
+                })
         }
     }
     

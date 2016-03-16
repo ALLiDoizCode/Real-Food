@@ -17,8 +17,6 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menu.setupMenu(self,title:"Message")
-        
         self.tableView.backgroundColor = UIColor.flatSandColor()
 
         // Do any additional setup after loading the view.
@@ -27,6 +25,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
+        menu.setupMenu(self,title:"Message")
         
     }
     

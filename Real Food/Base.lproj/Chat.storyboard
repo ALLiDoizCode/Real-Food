@@ -8,7 +8,7 @@
         <!--Rooms View Controller-->
         <scene sceneID="DP8-8b-aCT">
             <objects>
-                <viewController id="lm4-bj-jjF" customClass="RoomsViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Chat" id="lm4-bj-jjF" customClass="RoomsViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="UTF-Ln-eYz"/>
                         <viewControllerLayoutGuide type="bottom" id="vfo-0a-E0e"/>
@@ -70,7 +70,7 @@
                         <viewControllerLayoutGuide type="bottom" id="vdw-kE-rI6"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="j09-tY-KWp">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
