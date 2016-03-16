@@ -16,13 +16,14 @@ class Listing {
     
     var itemArray:[Item] = []
     
-    func getItems(type:String){
+    func getItems(type:String,miles:Double){
         
         self.itemArray.removeAll()
         
         var user:PFUser!
         
         let lists = PFQuery(className: type)
+        lists.whereKey("Location", nearGeoPoint: (currentUser?.objectForKey("Location") as? PFGeoPoint)!, withinMiles: miles)
         
         lists.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
@@ -108,6 +109,7 @@ class Listing {
         item["Name"] = name
         item["Image"] = file
         item["CreatedBY"] = currentUser
+        item["Location"] = currentUser?.objectForKey("Location") as? PFGeoPoint
         
         item.saveInBackgroundWithBlock { (success, error) -> Void in
         

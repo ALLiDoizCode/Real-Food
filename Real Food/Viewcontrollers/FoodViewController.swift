@@ -17,6 +17,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     let presenter = PresentList()
     
     var type:String!
+    var miles:Double!
     
     let cellIdentefier = "Food"
 
@@ -30,6 +31,8 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        miles = 50
+        
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
@@ -39,7 +42,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         print(type)
         
-        presenter.getItems(type) { (data) -> Void in
+        presenter.getItems(type,miles:miles) { (data) -> Void in
             
             print(self.type)
             
@@ -60,7 +63,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     func refresh(sender:AnyObject) {
         // Code to refresh table view
-        presenter.getItems(type) { (data) -> Void in
+        presenter.getItems(type,miles:miles) { (data) -> Void in
             
             print(self.type)
             

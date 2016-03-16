@@ -15,6 +15,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     
     var firstName:TextField!
     var email:TextField!
+    var address:TextField!
     var passWord:TextField!
     var signUp:RaisedButton!
     
@@ -102,12 +103,25 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         email.backgroundColor = UIColor.clearColor()
         email.clearButtonMode = .Always
         
+        address = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
+        address.placeholder = "Address"
+        address.font = RobotoFont.regularWithSize(20)
+        address.textColor = UIColor.flatWhiteColor()
+        address.center.x = self.view.center.x
+        address.center.y = self.view.center.y + 100
+        address.titleLabel = UILabel()
+        address.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        address.titleLabelColor = MaterialColor.grey.base
+        address.titleLabelActiveColor = UIColor.flatSandColorDark()
+        address.backgroundColor = UIColor.clearColor()
+        address.clearButtonMode = .Always
+        
         passWord = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
         passWord.placeholder = "Password"
         passWord.font = RobotoFont.regularWithSize(20)
         passWord.textColor = UIColor.flatWhiteColor()
         passWord.center.x = self.view.center.x
-        passWord.center.y = self.view.center.y + 100
+        passWord.center.y = self.view.center.y + 150
         passWord.titleLabel = UILabel()
         passWord.titleLabel!.font = RobotoFont.mediumWithSize(12)
         passWord.titleLabelColor = MaterialColor.grey.base
@@ -117,6 +131,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         view.addSubview(firstName)
         view.addSubview(email)
+        view.addSubview(address)
         view.addSubview(passWord)
         
        
@@ -130,7 +145,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         signUp.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         signUp.backgroundColor = UIColor.flatPlumColorDark()
         signUp.center.x = self.view.center.x
-        signUp.center.y = self.view.center.y + 200
+        signUp.center.y = self.view.center.y + 250
         
         self.view.addSubview(signUp)
     }
@@ -218,6 +233,11 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
+        guard (address.text != nil) else {
+            
+            return
+        }
+        
         guard (passWord.text != nil) else {
             
             return
@@ -228,7 +248,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
-        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image) { (success) -> Void in
+        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!) { (success) -> Void in
             
             if success == true {
                 

@@ -13,7 +13,9 @@ import SwiftEventBus
 
 class User {
     
-    func signUp(userName:String,passWord:String,email:String,image:UIImage){
+    let location = Location()
+    
+    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
@@ -24,36 +26,32 @@ class User {
         user.email = email
         user["ProfileImage"] = file
         
-        PFGeoPoint.geoPointForCurrentLocationInBackground {
-            (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+        location.reverseAddress(myAddress) { (lat, long) -> Void in
             
-            if error == nil {
-                
-                user["Location"] = geoPoint
-                
-                user.signUpInBackgroundWithBlock {
-                    (succeeded: Bool, error: NSError?) -> Void in
-                    if let error = error {
-                        let errorString = error.userInfo["error"] as? NSString
-                        // Show the errorString somewhere and let the user try again.
-                        
-                        print(errorString)
-                        
-                        SwiftEventBus.post("signUp", sender: succeeded)
-                        
-                    } else {
-                        
-                        // Hooray! Let them use the app now.
-                        
-                        SwiftEventBus.post("signUp", sender: succeeded)
-                        
-                        print("User Created")
-                    }
+            let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
+            
+            user["Location"] = geoPoint
+            
+            user.signUpInBackgroundWithBlock {
+                (succeeded: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    let errorString = error.userInfo["error"] as? NSString
+                    // Show the errorString somewhere and let the user try again.
+                    
+                    print(errorString)
+                    
+                    SwiftEventBus.post("signUp", sender: succeeded)
+                    
+                } else {
+                    
+                    // Hooray! Let them use the app now.
+                    
+                    SwiftEventBus.post("signUp", sender: succeeded)
+                    
+                    print("User Created")
                 }
             }
         }
-        
-        
     }
     
     func login(userName:String,PassWord:String){

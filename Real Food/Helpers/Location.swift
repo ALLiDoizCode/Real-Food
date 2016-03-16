@@ -35,12 +35,34 @@ class Location {
         
     }*/
     
-    func reverseAddress(myAddress:String){
+    func reverseAddress(myAddress:String,completion:(lat:Double,long:Double) -> Void) {
         
         SwiftLocation.shared.reverseAddress(Service.Apple, address: myAddress, region: nil, onSuccess: { (place) -> Void in
             // our CLPlacemark is here
+            
+            var lat:Double!
+            var long:Double!
+            
+            if place?.country == "United States" {
+                
+                lat = place?.location?.coordinate.latitude
+                long = place?.location?.coordinate.longitude
+            }
+            
+            if lat != nil && long != nil {
+                
+                completion(lat: lat!, long: long!)
+                
+            }else {
+                
+                print("This Is Not A Valid US Region")
+            }
+            
+        
             }) { (error) -> Void in
                 // something went wrong
+                
+                print("Couldn't Find Address")
         }
     }
     

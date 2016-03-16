@@ -30,7 +30,7 @@ class PresentList {
         client.makeItem(type, name: name, image: image)
     }
     
-    func getItems(type:String,completon:(data:[Item]) -> Void){
+    func getItems(type:String,miles:Double,completon:(data:[Item]) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "getItem") { notification in
             
@@ -41,6 +41,6 @@ class PresentList {
             completon(data: info)
         }
         
-        client.getItems(type)
+        client.getItems(type,miles:miles)
     }
 }

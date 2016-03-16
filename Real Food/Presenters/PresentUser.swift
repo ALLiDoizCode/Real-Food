@@ -14,7 +14,7 @@ class PresentUser {
     
     let client = User()
     
-    func makeUser(userName:String, passWord: String, email: String, image: UIImage,completion:(success:Bool) -> Void){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "signUp") { notification in
             
@@ -25,7 +25,7 @@ class PresentUser {
             completion(success:success)
         }
         
-        client.signUp(userName, passWord: passWord, email: email, image: image)
+        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress )
     }
     
     func login(userName:String,PassWord:String,completion:(success:Bool) -> Void) {
