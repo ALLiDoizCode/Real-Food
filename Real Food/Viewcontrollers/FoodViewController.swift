@@ -68,6 +68,8 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             self.itemArray = data
             
+            self.refreshControl.endRefreshing()
+            
             self.reload()
         }
     }
