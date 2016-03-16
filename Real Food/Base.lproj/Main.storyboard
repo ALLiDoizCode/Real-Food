@@ -278,7 +278,7 @@
                                                             <variation key="heightClass=regular-widthClass=compact" constant="37"/>
                                                         </constraint>
                                                         <constraint firstItem="uih-zB-fi3" firstAttribute="top" secondItem="YBd-gM-xEo" secondAttribute="top" id="lZj-rL-XJc">
-                                                            <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                                            <variation key="heightClass=regular-widthClass=compact" constant="8"/>
                                                         </constraint>
                                                         <constraint firstItem="p6a-D1-lgY" firstAttribute="centerX" secondItem="Erz-iv-uKu" secondAttribute="centerX" id="maG-Ha-KDD"/>
                                                         <constraint firstItem="iRM-Qe-Vb5" firstAttribute="centerX" secondItem="YBd-gM-xEo" secondAttribute="centerX" id="nLi-lB-GYu"/>
