@@ -21,6 +21,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     var edit:UIButton!
 
+    @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cancle: FabButton!
     @IBOutlet weak var camera: FabButton!
     @IBOutlet weak var addItem: FabButton!
@@ -35,6 +36,18 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var closeReview: RaisedButton!
     @IBOutlet weak var newItemView: UIView!
     @IBOutlet weak var newItemImage: UIImageView!
+    
+    
+    @IBOutlet weak var veggie: FabButton!
+    @IBOutlet weak var sweets: FabButton!
+    @IBOutlet weak var dariy: FabButton!
+    @IBOutlet weak var eggs: FabButton!
+    @IBOutlet weak var poultry: FabButton!
+    @IBOutlet weak var bovine: FabButton!
+    @IBOutlet weak var goat: FabButton!
+    @IBOutlet weak var lamb: FabButton!
+    @IBOutlet weak var beer: FabButton!
+    
     
     var itemTitle:TextField!
     
@@ -89,6 +102,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         cover.hidden = true
         closeReview.hidden = true
         newItemView.hidden = true
+        buttonView.hidden = true
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -166,6 +180,101 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func makeButton(){
         
+        veggie.setImage(UIImage(named: "Vegetable"), forState: UIControlState.Normal)
+        sweets.setImage(UIImage(named: "Fruit-1"), forState: UIControlState.Normal)
+        dariy.setImage(UIImage(named: "cheese"), forState: UIControlState.Normal)
+        eggs.setImage(UIImage(named: "eggs"), forState: UIControlState.Normal)
+        poultry.setImage(UIImage(named: "chicken"), forState: UIControlState.Normal)
+        bovine.setImage(UIImage(named: "cow-1"), forState: UIControlState.Normal)
+        goat.setImage(UIImage(named: "goat-1"), forState: UIControlState.Normal)
+        lamb.setImage(UIImage(named: "lamb-1"), forState: UIControlState.Normal)
+        beer.setImage(UIImage(named: "beer"), forState: UIControlState.Normal)
+        
+        veggie.imageView?.contentMode = .ScaleAspectFit
+        sweets.imageView?.contentMode = .ScaleAspectFit
+        dariy.imageView?.contentMode = .ScaleAspectFit
+        eggs.imageView?.contentMode = .ScaleAspectFit
+        poultry.imageView?.contentMode = .ScaleAspectFit
+        bovine.imageView?.contentMode = .ScaleAspectFit
+        goat.imageView?.contentMode = .ScaleAspectFit
+        lamb.imageView?.contentMode = .ScaleAspectFit
+        beer.imageView?.contentMode = .ScaleAspectFit
+        
+        veggie.backgroundColor = UIColor.flatPlumColorDark()
+        sweets.backgroundColor = UIColor.flatPlumColorDark()
+        dariy.backgroundColor = UIColor.flatPlumColorDark()
+        eggs.backgroundColor = UIColor.flatPlumColorDark()
+        poultry.backgroundColor = UIColor.flatPlumColorDark()
+        bovine.backgroundColor = UIColor.flatPlumColorDark()
+        goat.backgroundColor = UIColor.flatPlumColorDark()
+        lamb.backgroundColor = UIColor.flatPlumColorDark()
+        beer.backgroundColor = UIColor.flatPlumColorDark()
+        
+        veggie.tintColor = UIColor.flatSandColorDark()
+        sweets.tintColor = UIColor.flatSandColorDark()
+        dariy.tintColor = UIColor.flatSandColorDark()
+        eggs.tintColor = UIColor.flatSandColorDark()
+        poultry.tintColor = UIColor.flatSandColorDark()
+        bovine.tintColor = UIColor.flatSandColorDark()
+        goat.tintColor = UIColor.flatSandColorDark()
+        lamb.tintColor = UIColor.flatSandColorDark()
+        beer.tintColor = UIColor.flatSandColorDark()
+        
+        veggie.setTitle("", forState: UIControlState.Normal)
+        sweets.setTitle("", forState: UIControlState.Normal)
+        dariy.setTitle("", forState: UIControlState.Normal)
+        eggs.setTitle("", forState: UIControlState.Normal)
+        poultry.setTitle("", forState: UIControlState.Normal)
+        bovine.setTitle("", forState: UIControlState.Normal)
+        goat.setTitle("", forState: UIControlState.Normal)
+        lamb.setTitle("", forState: UIControlState.Normal)
+        beer.setTitle("", forState: UIControlState.Normal)
+        
+        veggie.imageEdgeInsets.top = 0
+        veggie.imageEdgeInsets.bottom = 0
+        veggie.imageEdgeInsets.right = -30
+        veggie.imageEdgeInsets.left = 15
+        
+        sweets.imageEdgeInsets.top = 0
+        sweets.imageEdgeInsets.bottom = 0
+        sweets.imageEdgeInsets.right = -30
+        sweets.imageEdgeInsets.left = 15
+        
+        dariy.imageEdgeInsets.top = 0
+        dariy.imageEdgeInsets.bottom = 0
+        dariy.imageEdgeInsets.right = -30
+        dariy.imageEdgeInsets.left = 15
+        
+        eggs.imageEdgeInsets.top = 0
+        eggs.imageEdgeInsets.bottom = 0
+        eggs.imageEdgeInsets.right = -30
+        eggs.imageEdgeInsets.left = 15
+        
+        poultry.imageEdgeInsets.top = 0
+        poultry.imageEdgeInsets.bottom = 0
+        poultry.imageEdgeInsets.right = -30
+        poultry.imageEdgeInsets.left = 15
+        
+        bovine.imageEdgeInsets.top = 0
+        bovine.imageEdgeInsets.bottom = 0
+        bovine.imageEdgeInsets.right = -30
+        bovine.imageEdgeInsets.left = 15
+        
+        goat.imageEdgeInsets.top = 0
+        goat.imageEdgeInsets.bottom = 0
+        goat.imageEdgeInsets.right = -30
+        goat.imageEdgeInsets.left = 15
+        
+        lamb.imageEdgeInsets.top = 0
+        lamb.imageEdgeInsets.bottom = 0
+        lamb.imageEdgeInsets.right = -30
+        lamb.imageEdgeInsets.left = 15
+        
+        beer.imageEdgeInsets.top = 0
+        beer.imageEdgeInsets.bottom = 0
+        beer.imageEdgeInsets.right = -30
+        beer.imageEdgeInsets.left = 15
+        
         addButton.backgroundColor = UIColor.flatPlumColorDark()
         addButton.tintColor = UIColor.flatSandColorDark()
         addButton.setImage(UIImage(named: "plus"), forState: UIControlState.Normal)
@@ -221,10 +330,8 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func add(sender: AnyObject) {
         
-        newItemView.hidden = false
+        buttonView.hidden = false
         cover.hidden = false
-        
-        getImage()
     }
   
     @IBAction func addItemBtn(sender: AnyObject) {
@@ -267,6 +374,88 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         reload(tableView)
     }
+    
+    @IBAction func veggieBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func sweetsBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func dairyBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func eggsBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func poultryBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func bovineBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func goatBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func lambBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
+    @IBAction func beerBtn(sender: AnyObject) {
+        
+        newItemView.hidden = false
+        cover.hidden = false
+        buttonView.hidden = true
+        
+        getImage()
+    }
+    
     
     func getImage() {
         
