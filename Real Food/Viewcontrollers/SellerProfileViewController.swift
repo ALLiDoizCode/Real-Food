@@ -15,7 +15,7 @@ import Photos
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     let presenter = PresentList()
     
     let cellIdentefier = "Food"
@@ -117,6 +117,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         closeReview.hidden = true
         newItemView.hidden = true
         buttonView.hidden = true
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {

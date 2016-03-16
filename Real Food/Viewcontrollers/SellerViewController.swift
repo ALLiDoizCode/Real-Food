@@ -13,7 +13,7 @@ import BTNavigationDropdownMenu
 
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     
     @IBOutlet weak var tableView: UITableView!
     let reuseIdentifier = "Review"
@@ -35,13 +35,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        menu.setupMenu(self,title:"Seller")
-        
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
@@ -92,7 +87,17 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
 
         });
         
-          }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title:"Seller")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

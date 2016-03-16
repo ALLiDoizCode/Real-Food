@@ -16,6 +16,8 @@ class getMenu {
     
     let presenter = PresentUser()
     
+    static let sharedInstance = getMenu()
+    
     func setupMenu(nav:UIViewController,title:String){
         
         let items = ["Home", "Messages", "Profile", "Logout"]

@@ -13,7 +13,7 @@ import Kingfisher
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     let presenter = PresentList()
     
     var type:String!
@@ -59,6 +59,11 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewWillAppear(animated: Bool) {
         
         menu.setupMenu(self,title:type)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
 
     override func didReceiveMemoryWarning() {

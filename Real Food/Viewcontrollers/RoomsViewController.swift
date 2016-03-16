@@ -12,7 +12,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
 
     @IBOutlet weak var tableView: UITableView!
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +27,13 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         menu.setupMenu(self,title:"Message")
         
+    }
+    
+    
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
     
     override func didReceiveMemoryWarning() {

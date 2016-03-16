@@ -23,7 +23,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     var sourceColor:UIColor!
     
     let presenter = PresentList()
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     let location = Location()
     
     let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
@@ -51,6 +51,11 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewWillAppear(animated: Bool) {
         
         menu.setupMenu(self,title: "Home")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
     
     override func didReceiveMemoryWarning() {

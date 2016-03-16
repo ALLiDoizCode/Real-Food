@@ -17,7 +17,7 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     var sellerId:String!
     var selectedImage:UIImage!
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
     
     var messages:[JSQMessage] = [JSQMessage]()
     
@@ -28,9 +28,17 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        menu.setupMenu(self,title:"Messages")
-        
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+          menu.setupMenu(self,title:"Messages")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
 
     override func didReceiveMemoryWarning() {
