@@ -1,0 +1,28 @@
+//
+//  Rooms.swift
+//  Real Food
+//
+//  Created by Jonathan Green on 3/16/16.
+//  Copyright © 2016 Jonathan Green. All rights reserved.
+//
+
+import Foundation
+
+
+class Rooms {
+    
+    var objectId:String!
+    var recipiant:String!
+    var createdBy:String!
+    var status:Bool!
+    var time:NSDate!
+    
+    init(theObjectId:String,theRecipiant:String,theCreatedBy:String,theStatus:Bool,theTime:NSDate){
+        
+        objectId = theObjectId
+        recipiant = theRecipiant
+        createdBy = theCreatedBy
+        status = theStatus
+        time = theTime
+    }
+}
