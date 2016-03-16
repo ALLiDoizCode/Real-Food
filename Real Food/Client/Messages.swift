@@ -170,7 +170,14 @@ class Messages {
                 
                 room!.saveInBackgroundWithBlock({ (success, error) -> Void in
                     
-                    print("text message sent")
+                    if success == true {
+                        
+                        print("text message sent")
+                        
+                    }else {
+                        
+                        print("text message not  sent")
+                    }
                 })
             })
         }
