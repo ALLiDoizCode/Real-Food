@@ -16,11 +16,12 @@ class Item {
     var profileImage:String!
     var userName:String!
     
-    init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,userName:String!){
+    init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,theUserName:String!){
         
         objectId = theObjectId
         image = theImage
         description = theDescription
         profileImage = theProfileImage
+        userName = theUserName
     }
 }

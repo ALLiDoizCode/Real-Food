@@ -13,7 +13,9 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     
     let menu = getMenu.sharedInstance
+    let presenter = PresentMessages()
     var sellerId:String!
+    var rooms:[Rooms] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,6 +26,15 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        presenter.getRooms { (data) -> Void in
+            
+            print("got rooms")
+            
+            self.rooms = data
+            
+            self.reload()
+        }
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         menu.setupMenu(self,title:"Message")
@@ -42,9 +53,17 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         // Dispose of any resources that can be recreated.
     }
     
+    func reload(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.tableView.reloadData()
+        });
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return rooms.count
     }
     
     
@@ -52,12 +71,24 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         let cell:RoomCell = tableView.dequeueReusableCellWithIdentifier("Room") as! RoomCell
         
-        cell.name.text = "Sara"
-        cell.status.text = "New Message"
+        let status = rooms[indexPath.row].status
         
-        //let time = NSDate.offsetFrom(date)
+        cell.name.text = rooms[indexPath.row].name
         
-        cell.time.text = "8m"
+        if status == true {
+            
+             cell.status.text = "New Message"
+            
+        }else{
+            
+            cell.status.text = "New Message"
+        }
+        
+        let date = rooms[indexPath.row].time
+        
+        let time = NSDate().offsetFrom(date)
+        
+        cell.time.text = time
         
         return cell
     }

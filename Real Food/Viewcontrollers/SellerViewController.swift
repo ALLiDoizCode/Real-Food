@@ -14,19 +14,17 @@ import BTNavigationDropdownMenu
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     let menu = getMenu.sharedInstance
+    let reuseIdentifier = "Review"
+    var objectId:String!
     
     @IBOutlet weak var tableView: UITableView!
-    let reuseIdentifier = "Review"
-    
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var message: UIButton!
     @IBOutlet weak var rate: UIButton!
     @IBOutlet weak var distance: UILabel!
- 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
- 
     @IBOutlet weak var userName: UILabel!
 
 
@@ -122,14 +120,24 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
-    /*
+    @IBAction func rateBtn(sender: AnyObject) {
+        
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToMessages" {
+            
+            let controller = segue.destinationViewController as! ChatRoomViewController
+            controller.sellerId = objectId
+            
+            print("the object id is \(objectId)")
+        }
     }
-    */
+    
 
 }

@@ -10,6 +10,7 @@ import UIKit
 import JSQMessagesViewController
 import ImagePickerSheetController
 import Photos
+import Parse
 
 class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -18,7 +19,10 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     var roomId:String!
     var selectedImage:UIImage!
     
+    let currentUser = PFUser.currentUser()
+    
     let menu = getMenu.sharedInstance
+    let presenter = PresentMessages()
     
     var messages:[JSQMessage] = [JSQMessage]()
     
@@ -28,6 +32,8 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        setup()
         
         // Do any additional setup after loading the view.
     }
@@ -122,6 +128,13 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
         
     }
     
+    
+    func setup() {
+        self.senderId = currentUser?.objectId
+        self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
+        
+    }
+    
     /*
     // MARK: - Navigation
 
@@ -190,8 +203,39 @@ extension ChatRoomViewController {
 extension ChatRoomViewController {
     override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
         
-        let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
+        //let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
         
+        if selectedImage == nil {
+            
+            presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
+                
+                 print("fired presenter")
+                
+                if success == true {
+                    
+                    print("message sent")
+                    
+                }else{
+                    
+                    print("message not sent")
+                }
+            }
+        }else {
+            
+            presenter.sendImage(selectedImage, recipient: sellerId, completion: { (success) -> Void in
+                
+                print("fired presenter")
+                
+                if success == true {
+                    
+                    print("image sent")
+                    
+                }else{
+                    
+                    print("iamge not sent")
+                }
+            })
+        }
     }
     
     override func didPressAccessoryButton(sender: UIButton!) {

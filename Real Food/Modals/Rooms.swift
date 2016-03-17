@@ -17,8 +17,8 @@ class Rooms {
     var status:Bool!
     var time:NSDate!
     var icon:String!
-    
-    init(theObjectId:String,theRecipiant:String,theCreatedBy:String,theStatus:Bool,theTime:NSDate,theIcon:String){
+    var name:String!
+    init(theObjectId:String,theRecipiant:String,theCreatedBy:String,theStatus:Bool,theTime:NSDate,theIcon:String,theName:String){
         
         objectId = theObjectId
         recipiant = theRecipiant
@@ -26,5 +26,6 @@ class Rooms {
         status = theStatus
         time = theTime
         icon = theIcon
+        name = theName
     }
 }

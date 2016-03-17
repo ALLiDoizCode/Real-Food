@@ -81,10 +81,11 @@ class Listing {
                         return
                     }
                     
-                    print(description)
-                    print(userName)
+                    print(" the description \(description)")
+                    print("the name \(userName)")
+                    print("the user id \(user.objectId!)")
                     
-                    let theItem = Item(theObjectId:object.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,userName:userName)
+                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
                     
                     self.itemArray.append(theItem)
                     

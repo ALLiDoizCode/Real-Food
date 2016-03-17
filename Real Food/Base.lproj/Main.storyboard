@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="ViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -209,25 +209,6 @@
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                             <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                         </view>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erz-iv-uKu">
-                                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="15" id="Xsd-7S-TWA"/>
-                                                            </constraints>
-                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
-                                                            <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
-                                                            <nil key="highlightedColor"/>
-                                                            <variation key="default">
-                                                                <mask key="constraints">
-                                                                    <exclude reference="Xsd-7S-TWA"/>
-                                                                </mask>
-                                                            </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact">
-                                                                <mask key="constraints">
-                                                                    <include reference="Xsd-7S-TWA"/>
-                                                                </mask>
-                                                            </variation>
-                                                        </label>
                                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="girl" translatesAutoresizingMaskIntoConstraints="NO" id="iRM-Qe-Vb5">
                                                             <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                                             <constraints>
@@ -252,6 +233,25 @@
                                                             <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
                                                             <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
                                                             <nil key="highlightedColor"/>
+                                                        </label>
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Erz-iv-uKu">
+                                                            <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                                            <constraints>
+                                                                <constraint firstAttribute="height" constant="15" id="Xsd-7S-TWA"/>
+                                                            </constraints>
+                                                            <fontDescription key="fontDescription" name="AvenirNext-Medium" family="Avenir Next" pointSize="14"/>
+                                                            <color key="textColor" red="0.90823972225189209" green="0.92638683319091797" blue="0.9317171573638916" alpha="1" colorSpace="calibratedRGB"/>
+                                                            <nil key="highlightedColor"/>
+                                                            <variation key="default">
+                                                                <mask key="constraints">
+                                                                    <exclude reference="Xsd-7S-TWA"/>
+                                                                </mask>
+                                                            </variation>
+                                                            <variation key="heightClass=regular-widthClass=compact">
+                                                                <mask key="constraints">
+                                                                    <include reference="Xsd-7S-TWA"/>
+                                                                </mask>
+                                                            </variation>
                                                         </label>
                                                     </subviews>
                                                     <color key="backgroundColor" red="0.79226005077362061" green="0.7181098461151123" blue="0.48854580521583557" alpha="1" colorSpace="calibratedRGB"/>
@@ -294,9 +294,9 @@
                                                         <mask key="subviews">
                                                             <exclude reference="uih-zB-fi3"/>
                                                             <exclude reference="vqo-7s-pmI"/>
-                                                            <exclude reference="Erz-iv-uKu"/>
                                                             <exclude reference="iRM-Qe-Vb5"/>
                                                             <exclude reference="p6a-D1-lgY"/>
+                                                            <exclude reference="Erz-iv-uKu"/>
                                                         </mask>
                                                         <mask key="constraints">
                                                             <exclude reference="Obj-s6-YLp"/>
@@ -322,9 +322,9 @@
                                                         <mask key="subviews">
                                                             <include reference="uih-zB-fi3"/>
                                                             <include reference="vqo-7s-pmI"/>
-                                                            <include reference="Erz-iv-uKu"/>
                                                             <include reference="iRM-Qe-Vb5"/>
                                                             <include reference="p6a-D1-lgY"/>
+                                                            <include reference="Erz-iv-uKu"/>
                                                         </mask>
                                                         <mask key="constraints">
                                                             <include reference="Obj-s6-YLp"/>
@@ -394,7 +394,7 @@
                                             <outlet property="imageFadeView" destination="vqo-7s-pmI" id="I3L-M7-FMq"/>
                                             <outlet property="mainLabel" destination="Erz-iv-uKu" id="gxg-Lz-flQ"/>
                                             <outlet property="userIcon" destination="iRM-Qe-Vb5" id="ZoP-yB-mlz"/>
-                                            <segue destination="q7m-3a-2QK" kind="show" id="xEa-Ij-2bZ"/>
+                                            <segue destination="q7m-3a-2QK" kind="show" identifier="seller" id="xEa-Ij-2bZ"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -542,6 +542,9 @@
                                                 <include reference="SBd-We-x4c"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="rateBtn:" destination="q7m-3a-2QK" eventType="touchUpInside" id="i8H-KF-XDa"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="doN-Sg-48E">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
@@ -578,7 +581,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="ofa-mG-sS1" kind="show" id="wwR-0w-KRM"/>
+                                            <segue destination="ofa-mG-sS1" kind="show" identifier="goToMessages" id="fkI-Qs-PIB"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -943,11 +946,11 @@
             </objects>
             <point key="canvasLocation" x="705" y="474.75"/>
         </scene>
-        <!--Chat-->
+        <!--chatroom-->
         <scene sceneID="k2H-Xt-pR0">
             <objects>
-                <viewControllerPlaceholder storyboardName="Chat" id="ofa-mG-sS1" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="L1g-Dm-cRA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewControllerPlaceholder storyboardName="Chat" referencedIdentifier="chatroom" id="ofa-mG-sS1" sceneMemberID="viewController"/>
             </objects>
             <point key="canvasLocation" x="3789" y="470.25"/>
         </scene>
