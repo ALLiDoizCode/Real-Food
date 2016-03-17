@@ -31,7 +31,7 @@ class RoomCell: UITableViewCell {
         theImage = UIImageView(frame: CGRect(x: 0, y: 0, width: materialView.frame.width, height: materialView.frame.height))
         theImage.layer.cornerRadius = theImage.frame.height/2
         theImage.contentMode = .ScaleAspectFill
-        theImage.image = UIImage(named: "girl")
+        theImage.image = UIImage(named: "placeholder")
         theImage.clipsToBounds = true
         theImage.layer.masksToBounds = true
         

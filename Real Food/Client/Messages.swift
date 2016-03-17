@@ -67,11 +67,49 @@ class Messages {
                         return
                     }
                     
+                    do {
+                        
+                        try theSender.fetch()
+                        try theRecipient.fetch()
+                        
+                    }catch _{
+                        
+                    }
+                    
                     if (theSender == self.currentUser && theRecipient == roomRecipient) || (theSender == roomRecipient && theRecipient == self.currentUser) {
                         
                         print("saved new message")
                         
                         self.sendMessageWithId(text,roomId: object.objectId!)
+                        
+                    }else {
+                        
+                        print("no room exist")
+                        
+                        chat["Description"] = text
+                        chat["Sender"] = self.currentUser
+                        
+                        chat.saveInBackgroundWithBlock({ (success, error) -> Void in
+                            
+                            let relation:PFRelation = room.relationForKey("Messages")
+                            room["Sender"] = self.currentUser
+                            room["Recipient"] = roomRecipient
+                            relation.addObject(chat)
+                            room["Status"] = true
+                            
+                            room.saveInBackgroundWithBlock({ (success, error) -> Void in
+                                
+                                if success == true {
+                                    
+                                    print("message sent")
+                                    
+                                }else{
+                                    
+                                    print("message not sent")
+                                }
+                                
+                            })
+                        })
                     }
                 }
                 
@@ -343,6 +381,8 @@ class Messages {
                         let theRoom = Rooms(theObjectId: object.objectId!, theRecipiant: theRecipient.objectId!, theCreatedBy: theSender.objectId!, theStatus: theStatus, theTime: object.updatedAt!,theIcon: icon.url!,theName:name)
                         
                         self.roomArray.append(theRoom)
+                        
+                        print("added room")
                         
                     }
                 }

@@ -74,6 +74,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         let status = rooms[indexPath.row].status
         
         cell.name.text = rooms[indexPath.row].name
+        cell.theImage.kf_setImageWithURL(NSURL(string: rooms[indexPath.row].icon)!, placeholderImage: UIImage(named:"placeholder"))
         
         if status == true {
             
