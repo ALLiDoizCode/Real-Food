@@ -17,8 +17,15 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     var sellerId:String!
     var rooms:[Rooms] = []
     
+    var refreshControl: UIRefreshControl!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
         
         self.tableView.backgroundColor = UIColor.flatSandColor()
 
@@ -28,6 +35,8 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func viewWillAppear(animated: Bool) {
         
         presenter.getRooms { (data) -> Void in
+            
+            self.rooms.removeAll()
             
             print("got rooms")
             
@@ -41,8 +50,6 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
     }
     
-    
-    
     override func viewWillDisappear(animated: Bool) {
         
         menu.menuView.hide()
@@ -51,6 +58,22 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        presenter.getRooms { (data) -> Void in
+            
+            self.rooms.removeAll()
+            
+            print("got rooms")
+            
+            self.rooms = data
+            
+            self.reload()
+            
+            self.refreshControl.endRefreshing()
+        }
     }
     
     func reload(){
@@ -104,7 +127,11 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         if segue.identifier == "message" {
             
+            let indexPath = self.tableView.indexPathForSelectedRow
+            
            let controller = segue.destinationViewController as! ChatRoomViewController
+            
+            controller.roomId = rooms[(indexPath?.row)!].objectId
         }
     }
     

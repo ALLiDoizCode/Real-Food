@@ -207,19 +207,34 @@ extension ChatRoomViewController {
         
         if selectedImage == nil {
             
-            presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
+            if self.roomId == nil {
                 
-                 print("fired presenter")
-                
-                if success == true {
+                presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
                     
-                    print("message sent")
+                    print("fired presenter")
                     
-                }else{
-                    
-                    print("message not sent")
+                    if success == true {
+                        
+                        print("message sent")
+                        
+                    }else{
+                        
+                        print("message not sent")
+                    }
                 }
+                
+            }else{
+                
+                presenter.sendMessageWithId(text, roomId: roomId, completion: { (success) -> Void in
+                    
+                    if success == true {
+                        
+                        print("message sent")
+                    }
+                })
             }
+            
+            
         }else {
             
             presenter.sendImage(selectedImage, recipient: sellerId, completion: { (success) -> Void in
