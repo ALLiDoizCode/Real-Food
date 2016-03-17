@@ -7,13 +7,14 @@
 //
 
 import UIKit
-import JSQMessagesViewController
 import ImagePickerSheetController
 import Photos
 import Parse
 
-class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
+
+class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate/*,LynnBubbleViewDataSource*/ {
     
+    @IBOutlet weak var tableView: LynnBubbleTableView!
     var userIcon:UIImage!
     var sellerId:String!
     var roomId:String!
@@ -24,16 +25,69 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     let menu = getMenu.sharedInstance
     let presenter = PresentMessages()
     
-    var messages:[JSQMessage] = [JSQMessage]()
-    
-    var avatar:JSQMessagesAvatarImage!
-    var outgoingBubbleImageData = JSQMessagesBubbleImageFactory().outgoingMessagesBubbleImageWithColor(UIColor.grayColor())
-    var incomingBubbleImageData = JSQMessagesBubbleImageFactory().incomingMessagesBubbleImageWithColor(UIColor.blueColor())
-
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup()
+        //self.tableView.bubbleDataSource = self
+        
+        /*self.tableView.someoneElse_grouping = false // default is true
+        self.tableView.header_scrollable = true // defaut is true. false is not implement yet.
+        self.tableView.header_show_weekday = true // default is true
+        
+        self.tableView.refreshable = true // default is false
+        self.tableView.show_nickname = true // default is false*/
+        
+        /*if selectedImage == nil {
+            
+            if self.roomId == nil {
+                
+                presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
+                    
+                    print("fired presenter")
+                    
+                    if success == true {
+                        
+                        print("message sent")
+                        
+                        self.finishSendingMessage()
+                        
+                    }else{
+                        
+                        print("message not sent")
+                        
+                    }
+                }
+                
+            }else{
+                
+                presenter.sendMessageWithId(text, roomId: roomId, completion: { (success) -> Void in
+                    
+                    if success == true {
+                        
+                        print("message sent")
+                    }
+                })
+            }
+            
+            
+        }else {
+            
+            presenter.sendImage(selectedImage, recipient: sellerId, completion: { (success) -> Void in
+                
+                print("fired presenter")
+                
+                if success == true {
+                    
+                    print("image sent")
+                    
+                    
+                    
+                }else{
+                    
+                    print("iamge not sent")
+                }
+            })
+        }*/
         
         // Do any additional setup after loading the view.
     }
@@ -41,6 +95,10 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
     override func viewWillAppear(animated: Bool) {
         
           menu.setupMenu(self,title:"Messages")
+        
+       /* presenter.getMessages(roomId) { (data) -> Void in
+            
+        }*/
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -92,10 +150,6 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
                         self.selectedImage = finalResult
                         print(finalResult)
                         
-                        let photo = JSQPhotoMediaItem(image:finalResult)
-                        
-                        let messageMedia = JSQMessage(senderId: self.senderId, displayName: self.senderDisplayName, media: photo)
-                        
                         // fire presenter to send image
                         
                 }
@@ -128,12 +182,13 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
         
     }
     
-    
-    func setup() {
-        self.senderId = currentUser?.objectId
-        self.senderDisplayName = UIDevice.currentDevice().identifierForVendor?.UUIDString
-        
+    /*func numberOfRowsForBubbleTable(bubbleTableView: LynnBubbleTableView) -> Int {
+        return 10
     }
+    
+    func bubbleTableView(bubbleTableView: LynnBubbleTableView, dataAtIndex: Int) -> LynnBubbleData? {
+        return self.tableView[dataAtIndex]
+    }*/
     
     /*
     // MARK: - Navigation
@@ -150,114 +205,5 @@ class ChatRoomViewController: JSQMessagesViewController,UIImagePickerControllerD
 
 
 
-//MARK - Data Source
-extension ChatRoomViewController {
-    
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return self.messages.count
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageData! {
-        let data = self.messages[indexPath.row]
-        return data
-    }
-    
-    
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, didDeleteMessageAtIndexPath indexPath: NSIndexPath!) {
-        self.messages.removeAtIndex(indexPath.row)
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, messageBubbleImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageBubbleImageDataSource! {
-        let data = messages[indexPath.row]
-        switch(data.senderId) {
-        case self.senderId:
-            return self.outgoingBubbleImageData
-        default:
-            return self.incomingBubbleImageData
-        }
-    }
-    
-    override func collectionView(collectionView: JSQMessagesCollectionView!, avatarImageDataForItemAtIndexPath indexPath: NSIndexPath!) -> JSQMessageAvatarImageDataSource! {
-        
-        let diameter = UInt(kJSQMessagesCollectionViewAvatarSizeDefault)
-        let avatarImage = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "placeholder"), diameter: diameter)
-        
-        let avatarImage2 = JSQMessagesAvatarImageFactory.avatarImageWithImage(UIImage(named: "placeholder"), diameter: diameter)
-        
-        let data = messages[indexPath.row]
-        switch(data.senderId) {
-        case self.senderId:
-            return avatarImage
-        default:
-            return avatarImage2
-        }
-        
-    }
-    
-}
 
-
-
-//MARK - Toolbar
-extension ChatRoomViewController {
-    override func didPressSendButton(button: UIButton!, withMessageText text: String!, senderId: String!, senderDisplayName: String!, date: NSDate!) {
-        
-        //let message = JSQMessage(senderId: senderId, senderDisplayName: senderDisplayName, date: date, text: text)
-        
-        if selectedImage == nil {
-            
-            if self.roomId == nil {
-                
-                presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
-                    
-                    print("fired presenter")
-                    
-                    if success == true {
-                        
-                        print("message sent")
-                        
-                    }else{
-                        
-                        print("message not sent")
-                    }
-                }
-                
-            }else{
-                
-                presenter.sendMessageWithId(text, roomId: roomId, completion: { (success) -> Void in
-                    
-                    if success == true {
-                        
-                        print("message sent")
-                    }
-                })
-            }
-            
-            
-        }else {
-            
-            presenter.sendImage(selectedImage, recipient: sellerId, completion: { (success) -> Void in
-                
-                print("fired presenter")
-                
-                if success == true {
-                    
-                    print("image sent")
-                    
-                }else{
-                    
-                    print("iamge not sent")
-                }
-            })
-        }
-    }
-    
-    override func didPressAccessoryButton(sender: UIButton!) {
-        
-        print("didPressAccessoryButton")
-        
-        getImage()
-    }
-}
 

@@ -72,8 +72,45 @@
                     <view key="view" contentMode="scaleToFill" id="j09-tY-KWp">
                         <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="111" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-Co-5Xf" customClass="LynnBubbleTableView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="DYi-Co-5Xf" firstAttribute="top" secondItem="j09-tY-KWp" secondAttribute="top" id="1xM-IC-vtF"/>
+                            <constraint firstItem="DYi-Co-5Xf" firstAttribute="bottom" secondItem="vdw-kE-rI6" secondAttribute="top" id="NZs-aP-J5c"/>
+                            <constraint firstAttribute="trailing" secondItem="DYi-Co-5Xf" secondAttribute="trailing" id="dO4-6U-hQl"/>
+                            <constraint firstItem="DYi-Co-5Xf" firstAttribute="leading" secondItem="j09-tY-KWp" secondAttribute="leading" id="fpE-eE-5B2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="DYi-Co-5Xf"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="1xM-IC-vtF"/>
+                                <exclude reference="NZs-aP-J5c"/>
+                                <exclude reference="dO4-6U-hQl"/>
+                                <exclude reference="fpE-eE-5B2"/>
+                            </mask>
+                        </variation>
+                        <variation key="heightClass=regular-widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="DYi-Co-5Xf"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="1xM-IC-vtF"/>
+                                <include reference="NZs-aP-J5c"/>
+                                <include reference="dO4-6U-hQl"/>
+                                <include reference="fpE-eE-5B2"/>
+                            </mask>
+                        </variation>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="DYi-Co-5Xf" id="I9G-9w-rkl"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpA-hk-HBx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

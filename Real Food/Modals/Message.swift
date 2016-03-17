@@ -15,13 +15,15 @@ class Message {
     let sender:String!
     let senderImage:String!
     let time:NSDate!
+    let senderName:String!
     
-    init(theDescription:String,theMedia:String,theSender:String,theSenderImage:String,theTime:NSDate){
+    init(theDescription:String,theMedia:String,theSender:String,theSenderImage:String,theTime:NSDate,theSenderName:String){
         
         description = theDescription
         media = theMedia
         sender = theSender
         senderImage = theSenderImage
         time = theTime
+        senderName = theSenderName
     }
 }

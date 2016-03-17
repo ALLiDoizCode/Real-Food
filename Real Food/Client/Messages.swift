@@ -455,6 +455,10 @@ class Messages {
             
         }
     }
+    
+    func getMessages(roomId:String){
+        
+    }
 
 }
 

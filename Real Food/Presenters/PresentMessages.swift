@@ -9,10 +9,23 @@
 import Foundation
 import UIKit
 import SwiftEventBus
+import Kingfisher
 
 class PresentMessages {
     
     let client = Messages()
+    
+    func getMessages(roomId:String,completion:(data:[Message]) -> Void){
+        
+        SwiftEventBus.onMainThread(self, name: "getMessages") { (notification) -> Void in
+            
+            let objects = notification.object as! [Message]
+            
+            completion(data: objects)
+        }
+        
+        client.getMessages(roomId)
+    }
     
     func getRooms(completion:(data:[Rooms]) -> Void){
         

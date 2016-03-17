@@ -35,6 +35,21 @@
 		4D8695C41C9A05C400B20968 /* Rooms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C31C9A05C400B20968 /* Rooms.swift */; };
 		4D8695C61C9A07F300B20968 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C51C9A07F300B20968 /* Message.swift */; };
 		4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C71C9A26C900B20968 /* PresentMessages.swift */; };
+		4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C91C9A61B600B20968 /* ChatCell.swift */; };
+		4D8695DB1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695CD1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.swift */; };
+		4D8695DC1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8695CE1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.xib */; };
+		4D8695DD1C9A66AE00B20968 /* ImageBubbleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695CF1C9A66AE00B20968 /* ImageBubbleTableViewCell.swift */; };
+		4D8695DE1C9A66AE00B20968 /* ImageBubbleTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8695D01C9A66AE00B20968 /* ImageBubbleTableViewCell.xib */; };
+		4D8695DF1C9A66AE00B20968 /* LynnBubbleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D11C9A66AE00B20968 /* LynnBubbleData.swift */; };
+		4D8695E01C9A66AE00B20968 /* LynnBubbleDataMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D21C9A66AE00B20968 /* LynnBubbleDataMine.swift */; };
+		4D8695E11C9A66AE00B20968 /* LynnBubbleDataSomeone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D31C9A66AE00B20968 /* LynnBubbleDataSomeone.swift */; };
+		4D8695E21C9A66AE00B20968 /* LynnBubbleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D41C9A66AE00B20968 /* LynnBubbleTableView.swift */; };
+		4D8695E31C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D51C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift */; };
+		4D8695E41C9A66AE00B20968 /* LynnBubbleViewHeaderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8695D61C9A66AE00B20968 /* LynnBubbleViewHeaderCell.xib */; };
+		4D8695E51C9A66AE00B20968 /* MyBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D71C9A66AE00B20968 /* MyBubbleViewCell.swift */; };
+		4D8695E61C9A66AE00B20968 /* MyBubbleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8695D81C9A66AE00B20968 /* MyBubbleViewCell.xib */; };
+		4D8695E71C9A66AE00B20968 /* Someone'sBubbleViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695D91C9A66AE00B20968 /* Someone'sBubbleViewCell.swift */; };
+		4D8695E81C9A66AE00B20968 /* Someone'sBubbleViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4D8695DA1C9A66AE00B20968 /* Someone'sBubbleViewCell.xib */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
@@ -94,6 +109,21 @@
 		4D8695C31C9A05C400B20968 /* Rooms.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Rooms.swift; sourceTree = "<group>"; };
 		4D8695C51C9A07F300B20968 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4D8695C71C9A26C900B20968 /* PresentMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMessages.swift; sourceTree = "<group>"; };
+		4D8695C91C9A61B600B20968 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4D8695CD1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBubbleSomeoneViewCell.swift; sourceTree = "<group>"; };
+		4D8695CE1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageBubbleSomeoneViewCell.xib; sourceTree = "<group>"; };
+		4D8695CF1C9A66AE00B20968 /* ImageBubbleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageBubbleTableViewCell.swift; sourceTree = "<group>"; };
+		4D8695D01C9A66AE00B20968 /* ImageBubbleTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageBubbleTableViewCell.xib; sourceTree = "<group>"; };
+		4D8695D11C9A66AE00B20968 /* LynnBubbleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LynnBubbleData.swift; sourceTree = "<group>"; };
+		4D8695D21C9A66AE00B20968 /* LynnBubbleDataMine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LynnBubbleDataMine.swift; sourceTree = "<group>"; };
+		4D8695D31C9A66AE00B20968 /* LynnBubbleDataSomeone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LynnBubbleDataSomeone.swift; sourceTree = "<group>"; };
+		4D8695D41C9A66AE00B20968 /* LynnBubbleTableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LynnBubbleTableView.swift; sourceTree = "<group>"; };
+		4D8695D51C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LynnBubbleViewHeaderCell.swift; sourceTree = "<group>"; };
+		4D8695D61C9A66AE00B20968 /* LynnBubbleViewHeaderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LynnBubbleViewHeaderCell.xib; sourceTree = "<group>"; };
+		4D8695D71C9A66AE00B20968 /* MyBubbleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyBubbleViewCell.swift; sourceTree = "<group>"; };
+		4D8695D81C9A66AE00B20968 /* MyBubbleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MyBubbleViewCell.xib; sourceTree = "<group>"; };
+		4D8695D91C9A66AE00B20968 /* Someone'sBubbleViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Someone'sBubbleViewCell.swift"; sourceTree = "<group>"; };
+		4D8695DA1C9A66AE00B20968 /* Someone'sBubbleViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "Someone'sBubbleViewCell.xib"; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -163,6 +193,20 @@
 		4D3A27FD1C977EC300F2A919 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4D8695CD1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.swift */,
+				4D8695CE1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.xib */,
+				4D8695CF1C9A66AE00B20968 /* ImageBubbleTableViewCell.swift */,
+				4D8695D01C9A66AE00B20968 /* ImageBubbleTableViewCell.xib */,
+				4D8695D11C9A66AE00B20968 /* LynnBubbleData.swift */,
+				4D8695D21C9A66AE00B20968 /* LynnBubbleDataMine.swift */,
+				4D8695D31C9A66AE00B20968 /* LynnBubbleDataSomeone.swift */,
+				4D8695D41C9A66AE00B20968 /* LynnBubbleTableView.swift */,
+				4D8695D51C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift */,
+				4D8695D61C9A66AE00B20968 /* LynnBubbleViewHeaderCell.xib */,
+				4D8695D71C9A66AE00B20968 /* MyBubbleViewCell.swift */,
+				4D8695D81C9A66AE00B20968 /* MyBubbleViewCell.xib */,
+				4D8695D91C9A66AE00B20968 /* Someone'sBubbleViewCell.swift */,
+				4D8695DA1C9A66AE00B20968 /* Someone'sBubbleViewCell.xib */,
 				4D3A27FE1C977EF200F2A919 /* Time.swift */,
 				4D8695C11C999DD100B20968 /* Location.swift */,
 			);
@@ -210,6 +254,7 @@
 				4D7422861C58A78E00453818 /* sellerCell.swift */,
 				4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */,
 				4D3A27FB1C97722D00F2A919 /* RoomCell.swift */,
+				4D8695C91C9A61B600B20968 /* ChatCell.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -414,10 +459,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				4D3A27FA1C97688E00F2A919 /* Chat.storyboard in Resources */,
+				4D8695E41C9A66AE00B20968 /* LynnBubbleViewHeaderCell.xib in Resources */,
+				4D8695DE1C9A66AE00B20968 /* ImageBubbleTableViewCell.xib in Resources */,
 				4DF9CB551C57FA2400922A63 /* LaunchScreen.storyboard in Resources */,
+				4D8695DC1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.xib in Resources */,
 				4DF9CB521C57FA2400922A63 /* Assets.xcassets in Resources */,
+				4D8695E61C9A66AE00B20968 /* MyBubbleViewCell.xib in Resources */,
 				4D671AF61C960DBA00386CC2 /* SignUp.storyboard in Resources */,
 				4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */,
+				4D8695E81C9A66AE00B20968 /* Someone'sBubbleViewCell.xib in Resources */,
 				4D135C9A1C801FB30064F803 /* Login.storyboard in Resources */,
 				4DF9CB501C57FA2400922A63 /* Main.storyboard in Resources */,
 			);
@@ -500,23 +550,33 @@
 				4D8695C01C98F47700B20968 /* Item.swift in Sources */,
 				4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */,
 				4D8695C21C999DD100B20968 /* Location.swift in Sources */,
+				4D8695E51C9A66AE00B20968 /* MyBubbleViewCell.swift in Sources */,
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,
+				4D8695DD1C9A66AE00B20968 /* ImageBubbleTableViewCell.swift in Sources */,
 				4D3A28021C97B62300F2A919 /* User.swift in Sources */,
 				4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */,
+				4D8695E11C9A66AE00B20968 /* LynnBubbleDataSomeone.swift in Sources */,
 				4D3A28041C97B63F00F2A919 /* Messages.swift in Sources */,
 				4D8695C61C9A07F300B20968 /* Message.swift in Sources */,
+				4D8695E31C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift in Sources */,
 				4D3A280D1C97BED400F2A919 /* PresentLIst.swift in Sources */,
 				4D8695C41C9A05C400B20968 /* Rooms.swift in Sources */,
 				4D7422851C586E4C00453818 /* FoodCell.swift in Sources */,
+				4D8695E71C9A66AE00B20968 /* Someone'sBubbleViewCell.swift in Sources */,
+				4D8695E21C9A66AE00B20968 /* LynnBubbleTableView.swift in Sources */,
 				4D7422831C586DE800453818 /* FoodViewController.swift in Sources */,
 				4D3A28081C97B67F00F2A919 /* Cloud.swift in Sources */,
 				4D3A27FF1C977EF200F2A919 /* Time.swift in Sources */,
 				4D3A28061C97B67300F2A919 /* Listing.swift in Sources */,
 				4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */,
+				4D8695DF1C9A66AE00B20968 /* LynnBubbleData.swift in Sources */,
+				4D8695E01C9A66AE00B20968 /* LynnBubbleDataMine.swift in Sources */,
+				4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */,
 				4D3A27F51C9765C400F2A919 /* RoomsViewController.swift in Sources */,
 				4D671AFA1C96255700386CC2 /* MakeSellerViewController.swift in Sources */,
+				4D8695DB1C9A66AE00B20968 /* ImageBubbleSomeoneViewCell.swift in Sources */,
 				4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */,
 				4D3A27FC1C97722D00F2A919 /* RoomCell.swift in Sources */,
 				4D7422891C58A7A300453818 /* SellerViewController.swift in Sources */,
