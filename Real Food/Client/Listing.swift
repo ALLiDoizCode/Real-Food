@@ -100,6 +100,80 @@ class Listing {
         
     }
     
+    func getMyItems(){
+        
+        //self.itemArray.removeAll()
+        
+        let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
+        
+        for name in menuName {
+            
+            print("start loop")
+            
+            let typeQuery = PFQuery(className: name)
+            typeQuery.whereKey("CreatedBY", equalTo: currentUser!)
+            
+            queryTypes(typeQuery)
+        }
+        
+        SwiftEventBus.post("myItems", sender: self.itemArray)
+    }
+    
+    func queryTypes(lists:PFQuery){
+        
+        var objects:[PFObject]!
+        
+        do {
+            
+            try objects = lists.findObjects()
+            
+        }catch _ {
+            
+        }
+        
+        print("user created \(objects?.count)")
+        
+        for object in objects {
+            
+            guard let image:PFFile = object.objectForKey("Image") as? PFFile else {
+                
+                print("no image")
+                
+                return
+            }
+            
+            guard let description:String = object.objectForKey("Name") as? String else {
+                
+                print("no descrption")
+                
+                return
+            }
+            
+            guard let userName = self.currentUser!.username else {
+                
+                print("no userName")
+                
+                return
+            }
+            
+            guard let profileImage:PFFile = self.currentUser!.objectForKey("ProfileImage") as? PFFile else {
+                
+                print("no profileImage")
+                
+                return
+            }
+            
+            print(" the description \(description)")
+            print("the name \(userName)")
+            print("the user id \(self.currentUser!.objectId!)")
+            
+            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
+            
+            self.itemArray.append(theItem)
+            
+        }
+    }
+    
     func makeItem(type:String,name:String,image:UIImage){
         
         let item = PFObject(className: type)

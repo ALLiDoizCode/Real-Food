@@ -12,8 +12,6 @@ import SwiftEventBus
 
 class PresentList {
     
-    
-    
     let client = Listing()
     
     func makeItem(type:String, name: String,image:UIImage,completion:(success:Bool) -> Void) {
@@ -42,5 +40,19 @@ class PresentList {
         }
         
         client.getItems(type,miles:miles)
+    }
+    
+    func getMyItems(completon:(data:[Item]) -> Void){
+        
+        SwiftEventBus.onMainThread(self, name: "myItems") { notification in
+            
+            print("getMyItems fired")
+            
+            let info = notification.object as! [Item]
+            
+            completon(data: info)
+        }
+        
+        client.getMyItems()
     }
 }

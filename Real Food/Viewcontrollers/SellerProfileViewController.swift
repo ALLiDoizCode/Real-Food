@@ -12,6 +12,7 @@ import Material
 import ImagePickerSheetController
 import Photos
 import SwiftSpinner
+import Kingfisher
 
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -35,6 +36,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     var type:String!
     var image:UIImage!
+    var itemsArray:[Item] = []
 
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cancle: FabButton!
@@ -118,6 +120,19 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         closeReview.hidden = true
         newItemView.hidden = true
         buttonView.hidden = true
+        
+        presenter.getMyItems { (data) -> Void in
+            
+            print("got data")
+            
+            print(data.count)
+            
+            self.itemsArray.removeAll()
+            
+            self.itemsArray = data
+            
+            self.reload()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -125,9 +140,17 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         menu.menuView.hide()
     }
     
+    func reload(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.tableView.reloadData()
+        });
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return imageArray.count
+        return itemsArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -147,24 +170,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
             
-            let image = UIImage(named: self.imageArray[indexPath.row])
-            
-            //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
-            
             dispatch_async(dispatch_get_main_queue(), {
                 
-                /*cell.fadeView.blurEnabled = true
-                cell.fadeView.blurRadius = 20
-                cell.fadeView.dynamic = false
-                cell.fadeView.clipsToBounds = true
-                cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
+                let image = self.itemsArray[indexPath.row].image
                 
-                
-                })*/
-                
-                cell.cellImage.image = image
-                cell.mainLabel.text = "Sara"
-                cell.foodDescription.text = self.titleArray[indexPath.row]
+                cell.cellImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
+                cell.mainLabel.text = self.itemsArray[indexPath.row].userName
+                cell.foodDescription.text = self.itemsArray[indexPath.row].description
                 
                 cell.layoutSubviews()
             });
@@ -377,6 +389,15 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                     print("Item Saved Successfully")
                     self.newItemView.hidden = true
                     self.cover.hidden = true
+                    
+                    self.presenter.getMyItems { (data) -> Void in
+                        
+                        self.itemsArray.removeAll()
+                        
+                        self.itemsArray = data
+                        
+                        self.reload()
+                    }
                 })
                 
                 
