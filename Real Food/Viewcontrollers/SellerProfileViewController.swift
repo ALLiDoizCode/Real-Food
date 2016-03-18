@@ -384,8 +384,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             if success == true {
                 
-                SwiftSpinner.hide({
-                    
                     print("Item Saved Successfully")
                     self.newItemView.hidden = true
                     self.cover.hidden = true
@@ -397,9 +395,9 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                         self.itemsArray = data
                         
                         self.reload()
+                        
+                        SwiftSpinner.hide()
                     }
-                })
-                
                 
                 
             }else {
