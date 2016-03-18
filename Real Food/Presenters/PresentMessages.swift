@@ -24,14 +24,14 @@ class PresentMessages {
             completion(data: objects)
         }
         
-        
+        client.getMessage(roomId)
     }
     
     func getRooms(completion:(data:[Rooms]) -> Void){
         
         print("fired room presenter")
         
-        SwiftEventBus.onMainThread(self, name: "Rooms") { (notifiaction) -> Void in
+        SwiftEventBus.onMainThread(self, name: "getRooms") { (notifiaction) -> Void in
             
             print("fired room event")
             
@@ -42,14 +42,14 @@ class PresentMessages {
             SwiftEventBus.unregister(self, name: "Rooms")
         }
         
-
+            client.getRooms()
     }
     
-    func sendMessageWithId(text:String,roomId:String,completion:(success:Bool) -> Void){
+    func sendMessage(text:String,recipient:String,completion:(success:Bool) -> Void){
         
         print("fired function")
         
-        SwiftEventBus.onMainThread(self, name: "messageWithId") { (notification) -> Void in
+        SwiftEventBus.onMainThread(self, name: "sendMessage") { (notification) -> Void in
             
             print("fired event")
             
@@ -60,6 +60,7 @@ class PresentMessages {
             SwiftEventBus.unregister(self, name: "messageWithId")
         }
         
+        client.sendMessage(recipient, text: text)
     }
     
 }

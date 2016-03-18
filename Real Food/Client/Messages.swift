@@ -99,12 +99,14 @@ class Messages {
                 
             }
             
-            SwiftEventBus.post("Rooms", sender: self.roomArray)
+            SwiftEventBus.post("getRooms", sender: self.roomArray)
         }
         
     }
     
     func getMessage(roomID:String){
+        
+        messageArray.removeAll()
         
         let messageQuery = PFQuery(className: "Message")
         
@@ -166,7 +168,6 @@ class Messages {
     func sendMessage(recipient:String,text:String) {
         
         var theRecipient:PFUser!
-        var roomId:String!
         let roomObject = PFObject(className: "Room")
         let messageObject = PFObject(className: "Message")
         
@@ -204,6 +205,8 @@ class Messages {
                     
                     if success == true {
                         
+                        print("the message was saved")
+                        
                         let relation = roomObject.relationForKey("Messages")
                         relation.addObject(messageObject)
                         
@@ -211,6 +214,9 @@ class Messages {
                             
                             if success == true {
                                 
+                                
+                                print("the room was created")
+                                SwiftEventBus.post("sendMessage", sender: success)
                                 
                             }else {
                                 
@@ -228,8 +234,6 @@ class Messages {
                 return
             }
             
-            roomId = object.objectId
-            
             guard let relation:PFRelation = object.relationForKey("Messages") else {
                 
                 return
@@ -239,12 +243,16 @@ class Messages {
                 
                 if success == true {
                     
+                    print("Messaged saved")
+                    
                     relation.addObject(messageObject)
                     
                     object.saveInBackgroundWithBlock({ (success, error) -> Void in
                         
                         if success == true {
                             
+                            print("Messaged saved to room")
+                            SwiftEventBus.post("sendMessage", sender: success)
                             
                         }else {
                             
