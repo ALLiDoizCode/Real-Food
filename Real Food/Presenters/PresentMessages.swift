@@ -24,7 +24,7 @@ class PresentMessages {
             completion(data: objects)
         }
         
-        client.getMessages(roomId)
+        
     }
     
     func getRooms(completion:(data:[Rooms]) -> Void){
@@ -42,25 +42,7 @@ class PresentMessages {
             SwiftEventBus.unregister(self, name: "Rooms")
         }
         
-        client.getRooms()
-    }
-    
-    func sendMessage(text:String,recipient:String,completion:(success:Bool) -> Void){
-        
-         print("fired function")
-        
-        SwiftEventBus.onMainThread(self, name: "SendMessage") { (notification) -> Void in
-            
-            print("fired event")
-            
-            let info = notification.object as! Bool
-            
-            completion(success: info)
-            
-            SwiftEventBus.unregister(self, name: "SendMessage")
-        }
-        
-        client.sendMessage(text, recipient: recipient)
+
     }
     
     func sendMessageWithId(text:String,roomId:String,completion:(success:Bool) -> Void){
@@ -78,24 +60,6 @@ class PresentMessages {
             SwiftEventBus.unregister(self, name: "messageWithId")
         }
         
-        client.sendMessageWithId(text, roomId: roomId)
     }
     
-    func sendImage(media:UIImage!,recipient:String,completion:(success:Bool) -> Void){
-        
-         print("fired function")
-        
-        SwiftEventBus.onMainThread(self, name: "SendMessage") { (notification) -> Void in
-            
-             print("fired event")
-            
-            let info = notification.object as! Bool
-            
-            completion(success: info)
-            
-            SwiftEventBus.unregister(self, name: "SendMessage")
-        }
-        
-        client.sendImage(media, recipient: recipient)
-    }
 }

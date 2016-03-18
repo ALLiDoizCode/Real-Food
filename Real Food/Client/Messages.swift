@@ -17,446 +17,250 @@ class Messages {
     var roomArray:[Rooms] = []
     var messageArray:[Message] = []
     
-    func sendMessage(text:String!,recipient:String!){
+    func getRooms(){
         
-        print("send message start")
+        let roomQuery = PFQuery(className: "Room")
+        roomQuery.whereKey("Sender", equalTo: currentUser!)
+        roomQuery.whereKey("Recipient", equalTo: currentUser!)
         
-        let room = PFObject(className: "Room")
-        let chat = PFObject(className: "Message")
-        let userQuery = PFUser.query()
-        var roomRecipient:PFUser!
-        
-        do{
-            
-            try roomRecipient = userQuery?.getObjectWithId(recipient) as! PFUser
-            try roomRecipient.fetch()
-            
-        }catch _{
-            
-        }
-        
-        print("1")
-        
-        let roomQuery:PFQuery = PFQuery(className: "Room")
-            
-            print("2")
+        roomArray.removeAll()
         
         roomQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
-            print("4")
-            
-            if objects!.count > 0 {
+            guard let objects:[PFObject] = objects else {
                 
-                print("5")
-                
-                for object in objects! {
-                    
-                    print("6")
-                    
-                    guard let theSender = object.objectForKey("Sender") as? PFUser else {
-                        
-                        print("no sender")
-                        
-                        return
-                    }
-                    
-                    guard let theRecipient = object.objectForKey("Recipient") as? PFUser else {
-                        
-                        print("no recipient")
-                        
-                        return
-                    }
-                    
-                    do {
-                        
-                        try theSender.fetch()
-                        try theRecipient.fetch()
-                        
-                    }catch _{
-                        
-                    }
-                    
-                    if (theSender == self.currentUser && theRecipient == roomRecipient) || (theSender == roomRecipient && theRecipient == self.currentUser) {
-                        
-                        print("saved new message")
-                        
-                        self.sendMessageWithId(text,roomId: object.objectId!)
-                        
-                    }else {
-                        
-                        print("no room exist")
-                        
-                        chat["Description"] = text
-                        chat["Sender"] = self.currentUser
-                        
-                        chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                            
-                            let relation:PFRelation = room.relationForKey("Messages")
-                            room["Sender"] = self.currentUser
-                            room["Recipient"] = roomRecipient
-                            relation.addObject(chat)
-                            room["Status"] = true
-                            
-                            room.saveInBackgroundWithBlock({ (success, error) -> Void in
-                                
-                                if success == true {
-                                    
-                                    print("message sent")
-                                    
-                                }else{
-                                    
-                                    print("message not sent")
-                                }
-                                
-                            })
-                        })
-                    }
-                }
-                
-            }else {
-                
-                chat["Description"] = text
-                chat["Sender"] = self.currentUser
-                
-                chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    
-                    print("3")
-                    
-                    room["Sender"] = self.currentUser
-                    room["Recipient"] = roomRecipient
-                    let relation:PFRelation = room.relationForKey("Messages")
-                    relation.addObject(chat)
-                    room["Status"] = true
-                    
-                    room.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        
-                        print("saved message")
-                        
-                        if success == true {
-                            
-                            print("text message sent")
-                            
-                            SwiftEventBus.post("SendMessage", sender: success)
-                            
-                        }else {
-                            
-                            print("text message not  sent")
-                            
-                            SwiftEventBus.post("SendMessage", sender: success)
-                        }
-                    })
-                })
+                return
             }
             
+            for object in objects {
+                
+                guard let roomId = object.objectId else {
+                    
+                    return
+                }
+                
+                guard let status = object.objectForKey("Status") as? Bool else {
+                    
+                    return
+                }
+                
+                guard let sender = object.objectForKey("Sender") as? PFUser else {
+                    
+                    return
+                }
+                
+                guard let recipient = object.objectForKey("Recipient") as? PFUser else {
+                    
+                    return
+                }
+                
+                do {
+                    
+                    try sender.fetch()
+                    try recipient.fetch()
+                    
+                }catch _{
+                    
+                }
+                
+                guard let senderName = sender.username else {
+                    
+                    return
+                }
+                
+                guard let senderImage = sender.objectForKey("ProfileImage") as? PFFile else {
+                    
+                    return
+                }
+                
+                
+                guard let recipientName = recipient.username else {
+                    
+                    return
+                }
+                
+                guard let recipientImage = recipient.objectForKey("ProfileImage") as? PFFile else {
+                    
+                    return
+                }
+                
+                if self.currentUser?.objectId == sender.objectId {
+                    
+                    let myRoom = Rooms(theObjectId: roomId, theRecipiant: recipient.objectId!, theCreatedBy: (self.currentUser?.objectId)!, theStatus: status, theTime: object.updatedAt!, theIcon: recipientImage.url!, theName: recipientName)
+                    
+                    self.roomArray.append(myRoom)
+                    
+                }else{
+                    
+                    let myRoom = Rooms(theObjectId: roomId, theRecipiant: (self.currentUser?.objectId)!, theCreatedBy: recipient.objectId!, theStatus: status, theTime: object.updatedAt!, theIcon: senderImage.url!, theName: senderName)
+                    
+                    self.roomArray.append(myRoom)
+                }
+                
+            }
+            
+            SwiftEventBus.post("Rooms", sender: self.roomArray)
         }
         
     }
     
-    func sendImage(media:UIImage!,recipient:String!){
+    func getMessage(roomID:String){
         
-        let imageData = NSData(data: UIImageJPEGRepresentation(media, 0.4)!)
-        let file = PFFile(data: imageData)
+        let messageQuery = PFQuery(className: "Message")
         
-        print("send message start")
+        messageQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+            
+            guard let objects:[PFObject] = objects else {
+                
+                return
+            }
+            
+            for object in objects {
+                
+                guard let sender = object.objectForKey("Sender") as? PFUser else {
+                    
+                    return
+                }
+                
+                guard let description = object.objectForKey("Description") as? String else {
+                    
+                    return
+                }
+                
+                guard let time = object.createdAt else {
+                    
+                    return
+                }
+                
+                do {
+                    
+                    try sender.fetch()
+                    
+                }catch _{
+                    
+                }
+                
+                guard let profileImage = sender.objectForKey("ProfileImage") as? PFFile else {
+                    
+                    return
+                }
+                
+                guard let media = object.objectForKey("Media") as? PFFile else {
+                    
+                    let myMessage = Message(theDescription: description, theMedia: "", theSender: sender.objectId!, theSenderImage: profileImage.url!, theTime: time, theSenderName: sender.username!)
+                    
+                    self.messageArray.append(myMessage)
+                    
+                    return
+                }
+                
+                let myMessage = Message(theDescription: description, theMedia: media.url!, theSender: sender.objectId!, theSenderImage: profileImage.url!, theTime: time, theSenderName: sender.username!)
+                
+                self.messageArray.append(myMessage)
+            }
+            
+            SwiftEventBus.post("getMessages", sender: self.messageArray)
+        }
+    }
+    
+    func sendMessage(recipient:String,text:String) {
         
-        let room = PFObject(className: "Room")
-        let chat = PFObject(className: "Message")
+        var theRecipient:PFUser!
+        var roomId:String!
+        let roomObject = PFObject(className: "Room")
+        let messageObject = PFObject(className: "Message")
+        
+        messageObject["Description"] = text
+        messageObject["Sender"] = currentUser
+        
         let userQuery = PFUser.query()
-        var roomRecipient:PFUser!
         
-        do{
+        do {
             
-            try roomRecipient = userQuery?.getObjectWithId(recipient) as! PFUser
-            try roomRecipient.fetch()
-            
+            theRecipient = try userQuery?.getObjectWithId("recipient") as? PFUser
+                
         }catch _{
             
         }
         
-        print("1")
+        let roomQuery = PFQuery(className: "Room")
+        roomQuery.whereKey("Sender", equalTo: currentUser!)
+        roomQuery.whereKey("Recipient", equalTo: theRecipient!)
         
-        let roomQuery:PFQuery = PFQuery(className: "Room")
+        let roomQuery2 = PFQuery(className: "Room")
+        roomQuery2.whereKey("Sender", equalTo: theRecipient!)
+        roomQuery2.whereKey("Recipient", equalTo: currentUser!)
         
-        print("2")
+        let query = PFQuery.orQueryWithSubqueries([roomQuery,roomQuery2])
         
-        roomQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
+        query.getFirstObjectInBackgroundWithBlock { (object, error) -> Void in
             
-            print("4")
-            
-            if objects!.count > 0 {
+            guard let object:PFObject = object else {
                 
-                print("5")
+                roomObject["Sender"] = self.currentUser
+                roomObject["Recipient"] = theRecipient
                 
-                for object in objects! {
-                    
-                    print("6")
-                    
-                    guard let theSender = object.objectForKey("Sender") as? PFUser else {
-                        
-                        print("no sender")
-                        
-                        return
-                    }
-                    
-                    guard let theRecipient = object.objectForKey("Recipient") as? PFUser else {
-                        
-                        print("no recipient")
-                        
-                        return
-                    }
-                    
-                    do {
-                        
-                        try theSender.fetch()
-                        try theRecipient.fetch()
-                        
-                    }catch _{
-                        
-                    }
-                    
-                    if (theSender == self.currentUser && theRecipient == roomRecipient) || (theSender == roomRecipient && theRecipient == self.currentUser) {
-                        
-                        print("saved new message")
-                        
-                        self.sendImageWithId(media, roomId: object.objectId!)
-                        
-                    }else {
-                        
-                        print("no room exist")
-                        
-                        chat["Media"] = file
-                        chat["Sender"] = self.currentUser
-                        
-                        chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                            
-                            let relation:PFRelation = room.relationForKey("Messages")
-                            room["Sender"] = self.currentUser
-                            room["Recipient"] = roomRecipient
-                            relation.addObject(chat)
-                            room["Status"] = true
-                            
-                            room.saveInBackgroundWithBlock({ (success, error) -> Void in
-                                
-                                if success == true {
-                                    
-                                    print("message sent")
-                                    
-                                }else{
-                                    
-                                    print("message not sent")
-                                }
-                                
-                            })
-                        })
-                    }
-                }
-                
-            }else {
-                
-                chat["Media"] = file
-                chat["Sender"] = self.currentUser
-                
-                chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    
-                    print("3")
-                    
-                    room["Sender"] = self.currentUser
-                    room["Recipient"] = roomRecipient
-                    let relation:PFRelation = room.relationForKey("Messages")
-                    relation.addObject(chat)
-                    room["Status"] = true
-                    
-                    room.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        
-                        print("saved message")
-                        
-                        if success == true {
-                            
-                            print("text message sent")
-                            
-                            SwiftEventBus.post("SendMessage", sender: success)
-                            
-                        }else {
-                            
-                            print("text message not  sent")
-                            
-                            SwiftEventBus.post("SendMessage", sender: success)
-                        }
-                    })
-                })
-            }
-            
-        }
-        
-    }
-    
-    func sendMessageWithId(text:String!,roomId:String){
-        
-        let roomQuery:PFQuery = PFQuery(className: "Room")
-        let chat = PFObject(className: "Message")
-        
-        roomQuery.getObjectInBackgroundWithId(roomId) { (room, error) -> Void in
-            
-            chat["Description"] = text
-            chat["Sender"] = self.currentUser
-            
-            chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                
-                room!["Sender"] = self.currentUser
-                let relation:PFRelation = room!.relationForKey("Messages")
-                relation.addObject(chat)
-                room!["Status"] = true
-                
-                room!.saveInBackgroundWithBlock({ (success, error) -> Void in
+                messageObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                     
                     if success == true {
                         
-                        print("text message sent")
-                        SwiftEventBus.post("messageWithId", sender: success)
+                        let relation = roomObject.relationForKey("Messages")
+                        relation.addObject(messageObject)
                         
-                    }else {
-                        
-                        print("text message not  sent")
-                        SwiftEventBus.post("messageWithId", sender: success)
-                    }
-                })
-            })
-        }
-        
-        }
-    
-    func sendImageWithId(media:UIImage!,roomId:String){
-        
-        let roomQuery:PFQuery = PFQuery(className: "Room")
-        let chat = PFObject(className: "Message")
-        
-        roomQuery.getObjectInBackgroundWithId(roomId) { (room, error) -> Void in
-            
-            guard (media == nil) else {
-                
-                let imageData = NSData(data: UIImageJPEGRepresentation(media, 0.4)!)
-                let file = PFFile(data: imageData)
-                
-                chat["Media"] = file
-                chat["Sender"] = self.currentUser
-                
-                chat.saveInBackgroundWithBlock({ (success, error) -> Void in
-                    
-                    let relation:PFRelation = room!.relationForKey("Messages")
-                    relation.addObject(chat)
-                    room!["Status"] = true
-                    
-                    room!.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        
-                        if success == true {
+                        roomObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                             
-                            print("image message sent")
-                        }
+                            if success == true {
+                                
+                                
+                            }else {
+                                
+                                print("there was in issue creating the chat room")
+                                print(error)
+                            }
+                        })
+                    }else{
                         
-                        print("image message not sent")
-                    })
+                        print("there was in issue saving the message")
+                        print(error)
+                    }
                 })
                 
                 return
             }
-        }
-        
-    }
-    
-    func getRooms(){
-        
-        self.roomArray.removeAll()
-        
-        print("fired room func")
-        
-        let roomQuery:PFQuery = PFQuery(className: "Room")
-        
-        roomQuery.findObjectsInBackgroundWithBlock { (objects, error) -> Void in
             
-            print("fired room query")
+            roomId = object.objectId
             
-            if let objects = objects  {
+            guard let relation:PFRelation = object.relationForKey("Messages") else {
                 
-                for object in objects {
-                    
-                    print("fired loop")
-                    
-                    guard let theSender = object.objectForKey("Sender") as? PFUser else {
-                        
-                        print("no sender")
-                        
-                        return
-                    }
-                    
-                    print("guard1")
-                    
-                    guard let theRecipient = object.objectForKey("Recipient") as? PFUser else {
-                        
-                        print("no Recipient")
-                        
-                        return
-                    }
-                    print("guard2")
-                    
-                    guard let theStatus = object.objectForKey("Status") as? Bool else {
-                        
-                        print("no status")
-                        
-                        return
-                    }
-                    
-                    print("guard3")
-                    
-                    do {
-                        
-                        try theSender.fetch()
-                        try theRecipient.fetch()
-                        
-                    }catch _ {
-                        
-                    }
-                    
-                    guard let icon:PFFile = theSender.objectForKey("ProfileImage") as? PFFile else {
-                        
-                        print("no icon")
-                        
-                        return
-                    }
-                    
-                    print("guard4")
-                    
-                    guard let name:String = theSender.objectForKey("username") as? String else {
-                        
-                        print("no icon")
-                        
-                        return
-                    }
-                    
-                    print("guard5")
-                    
-                    if theSender.objectId == self.currentUser?.objectId || theRecipient.objectId == self.currentUser?.objectId {
-                        
-                        let theRoom = Rooms(theObjectId: object.objectId!, theRecipiant: theRecipient.objectId!, theCreatedBy: theSender.objectId!, theStatus: theStatus, theTime: object.updatedAt!,theIcon: icon.url!,theName:name)
-                        
-                        self.roomArray.append(theRoom)
-                        
-                        print("added room")
-                        
-                    }
-                }
-                
-                SwiftEventBus.post("Rooms", sender: self.roomArray)
-                
-            }else {
-                
-                print("no objects")
+                return
             }
             
+            messageObject.saveInBackgroundWithBlock({ (success, error) -> Void in
+                
+                if success == true {
+                    
+                    relation.addObject(messageObject)
+                    
+                    object.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        
+                        if success == true {
+                            
+                            
+                        }else {
+                            
+                            print("there was in issue creating the chat room")
+                            print(error)
+                        }
+                    })
+                }else{
+                    
+                    print("there was in issue saving the message")
+                    print(error)
+                }
+            })
             
         }
-    }
-    
-    func getMessages(roomId:String){
+        
         
     }
 
