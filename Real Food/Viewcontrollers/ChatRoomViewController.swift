@@ -12,9 +12,9 @@ import Photos
 import Parse
 
 
-class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate/*,LynnBubbleViewDataSource*/ {
+class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate {
     
-    @IBOutlet weak var tableView: LynnBubbleTableView!
+    @IBOutlet weak var tableView: UITableView!
     var userIcon:UIImage!
     var sellerId:String!
     var roomId:String!
@@ -27,6 +27,9 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 246.0
         
         //self.tableView.bubbleDataSource = self
         
@@ -182,23 +185,21 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         
     }
     
-    /*func numberOfRowsForBubbleTable(bubbleTableView: LynnBubbleTableView) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return 10
     }
     
-    func bubbleTableView(bubbleTableView: LynnBubbleTableView, dataAtIndex: Int) -> LynnBubbleData? {
-        return self.tableView[dataAtIndex]
-    }*/
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCellWithIdentifier("chat") as! ChatCell
+        
+        cell.icon1.image = UIImage(named: "girl")
+        cell.time1.text = "20ms"
+        cell.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+        
+        return cell
     }
-    */
 
 }
 

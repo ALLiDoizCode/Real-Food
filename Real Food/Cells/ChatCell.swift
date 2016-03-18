@@ -10,6 +10,15 @@ import UIKit
 
 class ChatCell: UITableViewCell {
 
+    @IBOutlet weak var icon1: UIImageView!
+    @IBOutlet weak var name1: UILabel!
+    @IBOutlet weak var time1: UILabel!
+    
+    @IBOutlet weak var icon2: UIImageView!
+    @IBOutlet weak var name2: UILabel!
+    @IBOutlet weak var time2: UILabel!
+    @IBOutlet weak var message: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
