@@ -21,7 +21,7 @@ class Location {
                 // location is a CLPlacemark
                 
                 let myCoords = location?.coordinate
-                
+            
                 print(myCoords)
                 
                 completion(coords: myCoords!)
@@ -49,6 +49,7 @@ class Location {
                 
                 lat = place?.location?.coordinate.latitude
                 long = place?.location?.coordinate.longitude
+                
             }
             
             if lat != nil && long != nil {

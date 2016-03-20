@@ -153,7 +153,10 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             print("user id \(self.itemArray[indexPath!.row].objectId)")
             
-            controller.objectId = self.itemArray[indexPath!.row].objectId
+            controller.sellerId = self.itemArray[indexPath!.row].objectId
+            controller.sellerIcon = self.itemArray[indexPath!.row].profileImage
+            controller.sellerName = self.itemArray[indexPath!.row].userName
+            controller.itemIcon = self.itemArray[indexPath!.row].image
         }
     }
     

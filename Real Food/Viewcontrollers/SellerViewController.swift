@@ -16,7 +16,14 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     let menu = getMenu.sharedInstance
     let presenter = PresentMessages()
     let reuseIdentifier = "Review"
-    var objectId:String!
+    
+    var sellerId:String!
+    var sellerIcon:String!
+    var itemIcon:String!
+    var sellerName:String!
+    var sellerCity:String!
+    var sellerDistance:String!
+    var sellerRating:String!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLbl: UILabel!
@@ -33,6 +40,12 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        print("my item \(sellerIcon)")
+        
+        mainImage.kf_setImageWithURL(NSURL(string: itemIcon)!, placeholderImage: UIImage(named: "placeholder"))
+        userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
+        userName.text = sellerName
         
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
@@ -64,7 +77,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 10
             
-            self.mainImage.image = UIImage(named: "beans")
             //let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
             //self.mainImage.image = blurredImage
             //self.mainImage.layer.cornerRadius = 3
@@ -73,7 +85,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
           
             self.userName.font = RobotoFont.mediumWithSize(20)
             //self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
-            self.userName.text = "Sara Dodsen"
+            //self.userName.text = "Sara Dodsen"
             //self.distance.textColor = UIColor.flatGrayColor()
             self.distance.font = RobotoFont.mediumWithSize(14)
             self.distance.text = "16m/MT Pleasent"
@@ -123,13 +135,15 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func messageBTn(sender: AnyObject) {
         
-        presenter.sendMessage("", recipient: objectId) { (success) -> Void in
+        /*presenter.sendMessage("", recipient: objectId) { (success) -> Void in
             
             if success == true {
                 
                 self.performSegueWithIdentifier("goToMessages", sender: self)
             }
-        }
+        }*/
+        
+        self.performSegueWithIdentifier("goToMessages", sender: self)
     }
     @IBAction func rateBtn(sender: AnyObject) {
         
@@ -144,9 +158,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         if segue.identifier == "goToMessages" {
             
             let controller = segue.destinationViewController as! ChatRoomViewController
-            controller.sellerId = objectId
+            controller.sellerId = sellerId
             
-            print("the object id is \(objectId)")
+            print("the object id is \(sellerId)")
         }
     }
     
