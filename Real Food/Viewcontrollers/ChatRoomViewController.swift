@@ -204,7 +204,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                 cell2.icon.image = UIImage(named: "placeholder")
                 cell2.name.text = "Fatima Green"
                 cell2.time.text = "20ms"
-                cell2.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+                cell2.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjal"
             
             //});
             
