@@ -22,6 +22,7 @@
 		4D3A28081C97B67F00F2A919 /* Cloud.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A28071C97B67F00F2A919 /* Cloud.swift */; };
 		4D3A280B1C97BDE400F2A919 /* PresentUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A280A1C97BDE400F2A919 /* PresentUser.swift */; };
 		4D3A280D1C97BED400F2A919 /* PresentLIst.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D3A280C1C97BED400F2A919 /* PresentLIst.swift */; };
+		4D4167C91C9E97340041D5EF /* ChatCell2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4167C81C9E97340041D5EF /* ChatCell2.swift */; };
 		4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF31C960D8500386CC2 /* SignUpViewController.swift */; };
 		4D671AF61C960DBA00386CC2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D671AF51C960DBA00386CC2 /* SignUp.storyboard */; };
 		4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF71C96254900386CC2 /* MakeBuyerViewController.swift */; };
@@ -96,6 +97,7 @@
 		4D3A28071C97B67F00F2A919 /* Cloud.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Cloud.swift; sourceTree = "<group>"; };
 		4D3A280A1C97BDE400F2A919 /* PresentUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentUser.swift; sourceTree = "<group>"; };
 		4D3A280C1C97BED400F2A919 /* PresentLIst.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentLIst.swift; sourceTree = "<group>"; };
+		4D4167C81C9E97340041D5EF /* ChatCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell2.swift; sourceTree = "<group>"; };
 		4D671AF31C960D8500386CC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4D671AF51C960DBA00386CC2 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		4D671AF71C96254900386CC2 /* MakeBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeBuyerViewController.swift; sourceTree = "<group>"; };
@@ -128,7 +130,7 @@
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		4DF09ADA1C6D6C500007B1C5 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
-		4DF9CB471C57FA2400922A63 /* Real Food.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Real Food.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4DF9CB471C57FA2400922A63 /* Green Pepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Green Pepper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF9CB4C1C57FA2400922A63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		4DF9CB4F1C57FA2400922A63 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -255,6 +257,7 @@
 				4D1EF5B21C70F4B300B80735 /* ReviewCell.swift */,
 				4D3A27FB1C97722D00F2A919 /* RoomCell.swift */,
 				4D8695C91C9A61B600B20968 /* ChatCell.swift */,
+				4D4167C81C9E97340041D5EF /* ChatCell2.swift */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -299,7 +302,7 @@
 		4DF9CB481C57FA2400922A63 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				4DF9CB471C57FA2400922A63 /* Real Food.app */,
+				4DF9CB471C57FA2400922A63 /* Green Pepper.app */,
 				4DF9CB5B1C57FA2500922A63 /* Real FoodTests.xctest */,
 				4DF9CB661C57FA2500922A63 /* Real FoodUITests.xctest */,
 			);
@@ -371,7 +374,7 @@
 			);
 			name = "Real Food";
 			productName = "Real Food";
-			productReference = 4DF9CB471C57FA2400922A63 /* Real Food.app */;
+			productReference = 4DF9CB471C57FA2400922A63 /* Green Pepper.app */;
 			productType = "com.apple.product-type.application";
 		};
 		4DF9CB5A1C57FA2500922A63 /* Real FoodTests */ = {
@@ -562,6 +565,7 @@
 				4D8695C61C9A07F300B20968 /* Message.swift in Sources */,
 				4D8695E31C9A66AE00B20968 /* LynnBubbleViewHeaderCell.swift in Sources */,
 				4D3A280D1C97BED400F2A919 /* PresentLIst.swift in Sources */,
+				4D4167C91C9E97340041D5EF /* ChatCell2.swift in Sources */,
 				4D8695C41C9A05C400B20968 /* Rooms.swift in Sources */,
 				4D7422851C586E4C00453818 /* FoodCell.swift in Sources */,
 				4D8695E71C9A66AE00B20968 /* Someone'sBubbleViewCell.swift in Sources */,
@@ -733,7 +737,7 @@
 				INFOPLIST_FILE = "Real Food/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NerdHouse.Real-Food";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Green Pepper";
 			};
 			name = Debug;
 		};
@@ -745,7 +749,7 @@
 				INFOPLIST_FILE = "Real Food/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.NerdHouse.Real-Food";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Green Pepper";
 			};
 			name = Release;
 		};

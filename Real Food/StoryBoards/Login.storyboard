@@ -10,7 +10,7 @@
         <!--Landing View Controller-->
         <scene sceneID="PUv-GB-kOZ">
             <objects>
-                <viewController storyboardIdentifier="landing" id="FKh-qG-ztJ" customClass="LandingViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="landing" id="FKh-qG-ztJ" customClass="LandingViewController" customModule="Green_Pepper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Fa2-5f-ubM"/>
                         <viewControllerLayoutGuide type="bottom" id="8nX-Xv-Y5Z"/>
@@ -223,7 +223,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cow-1" translatesAutoresizingMaskIntoConstraints="NO" id="Suz-gY-cUk">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GreenPepper2" translatesAutoresizingMaskIntoConstraints="NO" id="Suz-gY-cUk">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="128" id="Bds-RA-6TG"/>
@@ -242,30 +242,6 @@
                                     </mask>
                                 </variation>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100m Diet" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-QP-wy7">
-                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="360" id="O3X-du-kek">
-                                        <variation key="heightClass=regular-widthClass=compact" constant="360"/>
-                                    </constraint>
-                                    <constraint firstAttribute="height" constant="96" id="ohe-aT-1Pp"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="40"/>
-                                <color key="textColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="O3X-du-kek"/>
-                                        <exclude reference="ohe-aT-1Pp"/>
-                                    </mask>
-                                </variation>
-                                <variation key="heightClass=regular-widthClass=compact">
-                                    <mask key="constraints">
-                                        <include reference="O3X-du-kek"/>
-                                        <include reference="ohe-aT-1Pp"/>
-                                    </mask>
-                                </variation>
-                            </label>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="9ma-Ow-CNl">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
@@ -420,8 +396,29 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Green Pepper" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lGo-QP-wy7">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="96" id="ohe-aT-1Pp">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="58"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="AvenirNext-DemiBold" family="Avenir Next" pointSize="40"/>
+                                <color key="textColor" red="0.9212072491645813" green="0.84832113981246948" blue="0.62377804517745972" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="ohe-aT-1Pp"/>
+                                    </mask>
+                                </variation>
+                                <variation key="heightClass=regular-widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="ohe-aT-1Pp"/>
+                                    </mask>
+                                </variation>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.16821733119999999" green="0.30624192950000001" blue="0.18358390029999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.16862745098039217" green="0.30588235294117649" blue="0.18431372549019609" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Tn4-qy-tVw" firstAttribute="trailing" secondItem="TIo-2t-NA7" secondAttribute="trailing" id="0R1-RB-qAS">
                                 <variation key="heightClass=regular-widthClass=compact" constant="3"/>
@@ -436,12 +433,14 @@
                             </constraint>
                             <constraint firstItem="8gc-br-Bfa" firstAttribute="trailing" secondItem="boq-so-eoC" secondAttribute="trailing" id="ASK-YJ-OR7"/>
                             <constraint firstItem="lGo-QP-wy7" firstAttribute="leading" secondItem="dLJ-AY-5Rd" secondAttribute="leading" id="BhU-1V-ZEC">
-                                <variation key="heightClass=regular-widthClass=compact" constant="0.0"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="31"/>
                             </constraint>
                             <constraint firstItem="TIo-2t-NA7" firstAttribute="top" secondItem="8gc-br-Bfa" secondAttribute="top" id="FPw-8M-4d1">
                                 <variation key="heightClass=regular-widthClass=compact" constant="-9"/>
                             </constraint>
-                            <constraint firstItem="lGo-QP-wy7" firstAttribute="centerX" secondItem="Suz-gY-cUk" secondAttribute="centerX" id="HZ8-6d-4MK"/>
+                            <constraint firstItem="lGo-QP-wy7" firstAttribute="centerX" secondItem="Suz-gY-cUk" secondAttribute="centerX" id="HZ8-6d-4MK">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-0.5"/>
+                            </constraint>
                             <constraint firstItem="boq-so-eoC" firstAttribute="top" secondItem="Tn4-qy-tVw" secondAttribute="top" id="Jjn-QJ-ej3">
                                 <variation key="heightClass=regular-widthClass=compact" constant="7"/>
                             </constraint>
@@ -449,7 +448,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="136"/>
                             </constraint>
                             <constraint firstItem="boq-so-eoC" firstAttribute="top" secondItem="Suz-gY-cUk" secondAttribute="bottom" constant="8" symbolic="YES" id="OD1-kF-cq2">
-                                <variation key="heightClass=regular-widthClass=compact" constant="132"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="54"/>
                             </constraint>
                             <constraint firstItem="NOe-U2-Vzz" firstAttribute="centerX" secondItem="xtY-3p-9MJ" secondAttribute="centerX" id="Oce-z7-so7"/>
                             <constraint firstItem="dLJ-AY-5Rd" firstAttribute="trailing" secondItem="cyP-56-2W8" secondAttribute="trailing" id="OmA-WQ-dnC"/>
@@ -462,7 +461,7 @@
                                 <variation key="heightClass=regular-widthClass=compact" constant="-2"/>
                             </constraint>
                             <constraint firstItem="lGo-QP-wy7" firstAttribute="top" secondItem="Fa2-5f-ubM" secondAttribute="bottom" constant="67" id="ab8-bu-xn4">
-                                <variation key="heightClass=regular-widthClass=compact" constant="162"/>
+                                <variation key="heightClass=regular-widthClass=compact" constant="33"/>
                             </constraint>
                             <constraint firstItem="cyP-56-2W8" firstAttribute="top" secondItem="dLJ-AY-5Rd" secondAttribute="bottom" constant="70" id="c4u-Gb-WzA"/>
                             <constraint firstItem="cyP-56-2W8" firstAttribute="trailing" secondItem="xtY-3p-9MJ" secondAttribute="trailingMargin" id="f6N-1p-naa"/>
@@ -502,8 +501,8 @@
                                 <exclude reference="NOe-U2-Vzz"/>
                                 <exclude reference="Y6Y-9F-9cu"/>
                                 <exclude reference="Suz-gY-cUk"/>
-                                <exclude reference="lGo-QP-wy7"/>
                                 <exclude reference="9ma-Ow-CNl"/>
+                                <exclude reference="lGo-QP-wy7"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="tgy-Pf-rv9"/>
@@ -552,8 +551,8 @@
                                 <include reference="NOe-U2-Vzz"/>
                                 <include reference="Y6Y-9F-9cu"/>
                                 <include reference="Suz-gY-cUk"/>
-                                <include reference="lGo-QP-wy7"/>
                                 <include reference="9ma-Ow-CNl"/>
+                                <include reference="lGo-QP-wy7"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="tgy-Pf-rv9"/>
@@ -644,8 +643,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="GreenPepper2" width="3349" height="4374"/>
         <image name="UserName" width="256" height="256"/>
-        <image name="cow-1" width="256" height="256"/>
         <image name="password" width="128" height="128"/>
     </resources>
 </document>

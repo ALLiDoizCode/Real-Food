@@ -193,12 +193,40 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCellWithIdentifier("chat") as! ChatCell
+        let cell2 = tableView.dequeueReusableCellWithIdentifier("chat2") as! ChatCell2
         
-        cell.icon1.image = UIImage(named: "girl")
-        cell.time1.text = "20ms"
-        cell.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+        if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 {
+            
+           
+            
+            //dispatch_async(dispatch_get_main_queue(), {
+                
+                cell2.icon.image = UIImage(named: "placeholder")
+                cell2.name.text = "Fatima Green"
+                cell2.time.text = "20ms"
+                cell2.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+            
+            //});
+            
+            return cell2
+            
+        }else {
+            
+            
+            
+            //dispatch_async(dispatch_get_main_queue(), {
+                
+                cell.icon.image = UIImage(named: "girl")
+                cell.name.text = "Jonathan Green"
+                cell.time.text = "20ms"
+                cell.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+                
+            //});
+            
+             return cell
+        }
         
-        return cell
+       
     }
 
 }

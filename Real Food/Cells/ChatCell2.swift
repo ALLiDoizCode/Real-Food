@@ -1,21 +1,19 @@
 //
-//  ChatCell.swift
+//  ChatCell2.swift
 //  Real Food
 //
-//  Created by Jonathan Green on 3/16/16.
+//  Created by Jonathan Green on 3/20/16.
 //  Copyright © 2016 Jonathan Green. All rights reserved.
 //
 
 import UIKit
 
-class ChatCell: UITableViewCell {
+class ChatCell2: UITableViewCell {
 
-    @IBOutlet weak var icon: UIImageView!
-  
-    @IBOutlet weak var name: UILabel!
     @IBOutlet weak var time: UILabel!
+    @IBOutlet weak var name: UILabel!
+    @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var message: UILabel!
-    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -33,6 +31,5 @@ class ChatCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
-    
 
 }
