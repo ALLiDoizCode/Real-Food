@@ -201,7 +201,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
             
             //dispatch_async(dispatch_get_main_queue(), {
                 
-                cell2.icon.image = UIImage(named: "placeholder")
+                cell2.icon.image = UIImage(named: "Jon")
                 cell2.name.text = "Fatima Green"
                 cell2.time.text = "20ms"
                 cell2.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjal"
