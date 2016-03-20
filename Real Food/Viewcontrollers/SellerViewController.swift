@@ -14,6 +14,7 @@ import BTNavigationDropdownMenu
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     let menu = getMenu.sharedInstance
+    let presenter = PresentMessages()
     let reuseIdentifier = "Review"
     var objectId:String!
     
@@ -120,6 +121,16 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
+    @IBAction func messageBTn(sender: AnyObject) {
+        
+        presenter.sendMessage("", recipient: objectId) { (success) -> Void in
+            
+            if success == true {
+                
+                self.performSegueWithIdentifier("goToMessages", sender: self)
+            }
+        }
+    }
     @IBAction func rateBtn(sender: AnyObject) {
         
     }

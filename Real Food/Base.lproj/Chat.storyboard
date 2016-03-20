@@ -74,7 +74,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="174" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-Co-5Xf">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="174" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="DYi-Co-5Xf">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.79226005079999995" green="0.71810984609999995" blue="0.48854580520000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -414,6 +414,9 @@
                                                 <include reference="nAk-xG-Rok"/>
                                             </mask>
                                         </variation>
+                                        <connections>
+                                            <action selector="sendBtn:" destination="EO6-Uy-wMU" eventType="touchUpInside" id="EdL-vm-deb"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.79226005079999995" green="0.71810984609999995" blue="0.48854580520000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -506,7 +509,9 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="send" destination="fbv-bh-K3C" id="gAG-d2-cSr"/>
                         <outlet property="tableView" destination="DYi-Co-5Xf" id="I9G-9w-rkl"/>
+                        <outlet property="textField" destination="XhB-Jr-DXX" id="4Et-Jw-UCl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SpA-hk-HBx" userLabel="First Responder" sceneMemberID="firstResponder"/>

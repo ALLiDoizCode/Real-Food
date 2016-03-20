@@ -11,7 +11,7 @@
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Home" id="BYZ-38-t0r" customClass="ViewController" customModule="Green_Pepper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -25,7 +25,7 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <collectionViewLayout key="collectionViewLayout" id="Epc-yw-fZe" customClass="HanabiCollectionViewLayout" customModule="HanabiCollectionViewLayout"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Menu" id="iBP-Ty-sCH" customClass="MenuCell" customModule="Real_Food" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Menu" id="iBP-Ty-sCH" customClass="MenuCell" customModule="Green_Pepper" customModuleProvider="target">
                                         <rect key="frame" x="102" y="64" width="397" height="226"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
@@ -179,7 +179,7 @@
         <!--Food View Controller-->
         <scene sceneID="MCS-WP-vmV">
             <objects>
-                <viewController id="5Fu-bk-i1D" customClass="FoodViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="5Fu-bk-i1D" customClass="FoodViewController" customModule="Green_Pepper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="wBk-fS-e1M"/>
                         <viewControllerLayoutGuide type="bottom" id="gzz-ea-tcj"/>
@@ -192,7 +192,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" red="0.79226005077362061" green="0.7181098461151123" blue="0.48854580521583557" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Food" rowHeight="165" id="bmn-fY-sMK" customClass="FoodCell" customModule="Real_Food" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Food" rowHeight="165" id="bmn-fY-sMK" customClass="FoodCell" customModule="Green_Pepper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="bmn-fY-sMK" id="NGw-rL-UTs">
@@ -450,7 +450,7 @@
         <!--Seller View Controller-->
         <scene sceneID="oDl-aa-y5m">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="q7m-3a-2QK" customClass="SellerViewController" customModule="Real_Food" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="q7m-3a-2QK" customClass="SellerViewController" customModule="Green_Pepper" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Zra-nd-TRX"/>
                         <viewControllerLayoutGuide type="bottom" id="wwx-73-Deg"/>
@@ -581,7 +581,7 @@
                                             </mask>
                                         </variation>
                                         <connections>
-                                            <segue destination="ofa-mG-sS1" kind="show" identifier="goToMessages" id="fkI-Qs-PIB"/>
+                                            <action selector="messageBTn:" destination="q7m-3a-2QK" eventType="touchUpInside" id="UJn-Ez-YCu"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -677,7 +677,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Review" rowHeight="64" id="NuD-ov-teQ" customClass="ReviewCell" customModule="Real_Food" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Review" rowHeight="64" id="NuD-ov-teQ" customClass="ReviewCell" customModule="Green_Pepper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="NuD-ov-teQ" id="BtN-1S-ab0">
@@ -922,6 +922,7 @@
                         <outlet property="tableView" destination="Z80-mu-Ls2" id="dYV-ed-X0O"/>
                         <outlet property="userImage" destination="3rg-RC-qPn" id="alC-5F-cEa"/>
                         <outlet property="userName" destination="uiw-8i-GaF" id="Gbh-f7-cP7"/>
+                        <segue destination="ofa-mG-sS1" kind="show" identifier="goToMessages" id="GI7-x5-Vh5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60K-bg-6s9" userLabel="First Responder" sceneMemberID="firstResponder"/>

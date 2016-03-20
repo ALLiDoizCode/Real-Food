@@ -15,6 +15,8 @@ import Parse
 class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate,UITableViewDataSource,UITableViewDelegate {
     
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var send: UIButton!
+    @IBOutlet weak var textField: UITextField!
     var userIcon:UIImage!
     var sellerId:String!
     var roomId:String!
@@ -25,88 +27,61 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     let menu = getMenu.sharedInstance
     let presenter = PresentMessages()
     
+    var messageArray:[Message] = []
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.rowHeight = UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 246.0
         
-        //self.tableView.bubbleDataSource = self
-        
-        /*self.tableView.someoneElse_grouping = false // default is true
-        self.tableView.header_scrollable = true // defaut is true. false is not implement yet.
-        self.tableView.header_show_weekday = true // default is true
-        
-        self.tableView.refreshable = true // default is false
-        self.tableView.show_nickname = true // default is false*/
-        
-        /*if selectedImage == nil {
-            
-            if self.roomId == nil {
-                
-                presenter.sendMessage(text, recipient:sellerId) { (success) -> Void in
-                    
-                    print("fired presenter")
-                    
-                    if success == true {
-                        
-                        print("message sent")
-                        
-                        self.finishSendingMessage()
-                        
-                    }else{
-                        
-                        print("message not sent")
-                        
-                    }
-                }
-                
-            }else{
-                
-                presenter.sendMessageWithId(text, roomId: roomId, completion: { (success) -> Void in
-                    
-                    if success == true {
-                        
-                        print("message sent")
-                    }
-                })
-            }
-            
-            
-        }else {
-            
-            presenter.sendImage(selectedImage, recipient: sellerId, completion: { (success) -> Void in
-                
-                print("fired presenter")
-                
-                if success == true {
-                    
-                    print("image sent")
-                    
-                    
-                    
-                }else{
-                    
-                    print("iamge not sent")
-                }
-            })
-        }*/
-        
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
         
           menu.setupMenu(self,title:"Messages")
         
-       /* presenter.getMessages(roomId) { (data) -> Void in
-            
-        }*/
+       presenter.getMessages(roomId) { (data) -> Void in
+        
+            self.messageArray.removeAll()
+            self.messageArray = data
+            self.reload()
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
         
         menu.menuView.hide()
+    }
+    
+    @IBAction func sendBtn(sender: AnyObject) {
+        
+        if textField.text != "" {
+            
+            presenter.sendMessage(textField.text!, recipient: sellerId, completion: { (success) -> Void in
+                
+                if success == true {
+                    
+                    self.presenter.getMessages(self.roomId) { (data) -> Void in
+                        
+                        self.messageArray.removeAll()
+                        self.messageArray = data
+                        self.reload()
+                    }
+                    
+                }else {
+                    
+                    
+                }
+            })
+        }
+    }
+    func reload(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.tableView.reloadData()
+        });
     }
 
     override func didReceiveMemoryWarning() {
@@ -187,7 +162,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 10
+        return self.messageArray.capacity
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -195,18 +170,19 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         let cell = tableView.dequeueReusableCellWithIdentifier("chat") as! ChatCell
         let cell2 = tableView.dequeueReusableCellWithIdentifier("chat2") as! ChatCell2
         
-        if indexPath.row == 1 || indexPath.row == 3 || indexPath.row == 5 || indexPath.row == 7 || indexPath.row == 9 {
+        if messageArray[indexPath.row].sender != currentUser?.objectId {
             
            
-            
-            //dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), {
                 
-                cell2.icon.image = UIImage(named: "Jon")
-                cell2.name.text = "Fatima Green"
-                cell2.time.text = "20ms"
-                cell2.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjal"
+                cell2.icon.kf_setImageWithURL(NSURL(string: self.messageArray[indexPath.row].senderImage)!, placeholderImage: UIImage(named: "placeholder"))
+                cell2.name.text = self.messageArray[indexPath.row].senderName
+                let date = self.messageArray[indexPath.row].time
+                let time = NSDate().offsetFrom(date)
+                cell2.time.text = time
+                cell2.message.text = self.messageArray[indexPath.row].description
             
-            //});
+            });
             
             return cell2
             
@@ -214,14 +190,16 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
             
             
             
-            //dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), {
                 
-                cell.icon.image = UIImage(named: "girl")
-                cell.name.text = "Jonathan Green"
-                cell.time.text = "20ms"
-                cell.message.text = "dfnashasdfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjaldfnashasasdhakhjdjhasdjakldjalasdhakhjdjhasdjakldjal"
+                cell.icon.kf_setImageWithURL(NSURL(string: self.messageArray[indexPath.row].senderImage)!, placeholderImage: UIImage(named: "placeholder"))
+                cell.name.text = self.messageArray[indexPath.row].senderName
+                let date = self.messageArray[indexPath.row].time
+                let time = NSDate().offsetFrom(date)
+                cell.time.text = time
+                cell.message.text = self.messageArray[indexPath.row].description
                 
-            //});
+            });
             
              return cell
         }

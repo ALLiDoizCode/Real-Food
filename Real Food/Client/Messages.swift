@@ -201,21 +201,64 @@ class Messages {
                 roomObject["Sender"] = self.currentUser
                 roomObject["Recipient"] = theRecipient
                 
+                if text != "" {
+                    
+                    messageObject.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        
+                        if success == true {
+                            
+                            print("the message was saved")
+                            
+                            let relation = roomObject.relationForKey("Messages")
+                            relation.addObject(messageObject)
+                            
+                            roomObject.saveInBackgroundWithBlock({ (success, error) -> Void in
+                                
+                                if success == true {
+                                    
+                                    
+                                    print("the room was created")
+                                    SwiftEventBus.post("sendMessage", sender: success)
+                                    
+                                }else {
+                                    
+                                    print("there was in issue creating the chat room")
+                                    print(error)
+                                }
+                            })
+                        }else{
+                            
+                            print("there was in issue saving the message")
+                            print(error)
+                        }
+                    })
+                }
+                
+               
+                
+                return
+            }
+            
+            guard let relation:PFRelation = object.relationForKey("Messages") else {
+                
+                return
+            }
+            
+            if text != "" {
+                
                 messageObject.saveInBackgroundWithBlock({ (success, error) -> Void in
                     
                     if success == true {
                         
-                        print("the message was saved")
+                        print("Messaged saved")
                         
-                        let relation = roomObject.relationForKey("Messages")
                         relation.addObject(messageObject)
                         
-                        roomObject.saveInBackgroundWithBlock({ (success, error) -> Void in
+                        object.saveInBackgroundWithBlock({ (success, error) -> Void in
                             
                             if success == true {
                                 
-                                
-                                print("the room was created")
+                                print("Messaged saved to room")
                                 SwiftEventBus.post("sendMessage", sender: success)
                                 
                             }else {
@@ -230,42 +273,9 @@ class Messages {
                         print(error)
                     }
                 })
-                
-                return
             }
             
-            guard let relation:PFRelation = object.relationForKey("Messages") else {
-                
-                return
-            }
-            
-            messageObject.saveInBackgroundWithBlock({ (success, error) -> Void in
-                
-                if success == true {
-                    
-                    print("Messaged saved")
-                    
-                    relation.addObject(messageObject)
-                    
-                    object.saveInBackgroundWithBlock({ (success, error) -> Void in
-                        
-                        if success == true {
-                            
-                            print("Messaged saved to room")
-                            SwiftEventBus.post("sendMessage", sender: success)
-                            
-                        }else {
-                            
-                            print("there was in issue creating the chat room")
-                            print(error)
-                        }
-                    })
-                }else{
-                    
-                    print("there was in issue saving the message")
-                    print(error)
-                }
-            })
+           
             
         }
         
