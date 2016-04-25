@@ -10,7 +10,6 @@ pod 'JSQMessagesViewController'
 pod "ImagePickerSheetController", "~> 0.9.1"
 pod 'Kingfisher', '~> 1.8'
 pod 'SwiftEventBus', :git => 'https://github.com/cesarferreira/SwiftEventBus.git'
-pod 'Whisper'
 pod "SwiftLocation"
 pod "SwiftSpinner"
 pod 'IQKeyboardManagerSwift'

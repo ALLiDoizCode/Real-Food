@@ -99,7 +99,6 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/SwiftEventBus.framework"
   install_framework "Pods/SwiftLocation.framework"
   install_framework "Pods/SwiftSpinner.framework"
-  install_framework "Pods/Whisper.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
@@ -117,5 +116,4 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/SwiftEventBus.framework"
   install_framework "Pods/SwiftLocation.framework"
   install_framework "Pods/SwiftSpinner.framework"
-  install_framework "Pods/Whisper.framework"
 fi

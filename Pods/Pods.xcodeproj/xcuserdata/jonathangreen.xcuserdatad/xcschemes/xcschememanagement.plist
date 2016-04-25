@@ -89,30 +89,25 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>Whisper.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>1520003FEBEC114D6C84F832AFEDB994</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2ECB10166D2B01F3F235A766977544E7</key>
+		<key>520B5E734443E4341A45978C48303422</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>36BB115DD620BBCA5862F9D7D45E5E28</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>55D175EC0D2444E9F08FE60FF16E14E6</key>
+		<key>6EAF03AD5DED566F556CCD2CF81CB435</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -122,12 +117,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>95DB89A8BFC5FF0BF98458651D0163CD</key>
+		<key>875DEEA7122CDE5F3869BF226A76FA8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>97CBD39F56F3833D43324AB55233E62C</key>
+		<key>8A9E8A7F92265283B3F77B621F413062</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>95DB89A8BFC5FF0BF98458651D0163CD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -142,12 +142,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>BCA053B6430690326435042FEB61B458</key>
+		<key>B272B33F162D6E5C3510BA50ECF2684B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C7859E55920B92ABE4FFD8FBE200C21A</key>
+		<key>CC200BDCEB78C042F4919303CC0ACA80</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,22 +157,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>D1A311737A3F92F5BFFFFAA362F24E77</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>D536154402DD416BF8E1470C2C6CC76D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>E9B5C577F89B2F2EBCB51E034A136673</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F35E1A367F984AE9F2E65AF2EDF1CF3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
