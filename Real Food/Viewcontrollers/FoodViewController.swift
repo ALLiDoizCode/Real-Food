@@ -108,16 +108,6 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         dispatch_async(dispatch_get_main_queue(), {
             
-            /*cell.fadeView.blurEnabled = true
-            cell.fadeView.blurRadius = 20
-            cell.fadeView.dynamic = false
-            cell.fadeView.clipsToBounds = true
-            cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
-                
-                
-            })*/
-            
-            
             print(self.itemArray[indexPath.row].image)
             
             cell.cellImage.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].image)!, placeholderImage: UIImage(named:"placeholder"))
@@ -127,10 +117,17 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             print("cell \(self.itemArray[indexPath.row].userName)")
             
+            let imageColor = UIColor(averageColorFromImage:cell.cellImage.image)
+            
             cell.layoutSubviews()
         });
         
         return cell
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 250
     }
     
     override func prefersStatusBarHidden() -> Bool {

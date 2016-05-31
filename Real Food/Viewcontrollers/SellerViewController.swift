@@ -81,7 +81,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             //self.mainImage.image = blurredImage
             //self.mainImage.layer.cornerRadius = 3
         
-            let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
+            
           
             self.userName.font = RobotoFont.mediumWithSize(20)
             //self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
@@ -92,6 +92,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             
             self.ratingLbl.font = RobotoFont.mediumWithSize(16)
             
+            let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
             
