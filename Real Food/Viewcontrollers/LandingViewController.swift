@@ -27,6 +27,7 @@ class LandingViewController: UIViewController {
             attributes:[NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true, alpha: 0.7)])
         passWord.attributedPlaceholder = NSAttributedString(string:"Password",
             attributes:[NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true, alpha: 0.7)])
+        passWord.secureTextEntry = true
         
         loginBtn.backgroundColor = UIColor(complementaryFlatColorOf: self.view.backgroundColor)
         loginBtn.setTitleColor(UIColor.flatSandColor(), forState: UIControlState.Normal)
