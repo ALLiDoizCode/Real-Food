@@ -76,17 +76,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             layout.itemSize = CGSize(width: UIScreen().bounds.width/3, height: UIScreen().bounds.width/3)
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 10
-            
-            //let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
-            //self.mainImage.image = blurredImage
-            //self.mainImage.layer.cornerRadius = 3
-        
-            
           
             self.userName.font = RobotoFont.mediumWithSize(20)
-            //self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
-            //self.userName.text = "Sara Dodsen"
-            //self.distance.textColor = UIColor.flatGrayColor()
             self.distance.font = RobotoFont.mediumWithSize(14)
             self.distance.text = "16m/MT Pleasent"
             
@@ -96,7 +87,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
             
-
         });
         
     }

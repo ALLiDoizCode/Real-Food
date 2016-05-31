@@ -13,14 +13,14 @@ import Cartography
 
 class FoodCell: UITableViewCell {
     
-   
     var imageFadeView: MaterialView!
     var userIcon: UIImageView!
     var cellView: MaterialView!
     var cellImage: UIImageView!
     var mainLabel: MaterialLabel!
     var foodDescription: MaterialLabel!
-   
+    var distance:MaterialLabel!
+    var distanceView:MaterialView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -31,6 +31,8 @@ class FoodCell: UITableViewCell {
         self.cellImage = UIImageView()
         self.mainLabel = MaterialLabel()
         self.foodDescription = MaterialLabel()
+        self.distance = MaterialLabel()
+        self.distanceView = MaterialView()
         
         self.addSubview(self.cellView)
         cellView.addSubview(self.cellImage)
@@ -38,6 +40,8 @@ class FoodCell: UITableViewCell {
         cellView.addSubview(self.userIcon)
         cellView.addSubview(self.mainLabel)
         cellView.addSubview(self.foodDescription)
+        cellView.addSubview(self.distanceView)
+        distanceView.addSubview(self.distance)
         
         cellView.backgroundColor = UIColor.flatForestGreenColor()
         cellView.cornerRadius = .Radius1
@@ -53,11 +57,12 @@ class FoodCell: UITableViewCell {
             userIcon.left == (userIcon.superview?.left)! + 10
             userIcon.top == (userIcon.superview?.top)! + 10
             
-            self.userIcon.layer.borderColor = UIColor(complementaryFlatColorOf: cellView.backgroundColor).CGColor
-            self.userIcon.layer.borderWidth = 3
+            //self.userIcon.layer.borderColor = UIColor(complementaryFlatColorOf: cellView.backgroundColor).CGColor
+            //self.userIcon.layer.borderWidth = 3
             self.userIcon.layer.cornerRadius = self.userIcon.layer.frame.height/2
             self.userIcon.layer.masksToBounds = true
             self.userIcon.clipsToBounds = true
+            
             
         }
         
@@ -92,8 +97,6 @@ class FoodCell: UITableViewCell {
         imageFadeView.backgroundColor = UIColor.blackColor()
         imageFadeView.alpha = 0.3
         
-        foodDescription.numberOfLines = 0
-        
         constrain(foodDescription,mainLabel,userIcon,imageFadeView,cellImage) { foodDescription,mainLabel,userIcon,imageFadeView,cellImage in
             
             mainLabel.left == userIcon.right + 5
@@ -116,9 +119,24 @@ class FoodCell: UITableViewCell {
            
         }
         
-        constrain(cellView) { cellView in
+        constrain(cellView,distance,distanceView,cellImage) { cellView,distance,distanceView,cellImage in
             
             cellView.edges == inset(cellView.superview!.edges, 10, 10, 10, 10)
+            
+            distanceView.height == 50
+            distanceView.width == distanceView.height
+            distanceView.right == cellImage.right - 10
+            distanceView.top == cellImage.top + 10
+            
+            self.distanceView.backgroundColor = UIColor(complementaryFlatColorOf: self.cellView.backgroundColor)
+            self.distanceView.layer.cornerRadius = 25
+            self.distanceView.layer.masksToBounds = true
+            
+            distance.center == (distance.superview?.center)!
+            
+            self.distance.text = "10m"
+            self.distance.font = RobotoFont.mediumWithSize(17)
+            self.distance.textColor = UIColor.flatSandColor()
         }
         
         

@@ -139,6 +139,12 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         }
     }
     
+    override func viewDidAppear(animated: Bool) {
+        
+        self.bgImage.kf_setImageWithURL(NSURL(string: self.itemsArray[0].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+        self.userImage.kf_setImageWithURL(NSURL(string: self.itemsArray[0].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+    }
+    
     override func viewWillDisappear(animated: Bool) {
         
         menu.menuView.hide()
@@ -190,6 +196,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 cell.cellImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
                 cell.mainLabel.text = self.itemsArray[indexPath.row].userName
                 cell.foodDescription.text = self.itemsArray[indexPath.row].description
+                cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemsArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
                 
                 cell.layoutSubviews()
             });
@@ -197,6 +204,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             return cell
         }
         
+    }
+    
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 250
     }
     
     
