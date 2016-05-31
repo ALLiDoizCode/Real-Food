@@ -194,9 +194,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 let image = self.itemsArray[indexPath.row].image
                 
                 cell.cellImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
-                cell.mainLabel.text = self.itemsArray[indexPath.row].userName
+                cell.mainLabel.text = self.itemsArray[indexPath.row].name
                 cell.foodDescription.text = self.itemsArray[indexPath.row].description
-                cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemsArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+                cell.userIcon.image = UIImage(named: self.itemsArray[indexPath.row].name)
+                cell.userIcon.layer.cornerRadius = 0
                 
                 cell.layoutSubviews()
             });
@@ -237,15 +238,17 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func makeButton(){
         
-        veggie.setImage(UIImage(named: "Vegetable"), forState: UIControlState.Normal)
-        sweets.setImage(UIImage(named: "Fruit-1"), forState: UIControlState.Normal)
-        dariy.setImage(UIImage(named: "cheese"), forState: UIControlState.Normal)
-        eggs.setImage(UIImage(named: "eggs"), forState: UIControlState.Normal)
-        poultry.setImage(UIImage(named: "chicken"), forState: UIControlState.Normal)
-        bovine.setImage(UIImage(named: "cow-1"), forState: UIControlState.Normal)
-        goat.setImage(UIImage(named: "goat-1"), forState: UIControlState.Normal)
-        lamb.setImage(UIImage(named: "lamb-1"), forState: UIControlState.Normal)
-        beer.setImage(UIImage(named: "beer"), forState: UIControlState.Normal)
+        let Menu = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
+        
+        veggie.setImage(UIImage(named: Menu[0]), forState: UIControlState.Normal)
+        sweets.setImage(UIImage(named: Menu[1]), forState: UIControlState.Normal)
+        dariy.setImage(UIImage(named: Menu[2]), forState: UIControlState.Normal)
+        eggs.setImage(UIImage(named: Menu[3]), forState: UIControlState.Normal)
+        poultry.setImage(UIImage(named: Menu[4]), forState: UIControlState.Normal)
+        bovine.setImage(UIImage(named: Menu[5]), forState: UIControlState.Normal)
+        goat.setImage(UIImage(named: Menu[6]), forState: UIControlState.Normal)
+        lamb.setImage(UIImage(named: Menu[7]), forState: UIControlState.Normal)
+        beer.setImage(UIImage(named: Menu[8]), forState: UIControlState.Normal)
         
         veggie.imageView?.contentMode = .ScaleAspectFit
         sweets.imageView?.contentMode = .ScaleAspectFit

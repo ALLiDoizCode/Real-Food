@@ -85,7 +85,7 @@ class Listing {
                     print("the name \(userName)")
                     print("the user id \(user.objectId!)")
                     
-                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
+                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type)
                     
                     self.itemArray.append(theItem)
                     
@@ -113,13 +113,13 @@ class Listing {
             let typeQuery = PFQuery(className: name)
             typeQuery.whereKey("CreatedBY", equalTo: currentUser!)
             
-            queryTypes(typeQuery)
+            queryTypes(typeQuery,name: name)
         }
         
         SwiftEventBus.post("myItems", sender: self.itemArray)
     }
     
-    func queryTypes(lists:PFQuery){
+    func queryTypes(lists:PFQuery,name:String){
         
         var objects:[PFObject]!
         
@@ -167,7 +167,7 @@ class Listing {
             print("the name \(userName)")
             print("the user id \(self.currentUser!.objectId!)")
             
-            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
+            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name)
             
             self.itemArray.append(theItem)
             
