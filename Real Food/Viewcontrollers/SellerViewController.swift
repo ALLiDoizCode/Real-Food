@@ -13,20 +13,26 @@ import BTNavigationDropdownMenu
 
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
-    let menu = getMenu()
-    
-    @IBOutlet weak var tableView: UITableView!
+    let menu = getMenu.sharedInstance
+    let presenter = PresentMessages()
     let reuseIdentifier = "Review"
     
+    var sellerId:String!
+    var sellerIcon:String!
+    var itemIcon:String!
+    var sellerName:String!
+    var sellerCity:String!
+    var sellerDistance:String!
+    var sellerRating:String!
+    
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLbl: UILabel!
     @IBOutlet weak var message: UIButton!
     @IBOutlet weak var rate: UIButton!
     @IBOutlet weak var distance: UILabel!
- 
     @IBOutlet weak var mainView: UIView!
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
- 
     @IBOutlet weak var userName: UILabel!
 
 
@@ -35,10 +41,14 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("my item \(sellerIcon)")
+        
+        mainImage.kf_setImageWithURL(NSURL(string: itemIcon)!, placeholderImage: UIImage(named: "placeholder"))
+        userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
+        userName.text = sellerName
+        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
-        
-        self.setupMenu()
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
@@ -67,59 +77,43 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             layout.minimumInteritemSpacing = 10
             layout.minimumLineSpacing = 10
             
-            self.mainImage.image = UIImage(named: "beans")
             //let blurredImage = self.mainImage.image?.blurredImageWithRadius(40, iterations: 2, tintColor: UIColor.clearColor())
             //self.mainImage.image = blurredImage
             //self.mainImage.layer.cornerRadius = 3
         
-            let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
+            
           
             self.userName.font = RobotoFont.mediumWithSize(20)
             //self.userName.textColor = UIColor(contrastingBlackOrWhiteColorOn: imageColor, isFlat: true)
-            self.userName.text = "Sara Dodsen"
+            //self.userName.text = "Sara Dodsen"
             //self.distance.textColor = UIColor.flatGrayColor()
             self.distance.font = RobotoFont.mediumWithSize(14)
             self.distance.text = "16m/MT Pleasent"
             
             self.ratingLbl.font = RobotoFont.mediumWithSize(16)
             
+            let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
             
 
         });
         
-          }
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title:"Seller")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
+    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setupMenu(){
-        
-        let items = ["Home", "Messages", "Profile", "Logout"]
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: "Profile", items: items)
-        menuView.cellHeight = 50
-        menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
-        menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
-        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
-        menuView.arrowPadding = 15
-        menuView.animationDuration = 0.5
-        menuView.maskBackgroundColor = UIColor.blackColor()
-        menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-        }
-        
-        self.navigationItem.titleView = menuView
-        
     }
     
     override func prefersStatusBarHidden() -> Bool {
@@ -140,14 +134,36 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return cell
     }
     
-    /*
+    @IBAction func messageBTn(sender: AnyObject) {
+        
+        /*presenter.sendMessage("", recipient: objectId) { (success) -> Void in
+            
+            if success == true {
+                
+                self.performSegueWithIdentifier("goToMessages", sender: self)
+            }
+        }*/
+        
+        self.performSegueWithIdentifier("goToMessages", sender: self)
+    }
+    @IBAction func rateBtn(sender: AnyObject) {
+        
+    }
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "goToMessages" {
+            
+            let controller = segue.destinationViewController as! ChatRoomViewController
+            controller.sellerId = sellerId
+            
+            print("the object id is \(sellerId)")
+        }
     }
-    */
+    
 
 }

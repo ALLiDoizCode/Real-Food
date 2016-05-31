@@ -9,33 +9,61 @@
 import UIKit
 import Material
 import FXBlurView
+import Cartography
 
 class FoodCell: UITableViewCell {
     
    
-    @IBOutlet weak var imageFadeView: UIView!
-    @IBOutlet weak var userIcon: UIImageView!
-    @IBOutlet weak var cellView: UIView!
-    @IBOutlet weak var cellImage: UIImageView!
-    @IBOutlet weak var mainLabel: UILabel!
-    @IBOutlet weak var foodDescription: UILabel!
+    var imageFadeView: MaterialView!
+    var userIcon: UIImageView!
+    var cellView: MaterialView!
+    var cellImage: UIImageView!
+    var mainLabel: MaterialLabel!
+    var foodDescription: MaterialLabel!
    
     
     override func awakeFromNib() {
         super.awakeFromNib()
         
+        self.imageFadeView = MaterialView()
+        self.userIcon = UIImageView()
+        self.cellView = MaterialView()
+        self.cellImage = UIImageView()
+        self.mainLabel = MaterialLabel()
+        self.foodDescription = MaterialLabel()
         
+        self.addSubview(self.cellView)
+        cellView.addSubview(self.cellImage)
+        cellView.addSubview(self.imageFadeView)
+        cellView.addSubview(self.userIcon)
+        cellView.addSubview(self.mainLabel)
+        cellView.addSubview(self.foodDescription)
+        
+        cellView.backgroundColor = UIColor.flatForestGreenColor()
+        cellView.cornerRadius = .Radius1
+        
+        mainLabel.textColor = UIColor.flatSandColor()
+        
+        foodDescription.textColor = UIColor(contrastingBlackOrWhiteColorOn: cellView.backgroundColor, isFlat: true)
+        
+        constrain(userIcon) {userIcon in
+            
+            userIcon.height == 50
+            userIcon.width == userIcon.height
+            userIcon.left == (userIcon.superview?.left)! + 10
+            userIcon.top == (userIcon.superview?.top)! + 10
+            
+            self.userIcon.layer.borderColor = UIColor(complementaryFlatColorOf: cellView.backgroundColor).CGColor
+            self.userIcon.layer.borderWidth = 3
+            self.userIcon.layer.cornerRadius = self.userIcon.layer.frame.height/2
+            self.userIcon.layer.masksToBounds = true
+            self.userIcon.clipsToBounds = true
+            
+        }
         
         dispatch_async(dispatch_get_main_queue(), {
             
-            
-            
-           
-            /*self.fadeView.layer.cornerRadius = 3
-            self.fadeView.layer.masksToBounds = true
-            
-            self.fadeView2.layer.cornerRadius = 3
-            self.fadeView2.layer.masksToBounds = true*/
+            self.SetupUI()
             
             self.selectionStyle = .None
             
@@ -43,25 +71,59 @@ class FoodCell: UITableViewCell {
             
             self.userIcon.layer.masksToBounds = true
             
-            //self.cellView.layer.shadowOffset = CGSizeMake(0, 10); //default is (0.0, -3.0)
-            //self.cellView.layer.shadowColor = UIColor.flatGrayColorDark().CGColor //default is black
-            //self.cellView.layer.shadowRadius = 5.0; //default is 3.0
-           // self.cellView.layer.shadowOpacity = 0.5; //default is 0.0
-            
             self.cellImage.layer.cornerRadius = 4
             self.cellImage.layer.masksToBounds = true
             
             self.imageFadeView.layer.cornerRadius = 4
             self.imageFadeView.layer.masksToBounds = true
 
-            
             self.foodDescription.font = RobotoFont.mediumWithSize(24)
             self.mainLabel.font = RobotoFont.mediumWithSize(17)
             
         });
+        
     }
     
-   
+    func SetupUI(){
+        
+        cellImage.contentMode = .ScaleAspectFill
+        cellImage.clipsToBounds = true
+        
+        imageFadeView.backgroundColor = UIColor.blackColor()
+        imageFadeView.alpha = 0.3
+        
+        foodDescription.numberOfLines = 0
+        
+        constrain(foodDescription,mainLabel,userIcon,imageFadeView,cellImage) { foodDescription,mainLabel,userIcon,imageFadeView,cellImage in
+            
+            mainLabel.left == userIcon.right + 5
+            mainLabel.right == mainLabel.superview!.right - 5
+            mainLabel.top == (mainLabel.superview?.top)! + 10
+            
+            foodDescription.left == userIcon.right + 5
+            foodDescription.top == (mainLabel.bottom) + 5
+            foodDescription.right == (foodDescription.superview?.right)! - 5
+            
+            cellImage.left == (cellImage.superview?.left)! + 10
+            cellImage.right == (cellImage.superview?.right)! - 10
+            cellImage.top == userIcon.bottom + 10
+            cellImage.bottom == (foodDescription.superview?.bottom)! - 10
+                
+            imageFadeView.left == (imageFadeView.superview?.left)! + 10
+            imageFadeView.right == (imageFadeView.superview?.right)! - 10
+            imageFadeView.top == userIcon.bottom + 10
+            imageFadeView.bottom == (imageFadeView.superview?.bottom)! - 10
+           
+        }
+        
+        constrain(cellView) { cellView in
+            
+            cellView.edges == inset(cellView.superview!.edges, 10, 10, 10, 10)
+        }
+        
+        
+
+    }
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

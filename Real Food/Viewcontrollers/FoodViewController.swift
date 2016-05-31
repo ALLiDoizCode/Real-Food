@@ -9,30 +9,61 @@
 import UIKit
 import ChameleonFramework
 import BTNavigationDropdownMenu
+import Kingfisher
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
     
-    let menu = getMenu()
+    let menu = getMenu.sharedInstance
+    let presenter = PresentList()
+    
+    var type:String!
+    var miles:Double!
     
     let cellIdentefier = "Food"
 
     @IBOutlet weak var TableView: UITableView!
     var menuView: BTNavigationDropdownMenu!
     
-    let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
-    let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
-    let descriptionArray:[String] = ["Come get some tasty beans","Come get some tasty carrots","Come get some tasty cucumbers","Come get some tasty greens","Come get some tasty peas","Come get some tasty peppers","Come get some tasty tomatoes",]
+    var itemArray:[Item] = []
+    
+    var refreshControl: UIRefreshControl!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupMenu()
+        miles = 50
         
-        self.title = "Veggies"
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.TableView.addSubview(self.refreshControl) // not required when using UITableViewController
         
-        self.navigationController?.navigationBar.tintColor = UIColor(contrastingBlackOrWhiteColorOn:self.navigationController?.navigationBar.barTintColor, isFlat:true)
+        
+        
+        print(type)
+        
+        presenter.getItems(type,miles:miles) { (data) -> Void in
+            
+            print(self.type)
+            
+            self.itemArray.removeAll()
+            
+            self.itemArray = data
+            
+            self.reload()
+        }
 
         // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title:type)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
     }
 
     override func didReceiveMemoryWarning() {
@@ -40,58 +71,53 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         // Dispose of any resources that can be recreated.
     }
     
-    func setupMenu(){
-        
-        let items = ["Home", "Messages", "Profile", "Logout"]
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
-        
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: "Veggies", items: items)
-        menuView.cellHeight = 50
-        menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
-        menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
-        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
-        menuView.arrowPadding = 15
-        menuView.animationDuration = 0.5
-        menuView.maskBackgroundColor = UIColor.blackColor()
-        menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
+    func refresh(sender:AnyObject) {
+        // Code to refresh table view
+        presenter.getItems(type,miles:miles) { (data) -> Void in
+            
+            print(self.type)
+            
+            self.itemArray.removeAll()
+            
+            self.itemArray = data
+            
+            self.refreshControl.endRefreshing()
+            
+            self.reload()
         }
+    }
+    
+    func reload(){
         
-        self.navigationItem.titleView = menuView
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.TableView.reloadData()
+        });
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return imageArray.count
+        return itemArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
         
-        let image = UIImage(named: self.imageArray[indexPath.row])
-        
          //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
         dispatch_async(dispatch_get_main_queue(), {
             
-            /*cell.fadeView.blurEnabled = true
-            cell.fadeView.blurRadius = 20
-            cell.fadeView.dynamic = false
-            cell.fadeView.clipsToBounds = true
-            cell.fadeView.updateAsynchronously(true, completion: { () -> Void in
-                
-                
-            })*/
-          
-            cell.cellImage.image = image
-            cell.mainLabel.text = "Sara"
-            cell.foodDescription.text = self.titleArray[indexPath.row]
+            print(self.itemArray[indexPath.row].image)
+            
+            cell.cellImage.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].image)!, placeholderImage: UIImage(named:"placeholder"))
+            cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            cell.mainLabel.text = self.itemArray[indexPath.row].userName
+            cell.foodDescription.text = self.itemArray[indexPath.row].description
+            
+            print("cell \(self.itemArray[indexPath.row].userName)")
+            
+            let imageColor = UIColor(averageColorFromImage:cell.cellImage.image)
             
             cell.layoutSubviews()
         });
@@ -99,18 +125,37 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         return cell
     }
     
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        
+        return 250
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
+        
+        let indexPath = self.TableView.indexPathForSelectedRow
+        
+        if segue.identifier == "seller" {
+            
+            let controller = segue.destinationViewController as! SellerViewController
+            
+            print("user id \(self.itemArray[indexPath!.row].objectId)")
+            
+            controller.sellerId = self.itemArray[indexPath!.row].objectId
+            controller.sellerIcon = self.itemArray[indexPath!.row].profileImage
+            controller.sellerName = self.itemArray[indexPath!.row].userName
+            controller.itemIcon = self.itemArray[indexPath!.row].image
+        }
     }
-    */
+    
 
 }

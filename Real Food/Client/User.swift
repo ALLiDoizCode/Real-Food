@@ -13,31 +13,83 @@ import SwiftEventBus
 
 class User {
     
-    func signUp(){
+    let location = Location()
+    
+    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){
         
-        let image = UIImage(named:"girl")
-        let imageData = NSData(data: UIImageJPEGRepresentation(image!, 0.4)!)
+        let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
         
         let user = PFUser()
-        user.username = "test"
-        user.password = "test"
-        user.email = "test@test.com"
+        user.username = userName
+        user.password = passWord
+        user.email = email
         user["ProfileImage"] = file
         
-        user.signUpInBackgroundWithBlock {
-            (succeeded: Bool, error: NSError?) -> Void in
-            if let error = error {
-                let errorString = error.userInfo["error"] as? NSString
-                // Show the errorString somewhere and let the user try again.
-                
-                print(errorString)
-                
-            } else {
-                
-                // Hooray! Let them use the app now.
-                
-                print("User Created")
+        location.reverseAddress(myAddress) { (lat, long) -> Void in
+            
+            let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
+            
+            user["Location"] = geoPoint
+            
+            user.signUpInBackgroundWithBlock {
+                (succeeded: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    let errorString = error.userInfo["error"] as? NSString
+                    // Show the errorString somewhere and let the user try again.
+                    
+                    print(errorString)
+                    
+                    SwiftEventBus.post("signUp", sender: succeeded)
+                    
+                } else {
+                    
+                    // Hooray! Let them use the app now.
+                    
+                    SwiftEventBus.post("signUp", sender: succeeded)
+                    
+                    print("User Created")
+                }
+            }
+        }
+    }
+    
+    func signUpSeller(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){
+        
+        let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
+        let file = PFFile(data: imageData)
+        
+        let user = PFUser()
+        user.username = userName
+        user.password = passWord
+        user.email = email
+        user["ProfileImage"] = file
+        
+        location.reverseAddress(myAddress) { (lat, long) -> Void in
+            
+            let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
+            
+            user["Location"] = geoPoint
+            
+            
+            user.signUpInBackgroundWithBlock {
+                (succeeded: Bool, error: NSError?) -> Void in
+                if let error = error {
+                    let errorString = error.userInfo["error"] as? NSString
+                    // Show the errorString somewhere and let the user try again.
+                    
+                    print(errorString)
+                    
+                    SwiftEventBus.post("signUpSeller", sender: succeeded)
+                    
+                } else {
+                    
+                    // Hooray! Let them use the app now.
+                    
+                    SwiftEventBus.post("signUpSeller", sender: succeeded)
+                    
+                    print("Seller Created")
+                }
             }
         }
     }
@@ -57,5 +109,10 @@ class User {
                 // The login failed. Check error to see why.
             }
         }
+    }
+    
+    func logout(){
+        
+        PFUser.logOut()
     }
 }

@@ -86,9 +86,11 @@ strip_invalid_archs() {
 if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
   install_framework "Pods/Bolts.framework"
+  install_framework "Pods/Cartography.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
+  install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/ImagePickerSheetController.framework"
   install_framework "Pods/JSQMessagesViewController.framework"
   install_framework "Pods/JSQSystemSoundPlayer.framework"
@@ -96,13 +98,17 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Material.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SwiftEventBus.framework"
+  install_framework "Pods/SwiftLocation.framework"
+  install_framework "Pods/SwiftSpinner.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/BTNavigationDropdownMenu.framework"
   install_framework "Pods/Bolts.framework"
+  install_framework "Pods/Cartography.framework"
   install_framework "Pods/ChameleonFramework.framework"
   install_framework "Pods/FXBlurView.framework"
   install_framework "Pods/HanabiCollectionViewLayout.framework"
+  install_framework "Pods/IQKeyboardManagerSwift.framework"
   install_framework "Pods/ImagePickerSheetController.framework"
   install_framework "Pods/JSQMessagesViewController.framework"
   install_framework "Pods/JSQSystemSoundPlayer.framework"
@@ -110,4 +116,6 @@ if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Material.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/SwiftEventBus.framework"
+  install_framework "Pods/SwiftLocation.framework"
+  install_framework "Pods/SwiftSpinner.framework"
 fi

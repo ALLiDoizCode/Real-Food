@@ -7,30 +7,24 @@
 //
 
 import UIKit
-import BTNavigationDropdownMenu
+//import BTNavigationDropdownMenu
 import ChameleonFramework
 import Parse
+import HanabiCollectionViewLayout
 
 class ViewController: UIViewController,UICollectionViewDataSource,UICollectionViewDelegate {
     
     let cellIdentefier = "Menu"
     
-    let veggies = "Veggies"
-    let sweets = "Sweets"
-    let poultry = "Poultry"
-    let lamb = "Lamb"
-    let goat = "Goat"
-    let eggs = "Eggs"
-    let dariy = "Dariy"
-    let bovine = "Bovine"
-    let beer = "Beer"
-    
+    @IBOutlet weak var hanabiLayout: HanabiCollectionViewLayout!
     @IBOutlet weak var collectionVIew: UICollectionView!
     
-    var menuView: BTNavigationDropdownMenu!
+    //var menuView: BTNavigationDropdownMenu!
     var sourceColor:UIColor!
     
     let presenter = PresentList()
+    let menu = getMenu.sharedInstance
+    let location = Location()
     
     let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
     let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
@@ -38,12 +32,9 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        setupMenu()
         
-        self.view.backgroundColor = menuView.cellBackgroundColor
         
-        sourceColor = UIColor(complementaryFlatColorOf:menuView.cellBackgroundColor)
+        sourceColor = UIColor(complementaryFlatColorOf:UIColor.flatForestGreenColorDark())
         
         for var i = 0; i < menuArray.count; i++ {
             
@@ -56,54 +47,20 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
        
         // Do any additional setup after loading the view, typically from a nib.
     }
-
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title: "Home")
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        
+        menu.menuView.hide()
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
-    }
-    
-    func setupMenu(){
-        
-        let items = ["Home", "Messages", "Profile", "Logout"]
-        self.navigationController?.navigationBar.translucent = false
-        self.navigationController?.navigationBar.barTintColor = UIColor.flatForestGreenColor()
-        self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColor()]
-        
-        menuView = BTNavigationDropdownMenu(navigationController: self.navigationController, title: items.first!, items: items)
-        menuView.cellHeight = 50
-        menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
-        menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
-        //menuView.cellTextLabelColor = UIColor(contrastingBlackOrWhiteColorOn:UIColor.flatForestGreenColor(), isFlat:true)
-        menuView.cellTextLabelColor = UIColor.flatSandColor()
-        menuView.cellTextLabelFont = UIFont(name: "Avenir-Heavy", size: 17)
-        menuView.cellTextLabelAlignment = .Left // .Center // .Right // .Left
-        menuView.arrowPadding = 15
-        menuView.animationDuration = 0.5
-        menuView.maskBackgroundColor = UIColor.blackColor()
-        menuView.maskBackgroundOpacity = 0.3
-        menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
-            print("Did select item at index: \(indexPath)")
-            
-            let profile = UIStoryboard(name: "Profile", bundle: nil)
-            let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
-            
-            if indexPath == 2 {
-                
-                self.navigationController?.pushViewController(sellerProfile, animated: true)
-            }
-            
-            if indexPath == 3 {
-                
-                let storyBoard = UIStoryboard.init(name: "Login", bundle: nil)
-                
-                let controller = storyBoard.instantiateViewControllerWithIdentifier("landing") as! LandingViewController
-                
-                self.navigationController?.pushViewController(controller, animated: true)
-                
-            }
-        }
-        
-        self.navigationItem.titleView = menuView
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -133,10 +90,31 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         return cell
     }
     
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        
+        self.performSegueWithIdentifier("food", sender: indexPath);
+    
+    }
+    
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "food" {
+            
+            let index = sender as! NSIndexPath
+            
+            let controller = segue.destinationViewController as! FoodViewController
+            
+            print(menuName[index.item])
+            
+            controller.type = menuName[index.item]
+        }
+        
+        
+    }
 
 }
 
