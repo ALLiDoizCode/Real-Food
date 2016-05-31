@@ -13,6 +13,7 @@ import ImagePickerSheetController
 import Photos
 import SwiftSpinner
 import Kingfisher
+import Cartography
 
 class SellerProfileViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -83,11 +84,14 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         makeButton()
         makeTextFields()
         
+        
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
          self.bgImage.clipsToBounds = true
         
           dispatch_async(dispatch_get_main_queue(), {
+            
+            self.setupLayouts()
             
             let blurredImage = self.bgImage.image?.blurredImageWithRadius(20, iterations: 2, tintColor: UIColor.clearColor())
             
@@ -138,6 +142,15 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewWillDisappear(animated: Bool) {
         
         menu.menuView.hide()
+    }
+    
+    func setupLayouts(){
+        
+        constrain(tableView,bgImage) { tableView,bgImage in
+            
+            tableView.width == (tableView.superview?.width)!
+            tableView.left == (tableView.superview?.left)!
+        }
     }
     
     func reload(){

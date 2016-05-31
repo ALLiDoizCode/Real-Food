@@ -14,6 +14,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>Cartography.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>ChameleonFramework.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,12 +107,7 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>520B5E734443E4341A45978C48303422</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>6EAF03AD5DED566F556CCD2CF81CB435</key>
+		<key>5772716444866BD6C94A6D40093F76C2</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +117,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>875DEEA7122CDE5F3869BF226A76FA8F</key>
+		<key>7FCFFD11E980B10F07566CEAD6C8892F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>8A9E8A7F92265283B3F77B621F413062</key>
+		<key>875DEEA7122CDE5F3869BF226A76FA8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,7 +147,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CC200BDCEB78C042F4919303CC0ACA80</key>
+		<key>B3D2F38E611C607872BB92A1A398CDED</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B9126AE4D36164B692FABE2B967B8134</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C3A04698AAE4D6124C20602D622956E5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>C5945C2447E516F50FA87D6596091F2F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -158,11 +173,6 @@
 			<true/>
 		</dict>
 		<key>EDA125ADA52355B7CA6DF7BA96918357</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>F35E1A367F984AE9F2E65AF2EDF1CF3B</key>
 		<dict>
 			<key>primary</key>
 			<true/>

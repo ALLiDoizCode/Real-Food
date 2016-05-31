@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '04899C5B4B61F3198B2E2603'
+               BlueprintIdentifier = 'D256AF29F14531C645BCCEAF'
                BlueprintName = 'HanabiCollectionViewLayout'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'HanabiCollectionViewLayout.framework'>

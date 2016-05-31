@@ -1,6 +1,7 @@
 PODS:
   - Bolts/Tasks (1.7.0)
   - BTNavigationDropdownMenu (0.2.1)
+  - Cartography (0.6.0)
   - ChameleonFramework (2.1.0):
     - ChameleonFramework/Default (= 2.1.0)
   - ChameleonFramework/Default (2.1.0)
@@ -21,6 +22,7 @@ PODS:
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu
+  - Cartography (~> 0.6.0)
   - ChameleonFramework (~> 2.1.0)
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
@@ -51,6 +53,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Bolts: a0058fa3b331c5a1e4402d534f2dae36dbff31e4
   BTNavigationDropdownMenu: 9cf4060162c96510ee27c388412e28678320cdc0
+  Cartography: 70af183a248547694a8cfaa6b989cb7e04589985
   ChameleonFramework: d21a3cc247abfe5e37609a283a8238b03575cf64
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: 4d76d29aee34e54c1eecac79b87c4b6645c14d8f
