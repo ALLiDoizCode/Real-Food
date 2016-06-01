@@ -19,7 +19,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     @IBOutlet weak var hanabiLayout: HanabiCollectionViewLayout!
     @IBOutlet weak var collectionVIew: UICollectionView!
     
-    //var menuView: BTNavigationDropdownMenu!
     var sourceColor:UIColor!
     
     let presenter = PresentList()

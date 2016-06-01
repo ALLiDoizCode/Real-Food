@@ -37,6 +37,7 @@
 		4D8695C61C9A07F300B20968 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C51C9A07F300B20968 /* Message.swift */; };
 		4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C71C9A26C900B20968 /* PresentMessages.swift */; };
 		4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C91C9A61B600B20968 /* ChatCell.swift */; };
+		4DA514521CFF1856002F14D2 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA514511CFF1856002F14D2 /* UserData.swift */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
@@ -98,6 +99,7 @@
 		4D8695C51C9A07F300B20968 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4D8695C71C9A26C900B20968 /* PresentMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMessages.swift; sourceTree = "<group>"; };
 		4D8695C91C9A61B600B20968 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4DA514511CFF1856002F14D2 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -160,6 +162,7 @@
 				4D8695BF1C98F47700B20968 /* Item.swift */,
 				4D8695C31C9A05C400B20968 /* Rooms.swift */,
 				4D8695C51C9A07F300B20968 /* Message.swift */,
+				4DA514511CFF1856002F14D2 /* UserData.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -501,6 +504,7 @@
 			files = (
 				4DF9CB4D1C57FA2400922A63 /* ViewController.swift in Sources */,
 				4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */,
+				4DA514521CFF1856002F14D2 /* UserData.swift in Sources */,
 				4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */,
 				4D7422871C58A78E00453818 /* sellerCell.swift in Sources */,
 				4D3A280B1C97BDE400F2A919 /* PresentUser.swift in Sources */,

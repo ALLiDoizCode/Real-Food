@@ -20,6 +20,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     let menu = getMenu.sharedInstance
     let presenter = PresentList()
+    let presentUser = PresentUser()
     
     let cellIdentefier = "Food"
     
@@ -141,8 +142,12 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     override func viewDidAppear(animated: Bool) {
         
-        self.bgImage.kf_setImageWithURL(NSURL(string: self.itemsArray[0].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
-        self.userImage.kf_setImageWithURL(NSURL(string: self.itemsArray[0].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+        presentUser.userData { (data) in
+            
+            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            self.userName.text = data.userName
+        }
     }
     
     override func viewWillDisappear(animated: Bool) {
