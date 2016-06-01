@@ -155,5 +155,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         }
     }
     
+    
 
 }
