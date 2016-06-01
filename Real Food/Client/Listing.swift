@@ -57,6 +57,13 @@ class Listing {
                     return
                 }
                 
+                guard let location:PFGeoPoint = object.objectForKey("Location") as? PFGeoPoint else {
+                    
+                    print("no location")
+                    
+                    return
+                }
+                
                 do {
                     
                     try user = createdBy.fetch()
@@ -81,11 +88,20 @@ class Listing {
                         return
                     }
                     
+                    
+                    
+                    
                     print(" the description \(description)")
                     print("the name \(userName)")
                     print("the user id \(user.objectId!)")
                     
-                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type)
+                    let userLocation = self.currentUser?.objectForKey("Location") as! PFGeoPoint
+                    
+                    let miles = location.distanceInMilesTo(userLocation)
+                    
+                    let distance = String(format: "%.1f","\(miles)")
+                    
+                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type,theDistance:distance)
                     
                     self.itemArray.append(theItem)
                     
@@ -167,7 +183,7 @@ class Listing {
             print("the name \(userName)")
             print("the user id \(self.currentUser!.objectId!)")
             
-            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name)
+            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name,theDistance: "")
             
             self.itemArray.append(theItem)
             

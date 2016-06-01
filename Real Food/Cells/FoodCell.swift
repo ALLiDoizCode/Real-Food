@@ -134,7 +134,6 @@ class FoodCell: UITableViewCell {
             
             distance.center == (distance.superview?.center)!
             
-            self.distance.text = "10m"
             self.distance.font = RobotoFont.mediumWithSize(17)
             self.distance.textColor = UIColor.flatSandColor()
         }
