@@ -72,6 +72,8 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                         self.messageArray = data
                         print("The message is \(data[0].description)")
                         self.reload()
+                        
+                        self.textField.text = ""
                     }
                     
                 }else {
@@ -106,6 +108,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         if messageArray[indexPath.row].sender != currentUser?.objectId {
             
+            cell2.message.text = self.messageArray[indexPath.row].description
            
             dispatch_async(dispatch_get_main_queue(), {
                 
@@ -114,13 +117,15 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                 let date = self.messageArray[indexPath.row].time
                 let time = NSDate().offsetFrom(date)
                 cell2.time.text = time
-                cell2.message.text = self.messageArray[indexPath.row].description
+                
             
             });
             
             return cell2
             
         }else {
+            
+            cell.message.text = self.messageArray[indexPath.row].description
             
             dispatch_async(dispatch_get_main_queue(), {
                 
@@ -129,7 +134,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                 let date = self.messageArray[indexPath.row].time
                 let time = NSDate().offsetFrom(date)
                 cell.time.text = time
-                cell.message.text = self.messageArray[indexPath.row].description
+                
                 
             });
             
