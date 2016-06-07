@@ -126,13 +126,15 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func messageBTn(sender: AnyObject) {
         
-        /*presenter.sendMessage("", recipient: objectId) { (success) -> Void in
+        print("the seller Id is \(sellerId)")
+        
+        presenter.sendMessage("", recipient: sellerId) { (success) -> Void in
             
             if success == true {
                 
                 self.performSegueWithIdentifier("goToMessages", sender: self)
             }
-        }*/
+        }
         
         self.performSegueWithIdentifier("goToMessages", sender: self)
     }

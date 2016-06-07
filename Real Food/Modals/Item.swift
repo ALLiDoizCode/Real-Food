@@ -17,6 +17,7 @@ class Item {
     var userName:String!
     var name:String
     var distance:String!
+    var type:String!
     
     init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,theUserName:String!,theName:String,theDistance:String){
         

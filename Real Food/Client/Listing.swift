@@ -99,9 +99,17 @@ class Listing {
                     
                     let miles = location.distanceInMilesTo(userLocation)
                     
-                    let distance = String(format: "%.1f","\(miles)")
+                    let multiplier = pow(10.0, 1.0)
                     
-                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type,theDistance:distance)
+                    let distance = round(miles * multiplier) / multiplier
+                    
+                    let itemDistance = "\(distance)m"
+                    
+                    print("The distance is \(itemDistance)")
+                    
+                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type,theDistance:itemDistance)
+                    
+                    theItem.type = type
                     
                     self.itemArray.append(theItem)
                     

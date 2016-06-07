@@ -21,6 +21,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     let menu = getMenu.sharedInstance
     let presenter = PresentList()
     let presentUser = PresentUser()
+    let presentEditor = PresenterEditing()
     
     let cellIdentefier = "Food"
     
@@ -203,6 +204,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 cell.foodDescription.text = self.itemsArray[indexPath.row].description
                 cell.userIcon.image = UIImage(named: self.itemsArray[indexPath.row].name)
                 cell.userIcon.layer.cornerRadius = 0
+                cell.distanceView.hidden = true
                 
                 cell.layoutSubviews()
             });
@@ -210,6 +212,33 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             return cell
         }
         
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if ratingTable.hidden == true {
+            
+            if editingStyle == .Delete {
+                self.itemsArray.removeAtIndex(indexPath.row)
+                
+                let type = self.itemsArray[indexPath.row].type
+                let objectId = self.itemsArray[indexPath.row].objectId
+                
+                presentEditor.delteObject(type, itemId: objectId, completion: { (success) in
+                    
+                    if success == true {
+                        
+                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        
+                    }else {
+                        
+                    }
+                })
+                
+            } else if editingStyle == .Insert {
+                // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
+            }
+        }
     }
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

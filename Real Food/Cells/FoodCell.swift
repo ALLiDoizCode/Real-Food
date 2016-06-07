@@ -59,6 +59,7 @@ class FoodCell: UITableViewCell {
             
             //self.userIcon.layer.borderColor = UIColor(complementaryFlatColorOf: cellView.backgroundColor).CGColor
             //self.userIcon.layer.borderWidth = 3
+            self.userIcon.contentMode = .ScaleAspectFill
             self.userIcon.layer.cornerRadius = self.userIcon.layer.frame.height/2
             self.userIcon.layer.masksToBounds = true
             self.userIcon.clipsToBounds = true
@@ -134,7 +135,7 @@ class FoodCell: UITableViewCell {
             
             distance.center == (distance.superview?.center)!
             
-            self.distance.font = RobotoFont.mediumWithSize(17)
+            self.distance.font = RobotoFont.mediumWithSize(14)
             self.distance.textColor = UIColor.flatSandColor()
         }
         
