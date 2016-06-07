@@ -19,14 +19,12 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     @IBOutlet weak var hanabiLayout: HanabiCollectionViewLayout!
     @IBOutlet weak var collectionVIew: UICollectionView!
     
-    //var menuView: BTNavigationDropdownMenu!
     var sourceColor:UIColor!
     
     let presenter = PresentList()
     let menu = getMenu.sharedInstance
     let location = Location()
     
-    let menuArray:[String] = ["Vegetable","Fruit-1","cheese","eggs","chicken","cow-1","goat-1","lamb-1","beer"]
     let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
     var colors:[UIColor] = []
     
@@ -36,7 +34,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         
         sourceColor = UIColor(complementaryFlatColorOf:UIColor.flatForestGreenColorDark())
         
-        for var i = 0; i < menuArray.count; i++ {
+        for var i = 0; i < menuName.count; i++ {
             
             sourceColor = UIColor(complementaryFlatColorOf:sourceColor)
             
@@ -65,14 +63,14 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return menuArray.count
+        return menuName.count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         
         let cell:MenuCell = collectionView.dequeueReusableCellWithReuseIdentifier(cellIdentefier, forIndexPath: indexPath) as! MenuCell
         
-        let image = UIImage(named: menuArray[indexPath.row])
+        let image = UIImage(named: menuName[indexPath.row])
         
         
         dispatch_async(dispatch_get_main_queue(), {

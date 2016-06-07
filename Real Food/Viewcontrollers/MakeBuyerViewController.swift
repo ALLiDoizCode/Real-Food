@@ -80,7 +80,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     func makeTextFields(){
         
         firstName = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        firstName.placeholder = "First Name"
+        firstName.placeholder = "UserName"
         firstName.font = RobotoFont.regularWithSize(20)
         firstName.textColor = UIColor.flatWhiteColor()
         firstName.center = self.view.center

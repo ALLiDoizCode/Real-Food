@@ -34,6 +34,8 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     override func viewWillAppear(animated: Bool) {
         
+        //self.navigationItem.setHidesBackButton(true, animated: true)
+        
         presenter.getRooms { (data) -> Void in
             
             self.rooms.removeAll()
@@ -41,6 +43,8 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             print("got rooms")
             
             self.rooms = data
+            
+            print("we have \(self.rooms.count) rooms")
             
             self.reload()
         }
@@ -69,6 +73,8 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             print("got rooms")
             
             self.rooms = data
+            
+            print("we have \(self.rooms.count) rooms")
             
             self.reload()
             
@@ -105,7 +111,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
             
         }else{
             
-            cell.status.text = "New Message"
+            cell.status.text = "Read"
         }
         
         let date = rooms[indexPath.row].time
@@ -132,6 +138,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
            let controller = segue.destinationViewController as! ChatRoomViewController
             
             controller.roomId = rooms[(indexPath?.row)!].objectId
+            controller.sellerId = rooms[(indexPath?.row)!].recipiant
         }
     }
     

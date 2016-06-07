@@ -114,6 +114,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
             cell.mainLabel.text = self.itemArray[indexPath.row].userName
             cell.foodDescription.text = self.itemArray[indexPath.row].description
+            cell.distance.text = self.itemArray[indexPath.row].distance
             
             print("cell \(self.itemArray[indexPath.row].userName)")
             

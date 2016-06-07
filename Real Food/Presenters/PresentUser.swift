@@ -14,6 +14,19 @@ class PresentUser {
     
     let client = User()
     
+    
+    func userData(completion:(data:UserData) -> Void) {
+        
+        SwiftEventBus.onMainThread(self, name: "UserData") { (result) in
+            
+            let data = result.object as! UserData
+            
+            completion(data: data)
+        }
+        
+        client.userData()
+    }
+    
     func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "signUp") { notification in

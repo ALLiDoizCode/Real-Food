@@ -15,7 +15,7 @@ class PresentMessages {
     
     let client = Messages()
     
-    func getMessages(roomId:String,completion:(data:[Message]) -> Void){
+    func getMessages(roomId:String!,completion:(data:[Message]) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "getMessages") { (notification) -> Void in
             
@@ -39,7 +39,7 @@ class PresentMessages {
             
             completion(data: info)
             
-            SwiftEventBus.unregister(self, name: "Rooms")
+            SwiftEventBus.unregister(self, name: "getRooms")
         }
         
             client.getRooms()

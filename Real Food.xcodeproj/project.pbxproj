@@ -37,10 +37,13 @@
 		4D8695C61C9A07F300B20968 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C51C9A07F300B20968 /* Message.swift */; };
 		4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C71C9A26C900B20968 /* PresentMessages.swift */; };
 		4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C91C9A61B600B20968 /* ChatCell.swift */; };
+		4DA514521CFF1856002F14D2 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA514511CFF1856002F14D2 /* UserData.swift */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
 		4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF09ADA1C6D6C500007B1C5 /* Menu.swift */; };
+		4DF236CB1D063808003B81E7 /* Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF236CA1D063808003B81E7 /* Editing.swift */; };
+		4DF236CD1D0639BC003B81E7 /* PresenterEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF236CC1D0639BC003B81E7 /* PresenterEditing.swift */; };
 		4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */; };
 		4DF9CB4D1C57FA2400922A63 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4C1C57FA2400922A63 /* ViewController.swift */; };
 		4DF9CB501C57FA2400922A63 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DF9CB4E1C57FA2400922A63 /* Main.storyboard */; };
@@ -98,10 +101,13 @@
 		4D8695C51C9A07F300B20968 /* Message.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		4D8695C71C9A26C900B20968 /* PresentMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMessages.swift; sourceTree = "<group>"; };
 		4D8695C91C9A61B600B20968 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
+		4DA514511CFF1856002F14D2 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		4DF09ADA1C6D6C500007B1C5 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
+		4DF236CA1D063808003B81E7 /* Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editing.swift; sourceTree = "<group>"; };
+		4DF236CC1D0639BC003B81E7 /* PresenterEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterEditing.swift; sourceTree = "<group>"; };
 		4DF9CB471C57FA2400922A63 /* Green Pepper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Green Pepper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DF9CB4A1C57FA2400922A63 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4DF9CB4C1C57FA2400922A63 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -160,6 +166,7 @@
 				4D8695BF1C98F47700B20968 /* Item.swift */,
 				4D8695C31C9A05C400B20968 /* Rooms.swift */,
 				4D8695C51C9A07F300B20968 /* Message.swift */,
+				4DA514511CFF1856002F14D2 /* UserData.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -180,6 +187,7 @@
 				4D3A28031C97B63F00F2A919 /* Messages.swift */,
 				4D3A28051C97B67300F2A919 /* Listing.swift */,
 				4D3A28071C97B67F00F2A919 /* Cloud.swift */,
+				4DF236CA1D063808003B81E7 /* Editing.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -190,6 +198,7 @@
 				4D3A280A1C97BDE400F2A919 /* PresentUser.swift */,
 				4D3A280C1C97BED400F2A919 /* PresentLIst.swift */,
 				4D8695C71C9A26C900B20968 /* PresentMessages.swift */,
+				4DF236CC1D0639BC003B81E7 /* PresenterEditing.swift */,
 			);
 			path = Presenters;
 			sourceTree = "<group>";
@@ -501,9 +510,11 @@
 			files = (
 				4DF9CB4D1C57FA2400922A63 /* ViewController.swift in Sources */,
 				4DF9CB4B1C57FA2400922A63 /* AppDelegate.swift in Sources */,
+				4DA514521CFF1856002F14D2 /* UserData.swift in Sources */,
 				4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */,
 				4D7422871C58A78E00453818 /* sellerCell.swift in Sources */,
 				4D3A280B1C97BDE400F2A919 /* PresentUser.swift in Sources */,
+				4DF236CB1D063808003B81E7 /* Editing.swift in Sources */,
 				4D8695C01C98F47700B20968 /* Item.swift in Sources */,
 				4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */,
 				4D8695C21C999DD100B20968 /* Location.swift in Sources */,
@@ -516,6 +527,7 @@
 				4D8695C61C9A07F300B20968 /* Message.swift in Sources */,
 				4D3A280D1C97BED400F2A919 /* PresentLIst.swift in Sources */,
 				4D4167C91C9E97340041D5EF /* ChatCell2.swift in Sources */,
+				4DF236CD1D0639BC003B81E7 /* PresenterEditing.swift in Sources */,
 				4D8695C41C9A05C400B20968 /* Rooms.swift in Sources */,
 				4D7422851C586E4C00453818 /* FoodCell.swift in Sources */,
 				4D7422831C586DE800453818 /* FoodViewController.swift in Sources */,

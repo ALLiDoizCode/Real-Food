@@ -57,6 +57,13 @@ class Listing {
                     return
                 }
                 
+                guard let location:PFGeoPoint = object.objectForKey("Location") as? PFGeoPoint else {
+                    
+                    print("no location")
+                    
+                    return
+                }
+                
                 do {
                     
                     try user = createdBy.fetch()
@@ -81,11 +88,28 @@ class Listing {
                         return
                     }
                     
+                    
+                    
+                    
                     print(" the description \(description)")
                     print("the name \(userName)")
                     print("the user id \(user.objectId!)")
                     
-                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
+                    let userLocation = self.currentUser?.objectForKey("Location") as! PFGeoPoint
+                    
+                    let miles = location.distanceInMilesTo(userLocation)
+                    
+                    let multiplier = pow(10.0, 1.0)
+                    
+                    let distance = round(miles * multiplier) / multiplier
+                    
+                    let itemDistance = "\(distance)m"
+                    
+                    print("The distance is \(itemDistance)")
+                    
+                    let theItem = Item(theObjectId:user.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:type,theDistance:itemDistance)
+                    
+                    theItem.type = type
                     
                     self.itemArray.append(theItem)
                     
@@ -113,13 +137,13 @@ class Listing {
             let typeQuery = PFQuery(className: name)
             typeQuery.whereKey("CreatedBY", equalTo: currentUser!)
             
-            queryTypes(typeQuery)
+            queryTypes(typeQuery,name: name)
         }
         
         SwiftEventBus.post("myItems", sender: self.itemArray)
     }
     
-    func queryTypes(lists:PFQuery){
+    func queryTypes(lists:PFQuery,name:String){
         
         var objects:[PFObject]!
         
@@ -167,7 +191,7 @@ class Listing {
             print("the name \(userName)")
             print("the user id \(self.currentUser!.objectId!)")
             
-            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName)
+            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name,theDistance: "")
             
             self.itemArray.append(theItem)
             

@@ -15,13 +15,18 @@ class Item {
     var description:String!
     var profileImage:String!
     var userName:String!
+    var name:String
+    var distance:String!
+    var type:String!
     
-    init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,theUserName:String!){
+    init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,theUserName:String!,theName:String,theDistance:String){
         
         objectId = theObjectId
         image = theImage
         description = theDescription
         profileImage = theProfileImage
         userName = theUserName
+        name = theName
+        distance = theDistance
     }
 }
