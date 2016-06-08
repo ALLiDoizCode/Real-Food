@@ -269,6 +269,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         })
     }
     
+    func goEdit(){
+        
+        self.performSegueWithIdentifier("Edit", sender: nil)
+    }
+    
     func makeTextFields(){
         
         itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
@@ -404,7 +409,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
         edit.setTitle("Edit", forState: UIControlState.Normal)
         edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
-        
+        edit.addTarget(self, action: "goEdit", forControlEvents: UIControlEvents.TouchUpInside)
         
         camera.setImage(UIImage(named: "camera"), forState: UIControlState.Normal)
         camera.tintColor = UIColor.flatSandColorDark()

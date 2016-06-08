@@ -9,10 +9,26 @@
 import Foundation
 import UIKit
 import SwiftEventBus
+import Parse
 
 class PresentUser {
     
     let client = User()
+    let Client2 = Editing()
+    
+    let currentUser = PFUser.currentUser()
+    
+    func editUser(userName:String,email:String,image:UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
+        
+        SwiftEventBus.onMainThread(self, name: "Edit") { (result) in
+            
+            let success = result.object as! Bool
+            
+            completion(success: success)
+        }
+        
+        Client2.editUser(userName, email: email, image: image, myAddress: myAddress, phone: phone)
+    }
     
     func getReviews(completion:(data:[Review],Rating:String) ->Void){
         

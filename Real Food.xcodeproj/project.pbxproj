@@ -43,6 +43,7 @@
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
+		4DED8BCB1D089F2200467EC0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */; };
 		4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF09ADA1C6D6C500007B1C5 /* Menu.swift */; };
 		4DF236CB1D063808003B81E7 /* Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF236CA1D063808003B81E7 /* Editing.swift */; };
 		4DF236CD1D0639BC003B81E7 /* PresenterEditing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF236CC1D0639BC003B81E7 /* PresenterEditing.swift */; };
@@ -109,6 +110,7 @@
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4DF09ADA1C6D6C500007B1C5 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4DF236CA1D063808003B81E7 /* Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editing.swift; sourceTree = "<group>"; };
 		4DF236CC1D0639BC003B81E7 /* PresenterEditing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresenterEditing.swift; sourceTree = "<group>"; };
@@ -248,6 +250,7 @@
 				4D671AF91C96255700386CC2 /* MakeSellerViewController.swift */,
 				4D3A27F21C9759F700F2A919 /* ChatRoomViewController.swift */,
 				4D3A27F41C9765C400F2A919 /* RoomsViewController.swift */,
+				4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */,
 			);
 			path = Viewcontrollers;
 			sourceTree = "<group>";
@@ -525,6 +528,7 @@
 				4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */,
 				4D8695C21C999DD100B20968 /* Location.swift in Sources */,
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
+				4DED8BCB1D089F2200467EC0 /* EditProfileViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,
 				4D3A28021C97B62300F2A919 /* User.swift in Sources */,

@@ -269,7 +269,7 @@
                         <viewControllerLayoutGuide type="bottom" id="01A-DT-M7u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5C4-Q0-ixg">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank-cards" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-Xz-4Pa">
