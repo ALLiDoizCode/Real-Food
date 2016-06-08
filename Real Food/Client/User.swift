@@ -40,7 +40,7 @@ class User {
                     let errorString = error.userInfo["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
                     
-                    print(errorString)
+                    print(error.description)
                     
                     SwiftEventBus.post("signUp", sender: succeeded)
                     
@@ -112,6 +112,8 @@ class User {
                 // Do stuff after successful login.
                 
             } else {
+                
+                print(error?.description)
                 
                 SwiftEventBus.post("login", sender: false)
                 // The login failed. Check error to see why.

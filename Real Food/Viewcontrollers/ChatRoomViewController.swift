@@ -27,6 +27,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     let menu = getMenu.sharedInstance
     let presenter = PresentMessages()
     
+    
     var messageArray:[Message] = []
     
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                     print("Message sent \(success)")
                     
                     self.presenter.getMessages(self.roomId) { (data) -> Void in
+                        
                         
                         self.messageArray.removeAll()
                         self.messageArray = data
