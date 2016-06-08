@@ -17,6 +17,21 @@ class User {
     
     let currentUser = PFUser.currentUser()
     
+    func review(review:String!,rate:Int,sellerId:String){
+        
+        let reviewObject = PFObject(className: "Review")
+        
+        reviewObject["Review"] = review
+        reviewObject["Rate"] = rate
+        reviewObject["Seller"] = sellerId
+        reviewObject["User"] = currentUser?.username
+        
+        reviewObject.saveInBackgroundWithBlock { (success, error) in
+            
+            SwiftEventBus.post("Review", sender: success)
+        }
+    }
+    
     func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String,phone:String){
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)

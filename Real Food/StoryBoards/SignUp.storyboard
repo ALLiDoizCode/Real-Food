@@ -124,7 +124,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lUX-5p-eOE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-615" y="412.5"/>
+            <point key="canvasLocation" x="-906" y="258"/>
         </scene>
         <!--Make Buyer View Controller-->
         <scene sceneID="CK7-zo-gaQ">
@@ -202,7 +202,7 @@
                                     </mask>
                                 </variation>
                                 <connections>
-                                    <segue destination="gxx-jB-IjS" kind="show" id="txs-2i-LSo"/>
+                                    <segue destination="oiX-dJ-0cs" kind="show" id="oyr-gz-G5b"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -258,7 +258,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PkM-Op-VWr" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="201" y="412.5"/>
+            <point key="canvasLocation" x="376.5" y="172.5"/>
         </scene>
         <!--Make Seller View Controller-->
         <scene sceneID="lCF-18-ZjQ">
@@ -269,7 +269,7 @@
                         <viewControllerLayoutGuide type="bottom" id="01A-DT-M7u"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="5C4-Q0-ixg">
-                        <rect key="frame" x="0.0" y="0.0" width="400" height="800"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bank-cards" translatesAutoresizingMaskIntoConstraints="NO" id="UAz-Xz-4Pa">
@@ -367,14 +367,22 @@
                 <viewControllerPlaceholder storyboardName="Main" id="RTW-WD-cO6" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ugt-VK-DMw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="301.5" y="953.25"/>
+            <point key="canvasLocation" x="535.5" y="609"/>
+        </scene>
+        <!--Login-->
+        <scene sceneID="uDa-Ue-rG2">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Login" id="oiX-dJ-0cs" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="5Ur-TL-cd3" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-312" y="9.75"/>
         </scene>
     </scenes>
     <resources>
         <image name="bank-cards" width="256" height="256"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="4IY-D9-88P"/>
         <segue reference="bci-lw-Ydz"/>
+        <segue reference="4IY-D9-88P"/>
     </inferredMetricsTieBreakers>
 </document>

@@ -38,6 +38,7 @@
 		4D8695C81C9A26C900B20968 /* PresentMessages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C71C9A26C900B20968 /* PresentMessages.swift */; };
 		4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D8695C91C9A61B600B20968 /* ChatCell.swift */; };
 		4DA514521CFF1856002F14D2 /* UserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA514511CFF1856002F14D2 /* UserData.swift */; };
+		4DBC58501D0856D60072144F /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DBC584F1D0856D60072144F /* Review.swift */; };
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
@@ -102,6 +103,7 @@
 		4D8695C71C9A26C900B20968 /* PresentMessages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentMessages.swift; sourceTree = "<group>"; };
 		4D8695C91C9A61B600B20968 /* ChatCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		4DA514511CFF1856002F14D2 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
+		4DBC584F1D0856D60072144F /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
@@ -167,6 +169,7 @@
 				4D8695C31C9A05C400B20968 /* Rooms.swift */,
 				4D8695C51C9A07F300B20968 /* Message.swift */,
 				4DA514511CFF1856002F14D2 /* UserData.swift */,
+				4DBC584F1D0856D60072144F /* Review.swift */,
 			);
 			path = Modals;
 			sourceTree = "<group>";
@@ -538,6 +541,7 @@
 				4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */,
 				4D3A27F51C9765C400F2A919 /* RoomsViewController.swift in Sources */,
 				4D671AFA1C96255700386CC2 /* MakeSellerViewController.swift in Sources */,
+				4DBC58501D0856D60072144F /* Review.swift in Sources */,
 				4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */,
 				4D3A27FC1C97722D00F2A919 /* RoomCell.swift in Sources */,
 				4D7422891C58A7A300453818 /* SellerViewController.swift in Sources */,

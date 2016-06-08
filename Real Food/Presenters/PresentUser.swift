@@ -14,6 +14,20 @@ class PresentUser {
     
     let client = User()
     
+    func makeReview(review:String!,rate:Int,sellerId:String,completion:(success:Bool) ->Void){
+        
+        SwiftEventBus.onMainThread(self, name: "Review") { (result) in
+            
+             let success = result.object as! Bool
+            
+             completion(success: success)
+            
+             SwiftEventBus.unregister(self, name: "Review")
+        }
+        
+        client.review(review, rate: rate, sellerId: sellerId)
+    }
+    
     func userData(completion:(data:UserData) -> Void) {
         
         SwiftEventBus.onMainThread(self, name: "UserData") { (result) in

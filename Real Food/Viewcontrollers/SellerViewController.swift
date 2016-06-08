@@ -28,6 +28,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var sellerCity:String!
     var sellerDistance:String!
     var sellerRating:String!
+    var rating:Int!
+    var reviewDescription:String!
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLbl: UILabel!
@@ -207,6 +209,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(bgView)
         
         rateView.rateValueChangeCallback = {(rateValue: Float) -> Void in
+            
+            self.rating = Int(rateValue)
+            
             self.rateValueLabel.text = String(
                 format: "%.2f / 5.0, %@",
                 rateValue, ratingTexts[Int(rateValue)])
@@ -250,23 +255,51 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             self.reviewIcon.layer.masksToBounds = true
             self.reviewIcon.clipsToBounds = true
         }
-        
     }
 
     func ratingDone(){
         
-        if rateView.hidden != true {
+        if rateView.hidden == false {
             
-            doneBtn.setTitle("Done", forState: UIControlState.Normal)
-            reviewIcon.hidden = false
-            review.hidden = false
-            reviewLbl.hidden = false
-            rateView.hidden = true
-            rateValueLabel.hidden = true
+            if rating == nil {
+                
+                print("Alert user that they need to leave  rating")
+                
+            }else {
+                
+                self.doneBtn.setTitle("Done", forState: UIControlState.Normal)
+                self.reviewIcon.hidden = false
+                self.review.hidden = false
+                self.reviewLbl.hidden = false
+                self.rateView.hidden = true
+                self.rateValueLabel.hidden = true
+            
+            }
+            
+            if review.hidden == false {
+                
+            }
             
         }else {
             
-           bgView.hidden = true
+           reviewDescription = review.text
+           
+            presentUser.makeReview(reviewDescription, rate: rating, sellerId: sellerId, completion: { (success) in
+                
+                if success == true {
+                    
+                    print("Review Saved")
+                    
+                    self.reviewIcon.hidden = true
+                    self.review.hidden = true
+                    self.reviewLbl.hidden = true
+                    self.rateView.hidden = true
+                    self.rateValueLabel.hidden = true
+                    self.bgView.hidden = true
+                    self.review.text = ""
+                }
+                
+            })
         }
     }
     
