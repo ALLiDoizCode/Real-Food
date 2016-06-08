@@ -12,9 +12,13 @@ class ReviewCell: UITableViewCell {
 
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var reviewRate: UILabel!
+    @IBOutlet weak var reviewer: UILabel!
+ 
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+
     }
 
     override func setSelected(selected: Bool, animated: Bool) {

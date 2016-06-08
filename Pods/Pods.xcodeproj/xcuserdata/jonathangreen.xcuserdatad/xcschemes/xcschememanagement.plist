@@ -94,9 +94,29 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>TTGEmojiRate-TTGEmojiRate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>TTGEmojiRate.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>05FDC7AEB9B4CF3F25FB4A74C56F8316</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>0BA6958E15014E5F0971C830B620FD7A</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>1520003FEBEC114D6C84F832AFEDB994</key>
 		<dict>
 			<key>primary</key>
@@ -107,7 +127,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5772716444866BD6C94A6D40093F76C2</key>
+		<key>62C76EFC16E767374AF3351123A59034</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6AFD0EE06B6FF40CDB52570C1731D2B6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>78B626C3BF73A38F8676D89ADF41D9DD</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -117,12 +147,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>7FCFFD11E980B10F07566CEAD6C8892F</key>
+		<key>875DEEA7122CDE5F3869BF226A76FA8F</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>875DEEA7122CDE5F3869BF226A76FA8F</key>
+		<key>8B95993768228E4456E5A850B42696A8</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -147,27 +177,17 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>B3D2F38E611C607872BB92A1A398CDED</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>B9126AE4D36164B692FABE2B967B8134</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
 		<key>C3A04698AAE4D6124C20602D622956E5</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>C5945C2447E516F50FA87D6596091F2F</key>
+		<key>CD378EDFF42487A7E1BB47D45223953B</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>CD378EDFF42487A7E1BB47D45223953B</key>
+		<key>D6860AFBC98D4BB13C2F22015F210C21</key>
 		<dict>
 			<key>primary</key>
 			<true/>

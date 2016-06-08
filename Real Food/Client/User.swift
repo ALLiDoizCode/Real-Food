@@ -17,7 +17,51 @@ class User {
     
     let currentUser = PFUser.currentUser()
     
-    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){
+    func review(review:String!,rate:Int,sellerId:String){
+        
+        let reviewObject = PFObject(className: "Review")
+        
+        reviewObject["Review"] = review
+        reviewObject["Rate"] = rate
+        reviewObject["Seller"] = sellerId
+        reviewObject["User"] = currentUser?.username
+        
+        reviewObject.saveInBackgroundWithBlock { (success, error) in
+            
+            SwiftEventBus.post("Review", sender: success)
+        }
+    }
+    
+    func getReviews(objectId:String) {
+        
+        var reviews:[Review] = []
+        
+        let query = PFQuery(className: "Review")
+        query.whereKey("Seller", equalTo: objectId)
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            
+            guard let objects = objects else {
+                
+                return
+            }
+            
+            for object in objects {
+                
+                let review = object.objectForKey("Review") as! String
+                let rate = object.objectForKey("Rate") as! Int
+                let user = object.objectForKey("User") as! String
+                
+                let myReview = Review(theReview: review, theRate: rate, theUser: user)
+                
+                reviews.append(myReview)
+            }
+            
+            SwiftEventBus.post("myReviews", sender: reviews)
+        }
+    }
+    
+    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String,phone:String){
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
@@ -27,6 +71,7 @@ class User {
         user.password = passWord
         user.email = email
         user["ProfileImage"] = file
+        user["Phone"] = phone
         
         location.reverseAddress(myAddress) { (lat, long) -> Void in
             
@@ -40,7 +85,7 @@ class User {
                     let errorString = error.userInfo["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
                     
-                    print(errorString)
+                    print(error.description)
                     
                     SwiftEventBus.post("signUp", sender: succeeded)
                     
@@ -97,7 +142,9 @@ class User {
         let profileImage = currentUser!.objectForKey("ProfileImage") as! PFFile
         let userName = currentUser?.username
         
-        let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!)
+        let phone = currentUser?.objectForKey("Phone") as! String
+        
+        let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!,thePhone:phone)
         
         SwiftEventBus.post("UserData", sender: myData)
     }
@@ -112,6 +159,8 @@ class User {
                 // Do stuff after successful login.
                 
             } else {
+                
+                print(error?.description)
                 
                 SwiftEventBus.post("login", sender: false)
                 // The login failed. Check error to see why.

@@ -122,6 +122,12 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        /*let url:NSURL = NSURL(string: rooms[indexPath.row].sellerPhone)!
+        UIApplication.sharedApplication().openURL(url)*/
+    }
 
     
     // MARK: - Navigation

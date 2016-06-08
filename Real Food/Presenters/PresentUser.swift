@@ -9,11 +9,69 @@
 import Foundation
 import UIKit
 import SwiftEventBus
+import Parse
 
 class PresentUser {
     
     let client = User()
+    let Client2 = Editing()
     
+    let currentUser = PFUser.currentUser()
+    
+    func editUser(userName:String,email:String,image:UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
+        
+        SwiftEventBus.onMainThread(self, name: "Edit") { (result) in
+            
+            let success = result.object as! Bool
+            
+            completion(success: success)
+        }
+        
+        Client2.editUser(userName, email: email, image: image, myAddress: myAddress, phone: phone)
+    }
+    
+    func getReviews(objectId:String,completion:(data:[Review],Rating:String) ->Void){
+        
+        SwiftEventBus.onMainThread(self, name: "myReviews") { (result) in
+            
+            var currentRating:Double! = Double()
+            
+            let reviews = result.object as! [Review]
+            
+            for review in reviews {
+                
+                currentRating = currentRating + Double(review.rate)
+                
+            }
+            
+            let rateFloat:Double = currentRating / Double(reviews.count)
+            
+            print("my rating is \(rateFloat)")
+            
+            let score = String(format:"%.1f", rateFloat)
+            
+            completion(data: reviews, Rating: "\(score)")
+            
+            SwiftEventBus.unregister(self, name: "myReviews")
+            
+        }
+        
+        client.getReviews(objectId)
+    }
+    
+    func makeReview(review:String!,rate:Int,sellerId:String,completion:(success:Bool) ->Void){
+        
+        SwiftEventBus.onMainThread(self, name: "Review") { (result) in
+            
+             let success = result.object as! Bool
+            
+             completion(success: success)
+            
+             SwiftEventBus.unregister(self, name: "Review")
+        }
+        
+        client.review(review, rate: rate, sellerId: sellerId)
+    }
     
     func userData(completion:(data:UserData) -> Void) {
         
@@ -27,7 +85,7 @@ class PresentUser {
         client.userData()
     }
     
-    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,completion:(success:Bool) -> Void){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "signUp") { notification in
             
@@ -38,7 +96,7 @@ class PresentUser {
             completion(success:success)
         }
         
-        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress )
+        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress,phone:phone)
     }
     
     func login(userName:String,PassWord:String,completion:(success:Bool) -> Void) {

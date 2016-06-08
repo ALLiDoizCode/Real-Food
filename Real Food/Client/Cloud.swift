@@ -7,3 +7,21 @@
 //
 
 import Foundation
+import Parse
+
+class Cloud {
+    
+    func NewMessage(Recipient:String){
+        
+        PFCloud.callFunctionInBackground("Message", withParameters: ["Recipient":Recipient]) {
+            (response: AnyObject?, error: NSError?) -> Void in
+            //let responseString = response as? String
+            
+            
+            if error == nil  {
+                
+                print("cloud fired")
+            }
+        }
+    }
+}

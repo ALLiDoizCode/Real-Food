@@ -57,7 +57,7 @@ class PresentMessages {
             
             completion(success: info)
             
-            SwiftEventBus.unregister(self, name: "messageWithId")
+            SwiftEventBus.unregister(self, name: "sendMessage")
         }
         
         client.sendMessage(recipient, text: text)

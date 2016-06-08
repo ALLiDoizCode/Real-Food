@@ -17,6 +17,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     var firstName:TextField!
     var email:TextField!
     var address:TextField!
+    var phone:TextField!
     var passWord:TextField!
     var signUp:RaisedButton!
     
@@ -85,6 +86,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         firstName.textColor = UIColor.flatWhiteColor()
         firstName.center = self.view.center
         firstName.titleLabel = UILabel()
+        firstName.center.y = self.view.center.y - 50
         firstName.titleLabel!.font = RobotoFont.mediumWithSize(12)
         firstName.titleLabelColor = MaterialColor.grey.base
         firstName.titleLabelActiveColor = UIColor.flatSandColorDark()
@@ -96,7 +98,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         email.font = RobotoFont.regularWithSize(20)
         email.textColor = UIColor.flatWhiteColor()
         email.center.x = self.view.center.x
-        email.center.y = self.view.center.y + 50
+        email.center.y = self.view.center.y
         email.titleLabel = UILabel()
         email.titleLabel!.font = RobotoFont.mediumWithSize(12)
         email.titleLabelColor = MaterialColor.grey.base
@@ -109,13 +111,26 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         address.font = RobotoFont.regularWithSize(20)
         address.textColor = UIColor.flatWhiteColor()
         address.center.x = self.view.center.x
-        address.center.y = self.view.center.y + 100
+        address.center.y = self.view.center.y + 50
         address.titleLabel = UILabel()
         address.titleLabel!.font = RobotoFont.mediumWithSize(12)
         address.titleLabelColor = MaterialColor.grey.base
         address.titleLabelActiveColor = UIColor.flatSandColorDark()
         address.backgroundColor = UIColor.clearColor()
         address.clearButtonMode = .Always
+        
+        phone = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
+        phone.placeholder = "Phone Number"
+        phone.font = RobotoFont.regularWithSize(20)
+        phone.textColor = UIColor.flatWhiteColor()
+        phone.center.x = self.view.center.x
+        phone.center.y = self.view.center.y + 100
+        phone.titleLabel = UILabel()
+        phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        phone.titleLabelColor = MaterialColor.grey.base
+        phone.titleLabelActiveColor = UIColor.flatSandColorDark()
+        phone.backgroundColor = UIColor.clearColor()
+        phone.clearButtonMode = .Always
         
         passWord = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
         passWord.placeholder = "Password"
@@ -134,7 +149,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         view.addSubview(email)
         view.addSubview(address)
         view.addSubview(passWord)
-        
+        view.addSubview(phone)
        
     }
     
@@ -150,6 +165,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         self.view.addSubview(signUp)
     }
+    
     
     func getImage() {
         
@@ -196,6 +212,27 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                 
                 
         }))
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
+            presentImagePickerController(.PhotoLibrary)
+            }, secondaryHandler: { _, numberOfPhotos in
+                print("Comment \(numberOfPhotos) photos")
+                
+                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
+                
+                manager.requestImageForAsset(controller.selectedImageAssets[0],
+                    targetSize: size,
+                    contentMode: .AspectFill,
+                options:initialRequestOptions) { (finalResult, _) in
+                    
+                    self.image = finalResult
+                    self.profileImage.setBackgroundImage(self.image, forState: UIControlState.Normal)
+                    self.profileImage.tintColor = UIColor.clearColor()
+                    self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                    self.profileImage.layer.masksToBounds = true
+                }
+        }))
+        
         controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
             print("Cancelled")
         }))
@@ -212,13 +249,25 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+        //dismissViewControllerAnimated(true, completion: nil)
+        
+        picker.dismissViewControllerAnimated(false) {
+            
+        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         
-        dismissViewControllerAnimated(true, completion: nil)
+        //dismissViewControllerAnimated(true, completion: nil)
+        
+        picker.dismissViewControllerAnimated(false) {
+            
+            self.image = image
+            self.profileImage.setBackgroundImage(self.image, forState: UIControlState.Normal)
+            self.profileImage.tintColor = UIColor.clearColor()
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+            self.profileImage.layer.masksToBounds = true        }
         
     }
    
@@ -239,6 +288,11 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
+        guard (phone.text != nil) else {
+            
+            return
+        }
+        
         guard (passWord.text != nil) else {
             
             return
@@ -251,7 +305,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         SwiftSpinner.show("Creating Account")
         
-        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!) { (success) -> Void in
+        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
             
             if success == true {
                 
@@ -259,8 +313,6 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                     
                     self.performSegueWithIdentifier("Main", sender: nil)
                 })
-                
-                
                 
             }else {
                 
@@ -281,15 +333,4 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     override func prefersStatusBarHidden() -> Bool {
         return true
     }
-    
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

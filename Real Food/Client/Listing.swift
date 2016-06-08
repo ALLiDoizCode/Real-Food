@@ -99,11 +99,11 @@ class Listing {
                     
                     let miles = location.distanceInMilesTo(userLocation)
                     
-                    let multiplier = pow(10.0, 1.0)
+                    //let multiplier = pow(10.0, 1.0)
                     
-                    let distance = round(miles * multiplier) / multiplier
+                    //let distance = round(miles * multiplier) / multiplier
                     
-                    let itemDistance = "\(distance)m"
+                    let itemDistance:String = String(format:"%.1f", miles)
                     
                     print("The distance is \(itemDistance)")
                     
@@ -127,6 +127,8 @@ class Listing {
     func getMyItems(){
         
         //self.itemArray.removeAll()
+        
+        self.itemArray = []
         
         let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
         
@@ -173,6 +175,13 @@ class Listing {
                 return
             }
             
+            guard let type:String = object.objectForKey("Type") as? String else {
+                
+                print("no Type")
+                
+                return
+            }
+            
             guard let userName = self.currentUser!.username else {
                 
                 print("no userName")
@@ -191,7 +200,9 @@ class Listing {
             print("the name \(userName)")
             print("the user id \(self.currentUser!.objectId!)")
             
-            let theItem = Item(theObjectId:self.currentUser!.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name,theDistance: "")
+            let theItem = Item(theObjectId:object.objectId!, theImage: image.url!, theDescription: description,theProfileImage:profileImage.url!,theUserName:userName,theName:name,theDistance: "")
+            
+            theItem.type = type
             
             self.itemArray.append(theItem)
             
@@ -209,6 +220,7 @@ class Listing {
         item["Image"] = file
         item["CreatedBY"] = currentUser
         item["Location"] = currentUser?.objectForKey("Location") as? PFGeoPoint
+        item["Type"] = type
         
         item.saveInBackgroundWithBlock { (success, error) -> Void in
         

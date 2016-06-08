@@ -42,6 +42,15 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         print(type)
         
+        
+
+        // Do any additional setup after loading the view.
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        
+        menu.setupMenu(self,title:type)
+        
         presenter.getItems(type,miles:miles) { (data) -> Void in
             
             print(self.type)
@@ -52,18 +61,12 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             self.reload()
         }
-
-        // Do any additional setup after loading the view.
-    }
-    
-    override func viewWillAppear(animated: Bool) {
-        
-        menu.setupMenu(self,title:type)
     }
     
     override func viewWillDisappear(animated: Bool) {
         
         menu.menuView.hide()
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -155,6 +158,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             controller.sellerIcon = self.itemArray[indexPath!.row].profileImage
             controller.sellerName = self.itemArray[indexPath!.row].userName
             controller.itemIcon = self.itemArray[indexPath!.row].image
+            controller.sellerDistance = self.itemArray[indexPath!.row].distance
         }
     }
     

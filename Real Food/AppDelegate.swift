@@ -14,9 +14,10 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     
-    let APP_ID = "RealFood2064walton1061"
+    let APP_ID = "ENIGpcM3YupNuDEMoM6xVHELQmJjYSGFeS166Bfl"
+    //let CLIENT_ID = "9384V2bE29x5xq6wLJgvmE61L44Zm7gX1zUApudc"
     let MASTER_KEY = "100Mjp33chuckprimus"
-    let SERVER = "https://real-food.herokuapp.com//parse"
+    let SERVER = "http://real-food.herokuapp.com/parse"
 
     var window: UIWindow?
 
@@ -26,6 +27,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
          IQKeyboardManager.sharedManager().enable = true
         
+         Parse.enableLocalDatastore()
+        
         let parseConfiguration = ParseClientConfiguration { (ParseMutableClientConfiguration) -> Void in
             
             ParseMutableClientConfiguration.applicationId = self.APP_ID
@@ -34,7 +37,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         Parse.initializeWithConfiguration(parseConfiguration)
         
+       
+        
+        //Parse.setApplicationId(APP_ID, clientKey: CLIENT_ID)
+        
+        let userNotificationTypes: UIUserNotificationType = [.Alert, .Badge, .Sound]
+        
+        let settings = UIUserNotificationSettings(forTypes: userNotificationTypes, categories: nil)
+        application.registerUserNotificationSettings(settings)
+        application.registerForRemoteNotifications()
+        
         return true
+    }
+    
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        // Store the deviceToken in the current Installation and save it to Parse
+        let installation = PFInstallation.currentInstallation()
+        installation.setDeviceTokenFromData(deviceToken)
+        installation.saveInBackground()
+    }
+    
+    func application(application: UIApplication,  didReceiveRemoteNotification userInfo: [NSObject : AnyObject],  fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
+       
+        print("got push")
     }
 
     func applicationWillResignActive(application: UIApplication) {

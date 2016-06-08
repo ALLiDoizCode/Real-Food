@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/ViewController.swift"
@@ -17,38 +17,6 @@
             endingLineNumber = "75"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Green_Pepper.ViewController.collectionView (__ObjC.UICollectionView, cellForItemAtIndexPath : __ObjC.NSIndexPath) -&gt; __ObjC.UICollectionViewCell"
-                  moduleName = "Green Pepper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Viewcontrollers/ViewController.swift"
-                  timestampString = "487011542.566588"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "358">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Green_Pepper.ViewController.(collectionView (__ObjC.UICollectionView, cellForItemAtIndexPath : __ObjC.NSIndexPath) -&gt; __ObjC.UICollectionViewCell).(closure #1)"
-                  moduleName = "Green Pepper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Viewcontrollers/ViewController.swift"
-                  timestampString = "487011542.566693"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -58,11 +26,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/SellerViewController.swift"
-            timestampString = "480198451.186698"
+            timestampString = "487091226.803779"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "91"
+            endingLineNumber = "91"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
          </BreakpointContent>
@@ -153,11 +121,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/RoomsViewController.swift"
-            timestampString = "487014934.765848"
+            timestampString = "487054453.574776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "121"
-            endingLineNumber = "121"
+            startingLineNumber = "122"
+            endingLineNumber = "122"
             landmarkName = "tableView(_:cellForRowAtIndexPath:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -169,11 +137,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Messages.swift"
-            timestampString = "487014704.98073"
+            timestampString = "487054453.574776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "114"
-            endingLineNumber = "114"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
             landmarkName = "getRooms()"
             landmarkType = "5">
          </BreakpointContent>
@@ -185,11 +153,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Messages.swift"
-            timestampString = "487014704.98073"
+            timestampString = "487054453.574776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "201"
-            endingLineNumber = "201"
+            startingLineNumber = "212"
+            endingLineNumber = "212"
             landmarkName = "sendMessage(_:text:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -201,11 +169,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Messages.swift"
-            timestampString = "487014704.98073"
+            timestampString = "487054453.574776"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "sendMessage(_:text:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -213,15 +181,15 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Listing.swift"
-            timestampString = "486947838.870145"
+            timestampString = "487084997.512895"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "138"
-            endingLineNumber = "138"
+            startingLineNumber = "140"
+            endingLineNumber = "140"
             landmarkName = "getMyItems()"
             landmarkType = "5">
          </BreakpointContent>
@@ -233,11 +201,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Listing.swift"
-            timestampString = "486947838.870145"
+            timestampString = "487099395.460821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "209"
-            endingLineNumber = "209"
+            startingLineNumber = "220"
+            endingLineNumber = "220"
             landmarkName = "makeItem(_:name:image:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -249,11 +217,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Listing.swift"
-            timestampString = "486947838.870145"
+            timestampString = "487099395.460821"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
             landmarkName = "makeItem(_:name:image:)"
             landmarkType = "5">
          </BreakpointContent>
@@ -281,12 +249,122 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/SellerViewController.swift"
-            timestampString = "487011542.479152"
+            timestampString = "487107726.180092"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "99"
-            endingLineNumber = "99"
+            startingLineNumber = "145"
+            endingLineNumber = "145"
             landmarkName = "viewWillDisappear(_:)"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Real Food/Viewcontrollers/SellerViewController.swift"
+            timestampString = "487091226.803779"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "121"
+            endingLineNumber = "121"
+            landmarkName = "viewDidLoad()"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Real Food/Cells/ReviewCell.swift"
+            timestampString = "487096368.902423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ReviewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.reviewRate.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943198"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.reviewRate.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.init (style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Green_Pepper.ReviewCell"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.94341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "211">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Green_Pepper.ReviewCell&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "138">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Real Food/Client/Editing.swift"
+            timestampString = "487107144.115791"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "44"
+            endingLineNumber = "44"
+            landmarkName = "editUser(_:email:image:myAddress:phone:)"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

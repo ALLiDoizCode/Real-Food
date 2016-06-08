@@ -17,6 +17,8 @@ class Messages {
     var roomArray:[Rooms] = []
     var messageArray:[Message] = []
     
+    let cloud = Cloud()
+    
     func getRooms(){
         
         let roomQuery = PFQuery(className: "Room")
@@ -130,7 +132,7 @@ class Messages {
     
     func getMessage(roomID:String!){
         
-        messageArray.removeAll()
+        messageArray = []
         
         let messageQuery = PFQuery(className: "Message")
         
@@ -276,6 +278,7 @@ class Messages {
                             if success == true {
                                 
                                 print("Messaged saved to room")
+                                self.cloud.NewMessage(recipient)
                                 SwiftEventBus.post("sendMessage", sender: success)
                                 
                             }else {
