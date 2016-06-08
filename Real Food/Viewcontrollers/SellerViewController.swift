@@ -42,11 +42,19 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var rateValueLabel: MaterialLabel!
     var rateView:EmojiRateView!
     var bgView:UIView!
+    var review:TextView!
+    var doneBtn:MaterialButton!
+    var reviewLbl:MaterialLabel!
+    var reviewIcon:UIImageView!
 
     var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        review = TextView()
+        reviewLbl = MaterialLabel()
+        reviewIcon = UIImageView()
         
         presentUser.userData { (data) in
             self.sellerPhone = data.phone
@@ -63,11 +71,15 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
         userName.text = sellerName
         
+        reviewIcon.image = userImage.image
+        reviewIcon.contentMode = .ScaleAspectFill
+        
         tableView.estimatedRowHeight = 44
         tableView.rowHeight = UITableViewAutomaticDimension
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
+        
         
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -103,18 +115,19 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
+            
             self.makeRateView()
             
         });
-        
-        
         
     }
     
     override func viewWillAppear(animated: Bool) {
         
         menu.setupMenu(self,title:"Seller")
-        
+        review.hidden = true
+        reviewIcon.hidden = true
+        reviewLbl.hidden = true
         bgView.hidden =  true
     }
     
@@ -151,17 +164,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let url:NSURL = NSURL(string: sellerPhone)!
         UIApplication.sharedApplication().openURL(url)
         
-        /*print("the seller Id is \(sellerId)")
-        
-        presenter.sendMessage("", recipient: sellerId) { (success) -> Void in
-            
-            if success == true {
-                
-                self.performSegueWithIdentifier("goToMessages", sender: self)
-            }
-        }
-        
-        self.performSegueWithIdentifier("goToMessages", sender: self)*/
     }
     
     func makeRateView(){
@@ -171,9 +173,18 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         rateView = EmojiRateView()
         rateValueLabel = MaterialLabel()
         
+        reviewLbl.text = "Reivew"
+        reviewLbl.textColor = rate.backgroundColor
+        reviewLbl.font = RobotoFont.boldWithSize(50)
+        reviewLbl.textAlignment = .Center
+        
+        review.font = RobotoFont.mediumWithSize(20)
+        review.titleLabel?.text = "Leave a Review"
+        review.clipsToBounds = true
+        
         let ratingTexts = ["Very bad", "Bad", "Normal", "Good", "Very good", "Perfect"]
         
-        let doneBtn = MaterialButton()
+        doneBtn = MaterialButton()
         doneBtn.setTitle("Rate", forState: UIControlState.Normal)
         doneBtn.backgroundColor = rate.backgroundColor
         doneBtn.cornerRadius = .Radius1
@@ -190,6 +201,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         bgView.addSubview(rateView)
         bgView.addSubview(rateValueLabel)
         bgView.addSubview(doneBtn)
+        bgView.addSubview(review)
+        bgView.addSubview(reviewLbl)
+        bgView.addSubview(reviewIcon)
         self.view.addSubview(bgView)
         
         rateView.rateValueChangeCallback = {(rateValue: Float) -> Void in
@@ -198,7 +212,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 rateValue, ratingTexts[Int(rateValue)])
         }
         
-        constrain(rateView,rateValueLabel,doneBtn) { rateView,rateValueLabel,doneBtn  in
+        constrain(rateView,rateValueLabel,doneBtn,review,reviewLbl) { rateView,rateValueLabel,doneBtn,review,reviewLbl  in
             
             rateView.center == (rateView.superview?.center)!
             rateView.width == (rateView.superview?.width)! - 20
@@ -209,31 +223,63 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             rateValueLabel.height == 100
             rateValueLabel.width == 300
             
+            review.center == (review.superview?.center)!
+            
+            review.width == 300
+            review.height == 150
+            
             doneBtn.centerX == (doneBtn.superview?.centerX)!
             doneBtn.bottom == doneBtn.superview!.bottom - 60
             doneBtn.width == 200
             doneBtn.height == 50
             
+            reviewLbl.centerX == (reviewLbl.superview?.centerX)!
+            reviewLbl.width == 300
+            reviewLbl.height == 100
+            reviewLbl.bottom == review.top + 30
         }
+        
+        constrain(reviewIcon) { reviewIcon in
+            
+            reviewIcon.centerX == (reviewIcon.superview?.centerX)!
+            reviewIcon.top == (reviewIcon.superview?.top)! + 30
+            reviewIcon.width == 100
+            reviewIcon.height == 100
+            
+            self.reviewIcon.layer.cornerRadius = self.reviewIcon.frame.height/2
+            self.reviewIcon.layer.masksToBounds = true
+            self.reviewIcon.clipsToBounds = true
+        }
+        
     }
-    
+
     func ratingDone(){
         
-        bgView.hidden = true
+        if rateView.hidden != true {
+            
+            doneBtn.setTitle("Done", forState: UIControlState.Normal)
+            reviewIcon.hidden = false
+            review.hidden = false
+            reviewLbl.hidden = false
+            rateView.hidden = true
+            rateValueLabel.hidden = true
+            
+        }else {
+            
+           bgView.hidden = true
+        }
     }
     
     @IBAction func rateBtn(sender: AnyObject) {
         
         bgView.hidden =  false
-        
+        review.hidden = true
+        rateView.hidden = false
+        rateValueLabel.hidden = false
         
     }
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
         
         if segue.identifier == "goToMessages" {
             
@@ -243,7 +289,5 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             print("the object id is \(sellerId)")
         }
     }
-    
-    
 
 }
