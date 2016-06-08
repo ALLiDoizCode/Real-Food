@@ -44,7 +44,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         presenter.getMessages(roomId) { (data) -> Void in
         
-                self.messageArray.removeAll()
+                self.messageArray = []
                 self.messageArray = data
                 self.reload()
             }
@@ -69,11 +69,9 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
                     
                     self.presenter.getMessages(self.roomId) { (data) -> Void in
                         
-                        
-                        self.messageArray.removeAll()
                         self.messageArray = data
-                        print("The message is \(data[0].description)")
-                        self.reload()
+                        print("The number of message is \(data.count)")
+                        self.tableView.reloadData()
                         
                         self.textField.text = ""
                     }

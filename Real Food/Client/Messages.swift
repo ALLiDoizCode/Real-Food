@@ -132,7 +132,7 @@ class Messages {
     
     func getMessage(roomID:String!){
         
-        messageArray.removeAll()
+        messageArray = []
         
         let messageQuery = PFQuery(className: "Message")
         
