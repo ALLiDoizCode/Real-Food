@@ -11,6 +11,7 @@ import Material
 import ImagePickerSheetController
 import Photos
 import SwiftSpinner
+import PhoneNumberKit
 
 class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -270,21 +271,8 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             self.profileImage.layer.masksToBounds = true        }
         
     }
-    
-    func validate(value: String) -> Bool {
-        
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        
-        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        
-        var result =  phoneTest.evaluateWithObject(value)
-        
-        return result
-        
-    }
 
-   
-    func signUpBtn(sender: AnyObject) {
+       func signUpBtn(sender: AnyObject) {
         
         guard (firstName.text != nil) else {
             
@@ -316,9 +304,11 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
-        SwiftSpinner.show("Creating Account")
-        
-        if validate(phone.text!) == true {
+        do {
+            _ = try PhoneNumber(rawNumber:phone.text!)
+            _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
+            
+            SwiftSpinner.show("Creating Account")
             
             presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
                 
@@ -338,13 +328,10 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                     
                 }
             }
-        }else {
+        }
+        catch {
             
-            SwiftSpinner.hide({
-                
-                print("phone number not valid")
-            })
-            
+            print("Generic parser error")
         }
         
     }

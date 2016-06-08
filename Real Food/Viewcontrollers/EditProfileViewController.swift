@@ -11,6 +11,7 @@ import Material
 import ImagePickerSheetController
 import Photos
 import SwiftSpinner
+import PhoneNumberKit
 
 class EditProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -251,18 +252,6 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         
     }
     
-    func validate(value: String) -> Bool {
-        
-        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
-        
-        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
-        
-        var result =  phoneTest.evaluateWithObject(value)
-        
-        return result
-        
-    }
-    
     func Done(sender: AnyObject) {
         
         guard (firstName.text != nil) else {
@@ -290,9 +279,11 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             return
         }
         
-        SwiftSpinner.show("Saving Changes")
-        
-        if validate(phone.text!) == true {
+        do {
+            _ = try PhoneNumber(rawNumber:phone.text!)
+            _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
+            
+            SwiftSpinner.show("Saving Changes")
             
             presenter.editUser(firstName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
                 
@@ -312,13 +303,11 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     
                 }
             }
-        }else {
-            
-            SwiftSpinner.hide({
-                
-                print("phone number not valid")
-            })
         }
+        catch {
+            print("Generic parser error")
+        }
+        
     }
     
     override func prefersStatusBarHidden() -> Bool {
