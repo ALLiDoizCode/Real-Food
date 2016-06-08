@@ -20,7 +20,7 @@ class getMenu {
     
     func setupMenu(nav:UIViewController,title:String){
         
-        let items = ["Home", "Messages", "Profile", "Logout"]
+        let items = ["Home","Profile", "Logout"]
         nav.navigationController!.navigationBar.translucent = false
         nav.navigationController!.navigationBar.barTintColor = UIColor.flatForestGreenColor()
         nav.navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.flatSandColorDark()]
@@ -51,23 +51,23 @@ class getMenu {
                 nav.navigationController!.pushViewController(controller, animated: true)
             }
             
-            if indexPath == 1 {
+            /*if indexPath == 1 {
                 
                 let storyBoard = UIStoryboard.init(name: "Chat", bundle: nil)
                 
                 let controller = storyBoard.instantiateViewControllerWithIdentifier("Chat") as! RoomsViewController
                 
                 nav.navigationController!.pushViewController(controller, animated: true)
-            }
+            }*/
             
-            if indexPath == 2 {
+            if indexPath == 1 {
                 
                 let profile = UIStoryboard(name: "Profile", bundle: nil)
                 let sellerProfile:SellerProfileViewController = profile.instantiateViewControllerWithIdentifier("SellerProfile") as! SellerProfileViewController
                 nav.navigationController!.pushViewController(sellerProfile, animated: true)
             }
             
-            if indexPath == 3 {
+            if indexPath == 2 {
                 
                 self.presenter.logout()
                 

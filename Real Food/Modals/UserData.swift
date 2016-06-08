@@ -12,10 +12,14 @@ class UserData {
     
     var userName:String!
     var profileImage:String!
+    var phone:String!
+    var rating:Int!
+    var reviews:[String]!
     
-    init(theUserName:String,theProfileImage:String){
+    init(theUserName:String,theProfileImage:String,thePhone:String!){
         
         userName = theUserName
         profileImage = theProfileImage
+        phone = thePhone
     }
 }

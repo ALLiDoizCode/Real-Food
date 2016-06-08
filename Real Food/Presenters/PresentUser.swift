@@ -14,7 +14,6 @@ class PresentUser {
     
     let client = User()
     
-    
     func userData(completion:(data:UserData) -> Void) {
         
         SwiftEventBus.onMainThread(self, name: "UserData") { (result) in
@@ -27,7 +26,7 @@ class PresentUser {
         client.userData()
     }
     
-    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,completion:(success:Bool) -> Void){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "signUp") { notification in
             
@@ -38,7 +37,7 @@ class PresentUser {
             completion(success:success)
         }
         
-        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress )
+        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress,phone:phone)
     }
     
     func login(userName:String,PassWord:String,completion:(success:Bool) -> Void) {

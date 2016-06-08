@@ -17,7 +17,7 @@ class User {
     
     let currentUser = PFUser.currentUser()
     
-    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){
+    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String,phone:String){
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
@@ -27,6 +27,7 @@ class User {
         user.password = passWord
         user.email = email
         user["ProfileImage"] = file
+        user["Phone"] = phone
         
         location.reverseAddress(myAddress) { (lat, long) -> Void in
             
@@ -97,7 +98,9 @@ class User {
         let profileImage = currentUser!.objectForKey("ProfileImage") as! PFFile
         let userName = currentUser?.username
         
-        let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!)
+        let phone = currentUser?.objectForKey("Phone") as! String
+        
+        let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!,thePhone:phone)
         
         SwiftEventBus.post("UserData", sender: myData)
     }

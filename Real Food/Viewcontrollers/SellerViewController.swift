@@ -18,7 +18,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     let menu = getMenu.sharedInstance
     let presenter = PresentMessages()
     let reuseIdentifier = "Review"
+    let presentUser = PresentUser()
     
+    var sellerPhone:String!
     var sellerId:String!
     var sellerIcon:String!
     var itemIcon:String!
@@ -45,6 +47,13 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presentUser.userData { (data) in
+            self.sellerPhone = data.phone
+            print("user number is \(self.sellerPhone)")
+        }
+        
+        message.setTitle("Call", forState: UIControlState.Normal)
         
          bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         
@@ -139,7 +148,10 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func messageBTn(sender: AnyObject) {
         
-        print("the seller Id is \(sellerId)")
+        let url:NSURL = NSURL(string: sellerPhone)!
+        UIApplication.sharedApplication().openURL(url)
+        
+        /*print("the seller Id is \(sellerId)")
         
         presenter.sendMessage("", recipient: sellerId) { (success) -> Void in
             
@@ -149,7 +161,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             }
         }
         
-        self.performSegueWithIdentifier("goToMessages", sender: self)
+        self.performSegueWithIdentifier("goToMessages", sender: self)*/
     }
     
     func makeRateView(){
