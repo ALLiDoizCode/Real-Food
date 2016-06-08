@@ -32,31 +32,29 @@ class Editing {
             
             self.currentUser!["Location"] = geoPoint
             
-            self.currentUser!.signUpInBackgroundWithBlock {
+            self.currentUser!.saveInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
                 
+                if let error = error {
+                    let errorString = error.userInfo["error"] as? NSString
+                    // Show the errorString somewhere and let the user try again.
+                    
+                    print(error.description)
+                    
+                    SwiftEventBus.post("Edit", sender: succeeded)
+                    
+                } else {
+                    
+                    // Hooray! Let them use the app now.
+                    
+                    SwiftEventBus.post("Edit", sender: succeeded)
+                    
+                    print("User Edited")
+                }
             }
         }
         
-        currentUser?.saveInBackgroundWithBlock({ (success, error) in
-            
-            if let error = error {
-                let errorString = error.userInfo["error"] as? NSString
-                // Show the errorString somewhere and let the user try again.
-                
-                print(error.description)
-                
-                 SwiftEventBus.post("Edit", sender: success)
-                
-            } else {
-                
-                // Hooray! Let them use the app now.
-                
-                 SwiftEventBus.post("Edit", sender: success)
-                
-                print("User Edited")
-            }
-        })
+
     }
     
     func delteObject(type:String,itemId:String) {

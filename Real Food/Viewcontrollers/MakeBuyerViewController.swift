@@ -11,6 +11,7 @@ import Material
 import ImagePickerSheetController
 import Photos
 import SwiftSpinner
+import PhoneNumberKit
 
 class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -316,9 +317,11 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
-        SwiftSpinner.show("Creating Account")
-        
-        if validate(phone.text!) == true {
+        do {
+            _ = try PhoneNumber(rawNumber:phone.text!)
+            _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
+            
+            SwiftSpinner.show("Creating Account")
             
             presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
                 
@@ -338,13 +341,10 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                     
                 }
             }
-        }else {
+        }
+        catch {
             
-            SwiftSpinner.hide({
-                
-                print("phone number not valid")
-            })
-            
+            print("Generic parser error")
         }
         
     }
