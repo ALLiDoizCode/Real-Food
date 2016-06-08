@@ -77,6 +77,8 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        newItemView.hidden = true
+        
         self.newItemView.layer.cornerRadius = 3
         self.newItemView.layer.masksToBounds = true
         
@@ -118,7 +120,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         ratingTable.hidden = true
         cover.hidden = true
         closeReview.hidden = true
-        newItemView.hidden = true
+        //newItemView.hidden = true
         buttonView.hidden = true
         
         presenter.getMyItems { (data) -> Void in
@@ -658,6 +660,24 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 
                 
         }))
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
+            presentImagePickerController(.PhotoLibrary)
+            }, secondaryHandler: { _, numberOfPhotos in
+                print("Comment \(numberOfPhotos) photos")
+                
+                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
+                
+                manager.requestImageForAsset(controller.selectedImageAssets[0],
+                    targetSize: size,
+                    contentMode: .AspectFill,
+                options:initialRequestOptions) { (finalResult, _) in
+                    
+                    self.newItemImage.image = finalResult
+                    self.image = finalResult
+                }
+        }))
+        
         controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
             print("Cancelled")
         }))
@@ -674,14 +694,23 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+        
+        //dismissViewControllerAnimated(true, completion: nil)
+       picker.dismissViewControllerAnimated(false) {
+        
+        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         
-        dismissViewControllerAnimated(true, completion: nil)
-        
+        //dismissViewControllerAnimated(true, completion: nil)
+       
+        picker.dismissViewControllerAnimated(false) {
+            
+            self.newItemImage.image = image
+            self.image = image
+        }
     }
     
     override func prefersStatusBarHidden() -> Bool {

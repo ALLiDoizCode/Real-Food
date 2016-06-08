@@ -166,6 +166,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         self.view.addSubview(signUp)
     }
     
+    
     func getImage() {
         
         let manager = PHImageManager.defaultManager()
@@ -211,6 +212,27 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                 
                 
         }))
+        
+        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
+            presentImagePickerController(.PhotoLibrary)
+            }, secondaryHandler: { _, numberOfPhotos in
+                print("Comment \(numberOfPhotos) photos")
+                
+                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
+                
+                manager.requestImageForAsset(controller.selectedImageAssets[0],
+                    targetSize: size,
+                    contentMode: .AspectFill,
+                options:initialRequestOptions) { (finalResult, _) in
+                    
+                    self.image = finalResult
+                    self.profileImage.setBackgroundImage(self.image, forState: UIControlState.Normal)
+                    self.profileImage.tintColor = UIColor.clearColor()
+                    self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+                    self.profileImage.layer.masksToBounds = true
+                }
+        }))
+        
         controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
             print("Cancelled")
         }))
@@ -227,13 +249,25 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
+        //dismissViewControllerAnimated(true, completion: nil)
+        
+        picker.dismissViewControllerAnimated(false) {
+            
+        }
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
         
-        dismissViewControllerAnimated(true, completion: nil)
+        //dismissViewControllerAnimated(true, completion: nil)
+        
+        picker.dismissViewControllerAnimated(false) {
+            
+            self.image = image
+            self.profileImage.setBackgroundImage(self.image, forState: UIControlState.Normal)
+            self.profileImage.tintColor = UIColor.clearColor()
+            self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+            self.profileImage.layer.masksToBounds = true        }
         
     }
    
