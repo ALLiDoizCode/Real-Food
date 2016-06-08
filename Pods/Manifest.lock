@@ -19,6 +19,7 @@ PODS:
   - SwiftEventBus (1.1.0)
   - SwiftLocation (0.2.0)
   - SwiftSpinner (0.9.5)
+  - TTGEmojiRate (0.1.6)
 
 DEPENDENCIES:
   - BTNavigationDropdownMenu
@@ -35,6 +36,7 @@ DEPENDENCIES:
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
   - SwiftLocation
   - SwiftSpinner
+  - TTGEmojiRate
 
 EXTERNAL SOURCES:
   HanabiCollectionViewLayout:
@@ -67,5 +69,6 @@ SPEC CHECKSUMS:
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
   SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce
+  TTGEmojiRate: 52bfbd96db1616617f9257d249030e3cbef748dc
 
 COCOAPODS: 0.39.0

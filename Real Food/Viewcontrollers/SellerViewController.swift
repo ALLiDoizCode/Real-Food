@@ -10,6 +10,8 @@ import UIKit
 import Material
 import FXBlurView
 import BTNavigationDropdownMenu
+import TTGEmojiRate
+import Cartography
 
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
@@ -34,6 +36,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBOutlet weak var mainImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
     @IBOutlet weak var userName: UILabel!
+    
+    var rateValueLabel: MaterialLabel!
+    var rateView:EmojiRateView!
 
 
     var menuView: BTNavigationDropdownMenu!
@@ -138,8 +143,58 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.performSegueWithIdentifier("goToMessages", sender: self)
     }
+    
+    
+    
     @IBAction func rateBtn(sender: AnyObject) {
         
+        rateView = EmojiRateView()
+        rateValueLabel = MaterialLabel()
+        
+        let ratingTexts = ["Very bad", "Bad", "Normal", "Good", "Very good", "Perfect"]
+        
+        let doneBtn = MaterialButton()
+        doneBtn.setTitle("Rate", forState: UIControlState.Normal)
+        doneBtn.backgroundColor = rate.backgroundColor
+        doneBtn.cornerRadius = .Radius1
+        
+        let bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
+        bgView.backgroundColor = UIColor.flatSandColorDark()
+        rateValueLabel.textColor = rate.backgroundColor
+        rateValueLabel.textAlignment = .Center
+        rateValueLabel.font = RobotoFont.mediumWithSize(20)
+        rateView = EmojiRateView.init(frame: CGRectMake(0, 0, 300, 300))
+        rateView.backgroundColor = UIColor.clearColor()
+        rateView.center = self.view.center
+        rateView.rateColorRange = (message.backgroundColor!,rate.backgroundColor!)
+        bgView.addSubview(rateView)
+        bgView.addSubview(rateValueLabel)
+        bgView.addSubview(doneBtn)
+        self.view.addSubview(bgView)
+        
+        rateView.rateValueChangeCallback = {(rateValue: Float) -> Void in
+            self.rateValueLabel.text = String(
+                format: "%.2f / 5.0, %@",
+                rateValue, ratingTexts[Int(rateValue)])
+        }
+        
+        constrain(rateView,rateValueLabel,doneBtn) { rateView,rateValueLabel,doneBtn  in
+            
+            rateView.center == (rateView.superview?.center)!
+            rateView.width == (rateView.superview?.width)! - 20
+            rateView.height == rateView.width
+            
+            rateValueLabel.centerX == (rateValueLabel.superview?.centerX)!
+            rateValueLabel.bottom == rateView.top
+            rateValueLabel.height == 100
+            rateValueLabel.width == 300
+            
+            doneBtn.centerX == (doneBtn.superview?.centerX)!
+            doneBtn.bottom == doneBtn.superview!.bottom - 20
+            doneBtn.width == 200
+            doneBtn.height == 50
+            
+        }
     }
     // MARK: - Navigation
 
