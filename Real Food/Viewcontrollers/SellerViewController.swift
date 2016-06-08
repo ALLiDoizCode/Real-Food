@@ -39,12 +39,14 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     var rateValueLabel: MaterialLabel!
     var rateView:EmojiRateView!
-
+    var bgView:UIView!
 
     var menuView: BTNavigationDropdownMenu!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+         bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         
         print("my item \(sellerIcon)")
         
@@ -57,6 +59,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
+        
         
         dispatch_async(dispatch_get_main_queue(), {
             
@@ -91,14 +94,19 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
             self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
             self.userImage.layer.borderWidth = 3
+            self.makeRateView()
             
         });
+        
+        
         
     }
     
     override func viewWillAppear(animated: Bool) {
         
         menu.setupMenu(self,title:"Seller")
+        
+        bgView.hidden =  true
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -144,9 +152,9 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.performSegueWithIdentifier("goToMessages", sender: self)
     }
     
-    
-    
-    @IBAction func rateBtn(sender: AnyObject) {
+    func makeRateView(){
+        
+        bgView.hidden =  true
         
         rateView = EmojiRateView()
         rateValueLabel = MaterialLabel()
@@ -157,8 +165,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         doneBtn.setTitle("Rate", forState: UIControlState.Normal)
         doneBtn.backgroundColor = rate.backgroundColor
         doneBtn.cornerRadius = .Radius1
+        doneBtn.addTarget(self, action: "ratingDone", forControlEvents: UIControlEvents.TouchUpInside)
         
-        let bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         bgView.backgroundColor = UIColor.flatSandColorDark()
         rateValueLabel.textColor = rate.backgroundColor
         rateValueLabel.textAlignment = .Center
@@ -190,11 +198,23 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             rateValueLabel.width == 300
             
             doneBtn.centerX == (doneBtn.superview?.centerX)!
-            doneBtn.bottom == doneBtn.superview!.bottom - 20
+            doneBtn.bottom == doneBtn.superview!.bottom - 60
             doneBtn.width == 200
             doneBtn.height == 50
             
         }
+    }
+    
+    func ratingDone(){
+        
+        bgView.hidden = true
+    }
+    
+    @IBAction func rateBtn(sender: AnyObject) {
+        
+        bgView.hidden =  false
+        
+        
     }
     // MARK: - Navigation
 
