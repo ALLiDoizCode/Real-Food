@@ -251,6 +251,18 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         
     }
     
+    func validate(value: String) -> Bool {
+        
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        
+        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        
+        var result =  phoneTest.evaluateWithObject(value)
+        
+        return result
+        
+    }
+    
     func Done(sender: AnyObject) {
         
         guard (firstName.text != nil) else {
@@ -278,25 +290,34 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             return
         }
         
-        SwiftSpinner.show("Creating Account")
+        SwiftSpinner.show("Saving Changes")
         
-       presenter.editUser(firstName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
-        
-        if success == true {
+        if validate(phone.text!) == true {
             
-            SwiftSpinner.hide({
+            presenter.editUser(firstName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
                 
-                self.performSegueWithIdentifier("Profile", sender: nil)
-            })
-            
+                if success == true {
+                    
+                    SwiftSpinner.hide({
+                        
+                        self.performSegueWithIdentifier("Profile", sender: nil)
+                    })
+                    
+                }else {
+                    
+                    SwiftSpinner.hide({
+                        
+                        print("Edit Failed")
+                    })
+                    
+                }
+            }
         }else {
             
             SwiftSpinner.hide({
                 
-                print("Edit Failed")
+                print("phone number not valid")
             })
-            
-            }
         }
     }
     

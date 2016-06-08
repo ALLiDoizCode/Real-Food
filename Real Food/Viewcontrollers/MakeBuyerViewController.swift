@@ -270,6 +270,19 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             self.profileImage.layer.masksToBounds = true        }
         
     }
+    
+    func validate(value: String) -> Bool {
+        
+        let PHONE_REGEX = "^\\d{3}-\\d{3}-\\d{4}$"
+        
+        var phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        
+        var result =  phoneTest.evaluateWithObject(value)
+        
+        return result
+        
+    }
+
    
     func signUpBtn(sender: AnyObject) {
         
@@ -305,24 +318,35 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         SwiftSpinner.show("Creating Account")
         
-        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
+        if validate(phone.text!) == true {
             
-            if success == true {
+            presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
                 
-                SwiftSpinner.hide({
+                if success == true {
                     
-                    self.performSegueWithIdentifier("Main", sender: nil)
-                })
-                
-            }else {
-                
-                SwiftSpinner.hide({
+                    SwiftSpinner.hide({
+                        
+                        self.performSegueWithIdentifier("Main", sender: nil)
+                    })
                     
-                     print("Signup Failed")
-                })
-               
+                }else {
+                    
+                    SwiftSpinner.hide({
+                        
+                        print("Signup Failed")
+                    })
+                    
+                }
             }
+        }else {
+            
+            SwiftSpinner.hide({
+                
+                print("phone number not valid")
+            })
+            
         }
+        
     }
     
     func continueBtn(sender: AnyObject){
