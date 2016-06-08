@@ -77,19 +77,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        presenter.getMyItems { (data) -> Void in
-            
-            print("got data")
-            
-            print(data.count)
-            
-            self.itemsArray = []
-            
-            self.itemsArray = data
-            
-            self.reload(self.tableView)
-        }
-        
         self.newItemView.layer.cornerRadius = 3
         self.newItemView.layer.masksToBounds = true
         
@@ -133,6 +120,19 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         closeReview.hidden = true
         newItemView.hidden = true
         buttonView.hidden = true
+        
+        presenter.getMyItems { (data) -> Void in
+            
+            print("got data")
+            
+            print(data.count)
+            
+            self.itemsArray = []
+            
+            self.itemsArray = data
+            
+            self.reload(self.tableView)
+        }
         
         presentUser.getReviews { (data, Rating) in
             
@@ -229,16 +229,18 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         if ratingTable.hidden == true {
             
             if editingStyle == .Delete {
-                self.itemsArray.removeAtIndex(indexPath.row)
                 
-                let type = self.itemsArray[indexPath.row].type
+                self.type = self.itemsArray[indexPath.row].type
                 let objectId = self.itemsArray[indexPath.row].objectId
                 
-                presentEditor.delteObject(type, itemId: objectId, completion: { (success) in
+                print(objectId)
+                self.itemsArray.removeAtIndex(indexPath.row)
+                tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                presentEditor.delteObject(self.type, itemId: objectId, completion: { (success) in
                     
                     if success == true {
                         
-                        tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+                        
                         
                     }else {
                         
@@ -469,6 +471,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                         self.reload(self.tableView)
                         
                         SwiftSpinner.hide()
+                        
                     }
                 
                 
