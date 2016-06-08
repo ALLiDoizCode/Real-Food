@@ -54,7 +54,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         review = TextView()
         reviewLbl = MaterialLabel()
-        reviewIcon = UIImageView()
+        reviewIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
         
         presentUser.userData { (data) in
             self.sellerPhone = data.phone
@@ -246,7 +246,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             reviewIcon.width == 100
             reviewIcon.height == 100
             
-            self.reviewIcon.layer.cornerRadius = self.reviewIcon.frame.height/2
+            self.reviewIcon.layer.cornerRadius = 50
             self.reviewIcon.layer.masksToBounds = true
             self.reviewIcon.clipsToBounds = true
         }
@@ -273,6 +273,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     @IBAction func rateBtn(sender: AnyObject) {
         
         bgView.hidden =  false
+        reviewIcon.hidden = true
         review.hidden = true
         rateView.hidden = false
         rateValueLabel.hidden = false

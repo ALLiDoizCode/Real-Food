@@ -128,6 +128,8 @@ class Listing {
         
         //self.itemArray.removeAll()
         
+        self.itemArray = []
+        
         let menuName:[String] = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
         
         for name in menuName {

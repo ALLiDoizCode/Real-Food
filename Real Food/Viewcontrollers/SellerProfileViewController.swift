@@ -133,7 +133,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             print(data.count)
             
-            self.itemsArray.removeAll()
+            self.itemsArray = []
             
             self.itemsArray = data
             
