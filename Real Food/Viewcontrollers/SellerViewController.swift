@@ -30,6 +30,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var sellerRating:String!
     var rating:Int!
     var reviewDescription:String!
+    var reviews:[Review] = []
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLbl: UILabel!
@@ -126,6 +127,14 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         
+        presentUser.getReviews { (data, Rating) in
+            
+            self.reviews = data
+            self.ratingLbl.text = Rating
+            
+            self.reload()
+        }
+        
         menu.setupMenu(self,title:"Seller")
         review.hidden = true
         reviewIcon.hidden = true
@@ -147,16 +156,26 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         return true
     }
     
+    func reload(){
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            
+            self.tableView.reloadData()
+        });
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 6
+        return reviews.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         let cell:ReviewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ReviewCell
         
-        cell.reviewLbl.text = "She had the best tasting sweet potatoes I've ever had and her graden is just beutiful"
+        cell.reviewLbl.text = self.reviews[indexPath.row].review
+        cell.rating.text = "\(self.reviews[indexPath.row].rate)"
+        cell.user.text = self.reviews[indexPath.row].user
         
         return cell
     }

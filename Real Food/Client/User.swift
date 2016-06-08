@@ -32,6 +32,35 @@ class User {
         }
     }
     
+    func getReviews() {
+        
+        var reviews:[Review] = []
+        
+        let query = PFQuery(className: "Review")
+        query.whereKey("Seller", equalTo: (currentUser?.objectId)!)
+        
+        query.findObjectsInBackgroundWithBlock { (objects, error) in
+            
+            guard let objects = objects else {
+                
+                return
+            }
+            
+            for object in objects {
+                
+                let review = object.objectForKey("Review") as! String
+                let rate = object.objectForKey("Rate") as! Int
+                let user = object.objectForKey("User") as! String
+                
+                let myReview = Review(theReview: review, theRate: rate, theUser: user)
+                
+                reviews.append(myReview)
+            }
+            
+            SwiftEventBus.post("myReviews", sender: reviews)
+        }
+    }
+    
     func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String,phone:String){
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)

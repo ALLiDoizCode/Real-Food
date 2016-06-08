@@ -10,6 +10,13 @@ import Foundation
 class Review {
     
     var review:String!
-    var rate:String!
+    var rate:Int!
     var user:String!
+    
+    init(theReview:String,theRate:Int,theUser:String){
+        
+        review = theReview
+        rate = theRate
+        user = theUser
+    }
 }

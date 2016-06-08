@@ -510,8 +510,7 @@
                                                                     <exclude reference="2Iu-ud-vPt"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="26" width="304" height="24"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="2Iu-ud-vPt"/>
                                                                 </mask>
@@ -532,8 +531,7 @@
                                                                     <exclude reference="gGm-d2-2xf"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="320" y="27" width="42" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="DtG-51-m4W"/>
                                                                     <include reference="gGm-d2-2xf"/>
@@ -555,8 +553,7 @@
                                                                     <exclude reference="xhC-uC-6Z1"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="8" width="304" height="16"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="xhC-uC-6Z1"/>
                                                                 </mask>
@@ -599,8 +596,7 @@
                                                             <exclude reference="L89-ve-Y7o"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="1" width="370" height="55"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="hPW-oS-8ua"/>
                                                             <include reference="DnA-2Q-g6I"/>
@@ -656,7 +652,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="bgView" destination="hYz-WO-Zol" id="cLg-nK-ONi"/>
+                                            <outlet property="rating" destination="DnA-2Q-g6I" id="Ek4-Fo-lua"/>
                                             <outlet property="reviewLbl" destination="uIt-Bp-8YJ" id="w0b-UR-sWe"/>
+                                            <outlet property="user" destination="hPW-oS-8ua" id="QkB-4A-EkV"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

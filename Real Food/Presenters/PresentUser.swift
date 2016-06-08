@@ -14,6 +14,33 @@ class PresentUser {
     
     let client = User()
     
+    func getReviews(completion:(data:[Review],Rating:String) ->Void){
+        
+        SwiftEventBus.onMainThread(self, name: "myReviews") { (result) in
+            
+            var currentRating:Int! = Int()
+            
+            let reviews = result.object as! [Review]
+            
+            for review in reviews {
+                
+                currentRating = currentRating + review.rate
+            }
+            
+            let rateFloat = Double(currentRating / reviews.count)
+            
+            let multiplier = pow(10.0, 1.0)
+            
+            let score = round(rateFloat * multiplier) / multiplier
+            
+            completion(data: reviews, Rating: "\(score)")
+            
+            SwiftEventBus.unregister(self, name: "myReviews")
+        }
+        
+        client.getReviews()
+    }
+    
     func makeReview(review:String!,rate:Int,sellerId:String,completion:(success:Bool) ->Void){
         
         SwiftEventBus.onMainThread(self, name: "Review") { (result) in

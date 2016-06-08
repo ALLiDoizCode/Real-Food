@@ -12,6 +12,8 @@ class ReviewCell: UITableViewCell {
 
     @IBOutlet weak var reviewLbl: UILabel!
     @IBOutlet weak var bgView: UIView!
+    @IBOutlet weak var rating: UILabel!
+    @IBOutlet weak var user: UILabel!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
