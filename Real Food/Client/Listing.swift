@@ -99,11 +99,11 @@ class Listing {
                     
                     let miles = location.distanceInMilesTo(userLocation)
                     
-                    let multiplier = pow(10.0, 1.0)
+                    //let multiplier = pow(10.0, 1.0)
                     
-                    let distance = round(miles * multiplier) / multiplier
+                    //let distance = round(miles * multiplier) / multiplier
                     
-                    let itemDistance = "\(distance)m"
+                    let itemDistance:String = String(format:"%.1f", miles)
                     
                     print("The distance is \(itemDistance)")
                     

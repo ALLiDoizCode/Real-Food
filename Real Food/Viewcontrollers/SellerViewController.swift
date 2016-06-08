@@ -111,7 +111,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
           
             self.userName.font = RobotoFont.mediumWithSize(20)
             self.distance.font = RobotoFont.mediumWithSize(14)
-            self.distance.text = "16m/MT Pleasent"
+            self.distance.text = "\(self.sellerDistance)m from your location"
             
             self.ratingLbl.font = RobotoFont.mediumWithSize(16)
             

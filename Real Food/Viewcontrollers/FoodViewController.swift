@@ -155,6 +155,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             controller.sellerIcon = self.itemArray[indexPath!.row].profileImage
             controller.sellerName = self.itemArray[indexPath!.row].userName
             controller.itemIcon = self.itemArray[indexPath!.row].image
+            controller.sellerDistance = self.itemArray[indexPath!.row].distance
         }
     }
     
