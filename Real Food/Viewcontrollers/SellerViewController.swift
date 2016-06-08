@@ -127,7 +127,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     override func viewWillAppear(animated: Bool) {
         
-        presentUser.getReviews { (data, Rating) in
+        presentUser.getReviews(sellerId) { (data, Rating) in
             
             self.reviews = data
             self.ratingLbl.text = Rating
@@ -316,6 +316,14 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     self.rateValueLabel.hidden = true
                     self.bgView.hidden = true
                     self.review.text = ""
+                    
+                    self.presentUser.getReviews(self.sellerId) { (data, Rating) in
+                        
+                        self.reviews = data
+                        self.ratingLbl.text = Rating
+                        
+                        self.reload()
+                    }
                 }
                 
             })

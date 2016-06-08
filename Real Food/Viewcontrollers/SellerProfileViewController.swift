@@ -136,7 +136,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.reload(self.tableView)
         }
         
-        presentUser.getReviews { (data, Rating) in
+        presentUser.getReviews((presentUser.currentUser?.objectId)!) { (data, Rating) in
             
             self.myReviews = data
             

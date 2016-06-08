@@ -30,7 +30,7 @@ class PresentUser {
         Client2.editUser(userName, email: email, image: image, myAddress: myAddress, phone: phone)
     }
     
-    func getReviews(completion:(data:[Review],Rating:String) ->Void){
+    func getReviews(objectId:String,completion:(data:[Review],Rating:String) ->Void){
         
         SwiftEventBus.onMainThread(self, name: "myReviews") { (result) in
             
@@ -56,7 +56,7 @@ class PresentUser {
             
         }
         
-        client.getReviews()
+        client.getReviews(objectId)
     }
     
     func makeReview(review:String!,rate:Int,sellerId:String,completion:(success:Bool) ->Void){

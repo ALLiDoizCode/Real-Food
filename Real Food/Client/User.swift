@@ -32,12 +32,12 @@ class User {
         }
     }
     
-    func getReviews() {
+    func getReviews(objectId:String) {
         
         var reviews:[Review] = []
         
         let query = PFQuery(className: "Review")
-        query.whereKey("Seller", equalTo: (currentUser?.objectId)!)
+        query.whereKey("Seller", equalTo: objectId)
         
         query.findObjectsInBackgroundWithBlock { (objects, error) in
             
