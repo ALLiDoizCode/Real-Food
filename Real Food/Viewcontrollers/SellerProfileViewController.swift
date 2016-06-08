@@ -40,6 +40,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     var type:String!
     var image:UIImage!
     var itemsArray:[Item] = []
+    var myReviews:[Review] = []
 
     @IBOutlet weak var buttonView: UIView!
     @IBOutlet weak var cancle: FabButton!
@@ -68,15 +69,26 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var lamb: FabButton!
     @IBOutlet weak var beer: FabButton!
     
-    
     var itemTitle:TextField!
     
     let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
     let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
-    let descriptionArray:[String] = ["Come get some tasty beans","Come get some tasty carrots","Come get some tasty cucumbers","Come get some tasty greens","Come get some tasty peas","Come get some tasty peppers","Come get some tasty tomatoes",]
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        presenter.getMyItems { (data) -> Void in
+            
+            print("got data")
+            
+            print(data.count)
+            
+            self.itemsArray = []
+            
+            self.itemsArray = data
+            
+            self.reload(self.tableView)
+        }
         
         self.newItemView.layer.cornerRadius = 3
         self.newItemView.layer.masksToBounds = true
@@ -112,11 +124,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
         });
         
-       
-        
-        
-
-        // Do any additional setup after loading the view.
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -127,18 +134,14 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         newItemView.hidden = true
         buttonView.hidden = true
         
-        presenter.getMyItems { (data) -> Void in
+        presentUser.getReviews { (data, Rating) in
             
-            print("got data")
+            self.myReviews = data
             
-            print(data.count)
+            self.rating.setTitle(Rating, forState: UIControlState.Normal)
             
-            self.itemsArray = []
-            
-            self.itemsArray = data
-            
-            self.reload()
         }
+        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -165,28 +168,35 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         }
     }
     
-    func reload(){
-        
-        dispatch_async(dispatch_get_main_queue(), {
-            
-            self.tableView.reloadData()
-        });
-    }
-    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return itemsArray.count
+        if ratingTable.hidden == false {
+            
+            print("we have \(myReviews.count) reviews")
+            
+            return myReviews.count
+            
+        }else {
+            
+            return itemsArray.count
+        }
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
         if ratingTable.hidden == false {
             
-            let cell:ReviewCell = tableView.dequeueReusableCellWithIdentifier("Review") as! ReviewCell
+            let cell:ReviewCell2 = tableView.dequeueReusableCellWithIdentifier("Review2") as! ReviewCell2
             
             dispatch_async(dispatch_get_main_queue(), {
-            
-            cell.reviewLbl.text = "She had the best tasting sweet potatoes I've ever had and her graden is just beutiful"
+                
+                print("we now have \(self.myReviews.count) reviews")
+
+                cell.review.text = self.myReviews[indexPath.row].review
+                cell.rate.text = String(self.myReviews[indexPath.row].rate)
+                cell.user.text = self.myReviews[indexPath.row].user
+                
+                cell.layoutSubviews()
             });
             
             return cell
@@ -456,7 +466,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                         
                         self.itemsArray = data
                         
-                        self.reload()
+                        self.reload(self.tableView)
                         
                         SwiftSpinner.hide()
                     }
@@ -488,15 +498,16 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func ratingBtn(sender: AnyObject) {
         
-        ratingTable.hidden = false
-        ratingTable.dataSource = self
-        ratingTable.delegate = self
-        tableView.delegate = nil
-        tableView.dataSource = nil
-        cover.hidden = false
-        closeReview.hidden = false
+        self.ratingTable.hidden = false
+        self.ratingTable.dataSource = self
+        self.ratingTable.delegate = self
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
+        self.cover.hidden = false
+        self.closeReview.hidden = false
         
-        reload(ratingTable)
+        self.reload(self.ratingTable)
+        
     }
     
     @IBAction func closeReviewBtn(sender: AnyObject) {
@@ -678,16 +689,4 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

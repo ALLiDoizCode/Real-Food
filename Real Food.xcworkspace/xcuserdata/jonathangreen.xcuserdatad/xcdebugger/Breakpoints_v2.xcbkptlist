@@ -6,7 +6,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/ViewController.swift"
@@ -17,38 +17,6 @@
             endingLineNumber = "75"
             landmarkName = "collectionView(_:cellForItemAtIndexPath:)"
             landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Green_Pepper.ViewController.collectionView (__ObjC.UICollectionView, cellForItemAtIndexPath : __ObjC.NSIndexPath) -&gt; __ObjC.UICollectionViewCell"
-                  moduleName = "Green Pepper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Viewcontrollers/ViewController.swift"
-                  timestampString = "487011542.566588"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "76"
-                  endingLineNumber = "76"
-                  offsetFromSymbolStart = "358">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Green_Pepper.ViewController.(collectionView (__ObjC.UICollectionView, cellForItemAtIndexPath : __ObjC.NSIndexPath) -&gt; __ObjC.UICollectionViewCell).(closure #1)"
-                  moduleName = "Green Pepper"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Viewcontrollers/ViewController.swift"
-                  timestampString = "487011542.566693"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "78"
-                  endingLineNumber = "78"
-                  offsetFromSymbolStart = "27">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -213,7 +181,7 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "Yes"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Client/Listing.swift"
@@ -304,6 +272,84 @@
             endingLineNumber = "121"
             landmarkName = "viewDidLoad()"
             landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Real Food/Cells/ReviewCell.swift"
+            timestampString = "487096368.902423"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "ReviewCell"
+            landmarkType = "3">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.reviewRate.getter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943198"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "27">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.reviewRate.setter : weak Swift.ImplicitlyUnwrappedOptional&lt;__ObjC.UILabel&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943327"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "42">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.init (style : __C.UITableViewCellStyle, reuseIdentifier : Swift.Optional&lt;Swift.String&gt;) -&gt; Green_Pepper.ReviewCell"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.94341"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "211">
+               </Location>
+               <Location
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Green_Pepper.ReviewCell.init (coder : __ObjC.NSCoder) -&gt; Swift.Optional&lt;Green_Pepper.ReviewCell&gt;"
+                  moduleName = "Green Pepper"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/jonathangreen/Documents/Apps/NerdHouse/Real%20Food/Real%20Food/Cells/ReviewCell.swift"
+                  timestampString = "487096368.943501"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15"
+                  offsetFromSymbolStart = "138">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

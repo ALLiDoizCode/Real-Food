@@ -174,8 +174,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         let cell:ReviewCell = tableView.dequeueReusableCellWithIdentifier(reuseIdentifier) as! ReviewCell
         
         cell.reviewLbl.text = self.reviews[indexPath.row].review
-        cell.rating.text = "\(self.reviews[indexPath.row].rate)"
-        cell.user.text = self.reviews[indexPath.row].user
+        cell.reviewRate.text = "\(self.reviews[indexPath.row].rate)"
+        cell.reviewer.text = self.reviews[indexPath.row].user
         
         return cell
     }

@@ -161,7 +161,7 @@
                                     <constraint firstAttribute="width" constant="384" id="xl3-cK-TQQ"/>
                                 </constraints>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Review" rowHeight="64" id="ksC-xX-G9Q" customClass="ReviewCell" customModule="Green_Pepper" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Review2" rowHeight="64" id="ksC-xX-G9Q" customClass="ReviewCell2" customModule="Green_Pepper" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ksC-xX-G9Q" id="PAG-rM-GMa">
@@ -186,8 +186,7 @@
                                                                     <exclude reference="Bng-bZ-qta"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="26" width="304" height="24"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="Bng-bZ-qta"/>
                                                                 </mask>
@@ -208,8 +207,7 @@
                                                                     <exclude reference="dpA-74-NK7"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="320" y="27" width="42" height="21"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="Dq8-4j-4K4"/>
                                                                     <include reference="dpA-74-NK7"/>
@@ -231,8 +229,7 @@
                                                                     <exclude reference="agG-KN-DHD"/>
                                                                 </mask>
                                                             </variation>
-                                                            <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                                <rect key="frame" x="8" y="8" width="304" height="16"/>
+                                                            <variation key="heightClass=regular-widthClass=compact">
                                                                 <mask key="constraints">
                                                                     <include reference="agG-KN-DHD"/>
                                                                 </mask>
@@ -275,8 +272,7 @@
                                                             <exclude reference="wzp-88-t8r"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
-                                                        <rect key="frame" x="8" y="1" width="370" height="55"/>
+                                                    <variation key="heightClass=regular-widthClass=compact">
                                                         <mask key="subviews">
                                                             <include reference="FG8-v6-IMp"/>
                                                             <include reference="73t-4g-hGT"/>
@@ -331,8 +327,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
-                                            <outlet property="bgView" destination="6ga-NU-zlS" id="pJg-Cn-83j"/>
-                                            <outlet property="reviewLbl" destination="T15-Er-L10" id="AxD-Wg-O6e"/>
+                                            <outlet property="rate" destination="73t-4g-hGT" id="qTh-CB-bRJ"/>
+                                            <outlet property="review" destination="T15-Er-L10" id="eKF-Jv-2Cf"/>
+                                            <outlet property="user" destination="FG8-v6-IMp" id="2KO-Bq-KLC"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>

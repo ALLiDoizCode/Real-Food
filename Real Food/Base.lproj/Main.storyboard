@@ -652,9 +652,9 @@
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="bgView" destination="hYz-WO-Zol" id="cLg-nK-ONi"/>
-                                            <outlet property="rating" destination="DnA-2Q-g6I" id="Ek4-Fo-lua"/>
                                             <outlet property="reviewLbl" destination="uIt-Bp-8YJ" id="w0b-UR-sWe"/>
-                                            <outlet property="user" destination="hPW-oS-8ua" id="QkB-4A-EkV"/>
+                                            <outlet property="reviewRate" destination="DnA-2Q-g6I" id="965-Gw-d39"/>
+                                            <outlet property="reviewer" destination="hPW-oS-8ua" id="qnR-9N-p6L"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -732,7 +732,6 @@
                         <outlet property="tableView" destination="Z80-mu-Ls2" id="dYV-ed-X0O"/>
                         <outlet property="userImage" destination="3rg-RC-qPn" id="alC-5F-cEa"/>
                         <outlet property="userName" destination="uiw-8i-GaF" id="Gbh-f7-cP7"/>
-                        <segue destination="ofa-mG-sS1" kind="show" identifier="goToMessages" id="GI7-x5-Vh5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="60K-bg-6s9" userLabel="First Responder" sceneMemberID="firstResponder"/>

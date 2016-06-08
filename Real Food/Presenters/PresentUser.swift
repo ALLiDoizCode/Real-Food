@@ -18,24 +18,26 @@ class PresentUser {
         
         SwiftEventBus.onMainThread(self, name: "myReviews") { (result) in
             
-            var currentRating:Int! = Int()
+            var currentRating:Double! = Double()
             
             let reviews = result.object as! [Review]
             
             for review in reviews {
                 
-                currentRating = currentRating + review.rate
+                currentRating = currentRating + Double(review.rate)
+                
             }
             
-            let rateFloat = Double(currentRating / reviews.count)
+            let rateFloat:Double = currentRating / Double(reviews.count)
             
-            let multiplier = pow(10.0, 1.0)
+            print("my rating is \(rateFloat)")
             
-            let score = round(rateFloat * multiplier) / multiplier
+            let score = String(format:"%.1f", rateFloat)
             
             completion(data: reviews, Rating: "\(score)")
             
             SwiftEventBus.unregister(self, name: "myReviews")
+            
         }
         
         client.getReviews()
