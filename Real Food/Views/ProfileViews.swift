@@ -8,10 +8,11 @@
 
 import UIKit
 import Material
+import Cartography
 
 class ProfileViews {
     
-    func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,edit:UIButton,controller:UIViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,edit:UIButton) -> Void){
+    func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton,controller:UIViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton) -> Void){
         
         let Menu = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
         
@@ -118,20 +119,6 @@ class ProfileViews {
         addButton.imageEdgeInsets.right = 10
         addButton.imageEdgeInsets.left = 10
         
-        rating.backgroundColor = UIColor.clearColor()
-        rating.tintColor = UIColor.flatWhiteColor()
-        rating.setTitle("4.3", forState: UIControlState.Normal)
-        rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
-        
-        closeReview.setTitle("Close", forState: .Normal)
-        closeReview.titleLabel!.font = RobotoFont.mediumWithSize(32)
-        closeReview.backgroundColor = UIColor.flatPlumColorDark()
-        closeReview.setTitleColor(UIColor.flatSandColorDark(), forState: .Normal)
-        
-        edit.setTitle("Edit", forState: UIControlState.Normal)
-        edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
-       
-        
         camera.setImage(UIImage(named: "camera"), forState: UIControlState.Normal)
         camera.tintColor = UIColor.flatSandColorDark()
         camera.backgroundColor = UIColor.flatPlumColorDark()
@@ -156,14 +143,10 @@ class ProfileViews {
         cancle.imageEdgeInsets.right = 10
         cancle.imageEdgeInsets.left = 10
         
-        let rightButton = UIBarButtonItem.init(customView: edit)
-        
-        controller.navigationItem.rightBarButtonItem = rightButton
-        
-        completion(veggie: veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, rating: rating, closeReview: closeReview, camera: camera, addItem: addItem, cancle: cancle, edit: edit)
+        completion(veggie: veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, camera: camera, addItem: addItem, cancle: cancle)
     }
     
-    func makeTextFields(itemTitle:TextField,controller:SellerProfileViewController){
+    func makeTextFields(itemTitle:TextField,controller:FoodViewController){
         
         itemTitle.placeholder = "Description"
         itemTitle.font = RobotoFont.regularWithSize(20)

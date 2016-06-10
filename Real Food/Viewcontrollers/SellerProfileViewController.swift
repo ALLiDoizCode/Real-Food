@@ -22,9 +22,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     let presenter = PresentList()
     let presentUser = PresentUser()
     let presentEditor = PresenterEditing()
-    let profileViews = ProfileViews()
-    let getImage = GetImage()
-    
+
     let controller = UIImagePickerController()
     
     let cellIdentefier = "Food"
@@ -36,55 +34,25 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     var itemsArray:[Item] = []
     var myReviews:[Review] = []
 
-    @IBOutlet weak var buttonView: UIView!
-    @IBOutlet weak var cancle: FabButton!
-    @IBOutlet weak var camera: FabButton!
-    @IBOutlet weak var addItem: FabButton!
-    @IBOutlet weak var cover: UIView!
     @IBOutlet weak var ratingTable: UITableView!
     @IBOutlet weak var rating: FabButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var userName: UILabel!
     @IBOutlet weak var bgImage: UIImageView!
     @IBOutlet weak var userImage: UIImageView!
-    @IBOutlet weak var addButton: FabButton!
     @IBOutlet weak var closeReview: RaisedButton!
-    @IBOutlet weak var newItemView: UIView!
-    @IBOutlet weak var newItemImage: UIImageView!
-    
-    @IBOutlet weak var veggie: FabButton!
-    @IBOutlet weak var sweets: FabButton!
-    @IBOutlet weak var dariy: FabButton!
-    @IBOutlet weak var eggs: FabButton!
-    @IBOutlet weak var poultry: FabButton!
-    @IBOutlet weak var bovine: FabButton!
-    @IBOutlet weak var goat: FabButton!
-    @IBOutlet weak var lamb: FabButton!
-    @IBOutlet weak var beer: FabButton!
-    
-    var itemTitle:TextField!
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
         controller.delegate = self
         
         edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
-        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
-        
-        newItemView.hidden = true
-        
-        self.newItemView.layer.cornerRadius = 3
-        self.newItemView.layer.masksToBounds = true
-        
+        edit.setTitle("Edit", forState: UIControlState.Normal)
+        edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
+    
         menu.setupMenu(self,title: "Profile")
         
-        profileViews.makeButton(veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, rating: rating, closeReview: closeReview, camera: camera, addItem: addItem, cancle: cancle, edit: edit, controller: self) { (veggie, sweets, dariy, eggs, poultry, bovine, goat, lamb, beer, addButton, rating, closeReview, camera, addItem, cancle, edit) in
-            
-            edit.addTarget(self, action: "goEdit", forControlEvents: UIControlEvents.TouchUpInside)
-        }
-        
-        profileViews.makeTextFields(itemTitle, controller: self)
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
@@ -105,14 +73,26 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.userImage.clipsToBounds = true
             
         });
+        
+        closeReview.setTitle("Close", forState: .Normal)
+        closeReview.titleLabel!.font = RobotoFont.mediumWithSize(32)
+        closeReview.backgroundColor = UIColor.flatPlumColorDark()
+        closeReview.setTitleColor(UIColor.flatSandColorDark(), forState: .Normal)
+        
+        rating.backgroundColor = UIColor.clearColor()
+        rating.tintColor = UIColor.flatWhiteColor()
+        rating.setTitle("4.3", forState: UIControlState.Normal)
+        rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
+        
+        let rightButton = UIBarButtonItem.init(customView: edit)
+        
+        self.navigationItem.rightBarButtonItem = rightButton
     }
     
     override func viewWillAppear(animated: Bool) {
         
         ratingTable.hidden = true
-        cover.hidden = true
         closeReview.hidden = true
-        buttonView.hidden = true
         
         presenter.getMyItems { (data) -> Void in
             
@@ -125,6 +105,9 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.itemsArray = data
             
             self.reload(self.tableView)
+            
+            self.ratingTable.estimatedRowHeight = 44
+            self.ratingTable.rowHeight = UITableViewAutomaticDimension
         }
         
         presentUser.getReviews((presentUser.currentUser?.objectId)!) { (data, Rating) in
@@ -147,8 +130,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
             self.userName.text = data.userName
             
-            
-            
         }
     }
     
@@ -164,6 +145,31 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             tableView.width == (tableView.superview?.width)!
             tableView.left == (tableView.superview?.left)!
         }
+    }
+    
+    @IBAction func ratingBtn(sender: AnyObject) {
+        
+        self.ratingTable.hidden = false
+        self.ratingTable.dataSource = self
+        self.ratingTable.delegate = self
+        self.tableView.delegate = nil
+        self.tableView.dataSource = nil
+        self.closeReview.hidden = false
+        
+        self.reload(self.ratingTable)
+        
+    }
+    
+    @IBAction func closeReviewBtn(sender: AnyObject) {
+        
+        ratingTable.hidden = true
+        ratingTable.dataSource = nil
+        ratingTable.delegate = nil
+        tableView.delegate = self
+        tableView.dataSource = self
+        closeReview.hidden = true
+        
+        reload(tableView)
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -250,7 +256,14 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         
-        return 250
+        if ratingTable.hidden == true {
+            
+            return 250
+            
+        }else {
+            
+            return ratingTable.rowHeight
+        }
     }
     
     func reload(table:UITableView){
@@ -264,199 +277,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     func goEdit(){
         
         self.performSegueWithIdentifier("Edit", sender: nil)
-    }
-    
-    @IBAction func add(sender: AnyObject) {
-        
-        buttonView.hidden = false
-        cover.hidden = false
-    }
-  
-    @IBAction func addItemBtn(sender: AnyObject) {
-        
-        guard (image != nil) else {
-            
-            return
-        }
-        
-        guard (itemTitle.text != nil) else {
-            
-            return
-        }
-        
-         SwiftSpinner.show("Adding Item")
-        
-        presenter.makeItem(type, name: itemTitle.text!, image: image) { (success) -> Void in
-            
-            if success == true {
-                
-                    print("Item Saved Successfully")
-                    self.newItemView.hidden = true
-                    self.cover.hidden = true
-                    
-                    self.presenter.getMyItems { (data) -> Void in
-                        
-                        self.itemsArray.removeAll()
-                        
-                        self.itemsArray = data
-                        
-                        self.reload(self.tableView)
-                        
-                        SwiftSpinner.hide()
-                        
-                    }
-                
-                
-            }else {
-                
-                SwiftSpinner.hide({
-                    
-                    print("There was an issue saving your item")
-                })
-                
-            }
-        }
-        
-    }
-    
-    @IBAction func cameraBtn(sender: AnyObject) {
-        
-        getImage.getImage(self, theController: controller) { (image) in
-            
-            self.newItemImage.image = image
-            self.image = image
-        }
-        
-    }
-    
-    @IBAction func cancelBtn(sender: AnyObject) {
-        
-        newItemView.hidden = true
-        cover.hidden = true
-    }
-    
-    @IBAction func ratingBtn(sender: AnyObject) {
-        
-        self.ratingTable.hidden = false
-        self.ratingTable.dataSource = self
-        self.ratingTable.delegate = self
-        self.tableView.delegate = nil
-        self.tableView.dataSource = nil
-        self.cover.hidden = false
-        self.closeReview.hidden = false
-        
-        self.reload(self.ratingTable)
-        
-    }
-    
-    @IBAction func closeReviewBtn(sender: AnyObject) {
-        
-        ratingTable.hidden = true
-        ratingTable.dataSource = nil
-        ratingTable.delegate = nil
-        tableView.delegate = self
-        tableView.dataSource = self
-        cover.hidden = true
-        closeReview.hidden = true
-        
-        reload(tableView)
-    }
-    
-    func chooseCategory() {
-        
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
-        
-        getImage.getImage(self, theController: controller) { (image) in
-            
-            self.newItemImage.image = image
-            self.image = image
-        }
-    }
-    
-    @IBAction func veggieBtn(sender: AnyObject) {
-        
-        type = VEGGIES
-        
-        chooseCategory()
-
-    }
-    
-    @IBAction func sweetsBtn(sender: AnyObject) {
-    
-        type = SWEETS
-        
-        chooseCategory()
-    }
-    
-    @IBAction func dairyBtn(sender: AnyObject) {
-    
-        type = DARIY
-        
-        chooseCategory()
-    }
-    
-    @IBAction func eggsBtn(sender: AnyObject) {
-        
-        type = EGGS
-        
-        chooseCategory()
-    }
-    
-    @IBAction func poultryBtn(sender: AnyObject) {
-        
-        type = POULTRY
-        
-        chooseCategory()
-    }
-    
-    @IBAction func bovineBtn(sender: AnyObject) {
-        
-        type = BOVINE
-        
-        chooseCategory()
-    }
-    
-    @IBAction func goatBtn(sender: AnyObject) {
-        
-        type = GOAT
-        
-        chooseCategory()
-    }
-    
-    @IBAction func lambBtn(sender: AnyObject) {
-        
-        type = LAMB
-        
-        chooseCategory()
-    }
-    
-    @IBAction func beerBtn(sender: AnyObject) {
-        
-        type = BEER
-        
-        chooseCategory()
-    }
-    
-    
-    
-    // MARK: UIImagePickerControllerDelegate
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        
-       picker.dismissViewControllerAnimated(false) {
-        
-        }
-    }
-    
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        
-        picker.dismissViewControllerAnimated(false) {
-            
-            self.newItemImage.image = image
-            self.image = image
-        }
     }
     
     override func prefersStatusBarHidden() -> Bool {
