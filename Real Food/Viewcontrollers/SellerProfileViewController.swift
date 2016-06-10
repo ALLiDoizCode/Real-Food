@@ -88,16 +88,12 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
-         self.bgImage.clipsToBounds = true
+        self.bgImage.clipsToBounds = true
         
           dispatch_async(dispatch_get_main_queue(), {
             
             self.setupLayouts()
-            
-            let blurredImage = self.bgImage.image?.blurredImageWithRadius(20, iterations: 2, tintColor: UIColor.clearColor())
-            
-            self.bgImage.image = blurredImage
-           
+        
             self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
             self.userImage.layer.borderColor = UIColor.flatSandColorDark().CGColor
             self.userImage.layer.borderWidth = 3
@@ -116,7 +112,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         ratingTable.hidden = true
         cover.hidden = true
         closeReview.hidden = true
-        //newItemView.hidden = true
         buttonView.hidden = true
         
         presenter.getMyItems { (data) -> Void in
@@ -144,9 +139,16 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         presentUser.userData { (data) in
             
-            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(), options: .None, completionHandler: { (image, error, cacheType, imageURL) in
+                
+                self.bgImage.image = image?.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
+                
+            })
             self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
             self.userName.text = data.userName
+            
+            
+            
         }
     }
     
