@@ -23,20 +23,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     let presentUser = PresentUser()
     let presentEditor = PresenterEditing()
     let profileViews = ProfileViews()
+    let getImage = GetImage()
+    
+    let controller = UIImagePickerController()
     
     let cellIdentefier = "Food"
     
     var edit:UIButton!
-    
-    let VEGGIES = "Veggies"
-    let SWEETS = "Sweets"
-    let POULTRY = "Poultry"
-    let LAMB = "Lamb"
-    let GOAT = "Goat"
-    let EGGS = "Eggs"
-    let DARIY = "Dariy"
-    let BOVINE = "Bovine"
-    let BEER = "Beer"
     
     var type:String!
     var image:UIImage!
@@ -59,7 +52,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     @IBOutlet weak var newItemView: UIView!
     @IBOutlet weak var newItemImage: UIImageView!
     
-    
     @IBOutlet weak var veggie: FabButton!
     @IBOutlet weak var sweets: FabButton!
     @IBOutlet weak var dariy: FabButton!
@@ -72,13 +64,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     var itemTitle:TextField!
     
-    let imageArray:[String] = ["beans","carrots","cucumbers","greens","peas","peppers","tomatoes",]
-    let titleArray:[String] = ["Beans","Carrots","Cucumbers","Greens","Peas","Peppers","Tomatoes",]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        controller.delegate = self
+        
         edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
+        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
         
         newItemView.hidden = true
         
@@ -89,11 +81,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         profileViews.makeButton(veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, rating: rating, closeReview: closeReview, camera: camera, addItem: addItem, cancle: cancle, edit: edit, controller: self) { (veggie, sweets, dariy, eggs, poultry, bovine, goat, lamb, beer, addButton, rating, closeReview, camera, addItem, cancle, edit) in
             
-             edit.addTarget(self, action: "goEdit", forControlEvents: UIControlEvents.TouchUpInside)
-            
+            edit.addTarget(self, action: "goEdit", forControlEvents: UIControlEvents.TouchUpInside)
         }
-        makeTextFields()
         
+        profileViews.makeTextFields(itemTitle, controller: self)
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         
@@ -107,7 +98,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             self.bgImage.image = blurredImage
            
-            
             self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
             self.userImage.layer.borderColor = UIColor.flatSandColorDark().CGColor
             self.userImage.layer.borderWidth = 3
@@ -119,7 +109,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.userImage.clipsToBounds = true
             
         });
-        
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -148,9 +137,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.myReviews = data
             
             self.rating.setTitle(Rating, forState: UIControlState.Normal)
-            
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -230,7 +217,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             return cell
         }
-        
     }
     
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
@@ -248,11 +234,9 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 presentEditor.delteObject(self.type, itemId: objectId, completion: { (success) in
                     
                     if success == true {
-                        
-                        
-                        
+                        print("Alert User")
                     }else {
-                        
+                        print("Alert User")
                     }
                 })
                 
@@ -267,7 +251,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         return 250
     }
     
-    
     func reload(table:UITableView){
         
         dispatch_async(dispatch_get_main_queue(), {
@@ -280,23 +263,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         self.performSegueWithIdentifier("Edit", sender: nil)
     }
-    
-    func makeTextFields(){
-        
-        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
-        itemTitle.placeholder = "Description"
-        itemTitle.font = RobotoFont.regularWithSize(20)
-        itemTitle.textColor = UIColor.flatWhiteColor()
-        itemTitle.titleLabel = UILabel()
-        itemTitle.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        itemTitle.titleLabelColor = MaterialColor.grey.base
-        itemTitle.titleLabelActiveColor = UIColor.flatSandColorDark()
-        itemTitle.backgroundColor = UIColor.clearColor()
-        itemTitle.clearButtonMode = .Always
-        self.newItemView.addSubview(itemTitle)
-    }
-    
-    
     
     @IBAction func add(sender: AnyObject) {
         
@@ -353,7 +319,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     @IBAction func cameraBtn(sender: AnyObject) {
         
-        getImage()
+        getImage.getImage(self, theController: controller) { (image) in
+            
+            self.newItemImage.image = image
+            self.image = image
+        }
         
     }
     
@@ -390,174 +360,89 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         reload(tableView)
     }
     
-    @IBAction func veggieBtn(sender: AnyObject) {
+    func chooseCategory() {
         
         newItemView.hidden = false
         cover.hidden = false
         buttonView.hidden = true
+        
+        getImage.getImage(self, theController: controller) { (image) in
+            
+            self.newItemImage.image = image
+            self.image = image
+        }
+    }
+    
+    @IBAction func veggieBtn(sender: AnyObject) {
+        
         type = VEGGIES
         
-        getImage()
+        chooseCategory()
+
     }
     
     @IBAction func sweetsBtn(sender: AnyObject) {
-        
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
+    
         type = SWEETS
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func dairyBtn(sender: AnyObject) {
-        
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
+    
         type = DARIY
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func eggsBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = EGGS
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func poultryBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = POULTRY
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func bovineBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = BOVINE
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func goatBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = GOAT
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func lambBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = LAMB
         
-        getImage()
+        chooseCategory()
     }
     
     @IBAction func beerBtn(sender: AnyObject) {
         
-        newItemView.hidden = false
-        cover.hidden = false
-        buttonView.hidden = true
         type = BEER
         
-        getImage()
+        chooseCategory()
     }
     
     
-    func getImage() {
-        
-        let manager = PHImageManager.defaultManager()
-        let initialRequestOptions = PHImageRequestOptions()
-        initialRequestOptions.resizeMode = .Fast
-        initialRequestOptions.deliveryMode = .HighQualityFormat
-        
-        let presentImagePickerController: UIImagePickerControllerSourceType -> () = { source in
-            let controller = UIImagePickerController()
-            controller.delegate = self
-            var sourceType = source
-            if (!UIImagePickerController.isSourceTypeAvailable(sourceType)) {
-                sourceType = .PhotoLibrary
-                print("Fallback to camera roll as a source since the simulator doesn't support taking pictures")
-            }
-            controller.sourceType = sourceType
-            
-            self.presentViewController(controller, animated: true, completion: nil)
-        }
-        
-        let controller = ImagePickerSheetController(mediaType: .Image)
-        controller.maximumSelection = 1
-        
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Take Photo", comment: "Action Title"), secondaryTitle: NSLocalizedString("Use This Image", comment: "Action Title"), handler: { _ in
-            presentImagePickerController(.Camera)
-            }, secondaryHandler: { action, numberOfPhotos in
-                print("Comment \(numberOfPhotos) photos")
-                
-                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
-                
-                manager.requestImageForAsset(controller.selectedImageAssets[0],
-                    targetSize: size,
-                    contentMode: .AspectFill,
-                    options:initialRequestOptions) { (finalResult, _) in
-                        
-                        self.newItemImage.image = finalResult
-                        self.image = finalResult
-                }
-                
-                
-        }))
-        
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
-            presentImagePickerController(.PhotoLibrary)
-            }, secondaryHandler: { _, numberOfPhotos in
-                print("Comment \(numberOfPhotos) photos")
-                
-                let size = CGSize(width: controller.selectedImageAssets[0].pixelWidth, height: controller.selectedImageAssets[0].pixelHeight)
-                
-                manager.requestImageForAsset(controller.selectedImageAssets[0],
-                    targetSize: size,
-                    contentMode: .AspectFill,
-                options:initialRequestOptions) { (finalResult, _) in
-                    
-                    self.newItemImage.image = finalResult
-                    self.image = finalResult
-                }
-        }))
-        
-        controller.addAction(ImagePickerAction(title: NSLocalizedString("Cancel", comment: "Action Title"), style: .Cancel, handler: { _ in
-            print("Cancelled")
-        }))
-        
-        if UIDevice.currentDevice().userInterfaceIdiom == .Pad {
-            controller.modalPresentationStyle = .Popover
-            controller.popoverPresentationController?.sourceView = view
-            controller.popoverPresentationController?.sourceRect = CGRect(origin: view.center, size: CGSize())
-        }
-        
-        presentViewController(controller, animated: true, completion: nil)
-    }
     
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         
-        //dismissViewControllerAnimated(true, completion: nil)
        picker.dismissViewControllerAnimated(false) {
         
         }
@@ -565,9 +450,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
         
-        
-        //dismissViewControllerAnimated(true, completion: nil)
-       
         picker.dismissViewControllerAnimated(false) {
             
             self.newItemImage.image = image

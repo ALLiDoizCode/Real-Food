@@ -11,7 +11,7 @@ import Material
 
 class ProfileViews {
     
-    func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,var edit:UIButton,controller:SellerProfileViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,edit:UIButton) -> Void){
+    func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,edit:UIButton,controller:UIViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,rating:FabButton,closeReview:RaisedButton,camera:FabButton,addItem:FabButton,cancle:FabButton,edit:UIButton) -> Void){
         
         let Menu = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]
         
@@ -161,5 +161,19 @@ class ProfileViews {
         controller.navigationItem.rightBarButtonItem = rightButton
         
         completion(veggie: veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, rating: rating, closeReview: closeReview, camera: camera, addItem: addItem, cancle: cancle, edit: edit)
+    }
+    
+    func makeTextFields(itemTitle:TextField,controller:SellerProfileViewController){
+        
+        itemTitle.placeholder = "Description"
+        itemTitle.font = RobotoFont.regularWithSize(20)
+        itemTitle.textColor = UIColor.flatWhiteColor()
+        itemTitle.titleLabel = UILabel()
+        itemTitle.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        itemTitle.titleLabelColor = MaterialColor.grey.base
+        itemTitle.titleLabelActiveColor = UIColor.flatSandColorDark()
+        itemTitle.backgroundColor = UIColor.clearColor()
+        itemTitle.clearButtonMode = .Always
+        controller.newItemView.addSubview(itemTitle)
     }
 }

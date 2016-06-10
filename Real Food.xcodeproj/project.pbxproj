@@ -43,6 +43,8 @@
 		4DCC55CD1C713B4400F60DDE /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4DCC55CC1C713B4400F60DDE /* Profile.storyboard */; };
 		4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */; };
 		4DD5A65D1D0A3E10005A8408 /* ProfileViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5A65C1D0A3E10005A8408 /* ProfileViews.swift */; };
+		4DD5A65F1D0A4952005A8408 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5A65E1D0A4952005A8408 /* Constants.swift */; };
+		4DD5A6611D0A4B0F005A8408 /* GetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5A6601D0A4B0F005A8408 /* GetImage.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
 		4DED8BCB1D089F2200467EC0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */; };
 		4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF09ADA1C6D6C500007B1C5 /* Menu.swift */; };
@@ -111,6 +113,8 @@
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD5A65C1D0A3E10005A8408 /* ProfileViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViews.swift; sourceTree = "<group>"; };
+		4DD5A65E1D0A4952005A8408 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		4DD5A6601D0A4B0F005A8408 /* GetImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetImage.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 		4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4DF09ADA1C6D6C500007B1C5 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
@@ -185,6 +189,7 @@
 			children = (
 				4D3A27FE1C977EF200F2A919 /* Time.swift */,
 				4D8695C11C999DD100B20968 /* Location.swift */,
+				4DD5A65E1D0A4952005A8408 /* Constants.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -269,6 +274,7 @@
 			isa = PBXGroup;
 			children = (
 				4DF09ADA1C6D6C500007B1C5 /* Menu.swift */,
+				4DD5A6601D0A4B0F005A8408 /* GetImage.swift */,
 			);
 			name = Custome;
 			sourceTree = "<group>";
@@ -548,6 +554,7 @@
 				4D8695C61C9A07F300B20968 /* Message.swift in Sources */,
 				4D3A280D1C97BED400F2A919 /* PresentLIst.swift in Sources */,
 				4D4167C91C9E97340041D5EF /* ChatCell2.swift in Sources */,
+				4DD5A65F1D0A4952005A8408 /* Constants.swift in Sources */,
 				4DF236CD1D0639BC003B81E7 /* PresenterEditing.swift in Sources */,
 				4D8695C41C9A05C400B20968 /* Rooms.swift in Sources */,
 				4D7422851C586E4C00453818 /* FoodCell.swift in Sources */,
@@ -563,6 +570,7 @@
 				4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */,
 				4DBC58521D0880A10072144F /* ReviewCell2.swift in Sources */,
 				4D3A27FC1C97722D00F2A919 /* RoomCell.swift in Sources */,
+				4DD5A6611D0A4B0F005A8408 /* GetImage.swift in Sources */,
 				4D7422891C58A7A300453818 /* SellerViewController.swift in Sources */,
 				4DD5A65D1D0A3E10005A8408 /* ProfileViews.swift in Sources */,
 				4D3A27F31C9759F700F2A919 /* ChatRoomViewController.swift in Sources */,
