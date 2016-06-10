@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftEventBus
 
 class LandingViewController: UIViewController {
 
@@ -71,7 +72,11 @@ class LandingViewController: UIViewController {
             return
         }
         
-        presenter.login(userName.text!, PassWord: passWord.text!) { (success) -> Void in
+        SwiftEventBus.onMainThread(self, name: "Login Result") { (result) in
+            
+            print("Login Fired")
+            
+            let success = result.object as! Bool
             
             if success == true {
                 
@@ -83,6 +88,7 @@ class LandingViewController: UIViewController {
             }
         }
         
+        presenter.login(userName.text!, PassWord: passWord.text!)
         
     }
     override func didReceiveMemoryWarning() {

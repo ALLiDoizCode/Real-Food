@@ -99,15 +99,15 @@ class PresentUser {
         client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress,phone:phone)
     }
     
-    func login(userName:String,PassWord:String,completion:(success:Bool) -> Void) {
+    func login(userName:String,PassWord:String) {
         
-        SwiftEventBus.onMainThread(self, name: "login") { notification in
+        SwiftEventBus.onBackgroundThread(self, name: "login") { (notification) in
             
             print("login fired")
             
             let success = notification.object as! Bool
             
-            completion(success:success)
+            SwiftEventBus.postToMainThread("Login Result", sender: success)
         }
         
         client.login(userName,PassWord:PassWord)
