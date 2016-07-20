@@ -12,6 +12,53 @@ import Cartography
 
 class ProfileViews {
     
+    func makeSeller(home:TextField,phone:TextField,button:FlatButton) {
+        
+        
+        constrain(home, phone, button) { (home, phone, button) in
+            
+            home.width == (home.superview?.width)! * 0.8
+            home.height == 50
+            home.top == (home.superview?.top)! + 20
+            home.centerX == (home.superview?.centerX)!
+            
+            phone.width == (home.superview?.width)! * 0.8
+            phone.height == 50
+            phone.top == home.bottom + 20
+            phone.centerX == (home.superview?.centerX)!
+            
+            button.width == 100
+            button.height == 50
+            button.top == phone.bottom + 20
+            button.centerX == (home.superview?.centerX)!
+        }
+        
+        home.placeholder = "Street Address City State Zip"
+        home.font = RobotoFont.regularWithSize(20)
+        home.textColor = UIColor.flatWhiteColor()
+        home.titleLabel = UILabel()
+        home.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        home.titleLabelColor = MaterialColor.grey.base
+        home.titleLabelActiveColor = UIColor.flatSandColorDark()
+        home.backgroundColor = UIColor.clearColor()
+        home.clearButtonMode = .Always
+        
+        phone.placeholder = "Phone"
+        phone.font = RobotoFont.regularWithSize(20)
+        phone.textColor = UIColor.flatWhiteColor()
+        phone.titleLabel = UILabel()
+        phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        phone.titleLabelColor = MaterialColor.grey.base
+        phone.titleLabelActiveColor = UIColor.flatSandColorDark()
+        phone.backgroundColor = UIColor.clearColor()
+        phone.clearButtonMode = .Always
+        
+        
+        button.setTitle("Done", forState: UIControlState.Normal)
+        button.backgroundColor = UIColor.flatPlumColorDark()
+        button.titleLabel?.textColor = UIColor.flatSandColorDark()
+    }
+    
     func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton,controller:UIViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton) -> Void){
         
         let Menu = ["Veggies","Sweets","Dariy","Eggs","Poultry","Bovine","Goat","Lamb","Beer"]

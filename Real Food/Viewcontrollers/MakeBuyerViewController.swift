@@ -17,8 +17,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     
     var firstName:TextField!
     var email:TextField!
-    var address:TextField!
-    var phone:TextField!
+    var passWord2:TextField!
     var passWord:TextField!
     var signUp:RaisedButton!
     
@@ -26,7 +25,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     var image:UIImage!
 
     @IBOutlet weak var back: FlatButton!
-    @IBOutlet weak var imageLabel: UILabel!
+    //@IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
     
     let presenter = PresentUser()
@@ -41,9 +40,9 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
         
-        imageLabel.font = RobotoFont.regularWithSize(20)
-        imageLabel.text = "Add Image"
-        imageLabel.textColor = UIColor.flatSandColorDark()
+        //imageLabel.font = RobotoFont.regularWithSize(20)
+        //imageLabel.text = "Add Image"
+        //imageLabel.textColor = UIColor.flatSandColorDark()
         
         makeTextFields()
         makeProfileImage()
@@ -51,12 +50,12 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         if seller == true {
             
             makeButton("Continue")
-            signUp.addTarget(self, action: "continueBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+            signUp.addTarget(self, action: #selector(MakeBuyerViewController.continueBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
             
         }else {
             
             makeButton("Sign Up")
-            signUp.addTarget(self, action: "signUpBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+            signUp.addTarget(self, action: #selector(MakeBuyerViewController.signUpBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
         
         // Do any additional setup after loading the view.
@@ -70,7 +69,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     func makeProfileImage(){
         
         profileImage.backgroundColor = UIColor.flatPlumColorDark()
-        profileImage.addTarget(self, action: "getImage", forControlEvents: UIControlEvents.TouchUpInside)
+        profileImage.addTarget(self, action: #selector(MakeBuyerViewController.getImage), forControlEvents: UIControlEvents.TouchUpInside)
         profileImage.setImage(UIImage(named: "User-Add"), forState: UIControlState.Normal)
         profileImage.tintColor = UIColor.flatSandColorDark()
         profileImage.imageEdgeInsets.top = 15
@@ -107,50 +106,38 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         email.backgroundColor = UIColor.clearColor()
         email.clearButtonMode = .Always
         
-        address = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        address.placeholder = "Address"
-        address.font = RobotoFont.regularWithSize(20)
-        address.textColor = UIColor.flatWhiteColor()
-        address.center.x = self.view.center.x
-        address.center.y = self.view.center.y + 50
-        address.titleLabel = UILabel()
-        address.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        address.titleLabelColor = MaterialColor.grey.base
-        address.titleLabelActiveColor = UIColor.flatSandColorDark()
-        address.backgroundColor = UIColor.clearColor()
-        address.clearButtonMode = .Always
-        
-        phone = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        phone.placeholder = "Phone Number"
-        phone.font = RobotoFont.regularWithSize(20)
-        phone.textColor = UIColor.flatWhiteColor()
-        phone.center.x = self.view.center.x
-        phone.center.y = self.view.center.y + 100
-        phone.titleLabel = UILabel()
-        phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        phone.titleLabelColor = MaterialColor.grey.base
-        phone.titleLabelActiveColor = UIColor.flatSandColorDark()
-        phone.backgroundColor = UIColor.clearColor()
-        phone.clearButtonMode = .Always
+        passWord2 = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
+        passWord2.placeholder = "Password"
+        passWord2.font = RobotoFont.regularWithSize(20)
+        passWord2.textColor = UIColor.flatWhiteColor()
+        passWord2.center.x = self.view.center.x
+        passWord2.center.y = self.view.center.y + 50
+        passWord2.titleLabel = UILabel()
+        passWord2.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        passWord2.titleLabelColor = MaterialColor.grey.base
+        passWord2.titleLabelActiveColor = UIColor.flatSandColorDark()
+        passWord2.backgroundColor = UIColor.clearColor()
+        passWord2.clearButtonMode = .Always
+        passWord2.secureTextEntry = true
         
         passWord = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
         passWord.placeholder = "Password"
         passWord.font = RobotoFont.regularWithSize(20)
         passWord.textColor = UIColor.flatWhiteColor()
         passWord.center.x = self.view.center.x
-        passWord.center.y = self.view.center.y + 150
+        passWord.center.y = self.view.center.y + 100
         passWord.titleLabel = UILabel()
         passWord.titleLabel!.font = RobotoFont.mediumWithSize(12)
         passWord.titleLabelColor = MaterialColor.grey.base
         passWord.titleLabelActiveColor = UIColor.flatSandColorDark()
         passWord.backgroundColor = UIColor.clearColor()
         passWord.clearButtonMode = .Always
+        passWord.secureTextEntry = true
         
         view.addSubview(firstName)
         view.addSubview(email)
-        view.addSubview(address)
         view.addSubview(passWord)
-        view.addSubview(phone)
+        view.addSubview(passWord2)
        
     }
     
@@ -162,7 +149,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         signUp.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         signUp.backgroundColor = UIColor.flatPlumColorDark()
         signUp.center.x = self.view.center.x
-        signUp.center.y = self.view.center.y + 250
+        signUp.center.y = self.view.center.y + 200
         
         self.view.addSubview(signUp)
     }
@@ -284,12 +271,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
-        guard (address.text != nil) else {
-            
-            return
-        }
-        
-        guard (phone.text != nil) else {
+        guard (passWord2.text != nil) else {
             
             return
         }
@@ -299,40 +281,47 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             return
         }
         
+        guard (passWord.text == passWord2.text) else {
+            
+            return
+        }
+        
         guard (image != nil) else {
             
             return
         }
         
-        do {
+        SwiftSpinner.show("Creating Account")
+        
+        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image) { (success) -> Void in
+            
+            if success == true {
+                
+                SwiftSpinner.hide({
+                    
+                    self.performSegueWithIdentifier("Main", sender: nil)
+                })
+                
+            }else {
+                
+                SwiftSpinner.hide({
+                    
+                    print("Signup Failed")
+                })
+                
+            }
+        }
+        
+        /*do {
             _ = try PhoneNumber(rawNumber:phone.text!)
             _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
             
-            SwiftSpinner.show("Creating Account")
             
-            presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image,myAddress:address.text!,phone:phone.text!) { (success) -> Void in
-                
-                if success == true {
-                    
-                    SwiftSpinner.hide({
-                        
-                        self.performSegueWithIdentifier("Main", sender: nil)
-                    })
-                    
-                }else {
-                    
-                    SwiftSpinner.hide({
-                        
-                        print("Signup Failed")
-                    })
-                    
-                }
-            }
         }
         catch {
             
             print("Generic parser error")
-        }
+        }*/
         
     }
     

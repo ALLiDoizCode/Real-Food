@@ -58,11 +58,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Real Food/Viewcontrollers/FoodViewController.swift"
-            timestampString = "479844748.4235"
+            timestampString = "490731852.333955"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "19"
-            endingLineNumber = "19"
+            startingLineNumber = "20"
+            endingLineNumber = "20"
             landmarkName = "FoodViewController"
             landmarkType = "3">
             <Locations>

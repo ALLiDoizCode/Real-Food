@@ -50,7 +50,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         makeProfileImage()
         
         makeButton("Sign Up")
-        Done.addTarget(self, action: "Done:", forControlEvents: UIControlEvents.TouchUpInside)
+        Done.addTarget(self, action: #selector(EditProfileViewController.Done(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         
         // Do any additional setup after loading the view.
     }
@@ -63,7 +63,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     func makeProfileImage(){
         
         profileImage.backgroundColor = UIColor.flatPlumColorDark()
-        profileImage.addTarget(self, action: "getImage", forControlEvents: UIControlEvents.TouchUpInside)
+        profileImage.addTarget(self, action: #selector(EditProfileViewController.getImage), forControlEvents: UIControlEvents.TouchUpInside)
         profileImage.setImage(UIImage(named: "User-Add"), forState: UIControlState.Normal)
         profileImage.tintColor = UIColor.flatSandColorDark()
         profileImage.imageEdgeInsets.top = 15

@@ -17,6 +17,17 @@ class User {
     
     let currentUser = PFUser.currentUser()
     
+    func newSeller(phone:String,address:String) {
+        
+        currentUser!["Phone"] = phone
+        currentUser!["Address"] = address
+        currentUser!["ISSeller"] = true
+        currentUser?.saveInBackgroundWithBlock({ (success, error) in
+            
+            SwiftEventBus.post("Make Seller", sender: success)
+        })
+    }
+    
     func review(review:String!,rate:Int,sellerId:String){
         
         let reviewObject = PFObject(className: "Review")
@@ -61,7 +72,9 @@ class User {
         }
     }
     
-    func signUp(userName:String,passWord:String,email:String,image:UIImage,myAddress:String,phone:String){
+    func signUp(userName:String,passWord:String,email:String,image:UIImage){
+        
+        print("Signup fired")
         
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
@@ -70,12 +83,14 @@ class User {
         user.username = userName
         user.password = passWord
         user.email = email
+        user["ISSeller"] = false
         user["ProfileImage"] = file
-        user["Phone"] = phone
         
-        location.reverseAddress(myAddress) { (lat, long) -> Void in
+        location.oneShot { (coords) in
             
-            let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
+            print("location fired")
+            
+            let geoPoint = PFGeoPoint(latitude:coords.latitude, longitude:coords.longitude)
             
             user["Location"] = geoPoint
             
@@ -87,9 +102,13 @@ class User {
                     
                     print(error.description)
                     
+                    print("location not found")
+                    
                     SwiftEventBus.post("signUp", sender: succeeded)
                     
                 } else {
+                    
+                    print("location found")
                     
                     // Hooray! Let them use the app now.
                     
@@ -99,6 +118,7 @@ class User {
                 }
             }
         }
+        
     }
     
     func signUpSeller(userName:String,passWord:String,email:String,image:UIImage,myAddress:String){

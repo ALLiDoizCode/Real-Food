@@ -24,7 +24,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(RoomsViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(self.refreshControl) // not required when using UITableViewController
         
         self.tableView.backgroundColor = UIColor.flatSandColor()

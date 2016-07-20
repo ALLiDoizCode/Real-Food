@@ -30,7 +30,7 @@ class MakeSellerViewController: UIViewController {
         makeTextFields()
         
         makeButton()
-        signUp.addTarget(self, action: "signUpBtn:", forControlEvents: UIControlEvents.TouchUpInside)
+        signUp.addTarget(self, action: #selector(MakeSellerViewController.signUpBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
     }
 
     override func didReceiveMemoryWarning() {

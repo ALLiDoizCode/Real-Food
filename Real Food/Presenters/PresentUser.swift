@@ -18,6 +18,25 @@ class PresentUser {
     
     let currentUser = PFUser.currentUser()
     
+    func makeSeller(phone:String,address:String) {
+        
+        SwiftEventBus.onBackgroundThread(self, name: "Make Seller") { (result) in
+            
+            let success = result.object as! Bool
+            
+            SwiftEventBus.postToMainThread("New Seller", sender: success)
+        }
+        
+        client.newSeller(phone, address: address)
+    }
+    
+    func isSeller() -> Bool {
+        
+        let status  = currentUser?.objectForKey("ISSeller") as! Bool
+        
+        return status
+    }
+    
     func editUser(userName:String,email:String,image:UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "Edit") { (result) in
@@ -85,7 +104,7 @@ class PresentUser {
         client.userData()
     }
     
-    func makeUser(userName:String, passWord: String, email: String, image: UIImage,myAddress:String,phone:String,completion:(success:Bool) -> Void){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage,completion:(success:Bool) -> Void){
         
         SwiftEventBus.onMainThread(self, name: "signUp") { notification in
             
@@ -96,7 +115,7 @@ class PresentUser {
             completion(success:success)
         }
         
-        client.signUp(userName, passWord: passWord, email: email, image: image,myAddress:myAddress,phone:phone)
+        client.signUp(userName, passWord: passWord, email: email, image: image)
     }
     
     func login(userName:String,PassWord:String) {

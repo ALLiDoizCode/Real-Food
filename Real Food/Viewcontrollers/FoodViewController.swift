@@ -16,13 +16,19 @@ import ImagePickerSheetController
 import Photos
 import SwiftSpinner
 import FXBlurView
+import SwiftEventBus
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     let menu = getMenu.sharedInstance
     let presenter = PresentList()
+    let presenterUser = PresentUser()
     let profileViews = ProfileViews()
     let getImage = GetImage()
+    
+    var home:TextField!
+    var phone:TextField!
+    var done:FlatButton!
     
     let controller = UIImagePickerController()
     
@@ -82,9 +88,9 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         profileViews.makeButton(veggie, sweets: sweets, dariy: dariy, eggs: eggs, poultry: poultry, bovine: bovine, goat: goat, lamb: lamb, beer: beer, addButton: addButton, camera: camera, addItem: addItem, cancle: cancle, controller: self) { (veggie, sweets, dariy, eggs, poultry, bovine, goat, lamb, beer, addButton, camera, addItem, cancle) in
             
             
-            camera.addTarget(self, action: "cameraBtn", forControlEvents: UIControlEvents.TouchUpInside)
-            addItem.addTarget(self, action: "addItemBtn", forControlEvents: UIControlEvents.TouchUpInside)
-            cancle.addTarget(self, action: "cancelBtn", forControlEvents: UIControlEvents.TouchUpInside)
+            camera.addTarget(self, action: #selector(FoodViewController.cameraBtn), forControlEvents: UIControlEvents.TouchUpInside)
+            addItem.addTarget(self, action: #selector(FoodViewController.addItemBtn), forControlEvents: UIControlEvents.TouchUpInside)
+            cancle.addTarget(self, action: #selector(FoodViewController.cancelBtn), forControlEvents: UIControlEvents.TouchUpInside)
             
             constrain(camera,addItem,cancle) { (camera,addItem,cancle) in
                 
@@ -112,7 +118,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "refresh:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: #selector(FoodViewController.refresh(_:)), forControlEvents: UIControlEvents.ValueChanged)
         self.TableView.addSubview(self.refreshControl) // not required when using UITableViewController
         
         
@@ -362,9 +368,56 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     @IBAction func add(sender: AnyObject) {
         
-        buttonView.hidden = false
-        cover.hidden = false
+        /// check to see if seller
+        
+        SwiftEventBus.onMainThread(self, name: "New Seller") { (result) in
+            
+            let success = result.object as! Bool
+            
+            if success == true {
+                
+                self.buttonView.hidden = false
+                self.cover.hidden = false
+            }
+        }
+        
+        if presenterUser.isSeller() == true {
+            
+            buttonView.hidden = false
+            cover.hidden = false
+            
+        }else {
+            
+            home = TextField()
+            phone = TextField()
+            done = FlatButton()
+            done.addTarget(self, action: #selector(FoodViewController.doneBtn), forControlEvents: UIControlEvents.TouchUpInside)
+            
+            self.view.addSubview(home)
+            self.view.addSubview(phone)
+            self.view.addSubview(done)
+            
+            profileViews.makeSeller(home, phone: phone,button:done)
+            
+        }
+        
     }
+    
+    
+    func doneBtn() {
+        
+        if phone.text != "" && home.text != "" {
+            
+            presenterUser.makeSeller(phone.text!, address: home.text!)
+            
+        }else {
+            
+            //need to fill in all text fields
+        }
+        
+        
+    }
+    
     
     // MARK: UIImagePickerControllerDelegate
     
@@ -412,5 +465,4 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }
     }
     
-
 }

@@ -34,7 +34,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
         
         sourceColor = UIColor(complementaryFlatColorOf:UIColor.flatForestGreenColorDark())
         
-        for var i = 0; i < menuName.count; i++ {
+        for _ in 0 ..< menuName.count {
             
             sourceColor = UIColor(complementaryFlatColorOf:sourceColor)
             

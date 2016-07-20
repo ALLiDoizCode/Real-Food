@@ -209,7 +209,7 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         doneBtn.setTitle("Rate", forState: UIControlState.Normal)
         doneBtn.backgroundColor = rate.backgroundColor
         doneBtn.cornerRadius = .Radius1
-        doneBtn.addTarget(self, action: "ratingDone", forControlEvents: UIControlEvents.TouchUpInside)
+        doneBtn.addTarget(self, action:#selector(SellerViewController.ratingDone), forControlEvents: UIControlEvents.TouchUpInside)
         
         bgView.backgroundColor = UIColor.flatSandColorDark()
         rateValueLabel.textColor = rate.backgroundColor

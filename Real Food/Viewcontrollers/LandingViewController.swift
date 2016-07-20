@@ -8,9 +8,12 @@
 
 import UIKit
 import SwiftEventBus
+import Cartography
+import Material
 
 class LandingViewController: UIViewController {
 
+    
     @IBOutlet weak var topBorder: UILabel!
     @IBOutlet weak var bottomBorder: UILabel!
     @IBOutlet weak var userName: UITextField!
@@ -19,10 +22,39 @@ class LandingViewController: UIViewController {
     @IBOutlet weak var loginBtn: UIButton!
     @IBOutlet weak var signUpBtn: UIButton!
     
+    var logo: UIImageView!
+    var loginTitle: MaterialLabel!
+    
     let presenter = PresentUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        logo = UIImageView()
+        logo.image = UIImage(named: "GreenPepper2")
+        logo.contentMode = .ScaleAspectFill
+        
+        loginTitle = MaterialLabel()
+        loginTitle.text = "Green Peppers"
+        loginTitle.font = RobotoFont.boldWithSize(40)
+        loginTitle.textColor = UIColor.flatSandColor()
+        loginTitle.textAlignment = .Center
+        self.view.addSubview(logo)
+        self.view.addSubview(loginTitle)
+        
+        constrain(logo,loginTitle) { (logo,loginTitle) in
+            
+            loginTitle.width == (loginTitle.superview?.width)!
+            loginTitle.height == 50
+            loginTitle.centerX == (loginTitle.superview?.centerX)!
+            loginTitle.top == (loginTitle.superview?.top)! + 20
+            
+            logo.width == (logo.superview?.width)! * 0.3
+            logo.height == logo.width + 20
+            logo.top == loginTitle.bottom + 20
+            logo.centerX == (logo.superview?.centerX)!
+            
+        }
         
         userName.attributedPlaceholder = NSAttributedString(string:"UserName",
             attributes:[NSForegroundColorAttributeName: UIColor(contrastingBlackOrWhiteColorOn: self.view.backgroundColor, isFlat: true, alpha: 0.7)])
