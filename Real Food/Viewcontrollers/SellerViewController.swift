@@ -55,6 +55,17 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        if sellerId == presentUser.currentUser?.objectId {
+            
+            rate.enabled = false
+            message.enabled = false
+            
+        }else {
+            
+            rate.enabled = true
+            message.enabled = true
+        }
+        
         review = TextView()
         reviewLbl = MaterialLabel()
         reviewIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -130,7 +141,17 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         presentUser.getReviews(sellerId) { (data, Rating) in
             
             self.reviews = data
-            self.ratingLbl.text = Rating
+            
+            if Rating != "" {
+                
+                self.ratingLbl.text = Rating
+                
+            }else {
+                
+                self.ratingLbl.hidden = true
+            }
+            
+            
             
             self.reload()
         }

@@ -8,10 +8,7 @@ PODS:
   - FXBlurView (1.6.4)
   - HanabiCollectionViewLayout (1.1)
   - ImagePickerSheetController (0.9.1)
-  - IQKeyboardManagerSwift (4.0.1)
-  - JSQMessagesViewController (7.2.0):
-    - JSQSystemSoundPlayer (~> 2.0.1)
-  - JSQSystemSoundPlayer (2.0.1)
+  - IQKeyboardManagerSwift (4.0.3)
   - Kingfisher (1.9.3)
   - Material (1.28.1)
   - Parse (1.12.0):
@@ -29,8 +26,7 @@ DEPENDENCIES:
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
   - ImagePickerSheetController (~> 0.9.1)
-  - IQKeyboardManagerSwift
-  - JSQMessagesViewController
+  - IQKeyboardManagerSwift (= 4.0.3)
   - Kingfisher (~> 1.8)
   - Material (~> 1.28.1)
   - Parse (~> 1.12.0)
@@ -62,9 +58,7 @@ SPEC CHECKSUMS:
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: 4d76d29aee34e54c1eecac79b87c4b6645c14d8f
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
-  IQKeyboardManagerSwift: e92246955e21dad73ad9dc89b80adb134d8bb395
-  JSQMessagesViewController: 73cab48aa92fc2d512f3b6724f3425cc47a19eb5
-  JSQSystemSoundPlayer: c5850e77a4363ffd374cd851154b9af93264ed8d
+  IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
   Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b

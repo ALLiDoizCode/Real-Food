@@ -170,8 +170,21 @@ class User {
     }
     
     func login(userName:String,PassWord:String){
-        
-        PFUser.logInWithUsernameInBackground(userName, password:PassWord) {
+
+        do {
+            
+            try PFUser.logInWithUsername(userName, password: PassWord)
+            
+            SwiftEventBus.post("login", sender: true)
+            // Do stuff after successful login.
+            
+        } catch {
+            
+            SwiftEventBus.post("login", sender: false)
+            // The login failed. Check error to see why.
+        }
+
+        /*PFUser.logInWithUsernameInBackground(userName, password:PassWord) {
             (user: PFUser?, error: NSError?) -> Void in
             if user != nil {
                 
@@ -185,7 +198,7 @@ class User {
                 SwiftEventBus.post("login", sender: false)
                 // The login failed. Check error to see why.
             }
-        }
+        }*/
     }
     
     func logout(){

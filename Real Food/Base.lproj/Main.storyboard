@@ -745,7 +745,7 @@
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Id-Jf-2z8">
                                 <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4.3" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Mf-iJ8">
+                                    <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ztg-Mf-iJ8">
                                         <rect key="frame" x="-42" y="-21" width="42" height="21"/>
                                         <color key="backgroundColor" red="0.79226005077362061" green="0.7181098461151123" blue="0.48854580521583557" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
@@ -860,7 +860,9 @@
                                     <constraint firstItem="uiw-8i-GaF" firstAttribute="leading" secondItem="doN-Sg-48E" secondAttribute="leading" id="760-mH-Raj"/>
                                     <constraint firstAttribute="bottom" secondItem="a6N-Xz-6Fr" secondAttribute="bottom" constant="25" id="8PP-tH-AxA"/>
                                     <constraint firstItem="ztg-Mf-iJ8" firstAttribute="trailing" secondItem="0Id-Jf-2z8" secondAttribute="trailingMargin" id="Efq-lI-WfT"/>
-                                    <constraint firstItem="uiw-8i-GaF" firstAttribute="trailing" secondItem="doN-Sg-48E" secondAttribute="trailing" id="Fhc-A4-9b9"/>
+                                    <constraint firstItem="uiw-8i-GaF" firstAttribute="trailing" secondItem="doN-Sg-48E" secondAttribute="trailing" id="Fhc-A4-9b9">
+                                        <variation key="heightClass=regular-widthClass=compact" constant="-55"/>
+                                    </constraint>
                                     <constraint firstItem="uiw-8i-GaF" firstAttribute="top" secondItem="3rg-RC-qPn" secondAttribute="top" id="GCs-uI-E9L"/>
                                     <constraint firstItem="ztg-Mf-iJ8" firstAttribute="firstBaseline" secondItem="uiw-8i-GaF" secondAttribute="firstBaseline" id="LSX-Rd-Abf"/>
                                     <constraint firstItem="uiw-8i-GaF" firstAttribute="baseline" secondItem="ztg-Mf-iJ8" secondAttribute="firstBaseline" id="Mj5-tK-Zzg"/>

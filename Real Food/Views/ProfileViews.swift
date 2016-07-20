@@ -56,7 +56,7 @@ class ProfileViews {
         
         button.setTitle("Done", forState: UIControlState.Normal)
         button.backgroundColor = UIColor.flatPlumColorDark()
-        button.titleLabel?.textColor = UIColor.flatSandColorDark()
+        button.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
     }
     
     func makeButton(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton,controller:UIViewController,completion:(veggie:FabButton,sweets:FabButton,dariy:FabButton,eggs:FabButton,poultry:FabButton,bovine:FabButton,goat:FabButton,lamb:FabButton,beer:FabButton,addButton:FabButton,camera:FabButton,addItem:FabButton,cancle:FabButton) -> Void){

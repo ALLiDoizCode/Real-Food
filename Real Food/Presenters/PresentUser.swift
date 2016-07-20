@@ -57,19 +57,25 @@ class PresentUser {
             
             let reviews = result.object as! [Review]
             
-            for review in reviews {
+            if reviews.count > 0 {
                 
-                currentRating = currentRating + Double(review.rate)
+                for review in reviews {
+                    
+                    currentRating = currentRating + Double(review.rate)
+                    
+                }
                 
+                let rateFloat:Double = currentRating / Double(reviews.count)
+                
+                print("my rating is \(rateFloat)")
+                
+                let score = String(format:"%.1f", rateFloat)
+                
+                completion(data: reviews, Rating: "\(score)")
+            }else {
+                
+                completion(data: reviews, Rating: "")
             }
-            
-            let rateFloat:Double = currentRating / Double(reviews.count)
-            
-            print("my rating is \(rateFloat)")
-            
-            let score = String(format:"%.1f", rateFloat)
-            
-            completion(data: reviews, Rating: "\(score)")
             
             SwiftEventBus.unregister(self, name: "myReviews")
             

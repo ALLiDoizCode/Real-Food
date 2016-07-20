@@ -29,6 +29,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     var home:TextField!
     var phone:TextField!
     var done:FlatButton!
+    var bgView:MaterialView!
     
     let controller = UIImagePickerController()
     
@@ -391,11 +392,13 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             home = TextField()
             phone = TextField()
             done = FlatButton()
+            bgView = MaterialView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
+            bgView.backgroundColor = UIColor.flatForestGreenColorDark()
             done.addTarget(self, action: #selector(FoodViewController.doneBtn), forControlEvents: UIControlEvents.TouchUpInside)
-            
-            self.view.addSubview(home)
-            self.view.addSubview(phone)
-            self.view.addSubview(done)
+            self.view.addSubview(bgView)
+            bgView.addSubview(home)
+            bgView.addSubview(phone)
+            bgView.addSubview(done)
             
             profileViews.makeSeller(home, phone: phone,button:done)
             
@@ -407,6 +410,22 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     func doneBtn() {
         
         if phone.text != "" && home.text != "" {
+            
+            SwiftEventBus.onMainThread(self, name: "New Seller", handler: { (result) in
+                
+                let success = result.object as! Bool
+                
+                if success == true {
+                    
+                    self.bgView.hidden = true
+                    self.buttonView.hidden = false
+                    self.cover.hidden = false
+                    
+                }else {
+                    
+                }
+                
+            })
             
             presenterUser.makeSeller(phone.text!, address: home.text!)
             
