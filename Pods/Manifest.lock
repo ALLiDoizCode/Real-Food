@@ -14,6 +14,7 @@ PODS:
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
   - PhoneNumberKit (0.8.4)
+  - SCLAlertView (0.5.9)
   - SwiftEventBus (1.1.0)
   - SwiftLocation (0.2.0)
   - SwiftSpinner (0.9.5)
@@ -31,6 +32,7 @@ DEPENDENCIES:
   - Material (~> 1.28.1)
   - Parse (~> 1.12.0)
   - PhoneNumberKit (~> 0.8)
+  - SCLAlertView
   - SwiftEventBus (from `https://github.com/cesarferreira/SwiftEventBus.git`)
   - SwiftLocation
   - SwiftSpinner
@@ -63,6 +65,7 @@ SPEC CHECKSUMS:
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   PhoneNumberKit: ec93d8c5e4614ecfc1ef333eb89f7eaadedcaa17
+  SCLAlertView: d7c6a48c7d340e60206d4ed0e8ebcbff3b9d2a44
   SwiftEventBus: d334f7aecbddbd995c3de5c262cf35c72db550f3
   SwiftLocation: ea78ae4a822581bde7379d98c8513273723c8840
   SwiftSpinner: c6585a0ae5c67eb33e737695cce88f0262008cce

@@ -133,6 +133,8 @@ class PresentUser {
             let success = notification.object as! Bool
             
             SwiftEventBus.postToMainThread("Login Result", sender: success)
+            
+            SwiftEventBus.unregister("login")
         }
         
         client.login(userName,PassWord:PassWord)

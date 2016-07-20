@@ -114,6 +114,15 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             self.myReviews = data
             
+            if self.myReviews.count < 1 {
+                
+                self.rating.hidden = true
+                
+            }else {
+                
+                self.rating.hidden = false
+            }
+            
             self.rating.setTitle(Rating, forState: UIControlState.Normal)
         }
     }

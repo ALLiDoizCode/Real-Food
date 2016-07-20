@@ -10,6 +10,7 @@ import UIKit
 import SwiftEventBus
 import Cartography
 import Material
+import SCLAlertView
 
 class LandingViewController: UIViewController {
 
@@ -116,6 +117,8 @@ class LandingViewController: UIViewController {
                 
             }else {
                 
+                
+                SCLAlertView().showError("Login Failed", subTitle: "Either your password or user name is wrong")
                 print("login failed")
             }
         }

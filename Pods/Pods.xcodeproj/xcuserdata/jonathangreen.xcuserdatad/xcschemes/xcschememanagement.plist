@@ -69,6 +69,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>SCLAlertView.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>SwiftEventBus.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -102,7 +107,7 @@
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
-		<key>02B43F973A314A9B1D8257D6DA41CADF</key>
+		<key>029BA8808CAE1678A9AB05305E8FE886</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -112,27 +117,32 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>1A56F91B0D88D7D3B5DAD88F52F011A9</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>1C585D4C6020CDAD039091F45799A18D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>2AAAB9973850C35994DC04473435E1A3</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>2B4E1B69D2D29DC31D22D35867B16893</key>
+		<key>30E93ED6EA801B9EE60CA18937DE5148</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>4BD9C2E7830B749C975B1A63ADDBE4AA</key>
+		<key>38B591E89692AC2703F646AEAA43E0EB</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>5DB2320F512A668DDA7A187D1BC22DCB</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>7028EC98051410C4D4E2ED2071B413B5</key>
+		<key>6F8E8E4468DCE36A8324AEA00FEE6793</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -157,17 +167,12 @@
 			<key>primary</key>
 			<true/>
 		</dict>
-		<key>9E2CB130DA0198435236FB788E33D96E</key>
+		<key>AB1EE0BC1BDC6064B85668FBEF571B06</key>
 		<dict>
 			<key>primary</key>
 			<true/>
 		</dict>
 		<key>B0214E86E9E229E292863BC821997C4D</key>
-		<dict>
-			<key>primary</key>
-			<true/>
-		</dict>
-		<key>BE6024DAB35E24356DD8FDF31604D815</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -183,6 +188,11 @@
 			<true/>
 		</dict>
 		<key>CD378EDFF42487A7E1BB47D45223953B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>EEC7BE90BE0D91236A6A476624A804FC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
