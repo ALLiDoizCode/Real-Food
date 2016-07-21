@@ -39,11 +39,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         back.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         
         self.view.backgroundColor = UIColor.flatForestGreenColorDark()
-        
-        //imageLabel.font = RobotoFont.regularWithSize(20)
-        //imageLabel.text = "Add Image"
-        //imageLabel.textColor = UIColor.flatSandColorDark()
-        
+
         makeTextFields()
         makeProfileImage()
         
@@ -57,8 +53,6 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
             makeButton("Sign Up")
             signUp.addTarget(self, action: #selector(MakeBuyerViewController.signUpBtn(_:)), forControlEvents: UIControlEvents.TouchUpInside)
         }
-        
-        // Do any additional setup after loading the view.
     }
 
     override func didReceiveMemoryWarning() {
@@ -154,7 +148,6 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         self.view.addSubview(signUp)
     }
     
-    
     func getImage() {
         
         let manager = PHImageManager.defaultManager()
@@ -195,10 +188,8 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                         self.profileImage.tintColor = UIColor.clearColor()
                         self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
                         self.profileImage.layer.masksToBounds = true
-                    
-                }
-                
-                
+            }
+        
         }))
         
         controller.addAction(ImagePickerAction(title: NSLocalizedString("Photo Library", comment: "Action Title"), secondaryTitle: { NSString.localizedStringWithFormat(NSLocalizedString("ImagePickerSheet.button1.Send %lu Photo", comment: "Action Title"), $0) as String}, handler: { _ in
@@ -237,7 +228,6 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     // MARK: UIImagePickerControllerDelegate
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        //dismissViewControllerAnimated(true, completion: nil)
         
         picker.dismissViewControllerAnimated(false) {
             
@@ -245,9 +235,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     }
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        
-        
-        //dismissViewControllerAnimated(true, completion: nil)
+
         
         picker.dismissViewControllerAnimated(false) {
             
@@ -261,32 +249,44 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
 
        func signUpBtn(sender: AnyObject) {
         
-        guard (firstName.text != nil) else {
+        guard (firstName.text != "") else {
+            
+             SweetAlert().showAlert("Failed!", subTitle: "User name is missing", style: AlertStyle.Error)
             
             return
         }
         
-        guard (email.text != nil) else {
+        guard (email.text != "") else {
+            
+             SweetAlert().showAlert("Failed!", subTitle: "Email is missing", style: AlertStyle.Error)
             
             return
         }
         
-        guard (passWord2.text != nil) else {
+        guard (passWord.text != "") else {
+            
+             SweetAlert().showAlert("Failed!", subTitle: "Missing first password", style: AlertStyle.Error)
             
             return
         }
         
-        guard (passWord.text != nil) else {
+        guard (passWord2.text != "") else {
+            
+             SweetAlert().showAlert("Failed!", subTitle: "Missing second password", style: AlertStyle.Error)
             
             return
         }
         
         guard (passWord.text == passWord2.text) else {
             
+             SweetAlert().showAlert("Failed!", subTitle: "Passwords do not match", style: AlertStyle.Error)
+            
             return
         }
         
         guard (image != nil) else {
+            
+            SweetAlert().showAlert("Failed!", subTitle: "Image is missing", style: AlertStyle.Error)
             
             return
         }
@@ -311,17 +311,6 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
                 
             }
         }
-        
-        /*do {
-            _ = try PhoneNumber(rawNumber:phone.text!)
-            _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
-            
-            
-        }
-        catch {
-            
-            print("Generic parser error")
-        }*/
         
     }
     
