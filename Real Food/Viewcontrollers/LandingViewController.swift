@@ -10,7 +10,6 @@ import UIKit
 import SwiftEventBus
 import Cartography
 import Material
-import SCLAlertView
 
 class LandingViewController: UIViewController {
 
@@ -117,15 +116,20 @@ class LandingViewController: UIViewController {
                 
             }else {
                 
-                
-                SCLAlertView().showError("Login Failed", subTitle: "Either your password or user name is wrong")
                 print("login failed")
+                
+                SweetAlert().showAlert("Failed!", subTitle: "username or password is incorrect", style: AlertStyle.Error)
             }
+            
+            SwiftEventBus.unregister(self, name: "Login Result")
         }
         
         presenter.login(userName.text!, PassWord: passWord.text!)
         
     }
+    
+   
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

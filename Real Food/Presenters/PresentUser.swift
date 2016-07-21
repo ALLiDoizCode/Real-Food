@@ -128,13 +128,13 @@ class PresentUser {
         
         SwiftEventBus.onBackgroundThread(self, name: "login") { (notification) in
             
-            print("login fired")
+            print("presenter fired")
             
             let success = notification.object as! Bool
             
             SwiftEventBus.postToMainThread("Login Result", sender: success)
             
-            SwiftEventBus.unregister("login")
+            SwiftEventBus.unregister(self, name: "login")
         }
         
         client.login(userName,PassWord:PassWord)

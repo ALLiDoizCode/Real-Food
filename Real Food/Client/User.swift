@@ -175,10 +175,14 @@ class User {
             
             try PFUser.logInWithUsername(userName, password: PassWord)
             
+            print("we logged in")
+            
             SwiftEventBus.post("login", sender: true)
             // Do stuff after successful login.
             
         } catch {
+            
+            print("failed to login")
             
             SwiftEventBus.post("login", sender: false)
             // The login failed. Check error to see why.

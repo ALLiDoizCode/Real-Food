@@ -15,4 +15,3 @@ pod 'IQKeyboardManagerSwift', '4.0.3'
 pod 'Cartography', '~> 0.6.0'
 pod "TTGEmojiRate"
 pod 'PhoneNumberKit', '~> 0.8'
-pod 'SCLAlertView'

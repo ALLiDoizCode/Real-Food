@@ -46,6 +46,7 @@
 		4DD5A65F1D0A4952005A8408 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5A65E1D0A4952005A8408 /* Constants.swift */; };
 		4DD5A6611D0A4B0F005A8408 /* GetImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD5A6601D0A4B0F005A8408 /* GetImage.swift */; };
 		4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */; };
+		4DE8791F1D408059001BF7E3 /* SweetAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DE8791E1D408059001BF7E3 /* SweetAlert.swift */; };
 		4DED8BCB1D089F2200467EC0 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */; };
 		4DF09ADB1C6D6C500007B1C5 /* Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF09ADA1C6D6C500007B1C5 /* Menu.swift */; };
 		4DF236CB1D063808003B81E7 /* Editing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DF236CA1D063808003B81E7 /* Editing.swift */; };
@@ -116,6 +117,7 @@
 		4DD5A65E1D0A4952005A8408 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		4DD5A6601D0A4B0F005A8408 /* GetImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetImage.swift; sourceTree = "<group>"; };
 		4DD94FEA1C57FFFF0029C3DC /* MenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
+		4DE8791E1D408059001BF7E3 /* SweetAlert.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SweetAlert.swift; sourceTree = "<group>"; };
 		4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		4DF09ADA1C6D6C500007B1C5 /* Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Menu.swift; sourceTree = "<group>"; };
 		4DF236CA1D063808003B81E7 /* Editing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Editing.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 		4D3A27FD1C977EC300F2A919 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				4DE8791E1D408059001BF7E3 /* SweetAlert.swift */,
 				4D3A27FE1C977EF200F2A919 /* Time.swift */,
 				4D8695C11C999DD100B20968 /* Location.swift */,
 				4DD5A65E1D0A4952005A8408 /* Constants.swift */,
@@ -547,6 +550,7 @@
 				4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */,
 				4DED8BCB1D089F2200467EC0 /* EditProfileViewController.swift in Sources */,
 				4D1EF5B31C70F4B300B80735 /* ReviewCell.swift in Sources */,
+				4DE8791F1D408059001BF7E3 /* SweetAlert.swift in Sources */,
 				4DCC55CF1C713BD400F60DDE /* SellerProfileViewController.swift in Sources */,
 				4D3A28021C97B62300F2A919 /* User.swift in Sources */,
 				4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */,
