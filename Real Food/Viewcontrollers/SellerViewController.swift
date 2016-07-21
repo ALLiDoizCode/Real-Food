@@ -207,8 +207,10 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func messageBTn(sender: AnyObject) {
         
-        let url:NSURL = NSURL(string: sellerPhone)!
-        UIApplication.sharedApplication().openURL(url)
+        if let url = NSURL(string: "telprompt://\(sellerPhone)")
+        {
+            UIApplication.sharedApplication().openURL(url)
+        }
         
     }
     
