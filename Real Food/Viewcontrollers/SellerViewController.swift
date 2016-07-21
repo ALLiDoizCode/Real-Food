@@ -94,8 +94,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         self.rate.backgroundColor = UIColor.flatForestGreenColor()
         self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
         
-        
-        
         dispatch_async(dispatch_get_main_queue(), {
             
             self.ratingLbl.layer.cornerRadius = self.ratingLbl.layer.frame.height/2
@@ -151,7 +149,13 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
                 self.ratingLbl.hidden = true
             }
             
-            
+            for review in self.reviews {
+                
+                if review.user == self.presentUser.currentUser?.username {
+                    
+                    self.rate.enabled = false
+                }
+            }
             
             self.reload()
         }
@@ -269,7 +273,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             rateValueLabel.width == 300
             
             review.center == (review.superview?.center)!
-            
             review.width == 300
             review.height == 150
             
