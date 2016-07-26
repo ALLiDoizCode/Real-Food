@@ -233,6 +233,7 @@ public class BTNavigationDropdownMenu: UIView {
         self.menuArrow = UIImageView(image: self.configuration.arrowImage)
         self.menuButton.addSubview(self.menuArrow)
         
+        
         let window = UIApplication.sharedApplication().keyWindow!
         let menuWrapperBounds = window.bounds
         
@@ -559,7 +560,8 @@ class BTTableViewCell: UITableViewCell {
         self.checkmarkIcon.hidden = true
         self.checkmarkIcon.image = self.configuration.checkMarkImage
         self.checkmarkIcon.contentMode = UIViewContentMode.ScaleAspectFill
-        self.contentView.addSubview(self.checkmarkIcon)
+        //self.contentView.addSubview(self.checkmarkIcon)
+        self.checkmarkIcon.hidden = true
         
         // Separator for cell
         let separator = BTTableCellContentView(frame: cellContentFrame)
