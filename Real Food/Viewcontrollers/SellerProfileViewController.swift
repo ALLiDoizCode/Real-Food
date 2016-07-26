@@ -67,7 +67,6 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.userImage.layer.borderWidth = 3
             
             self.userName.font = RobotoFont.mediumWithSize(14)
-            self.userName.text = "Sara"
             
             self.userImage.layer.masksToBounds = true
             self.userImage.clipsToBounds = true
@@ -125,9 +124,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             
             self.rating.setTitle(Rating, forState: UIControlState.Normal)
         }
-    }
-    
-    override func viewDidAppear(animated: Bool) {
+        
         
         presentUser.userData { (data) in
             
@@ -140,6 +137,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
             self.userName.text = data.userName
             
         }
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        
     }
     
     override func viewWillDisappear(animated: Bool) {

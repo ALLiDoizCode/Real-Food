@@ -162,9 +162,19 @@ class User {
         let profileImage = currentUser!.objectForKey("ProfileImage") as! PFFile
         let userName = currentUser?.username
         
-        let phone = currentUser?.objectForKey("Phone") as! String
+        guard let phone:String = currentUser?.objectForKey("Phone") as? String else {
+            
+            let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!,thePhone:"")
+            
+            print(profileImage.url)
+            
+            SwiftEventBus.post("UserData", sender: myData)
+            return
+        }
         
         let myData = UserData(theUserName: userName!, theProfileImage: profileImage.url!,thePhone:phone)
+        
+        print(profileImage.url)
         
         SwiftEventBus.post("UserData", sender: myData)
     }

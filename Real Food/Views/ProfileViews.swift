@@ -14,7 +14,6 @@ class ProfileViews {
     
     func makeSeller(home:TextField,phone:TextField,button:FlatButton) {
         
-        
         constrain(home, phone, button) { (home, phone, button) in
             
             home.width == (home.superview?.width)! * 0.8
