@@ -72,6 +72,9 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
+        
         controller.delegate = self
         
         itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
@@ -115,7 +118,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         profileViews.makeTextFields(itemTitle, controller: self)
         
-        miles = 50
+        miles = 100
         
         self.refreshControl = UIRefreshControl()
         self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")

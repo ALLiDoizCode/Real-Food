@@ -30,6 +30,9 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.view.backgroundColor = UIColor.flatForestGreenColorDark()
+        
+        self.collectionVIew.backgroundColor = UIColor.flatForestGreenColorDark()
         
         sourceColor = UIColor(complementaryFlatColorOf:UIColor.flatForestGreenColorDark())
         
