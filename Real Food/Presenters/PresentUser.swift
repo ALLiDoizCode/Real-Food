@@ -110,15 +110,17 @@ class PresentUser {
         client.userData()
     }
     
-    func makeUser(userName:String, passWord: String, email: String, image: UIImage,completion:(success:Bool) -> Void){
+    func makeUser(userName:String, passWord: String, email: String, image: UIImage){
         
-        SwiftEventBus.onMainThread(self, name: "signUp") { notification in
+        SwiftEventBus.onBackgroundThread(self, name: "signUp") { notification in
             
             print("signUp fired")
             
             let success = notification.object as! Bool
             
-            completion(success:success)
+            SwiftEventBus.postToMainThread("Signup Success", sender: success)
+            
+            //completion(success:success)
         }
         
         client.signUp(userName, passWord: passWord, email: email, image: image)

@@ -12,6 +12,7 @@ import ImagePickerSheetController
 import Photos
 import SwiftSpinner
 import PhoneNumberKit
+import SwiftEventBus
 
 class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -249,6 +250,28 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
 
        func signUpBtn(sender: AnyObject) {
         
+        
+        SwiftEventBus.onBackgroundThread(self, name: "Signup Success") { (result) in
+            
+            let success = result.object as! Bool
+            
+            if success == true {
+                
+                SwiftSpinner.hide({
+                    
+                    self.performSegueWithIdentifier("Main", sender: nil)
+                })
+                
+            }else {
+                
+                SwiftSpinner.hide({
+                    
+                    print("Signup Failed")
+                })
+                
+            }
+        }
+        
         guard (firstName.text != "") else {
             
              SweetAlert().showAlert("Failed!", subTitle: "User name is missing", style: AlertStyle.Error)
@@ -293,24 +316,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         SwiftSpinner.show("Creating Account")
         
-        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image) { (success) -> Void in
-            
-            if success == true {
-                
-                SwiftSpinner.hide({
-                    
-                    self.performSegueWithIdentifier("Main", sender: nil)
-                })
-                
-            }else {
-                
-                SwiftSpinner.hide({
-                    
-                    print("Signup Failed")
-                })
-                
-            }
-        }
+        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image)
         
     }
     

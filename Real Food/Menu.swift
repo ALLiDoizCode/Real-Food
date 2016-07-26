@@ -27,6 +27,7 @@ class getMenu {
         nav.navigationController!.navigationBar.tintColor = UIColor.flatSandColorDark()
         
         menuView = BTNavigationDropdownMenu(navigationController: nav.navigationController, title: title, items: items)
+        
         menuView.cellHeight = 50
         menuView.cellBackgroundColor = UIColor.flatForestGreenColor()
         menuView.cellSelectionColor = UIColor.flatForestGreenColorDark()
@@ -40,8 +41,6 @@ class getMenu {
         menuView.didSelectItemAtIndexHandler = {(indexPath: Int) -> () in
             print("Did select item at index: \(indexPath)")
             
-           
-            
             if indexPath == 0 {
                 
                 let storyBoard = UIStoryboard.init(name: "Main", bundle: nil)
@@ -50,15 +49,6 @@ class getMenu {
                 
                 nav.navigationController!.pushViewController(controller, animated: true)
             }
-            
-            /*if indexPath == 1 {
-                
-                let storyBoard = UIStoryboard.init(name: "Chat", bundle: nil)
-                
-                let controller = storyBoard.instantiateViewControllerWithIdentifier("Chat") as! RoomsViewController
-                
-                nav.navigationController!.pushViewController(controller, animated: true)
-            }*/
             
             if indexPath == 1 {
                 
@@ -76,8 +66,6 @@ class getMenu {
                 let controller = storyBoard.instantiateViewControllerWithIdentifier("landing") as! LandingViewController
                 
                 nav.navigationController!.pushViewController(controller, animated: true)
-                
-                
                 
             }
         }
