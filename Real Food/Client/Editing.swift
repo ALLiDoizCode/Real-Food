@@ -35,11 +35,7 @@ class Editing {
             currentUser!["Address"] = myAddress
         }
         
-        location.reverseAddress(myAddress) { (lat, long) -> Void in
-            
-            let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
-            
-            self.currentUser!["Location"] = geoPoint
+        if myAddress == "" {
             
             self.currentUser!.saveInBackgroundWithBlock {
                 (succeeded: Bool, error: NSError?) -> Void in
@@ -62,8 +58,37 @@ class Editing {
                     print("User Edited")
                 }
             }
+        }else {
+            
+            location.reverseAddress(myAddress) { (lat, long) -> Void in
+                
+                let geoPoint = PFGeoPoint(latitude:lat, longitude:long)
+                
+                self.currentUser!["Location"] = geoPoint
+                
+                self.currentUser!.saveInBackgroundWithBlock {
+                    (succeeded: Bool, error: NSError?) -> Void in
+                    
+                    if let error = error {
+                        //let errorString = error.userInfo["error"] as? NSString
+                        // Show the errorString somewhere and let the user try again.
+                        
+                        print(error.description)
+                        print("edit failed")
+                        
+                        SwiftEventBus.post("Edit", sender: succeeded)
+                        
+                    } else {
+                        
+                        // Hooray! Let them use the app now.
+                        
+                        SwiftEventBus.post("Edit", sender: succeeded)
+                        
+                        print("User Edited")
+                    }
+                }
+            }
         }
-        
 
     }
     

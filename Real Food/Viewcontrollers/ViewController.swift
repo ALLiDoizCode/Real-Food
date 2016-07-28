@@ -51,6 +51,8 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     override func viewWillAppear(animated: Bool) {
         
         menu.setupMenu(self,title: "Home")
+        
+        self.navigationItem.setHidesBackButton(true, animated:true);
     }
     
     override func viewWillDisappear(animated: Bool) {

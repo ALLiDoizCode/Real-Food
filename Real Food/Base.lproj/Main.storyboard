@@ -885,22 +885,22 @@
                                     </mask>
                                     <mask key="constraints">
                                         <exclude reference="Sib-dh-jkx"/>
-                                        <exclude reference="Pnt-OT-yGf"/>
-                                        <exclude reference="hoc-Cp-ubX"/>
+                                        <exclude reference="G6n-HJ-85h"/>
+                                        <exclude reference="yC6-p6-11I"/>
+                                        <exclude reference="zIi-7o-GGE"/>
+                                        <exclude reference="CDi-4T-AqW"/>
+                                        <exclude reference="LmV-Qa-62z"/>
                                         <exclude reference="4OI-63-Cfe"/>
                                         <exclude reference="760-mH-Raj"/>
                                         <exclude reference="Fhc-A4-9b9"/>
                                         <exclude reference="GCs-uI-E9L"/>
                                         <exclude reference="Mj5-tK-Zzg"/>
-                                        <exclude reference="CDi-4T-AqW"/>
-                                        <exclude reference="LmV-Qa-62z"/>
-                                        <exclude reference="G6n-HJ-85h"/>
-                                        <exclude reference="yC6-p6-11I"/>
-                                        <exclude reference="zIi-7o-GGE"/>
                                         <exclude reference="74f-TS-EIu"/>
                                         <exclude reference="Efq-lI-WfT"/>
                                         <exclude reference="LSX-Rd-Abf"/>
                                         <exclude reference="swk-As-b2W"/>
+                                        <exclude reference="Pnt-OT-yGf"/>
+                                        <exclude reference="hoc-Cp-ubX"/>
                                     </mask>
                                 </variation>
                                 <variation key="heightClass=regular-widthClass=compact">
@@ -914,22 +914,22 @@
                                     </mask>
                                     <mask key="constraints">
                                         <include reference="Sib-dh-jkx"/>
-                                        <include reference="Pnt-OT-yGf"/>
-                                        <include reference="hoc-Cp-ubX"/>
+                                        <include reference="G6n-HJ-85h"/>
+                                        <include reference="yC6-p6-11I"/>
+                                        <include reference="zIi-7o-GGE"/>
+                                        <include reference="CDi-4T-AqW"/>
+                                        <include reference="LmV-Qa-62z"/>
                                         <include reference="4OI-63-Cfe"/>
                                         <include reference="760-mH-Raj"/>
                                         <include reference="Fhc-A4-9b9"/>
                                         <include reference="GCs-uI-E9L"/>
                                         <include reference="Mj5-tK-Zzg"/>
-                                        <include reference="CDi-4T-AqW"/>
-                                        <include reference="LmV-Qa-62z"/>
-                                        <include reference="G6n-HJ-85h"/>
-                                        <include reference="yC6-p6-11I"/>
-                                        <include reference="zIi-7o-GGE"/>
                                         <include reference="74f-TS-EIu"/>
                                         <include reference="Efq-lI-WfT"/>
                                         <include reference="LSX-Rd-Abf"/>
                                         <include reference="swk-As-b2W"/>
+                                        <include reference="Pnt-OT-yGf"/>
+                                        <include reference="hoc-Cp-ubX"/>
                                     </mask>
                                 </variation>
                             </view>

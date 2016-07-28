@@ -144,10 +144,16 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         
         if presenter.isSeller() == true {
             
+            userName.placeholder = currentUser.username
+            email.placeholder = currentUser?.email
             phone.placeholder = currentUser?.objectForKey("Phone") as? String
+            address.placeholder = currentUser?.objectForKey("Address") as? String
             
         }else {
             
+            userName.placeholder = currentUser.username
+            email.placeholder = currentUser?.email
+            address.placeholder = "Street,City,State"
             phone.placeholder = "Phone Number"
         }
         
@@ -306,6 +312,14 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             return
         }
         
+        guard (image != nil) else {
+            
+            SweetAlert().showAlert("Failed!", subTitle: "Image is empty", style: AlertStyle.Error)
+            
+            return
+        }
+        
+
         if presenter.isSeller() == true {
             
             guard (address.text != "") else {
@@ -325,22 +339,48 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                 
                 return
             }
-        }
-        
-        guard (image != nil) else {
             
+            SwiftSpinner.show("Saving Changes")
             
-            
-            return
-        }
-        
-        do {
-            _ = try PhoneNumber(rawNumber:phone.text!)
-            _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
+            do {
+                _ = try PhoneNumber(rawNumber:phone.text!)
+                _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
+                
+                
+                presenter.editUser(userName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
+                    
+                    if success == true {
+                        
+                        SwiftSpinner.hide({
+                            
+                            self.performSegueWithIdentifier("Profile", sender: nil)
+                            SweetAlert().showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
+                        })
+                        
+                    }else {
+                        
+                        SwiftSpinner.hide({
+                            
+                            print("Edit Failed")
+                            SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
+                        })
+                        
+                    }
+                }
+            }
+            catch {
+                
+                SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
+                print("Generic parser error")
+            }
+
+        }else {
             
             SwiftSpinner.show("Saving Changes")
             
             presenter.editUser(userName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
+                
+                print("success is \(success)")
                 
                 if success == true {
                     
@@ -355,17 +395,13 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     SwiftSpinner.hide({
                         
                         print("Edit Failed")
-                         SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
+                        SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
                     })
                     
                 }
             }
         }
-        catch {
-            
-             SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
-            print("Generic parser error")
-        }
+        
         
     }
     

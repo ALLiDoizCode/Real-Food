@@ -408,6 +408,11 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
         }else {
             
+            let myAlert = SweetAlert().showAlert("", subTitle: "We need some information so your listing is visable to users in the area", style: AlertStyle.CustomImag(imageFile: "Icon"))
+            
+            myAlert.imageView?.layer.cornerRadius = (myAlert.imageView?.layer.frame.height)!/2
+            myAlert.imageView?.layer.masksToBounds = true
+            
             home = TextField()
             phone = PhoneNumberTextField()
             done = FlatButton()

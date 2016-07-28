@@ -81,7 +81,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         rating.backgroundColor = UIColor.clearColor()
         rating.tintColor = UIColor.flatWhiteColor()
-        rating.setTitle("4.3", forState: UIControlState.Normal)
+        rating.setTitle("", forState: UIControlState.Normal)
         rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
         
         let rightButton = UIBarButtonItem.init(customView: edit)
@@ -91,8 +91,58 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     override func viewWillAppear(animated: Bool) {
         
+        self.navigationItem.setHidesBackButton(true, animated:true);
+        
         ratingTable.hidden = true
         closeReview.hidden = true
+        
+        /*presenter.getMyItems { (data) -> Void in
+            
+            print("got data")
+            
+            print(data.count)
+            
+            self.itemsArray = []
+            
+            self.itemsArray = data
+            
+            self.reload(self.tableView)
+            
+            self.ratingTable.estimatedRowHeight = 44
+            self.ratingTable.rowHeight = UITableViewAutomaticDimension
+        }
+        
+        presentUser.getReviews((presentUser.currentUser?.objectId)!) { (data, Rating) in
+            
+            self.myReviews = data
+            
+            if self.myReviews.count < 1 {
+                
+                self.rating.hidden = true
+                
+            }else {
+                
+                self.rating.hidden = false
+            }
+            
+            self.rating.setTitle(Rating, forState: UIControlState.Normal)
+        }
+        
+        
+        presentUser.userData { (data) in
+            
+            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(), options: .None, completionHandler: { (image, error, cacheType, imageURL) in
+                
+                self.bgImage.image = image?.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
+                
+            })
+            self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            self.userName.text = data.userName
+            
+        }*/
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         
         presenter.getMyItems { (data) -> Void in
             
@@ -140,13 +190,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         }
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-    
     override func viewWillDisappear(animated: Bool) {
         
+        
         menu.menuView.hide()
+        
     }
     
     func setupLayouts(){
