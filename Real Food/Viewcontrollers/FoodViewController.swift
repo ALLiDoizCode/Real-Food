@@ -241,7 +241,14 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             return
         }
-        
+    
+        guard (itemTitle.text?.characters.count <= 18) else {
+            
+            SweetAlert().showAlert("Warning!", subTitle: "Description can't be larger then 18 character", style: AlertStyle.Warning)
+            
+            return
+        }
+    
         SwiftSpinner.show("Adding Item")
         
         presenter.makeItem(type, name: itemTitle.text!, image: image) { (success) -> Void in
@@ -249,6 +256,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             if success == true {
                 
                 print("Item Saved Successfully")
+                self.addButton.hidden = false
                 self.newItemView.hidden = true
                 self.cover.hidden = true
                 
@@ -386,6 +394,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             if success == true {
                 
+                self.addButton.hidden = true
                 self.buttonView.hidden = false
                 self.cover.hidden = false
             }
@@ -393,6 +402,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         if presenterUser.isSeller() == true {
             
+            self.addButton.hidden = true
             buttonView.hidden = false
             cover.hidden = false
             
