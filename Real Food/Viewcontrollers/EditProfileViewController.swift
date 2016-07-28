@@ -18,7 +18,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     var firstName:TextField!
     var email:TextField!
     var address:TextField!
-    var phone:TextField!
+    var phone:PhoneNumberTextField!
     var passWord:TextField!
     var Done:RaisedButton!
     
@@ -129,16 +129,16 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         address.backgroundColor = UIColor.clearColor()
         address.clearButtonMode = .Always
         
-        phone = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
+        phone = PhoneNumberTextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
         phone.placeholder = "Phone Number"
         phone.font = RobotoFont.regularWithSize(20)
         phone.textColor = UIColor.flatWhiteColor()
         phone.center.x = self.view.center.x
         phone.center.y = self.view.center.y + 150
-        phone.titleLabel = UILabel()
-        phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        phone.titleLabelColor = MaterialColor.grey.base
-        phone.titleLabelActiveColor = UIColor.flatSandColorDark()
+        //phone.titleLabel = UILabel()
+        //phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        //phone.titleLabelColor = MaterialColor.grey.base
+        //phone.titleLabelActiveColor = UIColor.flatSandColorDark()
         phone.backgroundColor = UIColor.clearColor()
         phone.clearButtonMode = .Always
         

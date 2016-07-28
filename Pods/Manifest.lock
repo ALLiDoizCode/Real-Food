@@ -8,7 +8,7 @@ PODS:
   - FXBlurView (1.6.4)
   - HanabiCollectionViewLayout (1.1)
   - ImagePickerSheetController (0.9.1)
-  - IQKeyboardManagerSwift (4.0.3)
+  - IQKeyboardManagerSwift (4.0.4)
   - Kingfisher (1.9.3)
   - Material (1.28.1)
   - Parse (1.12.0):
@@ -26,7 +26,7 @@ DEPENDENCIES:
   - FXBlurView (~> 1.6.4)
   - HanabiCollectionViewLayout (from `https://github.com/kshin/Hanabi`)
   - ImagePickerSheetController (~> 0.9.1)
-  - IQKeyboardManagerSwift (= 4.0.3)
+  - IQKeyboardManagerSwift (= 4.0.4)
   - Kingfisher (~> 1.8)
   - Material (~> 1.28.1)
   - Parse (~> 1.12.0)
@@ -58,7 +58,7 @@ SPEC CHECKSUMS:
   FXBlurView: db786c2561cb49a09ae98407f52460096ab8a44f
   HanabiCollectionViewLayout: 4d76d29aee34e54c1eecac79b87c4b6645c14d8f
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
-  IQKeyboardManagerSwift: b6883b720b0e76473692fdc80828442566e1075f
+  IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
   Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b

@@ -50,6 +50,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         edit = UIButton(frame: CGRect(x: 0, y: 0, width: 50, height: 40))
         edit.setTitle("Edit", forState: UIControlState.Normal)
         edit.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
+        edit.addTarget(self, action: #selector(SellerProfileViewController.goEdit), forControlEvents: UIControlEvents.TouchUpInside)
     
         menu.setupMenu(self,title: "Profile")
         

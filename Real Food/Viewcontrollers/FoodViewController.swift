@@ -17,6 +17,7 @@ import Photos
 import SwiftSpinner
 import FXBlurView
 import SwiftEventBus
+import PhoneNumberKit
 
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -27,7 +28,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     let getImage = GetImage()
     
     var home:TextField!
-    var phone:TextField!
+    var phone:PhoneNumberTextField!
     var done:FlatButton!
     var bgView:MaterialView!
     
@@ -71,9 +72,6 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
-        
         
         controller.delegate = self
         
@@ -393,7 +391,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         }else {
             
             home = TextField()
-            phone = TextField()
+            phone = PhoneNumberTextField()
             done = FlatButton()
             bgView = MaterialView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
             bgView.backgroundColor = UIColor.flatForestGreenColorDark()
@@ -414,27 +412,47 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         if phone.text != "" && home.text != "" {
             
-            SwiftEventBus.onMainThread(self, name: "New Seller", handler: { (result) in
+            do {
+                _ = try PhoneNumber(rawNumber:phone.text!)
+                //let phoneNumberCustomDefaultRegion = try PhoneNumber(rawNumber: "+44 20 7031 3000", region: "GB")
                 
-                let success = result.object as! Bool
+                print("number is right format")
                 
-                if success == true {
+                SwiftEventBus.onMainThread(self, name: "New Seller", handler: { (result) in
                     
-                    self.bgView.hidden = true
-                    self.buttonView.hidden = false
-                    self.cover.hidden = false
+                    let success = result.object as! Bool
                     
-                }else {
+                    if success == true {
+                        
+                        self.bgView.hidden = true
+                        self.buttonView.hidden = false
+                        self.cover.hidden = false
+                        
+                        self.phone.resignFirstResponder()
+                        self.home.resignFirstResponder()
+                        
+                    }else {
+                        
+                    }
                     
-                }
+                })
                 
-            })
+                presenterUser.makeSeller(phone.text!, address: home.text!)
+            }
+            catch {
+                
+                print("Generic parser error")
+                print("phone number is not proper format")
+                SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
+            }
             
-            presenterUser.makeSeller(phone.text!, address: home.text!)
+            
             
         }else {
             
             //need to fill in all text fields
+            
+            SweetAlert().showAlert("Failed!", subTitle: "One or more fields are empty ", style: AlertStyle.Error)
         }
         
         

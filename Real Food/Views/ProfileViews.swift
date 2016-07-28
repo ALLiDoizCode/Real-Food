@@ -12,7 +12,7 @@ import Cartography
 
 class ProfileViews {
     
-    func makeSeller(home:TextField,phone:TextField,button:FlatButton) {
+    func makeSeller(home:TextField,phone:UITextField,button:FlatButton) {
         
         constrain(home, phone, button) { (home, phone, button) in
             
@@ -45,10 +45,10 @@ class ProfileViews {
         phone.placeholder = "Phone"
         phone.font = RobotoFont.regularWithSize(20)
         phone.textColor = UIColor.flatWhiteColor()
-        phone.titleLabel = UILabel()
-        phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        phone.titleLabelColor = MaterialColor.grey.base
-        phone.titleLabelActiveColor = UIColor.flatSandColorDark()
+        //phone.titleLabel = UILabel()
+        //phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        //phone.titleLabelColor = MaterialColor.grey.base
+        //phone.titleLabelActiveColor = UIColor.flatSandColorDark()
         phone.backgroundColor = UIColor.clearColor()
         phone.clearButtonMode = .Always
         

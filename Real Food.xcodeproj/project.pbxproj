@@ -26,7 +26,6 @@
 		4D671AF41C960D8500386CC2 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF31C960D8500386CC2 /* SignUpViewController.swift */; };
 		4D671AF61C960DBA00386CC2 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4D671AF51C960DBA00386CC2 /* SignUp.storyboard */; };
 		4D671AF81C96254900386CC2 /* MakeBuyerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF71C96254900386CC2 /* MakeBuyerViewController.swift */; };
-		4D671AFA1C96255700386CC2 /* MakeSellerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D671AF91C96255700386CC2 /* MakeSellerViewController.swift */; };
 		4D7422831C586DE800453818 /* FoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422821C586DE800453818 /* FoodViewController.swift */; };
 		4D7422851C586E4C00453818 /* FoodCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422841C586E4C00453818 /* FoodCell.swift */; };
 		4D7422871C58A78E00453818 /* sellerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D7422861C58A78E00453818 /* sellerCell.swift */; };
@@ -97,7 +96,6 @@
 		4D671AF31C960D8500386CC2 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		4D671AF51C960DBA00386CC2 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
 		4D671AF71C96254900386CC2 /* MakeBuyerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeBuyerViewController.swift; sourceTree = "<group>"; };
-		4D671AF91C96255700386CC2 /* MakeSellerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MakeSellerViewController.swift; sourceTree = "<group>"; };
 		4D7422821C586DE800453818 /* FoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodViewController.swift; sourceTree = "<group>"; };
 		4D7422841C586E4C00453818 /* FoodCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodCell.swift; sourceTree = "<group>"; };
 		4D7422861C58A78E00453818 /* sellerCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = sellerCell.swift; sourceTree = "<group>"; };
@@ -265,7 +263,6 @@
 				4D135C9B1C8021AC0064F803 /* LandingViewController.swift */,
 				4D671AF31C960D8500386CC2 /* SignUpViewController.swift */,
 				4D671AF71C96254900386CC2 /* MakeBuyerViewController.swift */,
-				4D671AF91C96255700386CC2 /* MakeSellerViewController.swift */,
 				4D3A27F21C9759F700F2A919 /* ChatRoomViewController.swift */,
 				4D3A27F41C9765C400F2A919 /* RoomsViewController.swift */,
 				4DED8BCA1D089F2200467EC0 /* EditProfileViewController.swift */,
@@ -569,7 +566,6 @@
 				4DD94FEB1C57FFFF0029C3DC /* MenuCell.swift in Sources */,
 				4D8695CA1C9A61B600B20968 /* ChatCell.swift in Sources */,
 				4D3A27F51C9765C400F2A919 /* RoomsViewController.swift in Sources */,
-				4D671AFA1C96255700386CC2 /* MakeSellerViewController.swift in Sources */,
 				4DBC58501D0856D60072144F /* Review.swift in Sources */,
 				4D135C9C1C8021AC0064F803 /* LandingViewController.swift in Sources */,
 				4DBC58521D0880A10072144F /* ReviewCell2.swift in Sources */,

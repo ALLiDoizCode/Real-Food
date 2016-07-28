@@ -11,7 +11,6 @@ import Material
 import ImagePickerSheetController
 import Photos
 import SwiftSpinner
-import PhoneNumberKit
 import SwiftEventBus
 
 class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
