@@ -55,17 +55,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if sellerId == presentUser.currentUser?.objectId {
-            
-            rate.enabled = false
-            message.enabled = false
-            
-        }else {
-            
-            rate.enabled = true
-            message.enabled = true
-        }
-        
         review = TextView()
         reviewLbl = MaterialLabel()
         reviewIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
@@ -135,6 +124,17 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        if sellerId == presentUser.currentUser?.objectId {
+            
+            rate.enabled = false
+            message.enabled = false
+            
+        }else {
+            
+            rate.enabled = true
+            message.enabled = true
+        }
         
         presentUser.getReviews(sellerId) { (data, Rating) in
             
@@ -346,7 +346,23 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
                     self.presentUser.getReviews(self.sellerId) { (data, Rating) in
                         
                         self.reviews = data
-                        self.ratingLbl.text = Rating
+                        
+                        if Rating != "" {
+                            
+                            self.ratingLbl.text = Rating
+                            
+                        }else {
+                            
+                            self.ratingLbl.hidden = true
+                        }
+                        
+                        for review in self.reviews {
+                            
+                            if review.user == self.presentUser.currentUser?.username {
+                                
+                                self.rate.enabled = false
+                            }
+                        }
                         
                         self.reload()
                     }
