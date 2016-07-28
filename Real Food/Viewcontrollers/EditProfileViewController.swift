@@ -22,6 +22,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     var phone:PhoneNumberTextField!
     var passWord:TextField!
     var Done:RaisedButton!
+    var alert:SweetAlert!
     
     var seller:Bool = false
     var image:UIImage!
@@ -36,6 +37,8 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        alert = SweetAlert()
         
         currentUser = presenter.currentUser
         
@@ -314,7 +317,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         
         guard (image != nil) else {
             
-            SweetAlert().showAlert("Failed!", subTitle: "Image is empty", style: AlertStyle.Error)
+            alert.showAlert("Failed!", subTitle: "Image is empty", style: AlertStyle.Error)
             
             return
         }
@@ -354,7 +357,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                         SwiftSpinner.hide({
                             
                             self.performSegueWithIdentifier("Profile", sender: nil)
-                            SweetAlert().showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
+                            self.alert.showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
                         })
                         
                     }else {
@@ -362,7 +365,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                         SwiftSpinner.hide({
                             
                             print("Edit Failed")
-                            SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
+                            self.alert.showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
                         })
                         
                     }
@@ -370,7 +373,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             }
             catch {
                 
-                SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
+                alert.showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
                 print("Generic parser error")
             }
 
@@ -387,7 +390,8 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     SwiftSpinner.hide({
                         
                         self.performSegueWithIdentifier("Profile", sender: nil)
-                        SweetAlert().showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
+                        //self.alert.showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
+                        
                     })
                     
                 }else {
@@ -395,7 +399,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     SwiftSpinner.hide({
                         
                         print("Edit Failed")
-                        SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
+                        self.alert.showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
                     })
                     
                 }
