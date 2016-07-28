@@ -557,7 +557,9 @@
                             <constraint firstItem="f6P-nY-SVO" firstAttribute="centerX" secondItem="1pe-pH-Idg" secondAttribute="centerX" id="26F-uY-F7w"/>
                             <constraint firstItem="FNf-tW-TnZ" firstAttribute="top" secondItem="f6P-nY-SVO" secondAttribute="bottom" constant="8" id="Bjx-cO-3G6"/>
                             <constraint firstItem="FNf-tW-TnZ" firstAttribute="centerX" secondItem="f6P-nY-SVO" secondAttribute="centerX" id="LQn-AU-qgZ"/>
-                            <constraint firstItem="f6P-nY-SVO" firstAttribute="top" secondItem="RlW-XU-bp8" secondAttribute="bottom" constant="60" id="hmB-vi-vaB"/>
+                            <constraint firstItem="f6P-nY-SVO" firstAttribute="top" secondItem="RlW-XU-bp8" secondAttribute="bottom" constant="60" id="hmB-vi-vaB">
+                                <variation key="heightClass=regular-widthClass=compact" constant="50"/>
+                            </constraint>
                             <constraint firstItem="0cZ-fa-sBK" firstAttribute="top" secondItem="RlW-XU-bp8" secondAttribute="bottom" id="nHd-dO-lRa">
                                 <variation key="heightClass=regular-widthClass=compact" constant="22"/>
                             </constraint>
@@ -607,6 +609,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="7Tx-P7-Wsn"/>
+        <segue reference="cIQ-Xm-Zqb"/>
     </inferredMetricsTieBreakers>
 </document>

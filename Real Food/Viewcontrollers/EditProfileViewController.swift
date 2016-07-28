@@ -15,7 +15,7 @@ import PhoneNumberKit
 
 class EditProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
-    var firstName:TextField!
+    var userName:TextField!
     var email:TextField!
     var address:TextField!
     var phone:PhoneNumberTextField!
@@ -90,25 +90,25 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     
     func makeTextFields(){
         
-        firstName = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        firstName.placeholder = "UserName"
-        firstName.font = RobotoFont.regularWithSize(20)
-        firstName.textColor = UIColor.flatWhiteColor()
-        firstName.center = self.view.center
-        firstName.titleLabel = UILabel()
-        firstName.center.y = self.view.center.y
-        firstName.titleLabel!.font = RobotoFont.mediumWithSize(12)
-        firstName.titleLabelColor = MaterialColor.grey.base
-        firstName.titleLabelActiveColor = UIColor.flatSandColorDark()
-        firstName.backgroundColor = UIColor.clearColor()
-        firstName.clearButtonMode = .Always
+        userName = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
+        userName.placeholder = "UserName"
+        userName.font = RobotoFont.regularWithSize(20)
+        userName.textColor = UIColor.flatWhiteColor()
+        userName.center = self.view.center
+        userName.titleLabel = UILabel()
+        userName.center.y = self.view.center.y - 45
+        userName.titleLabel!.font = RobotoFont.mediumWithSize(12)
+        userName.titleLabelColor = MaterialColor.grey.base
+        userName.titleLabelActiveColor = UIColor.flatSandColorDark()
+        userName.backgroundColor = UIColor.clearColor()
+        userName.clearButtonMode = .Always
         
         email = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
         email.placeholder = "Email Address"
         email.font = RobotoFont.regularWithSize(20)
         email.textColor = UIColor.flatWhiteColor()
         email.center.x = self.view.center.x
-        email.center.y = self.view.center.y + 50
+        email.center.y = self.view.center.y + 5
         email.titleLabel = UILabel()
         email.titleLabel!.font = RobotoFont.mediumWithSize(12)
         email.titleLabelColor = MaterialColor.grey.base
@@ -121,7 +121,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         address.font = RobotoFont.regularWithSize(20)
         address.textColor = UIColor.flatWhiteColor()
         address.center.x = self.view.center.x
-        address.center.y = self.view.center.y + 100
+        address.center.y = self.view.center.y + 55
         address.titleLabel = UILabel()
         address.titleLabel!.font = RobotoFont.mediumWithSize(12)
         address.titleLabelColor = MaterialColor.grey.base
@@ -134,7 +134,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         phone.font = RobotoFont.regularWithSize(20)
         phone.textColor = UIColor.flatWhiteColor()
         phone.center.x = self.view.center.x
-        phone.center.y = self.view.center.y + 150
+        phone.center.y = self.view.center.y + 105
         //phone.titleLabel = UILabel()
         //phone.titleLabel!.font = RobotoFont.mediumWithSize(12)
         //phone.titleLabelColor = MaterialColor.grey.base
@@ -142,7 +142,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         phone.backgroundColor = UIColor.clearColor()
         phone.clearButtonMode = .Always
         
-        view.addSubview(firstName)
+        view.addSubview(userName)
         view.addSubview(email)
         view.addSubview(address)
         //view.addSubview(passWord)
@@ -158,7 +158,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         Done.setTitleColor(UIColor.flatSandColorDark(), forState: UIControlState.Normal)
         Done.backgroundColor = UIColor.flatPlumColorDark()
         Done.center.x = self.view.center.x
-        Done.center.y = self.view.center.y + 230
+        Done.center.y = self.view.center.y + 185
         
         self.view.addSubview(Done)
     }
@@ -270,7 +270,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     
     func Done(sender: AnyObject) {
         
-        guard (firstName.text != nil) else {
+        guard (userName.text != nil) else {
             
             return
         }
@@ -301,7 +301,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
             
             SwiftSpinner.show("Saving Changes")
             
-            presenter.editUser(firstName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
+            presenter.editUser(userName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
                 
                 if success == true {
                     
