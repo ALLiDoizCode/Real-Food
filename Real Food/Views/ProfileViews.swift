@@ -203,6 +203,6 @@ class ProfileViews {
         itemTitle.titleLabelActiveColor = UIColor.flatSandColorDark()
         itemTitle.backgroundColor = UIColor.clearColor()
         itemTitle.clearButtonMode = .Always
-        controller.newItemView.addSubview(itemTitle)
+       
     }
 }

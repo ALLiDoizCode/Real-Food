@@ -23,6 +23,8 @@ class PresentList {
             let success = notification.object as! Bool
             
             completion(success:success)
+            
+            SwiftEventBus.unregister(self, name: "create")
         }
         
         client.makeItem(type, name: name, image: image)
@@ -37,6 +39,8 @@ class PresentList {
             let info = notification.object as! [Item]
             
             completon(data: info)
+            
+            SwiftEventBus.unregister(self, name: "getItem")
         }
         
         client.getItems(type,miles:miles)
@@ -51,6 +55,8 @@ class PresentList {
             let info = notification.object as! [Item]
             
             completon(data: info)
+            
+            SwiftEventBus.unregister(self, name: "myItems")
         }
         
         client.getMyItems()

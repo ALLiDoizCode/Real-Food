@@ -75,7 +75,9 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         controller.delegate = self
         
-        itemTitle = TextField(frame: CGRectMake(10, self.newItemView.bounds.height + 70, self.newItemView.frame.width + 100 , 24))
+        itemTitle = TextField()
+       
+        newItemView.addSubview(itemTitle)
         
         newItemView.hidden = true
         
@@ -94,7 +96,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             addItem.addTarget(self, action: #selector(FoodViewController.addItemBtn), forControlEvents: UIControlEvents.TouchUpInside)
             cancle.addTarget(self, action: #selector(FoodViewController.cancelBtn), forControlEvents: UIControlEvents.TouchUpInside)
             
-            constrain(camera,addItem,cancle) { (camera,addItem,cancle) in
+            constrain(camera,addItem,cancle,self.itemTitle) { (camera,addItem,cancle,itemTitle) in
                 
                 camera.bottom == (camera.superview?.bottom)! - 10
                 camera.centerX == (camera.superview?.centerX)!
@@ -110,6 +112,12 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
                 cancle.right == (cancle.superview?.right)! - 10
                 cancle.height == 50
                 cancle.width == camera.height
+                
+                itemTitle.left == (itemTitle.superview?.left)! + 10
+                itemTitle.right == (itemTitle.superview?.right)! - 10
+                itemTitle.bottom == (itemTitle.superview?.bottom)! - 100
+                itemTitle.height == 24
+                //itemTitle.width == (itemTitle.superview?.width)! -
                 
             }
         }
@@ -248,7 +256,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
                     
                     print(self.type)
                     
-                    self.itemArray.removeAll()
+                    self.itemArray = []
                     
                     self.itemArray = data
                     
