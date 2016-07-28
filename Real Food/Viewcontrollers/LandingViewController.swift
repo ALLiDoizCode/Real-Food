@@ -10,6 +10,7 @@ import UIKit
 import SwiftEventBus
 import Cartography
 import Material
+import Parse
 
 class LandingViewController: UIViewController {
 
@@ -90,6 +91,16 @@ class LandingViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         
         self.navigationController?.navigationBarHidden = true
+        
+        let currentUser = PFUser.currentUser()
+        if currentUser != nil {
+            // Do stuff with the user
+            
+            self.performSegueWithIdentifier("Login", sender: nil)
+            
+        } else {
+            // Show the signup or login screen
+        }
     }
 
     @IBAction func loginBtn(sender: AnyObject) {
