@@ -24,7 +24,16 @@ class Editing {
         currentUser!.username = userName
         currentUser!.email = email
         currentUser!["ProfileImage"] = file
-        currentUser!["Phone"] = phone
+        
+        if phone != "" {
+            
+            currentUser!["Phone"] = phone
+        }
+        
+        if myAddress != "" {
+            
+            currentUser!["Address"] = myAddress
+        }
         
         location.reverseAddress(myAddress) { (lat, long) -> Void in
             
@@ -36,10 +45,11 @@ class Editing {
                 (succeeded: Bool, error: NSError?) -> Void in
                 
                 if let error = error {
-                    let errorString = error.userInfo["error"] as? NSString
+                    //let errorString = error.userInfo["error"] as? NSString
                     // Show the errorString somewhere and let the user try again.
                     
                     print(error.description)
+                    print("edit failed")
                     
                     SwiftEventBus.post("Edit", sender: succeeded)
                     

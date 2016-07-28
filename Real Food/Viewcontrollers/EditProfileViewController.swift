@@ -12,6 +12,7 @@ import ImagePickerSheetController
 import Photos
 import SwiftSpinner
 import PhoneNumberKit
+import Parse
 
 class EditProfileViewController: UIViewController,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
@@ -30,9 +31,13 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var profileImage: FabButton!
     
     let presenter = PresentUser()
+    var currentUser:PFUser!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        currentUser = presenter.currentUser
         
         back.setTitle("Back", forState: .Normal)
         back.titleLabel!.font = RobotoFont.mediumWithSize(24)
@@ -56,6 +61,11 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     }
     
     override func viewWillAppear(animated: Bool) {
+        
+        self.profileImage.setBackgroundImage(image, forState: UIControlState.Normal)
+        self.profileImage.tintColor = UIColor.clearColor()
+        self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
+        self.profileImage.layer.masksToBounds = true
         
         let status = presenter.isSeller()
     
@@ -91,7 +101,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     func makeTextFields(){
         
         userName = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        userName.placeholder = "UserName"
+        userName.placeholder = currentUser?.username
         userName.font = RobotoFont.regularWithSize(20)
         userName.textColor = UIColor.flatWhiteColor()
         userName.center = self.view.center
@@ -104,7 +114,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         userName.clearButtonMode = .Always
         
         email = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        email.placeholder = "Email Address"
+        email.placeholder = currentUser?.email
         email.font = RobotoFont.regularWithSize(20)
         email.textColor = UIColor.flatWhiteColor()
         email.center.x = self.view.center.x
@@ -117,7 +127,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         email.clearButtonMode = .Always
         
         address = TextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        address.placeholder = "Address"
+        address.placeholder = currentUser?.objectForKey("Address") as? String
         address.font = RobotoFont.regularWithSize(20)
         address.textColor = UIColor.flatWhiteColor()
         address.center.x = self.view.center.x
@@ -129,8 +139,18 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         address.backgroundColor = UIColor.clearColor()
         address.clearButtonMode = .Always
         
+        
         phone = PhoneNumberTextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        phone.placeholder = "Phone Number"
+        
+        if presenter.isSeller() == true {
+            
+            phone.placeholder = currentUser?.objectForKey("Phone") as? String
+            
+        }else {
+            
+            phone.placeholder = "Phone Number"
+        }
+        
         phone.font = RobotoFont.regularWithSize(20)
         phone.textColor = UIColor.flatWhiteColor()
         phone.center.x = self.view.center.x
@@ -270,27 +290,46 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     
     func Done(sender: AnyObject) {
         
-        guard (userName.text != nil) else {
+        guard (userName.text != "") else {
+            
+             //SweetAlert().showAlert("Failed!", subTitle: "User name is empty", style: AlertStyle.Error)
+            userName.text = userName.placeholder
             
             return
         }
         
-        guard (email.text != nil) else {
+        guard (email.text != "") else {
+            
+            //SweetAlert().showAlert("Failed!", subTitle: "Email is empty", style: AlertStyle.Error)
+            email.text = email.placeholder
             
             return
         }
         
-        guard (address.text != nil) else {
+        if presenter.isSeller() == true {
             
-            return
-        }
-        
-        guard (phone.text != nil) else {
+            guard (address.text != "") else {
+                
+                address.text = address.placeholder
+                
+                //SweetAlert().showAlert("Failed!", subTitle: "Address is empty", style: AlertStyle.Error)
+                
+                return
+            }
             
-            return
+            guard (phone.text != "") else {
+                
+                phone.text = phone.placeholder
+                
+                //SweetAlert().showAlert("Failed!", subTitle: "Phone number is empty", style: AlertStyle.Error)
+                
+                return
+            }
         }
         
         guard (image != nil) else {
+            
+            
             
             return
         }
@@ -308,6 +347,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     SwiftSpinner.hide({
                         
                         self.performSegueWithIdentifier("Profile", sender: nil)
+                        SweetAlert().showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
                     })
                     
                 }else {
@@ -315,12 +355,15 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
                     SwiftSpinner.hide({
                         
                         print("Edit Failed")
+                         SweetAlert().showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
                     })
                     
                 }
             }
         }
         catch {
+            
+             SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
             print("Generic parser error")
         }
         

@@ -298,4 +298,13 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        if segue.identifier == "Edit" {
+            
+            let controller = segue.destinationViewController as! EditProfileViewController
+            controller.image = userImage.image
+        }
+    }
 }
