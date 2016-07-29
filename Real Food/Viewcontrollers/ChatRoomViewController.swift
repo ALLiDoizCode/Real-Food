@@ -25,7 +25,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
     let currentUser = PFUser.currentUser()
     
     let menu = getMenu.sharedInstance
-    let presenter = PresentMessages()
+
     
     
     var messageArray:[Message] = []
@@ -42,13 +42,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         menu.setupMenu(self,title:"Messages")
         
-        presenter.getMessages(roomId) { (data) -> Void in
-        
-                self.messageArray = []
-                self.messageArray = data
-                self.reload()
-            }
-    }
+        }
     
     override func viewWillDisappear(animated: Bool) {
         
@@ -61,26 +55,7 @@ class ChatRoomViewController: UIViewController,UIImagePickerControllerDelegate,U
         
         print("the recipient is \(sellerId)")
             
-            presenter.sendMessage(textField.text!, recipient: sellerId, completion: { (success) -> Void in
-                
-                if success == true {
-                    
-                    print("Message sent \(success)")
-                    
-                    self.presenter.getMessages(self.roomId) { (data) -> Void in
-                        
-                        self.messageArray = data
-                        print("The number of message is \(data.count)")
-                        self.tableView.reloadData()
-                        
-                        self.textField.text = ""
-                    }
-                    
-                }else {
-                    
-                    
-                }
-            })
+          
         }
     }
     func reload(){

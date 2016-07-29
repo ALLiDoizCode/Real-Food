@@ -11,15 +11,15 @@ import Foundation
 class Item {
     
     var objectId:String!
-    var image:String!
+    var image:UIImage!
     var description:String!
-    var profileImage:String!
+    var profileImage:UIImage!
     var userName:String!
     var name:String
     var distance:String!
     var type:String!
     
-    init(theObjectId:String,theImage:String,theDescription:String,theProfileImage:String,theUserName:String!,theName:String,theDistance:String){
+    init(theObjectId:String,theImage:UIImage,theDescription:String,theProfileImage:UIImage,theUserName:String!,theName:String,theDistance:String){
         
         objectId = theObjectId
         image = theImage

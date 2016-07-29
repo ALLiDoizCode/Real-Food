@@ -13,7 +13,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     @IBOutlet weak var tableView: UITableView!
     
     let menu = getMenu.sharedInstance
-    let presenter = PresentMessages()
+    
     var sellerId:String!
     var rooms:[Rooms] = []
     
@@ -36,18 +36,6 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
         
         //self.navigationItem.setHidesBackButton(true, animated: true)
         
-        presenter.getRooms { (data) -> Void in
-            
-            self.rooms.removeAll()
-            
-            print("got rooms")
-            
-            self.rooms = data
-            
-            print("we have \(self.rooms.count) rooms")
-            
-            self.reload()
-        }
         
         self.navigationController?.navigationBar.tintColor = UIColor.flatSandColorDark()
         menu.setupMenu(self,title:"Message")
@@ -66,20 +54,7 @@ class RoomsViewController: UIViewController,UITableViewDelegate,UITableViewDataS
     
     func refresh(sender:AnyObject) {
         // Code to refresh table view
-        presenter.getRooms { (data) -> Void in
-            
-            self.rooms.removeAll()
-            
-            print("got rooms")
-            
-            self.rooms = data
-            
-            print("we have \(self.rooms.count) rooms")
-            
-            self.reload()
-            
-            self.refreshControl.endRefreshing()
-        }
+        
     }
     
     func reload(){

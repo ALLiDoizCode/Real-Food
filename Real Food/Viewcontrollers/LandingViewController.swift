@@ -26,7 +26,7 @@ class LandingViewController: UIViewController {
     var logo: UIImageView!
     var loginTitle: MaterialLabel!
     
-    let presenter = PresentUser()
+  
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -105,7 +105,10 @@ class LandingViewController: UIViewController {
 
     @IBAction func loginBtn(sender: AnyObject) {
         
-        guard (userName.text != nil) else {
+        self.performSegueWithIdentifier("Login", sender: nil)
+
+        
+       /* guard (userName.text != nil) else {
             
             return
         }
@@ -135,7 +138,7 @@ class LandingViewController: UIViewController {
             SwiftEventBus.unregister(self, name: "Login Result")
         }
         
-        presenter.login(userName.text!, PassWord: passWord.text!)
+        presenter.login(userName.text!, PassWord: passWord.text!)*/
         
     }
     

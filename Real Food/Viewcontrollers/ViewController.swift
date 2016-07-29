@@ -20,7 +20,7 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
     
     var sourceColor:UIColor!
     
-    let presenter = PresentList()
+    //let presenter = PresentList()
     let menu = getMenu.sharedInstance
     let location = Location()
     
@@ -42,7 +42,6 @@ class ViewController: UIViewController,UICollectionViewDataSource,UICollectionVi
             
             colors.append(sourceColor)
         }
-        
         
        
         // Do any additional setup after loading the view, typically from a nib.

@@ -16,14 +16,14 @@ import Cartography
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
     let menu = getMenu.sharedInstance
-    let presenter = PresentMessages()
+    //let presenter = PresentMessages()
     let reuseIdentifier = "Review"
-    let presentUser = PresentUser()
+    //let presentUser = PresentUser()
     
     var sellerPhone:String!
     var sellerId:String!
-    var sellerIcon:String!
-    var itemIcon:String!
+    var sellerIcon:UIImage!
+    var itemIcon:UIImage!
     var sellerName:String!
     var sellerCity:String!
     var sellerDistance:String!
@@ -31,6 +31,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     var rating:Int!
     var reviewDescription:String!
     var reviews:[Review] = []
+    
+    var reveiewList = MakeReview()
     
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var ratingLbl: UILabel!
@@ -55,14 +57,13 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ratingLbl.text = "4.0"
+        
+        reviews = reveiewList.getReviews()
+        
         review = TextView()
         reviewLbl = MaterialLabel()
         reviewIcon = UIImageView(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        
-        presentUser.userData { (data) in
-            self.sellerPhone = data.phone
-            print("user number is \(self.sellerPhone)")
-        }
         
         message.setTitle("Call", forState: UIControlState.Normal)
         
@@ -70,8 +71,8 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
         
         print("my item \(sellerIcon)")
         
-        mainImage.kf_setImageWithURL(NSURL(string: itemIcon)!, placeholderImage: UIImage(named: "placeholder"))
-        userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
+        mainImage.image = itemIcon
+        userImage.image = UIImage(named: "girl")
         userName.text = sellerName
         
         reviewIcon.image = userImage.image
@@ -124,41 +125,6 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
     
     override func viewWillAppear(animated: Bool) {
-        
-        if sellerId == presentUser.currentUser?.objectId {
-            
-            rate.enabled = false
-            message.enabled = false
-            
-        }else {
-            
-            rate.enabled = true
-            message.enabled = true
-        }
-        
-        presentUser.getReviews(sellerId) { (data, Rating) in
-            
-            self.reviews = data
-            
-            if Rating != "" {
-                
-                self.ratingLbl.text = Rating
-                
-            }else {
-                
-                self.ratingLbl.hidden = true
-            }
-            
-            for review in self.reviews {
-                
-                if review.user == self.presentUser.currentUser?.username {
-                    
-                    self.rate.enabled = false
-                }
-            }
-            
-            self.reload()
-        }
         
         menu.setupMenu(self,title:"Seller")
         review.hidden = true
@@ -303,77 +269,18 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     }
 
     func ratingDone(){
-        
-        if rateView.hidden == false {
-            
-            if rating == nil {
-                
-                print("Alert user that they need to leave  rating")
-                
-            }else {
-                
-                self.doneBtn.setTitle("Done", forState: UIControlState.Normal)
-                self.reviewIcon.hidden = false
-                self.review.hidden = false
-                self.reviewLbl.hidden = false
-                self.rateView.hidden = true
-                self.rateValueLabel.hidden = true
-            
-            }
-            
-            if review.hidden == false {
-                
-            }
-            
-        }else {
-            
-           reviewDescription = review.text
-           
-            presentUser.makeReview(reviewDescription, rate: rating, sellerId: sellerId, completion: { (success) in
-                
-                if success == true {
-                    
-                    print("Review Saved")
-                    
-                    self.reviewIcon.hidden = true
-                    self.review.hidden = true
-                    self.reviewLbl.hidden = true
-                    self.rateView.hidden = true
-                    self.rateValueLabel.hidden = true
-                    self.bgView.hidden = true
-                    self.review.text = ""
-                    
-                    self.presentUser.getReviews(self.sellerId) { (data, Rating) in
-                        
-                        self.reviews = data
-                        
-                        if Rating != "" {
-                            
-                            self.ratingLbl.text = Rating
-                            
-                        }else {
-                            
-                            self.ratingLbl.hidden = true
-                        }
-                        
-                        for review in self.reviews {
-                            
-                            if review.user == self.presentUser.currentUser?.username {
-                                
-                                self.rate.enabled = false
-                            }
-                        }
-                        
-                        self.reload()
-                    }
-                }
-                
-            })
-        }
+        print("Boom2")
+        self.doneBtn.setTitle("Done", forState: UIControlState.Normal)
+        self.reviewIcon.hidden = false
+        self.review.hidden = false
+        self.reviewLbl.hidden = false
+        self.rateView.hidden = true
+        self.rateValueLabel.hidden = true
     }
     
     @IBAction func rateBtn(sender: AnyObject) {
         
+         print("Boom")
         bgView.hidden =  false
         reviewIcon.hidden = true
         review.hidden = true

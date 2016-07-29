@@ -14,7 +14,7 @@ class getMenu {
     
     var menuView: BTNavigationDropdownMenu!
     
-    let presenter = PresentUser()
+    //let presenter = PresentUser()
     
     static let sharedInstance = getMenu()
     
@@ -59,7 +59,7 @@ class getMenu {
             
             if indexPath == 2 {
                 
-                self.presenter.logout()
+               
                 
                 let storyBoard = UIStoryboard.init(name: "Login", bundle: nil)
                 

@@ -31,7 +31,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
     
-    let presenter = PresentUser()
+    
     var currentUser:PFUser!
     
     
@@ -40,7 +40,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         
         alert = SweetAlert()
         
-        currentUser = presenter.currentUser
+       
         
         back.setTitle("Back", forState: .Normal)
         back.titleLabel!.font = RobotoFont.mediumWithSize(24)
@@ -70,18 +70,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         self.profileImage.layer.cornerRadius = self.profileImage.frame.height/2
         self.profileImage.layer.masksToBounds = true
         
-        let status = presenter.isSeller()
-    
-        if  status == true {
-            
-            phone.enabled = true
-            address.enabled = true
-            
-        }else {
-            
-            phone.enabled = false
-            address.enabled = false
-        }
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -142,23 +131,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         address.backgroundColor = UIColor.clearColor()
         address.clearButtonMode = .Always
         
-        
         phone = PhoneNumberTextField(frame: CGRectMake(57, self.view.frame.midY, 300, 24))
-        
-        if presenter.isSeller() == true {
-            
-            userName.placeholder = currentUser.username
-            email.placeholder = currentUser?.email
-            phone.placeholder = currentUser?.objectForKey("Phone") as? String
-            address.placeholder = currentUser?.objectForKey("Address") as? String
-            
-        }else {
-            
-            userName.placeholder = currentUser.username
-            email.placeholder = currentUser?.email
-            address.placeholder = "Street,City,State"
-            phone.placeholder = "Phone Number"
-        }
         
         phone.font = RobotoFont.regularWithSize(20)
         phone.textColor = UIColor.flatWhiteColor()
@@ -323,89 +296,7 @@ class EditProfileViewController: UIViewController,UIImagePickerControllerDelegat
         }
         
 
-        if presenter.isSeller() == true {
-            
-            guard (address.text != "") else {
-                
-                address.text = address.placeholder
-                
-                //SweetAlert().showAlert("Failed!", subTitle: "Address is empty", style: AlertStyle.Error)
-                
-                return
-            }
-            
-            guard (phone.text != "") else {
-                
-                phone.text = phone.placeholder
-                
-                //SweetAlert().showAlert("Failed!", subTitle: "Phone number is empty", style: AlertStyle.Error)
-                
-                return
-            }
-            
-            SwiftSpinner.show("Saving Changes")
-            
-            do {
-                _ = try PhoneNumber(rawNumber:phone.text!)
-                _ = try PhoneNumber(rawNumber: phone.text!, region: "GB")
-                
-                
-                presenter.editUser(userName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
-                    
-                    if success == true {
-                        
-                        SwiftSpinner.hide({
-                            
-                            self.performSegueWithIdentifier("Profile", sender: nil)
-                            self.alert.showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
-                        })
-                        
-                    }else {
-                        
-                        SwiftSpinner.hide({
-                            
-                            print("Edit Failed")
-                            self.alert.showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
-                        })
-                        
-                    }
-                }
-            }
-            catch {
-                
-                alert.showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
-                print("Generic parser error")
-            }
 
-        }else {
-            
-            SwiftSpinner.show("Saving Changes")
-            
-            presenter.editUser(userName.text!, email: email.text!, image: image, myAddress: address.text!, phone: phone.text!) { (success) in
-                
-                print("success is \(success)")
-                
-                if success == true {
-                    
-                    SwiftSpinner.hide({
-                        
-                        self.performSegueWithIdentifier("Profile", sender: nil)
-                        //self.alert.showAlert("Success!", subTitle: "Successfully Saved Changes", style: AlertStyle.Success)
-                        
-                    })
-                    
-                }else {
-                    
-                    SwiftSpinner.hide({
-                        
-                        print("Edit Failed")
-                        self.alert.showAlert("Failed!", subTitle: "Edit Failed", style: AlertStyle.Error)
-                    })
-                    
-                }
-            }
-        }
-        
         
     }
     

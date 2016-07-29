@@ -28,7 +28,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
     //@IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var profileImage: FabButton!
     
-    let presenter = PresentUser()
+    //let presenter = PresentUser()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -315,7 +315,7 @@ class MakeBuyerViewController: UIViewController,UIImagePickerControllerDelegate,
         
         SwiftSpinner.show("Creating Account")
         
-        presenter.makeUser(firstName.text!, passWord: passWord.text!, email: email.text!, image: image)
+       
         
     }
     

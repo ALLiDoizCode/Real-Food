@@ -19,9 +19,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     
     
     let menu = getMenu.sharedInstance
-    let presenter = PresentList()
-    let presentUser = PresentUser()
-    let presentEditor = PresenterEditing()
+
 
     let controller = UIImagePickerController()
     
@@ -30,10 +28,12 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     var edit:UIButton!
     
     var type:String!
-    var image:UIImage!
+    var image:UIImage = UIImage(named: "girl")!
     var itemsArray:[Item] = []
     var myReviews:[Review] = []
-
+    
+    let reviewlist = MakeReview()
+    
     @IBOutlet weak var ratingTable: UITableView!
     @IBOutlet weak var rating: FabButton!
     @IBOutlet weak var tableView: UITableView!
@@ -44,6 +44,11 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        myReviews = reviewlist.getReviews()
+        
+        userImage.image = image
+        self.bgImage.image = image.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
         
         controller.delegate = self
         
@@ -81,7 +86,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         
         rating.backgroundColor = UIColor.clearColor()
         rating.tintColor = UIColor.flatWhiteColor()
-        rating.setTitle("", forState: UIControlState.Normal)
+        rating.setTitle("4.0", forState: UIControlState.Normal)
         rating.titleLabel?.font = RobotoFont.mediumWithSize(32)
         
         let rightButton = UIBarButtonItem.init(customView: edit)
@@ -96,98 +101,12 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
         ratingTable.hidden = true
         closeReview.hidden = true
         
-        /*presenter.getMyItems { (data) -> Void in
-            
-            print("got data")
-            
-            print(data.count)
-            
-            self.itemsArray = []
-            
-            self.itemsArray = data
-            
-            self.reload(self.tableView)
-            
-            self.ratingTable.estimatedRowHeight = 44
-            self.ratingTable.rowHeight = UITableViewAutomaticDimension
-        }
         
-        presentUser.getReviews((presentUser.currentUser?.objectId)!) { (data, Rating) in
-            
-            self.myReviews = data
-            
-            if self.myReviews.count < 1 {
-                
-                self.rating.hidden = true
-                
-            }else {
-                
-                self.rating.hidden = false
-            }
-            
-            self.rating.setTitle(Rating, forState: UIControlState.Normal)
-        }
-        
-        
-        presentUser.userData { (data) in
-            
-            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(), options: .None, completionHandler: { (image, error, cacheType, imageURL) in
-                
-                self.bgImage.image = image?.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
-                
-            })
-            self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
-            self.userName.text = data.userName
-            
-        }*/
     }
     
     override func viewDidAppear(animated: Bool) {
         
-        presenter.getMyItems { (data) -> Void in
-            
-            print("got data")
-            
-            print(data.count)
-            
-            self.itemsArray = []
-            
-            self.itemsArray = data
-            
-            self.reload(self.tableView)
-            
-            self.ratingTable.estimatedRowHeight = 44
-            self.ratingTable.rowHeight = UITableViewAutomaticDimension
-        }
-        
-        presentUser.getReviews((presentUser.currentUser?.objectId)!) { (data, Rating) in
-            
-            self.myReviews = data
-            
-            if self.myReviews.count < 1 {
-                
-                self.rating.hidden = true
-                
-            }else {
-                
-                self.rating.hidden = false
-            }
-            
-            self.rating.setTitle(Rating, forState: UIControlState.Normal)
-        }
-        
-        
-        presentUser.userData { (data) in
-            
-            self.bgImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(), options: .None, completionHandler: { (image, error, cacheType, imageURL) in
-                
-                self.bgImage.image = image?.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
-                
-            })
-            self.userImage.kf_setImageWithURL(NSURL(string: data.profileImage)!, placeholderImage: UIImage(named: "placeholder"))
-            self.userName.text = data.userName
-            
-        }
+    
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -272,7 +191,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 
                 let image = self.itemsArray[indexPath.row].image
                 
-                cell.cellImage.kf_setImageWithURL(NSURL(string: image)!, placeholderImage: UIImage(named: "placeholder"))
+                cell.cellImage.image = image
                 cell.mainLabel.text = self.itemsArray[indexPath.row].name
                 cell.foodDescription.text = self.itemsArray[indexPath.row].description
                 cell.userIcon.image = UIImage(named: self.itemsArray[indexPath.row].name)
@@ -298,15 +217,7 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 print(objectId)
                 self.itemsArray.removeAtIndex(indexPath.row)
                 tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
-                presentEditor.delteObject(self.type, itemId: objectId, completion: { (success) in
-                    
-                    if success == true {
-                        print("Alert User")
-                    }else {
-                        print("Alert User")
-                    }
-                })
-                
+                                
             } else if editingStyle == .Insert {
                 // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view.
             }

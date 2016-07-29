@@ -22,8 +22,8 @@ import PhoneNumberKit
 class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate {
     
     let menu = getMenu.sharedInstance
-    let presenter = PresentList()
-    let presenterUser = PresentUser()
+    //let presenter = PresentList()
+    //let presenterUser = PresentUser()
     let profileViews = ProfileViews()
     let getImage = GetImage()
     
@@ -146,17 +146,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         cover.hidden = true
         
         menu.setupMenu(self,title:type)
-        
-        presenter.getItems(type,miles:miles) { (data) -> Void in
-            
-            print(self.type)
-            
-            self.itemArray.removeAll()
-            
-            self.itemArray = data
-            
-            self.reload()
-        }
+    
     }
     
     override func viewWillDisappear(animated: Bool) {
@@ -171,19 +161,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     }
     
     func refresh(sender:AnyObject) {
-        // Code to refresh table view
-        presenter.getItems(type,miles:miles) { (data) -> Void in
-            
-            print(self.type)
-            
-            self.itemArray.removeAll()
-            
-            self.itemArray = data
-            
-            self.refreshControl.endRefreshing()
-            
-            self.reload()
-        }
+        
     }
     
     func reload(){
@@ -203,14 +181,13 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         let cell:FoodCell = tableView.dequeueReusableCellWithIdentifier(cellIdentefier) as! FoodCell
         
-         //cell.contentView.backgroundColor = UIColor(contrastingBlackOrWhiteColorOn: self.navigationController?.navigationBar.barTintColor, isFlat: true)
         
         dispatch_async(dispatch_get_main_queue(), {
             
             print(self.itemArray[indexPath.row].image)
             
-            cell.cellImage.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].image)!, placeholderImage: UIImage(named:"placeholder"))
-            cell.userIcon.kf_setImageWithURL(NSURL(string: self.itemArray[indexPath.row].profileImage)!, placeholderImage: UIImage(named: "placeholder"))
+            cell.cellImage.image = self.itemArray[indexPath.row].image
+            cell.userIcon.image = self.itemArray[indexPath.row].image
             cell.mainLabel.text = self.itemArray[indexPath.row].userName
             cell.foodDescription.text = self.itemArray[indexPath.row].description
             cell.distance.text = self.itemArray[indexPath.row].distance
@@ -242,6 +219,13 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             return
         }
     
+        guard (itemTitle.text != "") else {
+            
+            SweetAlert().showAlert("Warning!", subTitle: "Description is missing", style: AlertStyle.Warning)
+            
+            return
+        }
+    
         guard (itemTitle.text?.characters.count <= 18) else {
             
             SweetAlert().showAlert("Warning!", subTitle: "Description can't be larger then 18 character", style: AlertStyle.Warning)
@@ -249,43 +233,17 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             return
         }
     
-        SwiftSpinner.show("Adding Item")
-        
-        presenter.makeItem(type, name: itemTitle.text!, image: image) { (success) -> Void in
-            
-            if success == true {
-                
-                print("Item Saved Successfully")
-                self.addButton.hidden = false
-                self.newItemView.hidden = true
-                self.cover.hidden = true
-                
-                self.presenter.getItems(self.type,miles:self.miles) { (data) -> Void in
-                    
-                    print(self.type)
-                    
-                    self.itemArray = []
-                    
-                    self.itemArray = data
-                    
-                    self.reload()
-                    
-                    SwiftSpinner.hide({ 
-                        
-                        print("alert user that item saved")
-                    })
-                }
-                
-                
-            }else {
-                
-                SwiftSpinner.hide({
-                    
-                    print("There was an issue saving your item")
-                })
-                
-            }
-        }
+        let myItem = Item(theObjectId: "", theImage: image, theDescription: itemTitle.text!, theProfileImage: image, theUserName: "Sara", theName: "", theDistance: "15.2")
+    
+        itemArray.append(myItem)
+    
+        self.reload()
+    
+        self.addButton.hidden = false
+        self.newItemView.hidden = true
+        self.cover.hidden = true
+    
+
         
     }
     
@@ -388,95 +346,17 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
         
         /// check to see if seller
         
-        SwiftEventBus.onMainThread(self, name: "New Seller") { (result) in
-            
-            let success = result.object as! Bool
-            
-            if success == true {
-                
-                self.addButton.hidden = true
-                self.buttonView.hidden = false
-                self.cover.hidden = false
-            }
-        }
+        self.addButton.hidden = true
+        buttonView.hidden = false
+        cover.hidden = false
         
-        if presenterUser.isSeller() == true {
-            
-            self.addButton.hidden = true
-            buttonView.hidden = false
-            cover.hidden = false
-            
-        }else {
-            
-            let myAlert = SweetAlert().showAlert("", subTitle: "We need some information so your listing is visable to users in the area", style: AlertStyle.CustomImag(imageFile: "Icon"))
-            
-            myAlert.imageView?.layer.cornerRadius = (myAlert.imageView?.layer.frame.height)!/2
-            myAlert.imageView?.layer.masksToBounds = true
-            
-            home = TextField()
-            phone = PhoneNumberTextField()
-            done = FlatButton()
-            bgView = MaterialView(frame: CGRect(x: 0, y: 0, width: self.view.frame.width, height: self.view.frame.height))
-            bgView.backgroundColor = UIColor.flatForestGreenColorDark()
-            done.addTarget(self, action: #selector(FoodViewController.doneBtn), forControlEvents: UIControlEvents.TouchUpInside)
-            self.view.addSubview(bgView)
-            bgView.addSubview(home)
-            bgView.addSubview(phone)
-            bgView.addSubview(done)
-            
-            profileViews.makeSeller(home, phone: phone,button:done)
-            
-        }
+
         
     }
     
     
     func doneBtn() {
-        
-        if phone.text != "" && home.text != "" {
-            
-            do {
-                _ = try PhoneNumber(rawNumber:phone.text!)
-                //let phoneNumberCustomDefaultRegion = try PhoneNumber(rawNumber: "+44 20 7031 3000", region: "GB")
-                
-                print("number is right format")
-                
-                SwiftEventBus.onMainThread(self, name: "New Seller", handler: { (result) in
-                    
-                    let success = result.object as! Bool
-                    
-                    if success == true {
-                        
-                        self.bgView.hidden = true
-                        self.buttonView.hidden = false
-                        self.cover.hidden = false
-                        
-                        self.phone.resignFirstResponder()
-                        self.home.resignFirstResponder()
-                        
-                    }else {
-                        
-                    }
-                    
-                })
-                
-                presenterUser.makeSeller(phone.text!, address: home.text!)
-            }
-            catch {
-                
-                print("Generic parser error")
-                print("phone number is not proper format")
-                SweetAlert().showAlert("Failed!", subTitle: "phone number is not proper format", style: AlertStyle.Error)
-            }
-            
-            
-            
-        }else {
-            
-            //need to fill in all text fields
-            
-            SweetAlert().showAlert("Failed!", subTitle: "One or more fields are empty ", style: AlertStyle.Error)
-        }
+     
         
         
     }
