@@ -190,7 +190,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             print(self.itemArray[indexPath.row].image)
             
             cell.cellImage.image = self.itemArray[indexPath.row].image
-            cell.userIcon.image = self.itemArray[indexPath.row].image
+            cell.userIcon.image = self.itemArray[indexPath.row].profileImage
             cell.mainLabel.text = self.itemArray[indexPath.row].userName
             cell.foodDescription.text = self.itemArray[indexPath.row].description
             cell.distance.text = self.itemArray[indexPath.row].distance
