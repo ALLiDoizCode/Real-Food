@@ -45,7 +45,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userName.text = "Sara"
+        
         myReviews = reviewlist.getReviews()
+        itemsArray = reviewlist.getItems()
         
         userImage.image = image
         self.bgImage.image = image.blurredImageWithRadius(100, iterations: 2, tintColor: UIColor.blackColor())
@@ -194,9 +197,10 @@ class SellerProfileViewController: UIViewController,UITableViewDataSource,UITabl
                 cell.cellImage.image = image
                 cell.mainLabel.text = self.itemsArray[indexPath.row].name
                 cell.foodDescription.text = self.itemsArray[indexPath.row].description
-                cell.userIcon.image = UIImage(named: self.itemsArray[indexPath.row].name)
+                cell.userIcon.image = UIImage(named:"Veggies")
                 cell.userIcon.layer.cornerRadius = 0
                 cell.distanceView.hidden = true
+                
                 
                 cell.layoutSubviews()
             });

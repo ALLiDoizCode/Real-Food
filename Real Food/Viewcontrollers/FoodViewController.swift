@@ -50,6 +50,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     var camera: FabButton!
     var addItem: FabButton!
     
+    let list = MakeReview()
     
     @IBOutlet weak var addButton: FabButton!
     @IBOutlet weak var veggie: FabButton!
@@ -72,6 +73,8 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        itemArray = list.getItems()
         
         controller.delegate = self
         
