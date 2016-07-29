@@ -109,6 +109,7 @@
 		4DA514511CFF1856002F14D2 /* UserData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserData.swift; sourceTree = "<group>"; };
 		4DBC584F1D0856D60072144F /* Review.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4DBC58511D0880A10072144F /* ReviewCell2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewCell2.swift; sourceTree = "<group>"; };
+		4DC37C7C1D4AFC8600C32839 /* Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Header.h; sourceTree = "<group>"; };
 		4DCC55CC1C713B4400F60DDE /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		4DCC55CE1C713BD400F60DDE /* SellerProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SellerProfileViewController.swift; sourceTree = "<group>"; };
 		4DD5A65C1D0A3E10005A8408 /* ProfileViews.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViews.swift; sourceTree = "<group>"; };
@@ -317,6 +318,7 @@
 				4DF9CB511C57FA2400922A63 /* Assets.xcassets */,
 				4DF9CB531C57FA2400922A63 /* LaunchScreen.storyboard */,
 				4DF9CB561C57FA2400922A63 /* Info.plist */,
+				4DC37C7C1D4AFC8600C32839 /* Header.h */,
 			);
 			path = "Real Food";
 			sourceTree = "<group>";
@@ -723,6 +725,7 @@
 			baseConfigurationReference = F416C027112B7AD4320FD1D0 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Real Food/Info.plist";
@@ -730,6 +733,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.realfood.greenpepper;
 				PRODUCT_NAME = "Green Pepper";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jonathangreen/Documents/Apps/NerdHouse/Real Food/Real Food/Header.h";
 			};
 			name = Debug;
 		};
@@ -738,6 +742,7 @@
 			baseConfigurationReference = B9D3CAFB8B9B0738495A3C37 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = "Real Food/Info.plist";
@@ -745,6 +750,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.realfood.greenpepper;
 				PRODUCT_NAME = "Green Pepper";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/jonathangreen/Documents/Apps/NerdHouse/Real Food/Real Food/Header.h";
 			};
 			name = Release;
 		};

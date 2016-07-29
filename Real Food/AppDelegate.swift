@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import Bolts
 import IQKeyboardManagerSwift
+import Localytics
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,13 +18,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     let APP_ID = "ENIGpcM3YupNuDEMoM6xVHELQmJjYSGFeS166Bfl"
     //let CLIENT_ID = "9384V2bE29x5xq6wLJgvmE61L44Zm7gX1zUApudc"
     let MASTER_KEY = "100Mjp33chuckprimus"
-    let SERVER = "http://real-food.herokuapp.com/parse"
+    let SERVER = "https://real-food.herokuapp.com/parse"
+    let LOCALYTICS = "ccaf8914bce2ac1c9572dd7-edb28182-5534-11e6-461f-00adad38bc8d"
 
     var window: UIWindow?
 
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        Localytics.autoIntegrate(LOCALYTICS, launchOptions: launchOptions)
         
          IQKeyboardManager.sharedManager().enable = true
         

@@ -10,6 +10,7 @@ PODS:
   - ImagePickerSheetController (0.9.1)
   - IQKeyboardManagerSwift (4.0.4)
   - Kingfisher (1.9.3)
+  - Localytics (4.0.0)
   - Material (1.28.1)
   - Parse (1.12.0):
     - Bolts/Tasks (~> 1.5)
@@ -28,6 +29,7 @@ DEPENDENCIES:
   - ImagePickerSheetController (~> 0.9.1)
   - IQKeyboardManagerSwift (= 4.0.4)
   - Kingfisher (~> 1.8)
+  - Localytics (~> 4.0.0)
   - Material (~> 1.28.1)
   - Parse (~> 1.12.0)
   - PhoneNumberKit (~> 0.8)
@@ -60,6 +62,7 @@ SPEC CHECKSUMS:
   ImagePickerSheetController: 3c58c9fee6dcf36485222358a021f6b734f997ba
   IQKeyboardManagerSwift: e0964d04d6a29b71016fd346dca13ecb80a2823a
   Kingfisher: 9e37d2a78a082dc123bfe8a16de65de85518daae
+  Localytics: 205a563a2761b5d844e8bba522d3c1da6cf4bc5b
   Material: 5ca840624a279ce4d02c4e1ef3059d1c0190b7f3
   Parse: de2c52a9a1421b91ae7594ab8ce191afd184f19b
   PhoneNumberKit: ec93d8c5e4614ecfc1ef333eb89f7eaadedcaa17

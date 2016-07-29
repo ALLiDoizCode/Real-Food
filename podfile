@@ -1,4 +1,5 @@
 use_frameworks!
+platform :ios, '9.0'
 
 pod "HanabiCollectionViewLayout", :git => 'https://github.com/kshin/Hanabi'
 pod 'Parse', '~> 1.12.0'
@@ -15,3 +16,4 @@ pod 'IQKeyboardManagerSwift', '4.0.4'
 pod 'Cartography', '~> 0.6.0'
 pod "TTGEmojiRate"
 pod 'PhoneNumberKit', '~> 0.8'
+pod 'Localytics', '~> 4.0.0'

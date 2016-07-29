@@ -198,21 +198,7 @@ class User {
             // The login failed. Check error to see why.
         }
 
-        /*PFUser.logInWithUsernameInBackground(userName, password:PassWord) {
-            (user: PFUser?, error: NSError?) -> Void in
-            if user != nil {
-                
-                SwiftEventBus.post("login", sender: true)
-                // Do stuff after successful login.
-                
-            } else {
-                
-                print(error?.description)
-                
-                SwiftEventBus.post("login", sender: false)
-                // The login failed. Check error to see why.
-            }
-        }*/
+
     }
     
     func logout(){
