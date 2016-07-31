@@ -216,23 +216,36 @@ class Listing {
         let imageData = NSData(data: UIImageJPEGRepresentation(image, 0.4)!)
         let file = PFFile(data: imageData)
         
-        item["Name"] = name
-        item["Image"] = file
-        item["CreatedBY"] = currentUser
-        item["Location"] = currentUser?.objectForKey("Location") as? PFGeoPoint
-        item["Type"] = type
+        let address = currentUser?.objectForKey("Address") as? String
         
-        item.saveInBackgroundWithBlock { (success, error) -> Void in
+        let location = Location()
         
-            if success == true {
+        location.reverseAddress(address!) { (lat, long) in
+            
+            let currentLoc:CLLocation = CLLocation(latitude: lat, longitude: long)
+            
+            let point = PFGeoPoint(location: currentLoc)
+            
+            item["Name"] = name
+            item["Image"] = file
+            item["CreatedBY"] = self.currentUser
+            item["Location"] = point
+            item["Type"] = type
+            
+            item.saveInBackgroundWithBlock { (success, error) -> Void in
                 
-                SwiftEventBus.post("create", sender: success)
-                
-            }else {
-                
-                SwiftEventBus.post("create", sender: success)
+                if success == true {
+                    
+                    SwiftEventBus.post("create", sender: success)
+                    
+                }else {
+                    
+                    SwiftEventBus.post("create", sender: success)
+                }
             }
         }
+        
+        
     }
     
 }

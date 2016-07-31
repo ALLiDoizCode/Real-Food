@@ -12,6 +12,7 @@ import FXBlurView
 import BTNavigationDropdownMenu
 import TTGEmojiRate
 import Cartography
+import PhoneNumberKit
 
 class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDelegate{
     
@@ -64,60 +65,60 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
             print("user number is \(self.sellerPhone)")
         }
         
-        message.setTitle("Call", forState: UIControlState.Normal)
+            message.setTitle("Call", forState: UIControlState.Normal)
         
-         bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
+            bgView = UIView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         
-        print("my item \(sellerIcon)")
+            print("my item \(sellerIcon)")
         
-        mainImage.kf_setImageWithURL(NSURL(string: itemIcon)!, placeholderImage: UIImage(named: "placeholder"))
-        userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
-        userName.text = sellerName
+            mainImage.kf_setImageWithURL(NSURL(string: itemIcon)!, placeholderImage: UIImage(named: "placeholder"))
+            userImage.kf_setImageWithURL(NSURL(string: sellerIcon)!, placeholderImage: UIImage(named: "placeholder"))
+            userName.text = sellerName
         
-        reviewIcon.image = userImage.image
-        reviewIcon.contentMode = .ScaleAspectFill
+            reviewIcon.image = userImage.image
+            reviewIcon.contentMode = .ScaleAspectFill
         
-        tableView.estimatedRowHeight = 44
-        tableView.rowHeight = UITableViewAutomaticDimension
+            tableView.estimatedRowHeight = 44
+            tableView.rowHeight = UITableViewAutomaticDimension
         
-        self.rate.backgroundColor = UIColor.flatForestGreenColor()
-        self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
+            self.rate.backgroundColor = UIColor.flatForestGreenColor()
+            self.message.backgroundColor = UIColor(complementaryFlatColorOf: self.rate.backgroundColor)
         
-        dispatch_async(dispatch_get_main_queue(), {
+            dispatch_async(dispatch_get_main_queue(), {
             
-            self.ratingLbl.layer.cornerRadius = self.ratingLbl.layer.frame.height/2
-            self.ratingLbl.layer.masksToBounds = true
+                self.ratingLbl.layer.cornerRadius = self.ratingLbl.layer.frame.height/2
+                self.ratingLbl.layer.masksToBounds = true
             
-            self.mainView.layoutSubviews()
+                self.mainView.layoutSubviews()
             
-            self.rate.layer.cornerRadius = 3
-            self.rate.layer.masksToBounds = true
+                self.rate.layer.cornerRadius = 3
+                self.rate.layer.masksToBounds = true
             
-            self.message.layer.cornerRadius = 3
-            self.message.layer.masksToBounds = true
+                self.message.layer.cornerRadius = 3
+                self.message.layer.masksToBounds = true
     
-            self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
-            self.userImage.layer.masksToBounds = true
+                self.userImage.layer.cornerRadius = self.userImage.layer.frame.height/2
+                self.userImage.layer.masksToBounds = true
             
-            self.view.backgroundColor = UIColor.flatSandColorDark()
+                self.view.backgroundColor = UIColor.flatSandColorDark()
             
-            let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
-            layout.itemSize = CGSize(width: UIScreen().bounds.width/3, height: UIScreen().bounds.width/3)
-            layout.minimumInteritemSpacing = 10
-            layout.minimumLineSpacing = 10
+                let layout: UICollectionViewFlowLayout = UICollectionViewFlowLayout()
+                layout.sectionInset = UIEdgeInsets(top: 20, left: 0, bottom: 10, right: 0)
+                layout.itemSize = CGSize(width: UIScreen().bounds.width/3, height: UIScreen().bounds.width/3)
+                layout.minimumInteritemSpacing = 10
+                layout.minimumLineSpacing = 10
           
-            self.userName.font = RobotoFont.mediumWithSize(20)
-            self.distance.font = RobotoFont.mediumWithSize(14)
-            self.distance.text = "\(self.sellerDistance)m from your location"
+                self.userName.font = RobotoFont.mediumWithSize(20)
+                self.distance.font = RobotoFont.mediumWithSize(14)
+                self.distance.text = "\(self.sellerDistance)m from your location"
             
-            self.ratingLbl.font = RobotoFont.mediumWithSize(16)
+                self.ratingLbl.font = RobotoFont.mediumWithSize(16)
             
-            let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
-            self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
-            self.userImage.layer.borderWidth = 3
+                let imageColor = UIColor(averageColorFromImage:self.mainImage.image)
+                self.userImage.layer.borderColor = UIColor(complementaryFlatColorOf: imageColor).CGColor
+                self.userImage.layer.borderWidth = 3
             
-            self.makeRateView()
+                self.makeRateView()
             
         });
         
@@ -207,9 +208,23 @@ class SellerViewController: UIViewController,UITableViewDataSource,UITableViewDe
     
     @IBAction func messageBTn(sender: AnyObject) {
         
-        if let url = NSURL(string: "telprompt://\(sellerPhone)")
-        {
-            UIApplication.sharedApplication().openURL(url)
+        print("calling")
+        
+        do {
+            
+            let phoneNumber = try PhoneNumber(rawNumber:sellerPhone)
+            
+            if let url = NSURL(string: "telprompt://\(phoneNumber.toE164())")
+            {
+                
+                print("calling \(phoneNumber.toE164())")
+                
+                UIApplication.sharedApplication().openURL(url)
+            }
+          
+        }
+        catch {
+            print("Generic parser error")
         }
         
     }

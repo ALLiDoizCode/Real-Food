@@ -437,6 +437,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             
             do {
                 _ = try PhoneNumber(rawNumber:phone.text!)
+    
                 //let phoneNumberCustomDefaultRegion = try PhoneNumber(rawNumber: "+44 20 7031 3000", region: "GB")
                 
                 print("number is right format")
@@ -525,6 +526,7 @@ class FoodViewController: UIViewController,UITableViewDataSource,UITableViewDele
             controller.sellerName = self.itemArray[indexPath!.row].userName
             controller.itemIcon = self.itemArray[indexPath!.row].image
             controller.sellerDistance = self.itemArray[indexPath!.row].distance
+            //controller.sellerPhone = presenterUser.currentUser?.objectForKey("Phone") as! String
         }
     }
     
